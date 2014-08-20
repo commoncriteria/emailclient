@@ -1,4 +1,4 @@
-email_client
+Email Client
 ============
 
 Protection Profile for Email Clients
