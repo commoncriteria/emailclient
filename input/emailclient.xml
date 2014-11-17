@@ -3,8 +3,7 @@
 <PP xmlns="http://common-criteria.rhcloud.com/ns/cc" name="Email Clients">
   <PPReference title="PP Reference" id="ID003">
     <ReferenceTable>
-      <PPTitle>Application Software Protection Profile (ASPP) Extended Package for Email
-        Clients</PPTitle>
+      <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.1</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2014-11-07</PPPubDate>
@@ -425,10 +424,9 @@
         "(1)")</li>
     </ul>
     <section title="Security Functional Requirements" id="sfr"> This section addresses those
-      Security Functional Requirements that may be met by the TOE. <subsection
-        title="Class: User Data Protection (FDP)" id="fdp">
-        <subsubsection title="S/MIME for Data Protection" id="smdp">
-          <!-- <f-component id="???" name="???"> -->
+      Security Functional Requirements that may be met by the TOE.
+      <subsection title="User Data Protection (FDP)" id="fdp">
+          <f-component id="FDP_SMIME_EXT.1" name="S/MIME"> -->
           <f-element id="FDP_SMIME_EXT.1.1">
             <title>The TSF shall use Secure/Multipurpose Internet Mail Extensions (S/MIME) to sign,
               verify, encrypt, and decrypt mail.</title>
@@ -452,10 +450,7 @@
               encrypting email.<br/> Tests for this element are performed in conjunction with tests
               for FCS_SMIME_EXT.1, FDP_NOT_EXT.1, and FMT_SMF.1.</aactivity><br/>
           </f-element>
-          <!-- </f-component> -->
-        </subsubsection>
-        <subsubsection title="S/MIME for Access to Certificates" id="smac">
-          <!-- <f-component id="???" name="???"> -->
+        
           <f-element id="FDP_SMIME_EXT.1.2">
             <title>The <selectables>
                 <selectable>TSF</selectable>
@@ -485,8 +480,8 @@
             user or administrator configures the remote server information.<br/> Tests for this
             element are performed in conjunction with tests for FCS_SMIME_EXT.1 and FMT_SMF.1.<br/>
           </aactivity>
-          <!-- </f-component> -->
-        </subsubsection>
+         </f-component>
+
         <subsubsection title="Data Notification" id="dn">
           <f-component id="FDP_NOT_EXT.1" name="Notification of Email Receipt">
             <f-element id="FDP_NOT_EXT.1.1">
@@ -571,7 +566,7 @@
           </f-component>
         </subsubsection>
         <subsubsection title="Rendering of Message Content" id="rmc">
-          <!-- <f-component id="???" name="???"> -->
+          <f-component id="FDP_REN_EXT.1" name="Rendering of Message Content"> -->
           <f-element id="FDP_REN_EXT.1.1">
             <title>The TSF shall have a plaintext only mode.</title>
             <note role="application"> Plaintext only mode prevents the automatic downloading of
@@ -600,17 +595,18 @@
               </testlist>
             </aactivity>
           </f-element>
-          <!-- </f-component> -->
+          </f-component>
         </subsubsection>
       </subsection>
     </section>
+    
     <section title="TOE or TOE Platform Security Functional requirements" id="tpsfr">This section
       addresses Security Functional Requirements that may be met by either the TOE itself, by the
-      TOE platform, or by a combination of the TOE and the TOE platform. <subsection
-        title="Class: Cryptographic Support (FCS)" id="toefcs">
-        <subsubsection title="Secure/Multipurpose Internet Mail Extensions (S/MIME)"
-          id="mailextensions">
-          <!-- <f-component id="???" name="???"> -->
+      TOE platform, or by a combination of the TOE and the TOE platform. 
+      
+      <subsection title="Cryptographic Support (FCS)" id="toefcs">
+      <subsubsection title="Secure/Multipurpose Internet Mail Extensions (S/MIME)" id="mailextensions">
+          <f-component id="FCS_SMIME_EXT.1" name="S/MIME">
           <f-element id="FCS_SMIME_EXT.1.1">
             <title>The <selectables>
                 <selectable>TSF</selectable>
@@ -648,7 +644,8 @@
                 <selectable>TSF</selectable>
                 <selectable>TOE platform</selectable>
               </selectables> shall present the AlgorithmIdentifier field with the following
-              sha256withRSAEncryption and <selectables>
+              sha256withRSAEncryption and 
+              <selectables linebreak="yes">
                 <selectable>sha384WithRSAEncryption</selectable>
                 <selectable>sha512WithRSAEncryption</selectable>
                 <selectable>ecdsa-with-SHA256</selectable>
@@ -682,7 +679,8 @@
                 <selectable>TSF</selectable>
                 <selectable>TOE platform</selectable>
               </selectables> shall implement mechanisms for retrieval of Certificate Revocation
-              Lists (CRLs) and certificates <selectables>
+              Lists (CRLs) and certificates 
+              <selectables linebreak="yes">
                 <selectable>each time needed</selectable>
                 <selectable>for incoming/outgoing messages</selectable>
                 <selectable>periodically</selectable>
@@ -762,12 +760,12 @@
               </testlist>
             </aactivity>
           </f-element>
-          <!-- </f-component> -->
+          </f-component>
         </subsubsection>
       </subsection>
-      <subsection title="Class: Identification and Authentication (FIA)" id="toefia">
-        <subsubsection title="S/MIME" id="smimeia">
-          <!-- <f-component id="???" name="???"> -->
+   
+      <subsection title="Identification and Authentication (FIA)" id="toefia">
+          <f-component id="FIA_SMIME_EXT.1" name="S/MIME">
           <f-element id="FIA_SMIME_EXT.1.1">
             <title>The <selectables>
                 <selectable>TSF</selectable>
@@ -787,10 +785,9 @@
                   message.</test></testlist>
             </aactivity>
           </f-element>
-          <!-- </f-component> -->
-        </subsubsection>
-        <subsubsection title="SASL" id="saslia">
-          <!-- <f-component id="???" name="???"> -->
+          </f-component>
+        
+          <f-component id="FIA_SASL_EXT.1" name="SASL">
           <f-element id="FIA_SASL_EXT.1.1">
             <title>The <selectables>
                 <selectable>TSF</selectable>
@@ -859,8 +856,8 @@
               </testlist>
             </aactivity>
           </f-element>
-          <!-- </f-component> -->
-        </subsubsection>
+         </f-component>
+        
         <subsubsection title="X.509 Validation" id="x509validation">
           <f-component id="FIA_X509_EXT.1" name="Extended: X509 Validation">
             <f-element id="FIA_X509_EXT.1.1">
@@ -992,7 +989,8 @@
                   <selectable>TSF</selectable>
                   <selectable>TOE platform</selectable>
                 </selectables> shall use X.509v3 certificates as defined by RFC 5280 to support code
-                signing for TOE updates and <selectables>
+                signing for TOE updates and 
+                <selectables linebreak="yes">
                   <selectable>code signing for extension installation</selectable>
                   <selectable>code signing for plug-in installation</selectable>
                   <selectable>no additional uses</selectable>. </selectables>
@@ -1009,7 +1007,8 @@
                 certificate, the <selectables>
                   <selectable>TSF</selectable>
                   <selectable>TOE platform</selectable>
-                </selectables> shall <selectables>
+                </selectables> shall 
+                <selectables linebreak="yes">
                   <selectable>allow the administrator to choose whether to accept the certificate in
                     these cases</selectable>
                   <selectable>accept the certificate</selectable>
@@ -1089,16 +1088,18 @@
             </f-element>
           </f-component>
         </subsubsection>
+      
       </subsection>
-      <subsection title="Class: Security Management (FMT)" id="toefmt">
-        <subsubsection title="Management of Functions in TSF" id="mngfunctsf">
-          <!-- <f-component id="???" name="???"> -->
+      
+      <subsection title="Security Management (FMT)" id="toefmt">
+         <f-component id="FMT_MOF.1" name="Management of Functions in TSF">
           <f-element id="FMT_MOF.1.1(1)">
             <title>The TSF and <selectables>
                 <selectable>TOE platform</selectable>
                 <selectable>no other mechanism</selectable>
               </selectables> shall restrict the ability to perform the functions: <ol>
-                <li>Enable/disable downloading embedded objects globally and <selectables>
+                <li>Enable/disable downloading embedded objects globally and 
+                  <selectables>
                     <selectable>by domain</selectable>
                     <selectable>by sender</selectable>
                     <selectable>no other method</selectable>
@@ -1157,10 +1158,9 @@
                   ensure that the TSF does not permit it.</test>
               </testlist></aactivity>
           </f-element>
-          <!-- </f-component> -->
-        </subsubsection>
-        <subsubsection title="Security Management Roles" id="secmanroles">
-          <!-- <f-component id="???" name="???"> -->
+          </f-component>
+        
+         <f-component id="FMT_SMR.1" name="Security Management Roles">
           <f-element id="FMT_SMR.1.1">
             <title> The <selectables><selectable>TOE</selectable><selectable>TOE
                   platform</selectable></selectables> shall maintain the roles: Administrator.
@@ -1183,10 +1183,10 @@
               of administration must be exercised during the evaluation team‟s test activities.
             </aactivity>
           </f-element>
-          <!-- </f-component> -->
-        </subsubsection>
+          </f-component>
       </subsection>
-      <subsection title="Class: Protection of the TSF (FPT)" id="toefpt">
+      
+      <subsection title="Protection of the TSF (FPT)" id="toefpt">
         <subsubsection title="TSF Self-Test" id="tsfselftest">
           <f-component id="FPT_TST_EXT.1" name="Extended: TSF Self-Test">
             <f-element id="FPT_TST_EXT.1.1">
@@ -1222,9 +1222,10 @@
           </f-component>
         </subsubsection>
       </subsection>
-      <subsection title="Class: Trusted Path/Channels (FTP)" id="toeftp">
+      
+      <subsection title="Trusted Path/Channels (FTP)" id="toeftp">
         <subsubsection title="Trusted Channel Communication" id="tchannelcom">
-          <f-component id="FTP_ITC.1" name="Inter=TSF Trusted Channel">
+          <f-component id="FTP_ITC.1" name="Inter-TSF Trusted Channel">
             <f-element id="FTP_ITC.1.1">
               <title>The <selectables>
                   <selectable>TSF</selectable>
@@ -1250,7 +1251,8 @@
               <title>The <selectables>
                   <selectable>TSF</selectable>
                   <selectable>TOE platform</selectable>
-                </selectables> shall initiate communication via the trusted channel for <selectables>
+                </selectables> shall initiate communication via the trusted channel for
+                <selectables linebreak="yes">
                   <selectable>IMAP</selectable>
                   <selectable>SMTP</selectable>
                   <selectable>POP</selectable>
@@ -1286,6 +1288,8 @@
         </subsubsection>
       </subsection>
     </section>
+ 
+  
   </chapter>
 
   <!-- <chapter title="Rationale" id="rationale"> The rationale tracing the threats to the objectives and
@@ -1299,8 +1303,6 @@
     style does not readily lend itself to a formalized evaluation activity, so this Annex contains
     the tabular artifacts that can be used for the evaluation activities associated with this
     document. 
-     
-  
   </appendix>
   -->
 
@@ -1321,9 +1323,13 @@
     this EP, the baseline requirements (those that must be performed by the TOE or its underlying
     platform) are contained in the body of this EP. There are additional requirements based on
     selections in the body of the EP: if certain selections are made, then additional requirements
-    below will need to be included. <section title="Class: User Data Protection (FDP)" id="appFDP">
+    below will need to be included.
+    <section title="User Data Protection (FDP)" id="appFDP">
       <subsection title="Information Deletion" id="infodel">
-        <!-- NOTE HERE: In the released version of the PP, the f-components in this appendix were numbered as C.1.1.1, C.1.1.2, etc.. But those numbers are not in the index. The web browser PP does not have them numbered. I tagged these headings as f-components and they will not be numbered, but each is tagged with a HERE comment to easily find them -->
+        <!-- NOTE HERE: In the released version of the PP, the f-components in this appendix were 
+          numbered as C.1.1.1, C.1.1.2, etc.. But those numbers are not in the index. The web browser
+          PP does not have them numbered. I tagged these headings as f-components and they will not
+          be numbered, but each is tagged with a HERE comment to easily find them -->
         <!-- HERE - not numbered, but was numbered in the original PP -->
         <f-component id="FDP_DEL_EXT.1" name="Extended: Deletion of Extension Information">
           <f-element id="FDP_DEL_EXT.2.1">
@@ -1366,9 +1372,8 @@
         </f-component>
       </subsection>
     </section>
-    <section title="Class: Protection of the TSF (FPT)" id="appFPT">
+    <section title="Protection of the TSF (FPT)" id="appFPT">
       <subsection title="Trusted Update" id="tu">
-        <!-- HERE - not numbered, but was numbered in the original PP -->
         <f-component id="FPT_TUD_EXT.2" name="Extended: Trusted Plug-in Update">
           <f-element id="FPT_TUD_EXT.2.1">
             <title>The TOE shall provide the ability to query the current version of the
@@ -1419,9 +1424,9 @@
     are contained in the body of this EP. There are additional requirements that specify security
     functionality that is desirable and these requirements are contained in this Annex. It is
     expected that these requirements will transition from objective requirements to baseline
-    requirements in future versions of this EP. <section title="Class: User Data Protection (FDP)"
-      id="objreqappFDP">
-      <subsection title="Storage of Persistent Information (FDP_PST)" id="fdppst">
+    requirements in future versions of this EP.
+    <section title="User Data Protection (FDP)" id="objreqappFDP">
+        <f-component id="FDP_PST_EXT.1" name="Storage of Persistent Information (FDP_PST)">
         <f-element id="FDP_PST_EXT.1.1">
           <title>The TOE shall be capable of operating without storing persistent information to the
             file system.</title>
@@ -1432,22 +1437,32 @@
             TOE to ensure that no files have been written to the file system other than credentials
             or configuration information.</aactivity>
         </f-element>
-      </subsection>
+        </f-component>
     </section>
   </appendix>
   <appendix id="biblio" title="References">
-    <description xmlns="http://common-criteria.rhcloud.com/ns/cc">Common Criteria for Information
-      Technology Security Evaluation <ul>
-        <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R4.pdf">Part 1:
-            Introduction and General Model</a>, CCMB-2012-09-001, Version 3.1 Revision 4, September
-          2012.</li>
-        <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART2V3.1R4.pdf">Part 2:
-            Security Functional Components</a>, CCMB-2012-09-002, Version 3.1 Revision 4, September
-          2012.</li>
-        <li><a href="http://common-criteria.rhcloud.com/application/output/application.html">
-            Protection Profile for Application Software</a>, Version 1.1, 2014-11-05. </li>
-      </ul>
-    </description>
+  <bibliography>
+    <entry id="bibCC">
+      <tag>CC</tag>
+      <description>Common Criteria for Information Technology Security Evaluation - <ul>
+        <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R4.pdf">Part
+          1: Introduction and General Model</a>, CCMB-2012-09-001, Version 3.1 Revision 4,
+          September 2012.</li>
+        <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART2V3.1R4.pdf">Part
+          2: Security Functional Components</a>, CCMB-2012-09-002, Version 3.1 Revision 4,
+          September 2012.</li>
+        <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART3V3.1R4.pdf">Part
+          3: Security Assurance Components</a>, CCMB-2012-09-003, Version 3.1 Revision 4,
+          September 2012.</li>
+      </ul></description>
+    </entry>
+    <entry id="bibCC">
+      <tag>AppPP</tag>
+      <description><a href="https://www.niap-ccevs.org/pp/PP_APP_v1.1/">Protection Profile for
+        Application Software</a>
+      </description>
+    </entry>
+  </bibliography>
   </appendix>
   <appendix title="Acronyms" id="acronyms">
     <acronyms>
