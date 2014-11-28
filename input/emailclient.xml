@@ -31,7 +31,7 @@
   </RevisionHistory>
   <chapter title="Introduction" id="int">
     <section title="Overview" id="ppoverview">The scope of this Extended Package (EP) is to describe
-      the security functionality of email clients in terms of <a href="#biblio">[CC]</a>. This EP is
+      the security functionality of email clients in terms of <cite linkend="bibCC"/>. This EP is
       not complete in itself, but rather extends the Security Requirements for the Application
       Software Protection Profile (ASPP). </section>
     <section id="glossary" title="Terms">The following sections provide both Common Criteria and
@@ -47,6 +47,11 @@
             <term><abbr title="Common Evaluation Methodology">CEM</abbr></term>
             <description>Common Evaluation Methodology for Information Technology Security
               Evaluation.</description>
+          </entry>
+          <entry>
+            <term><abbr title="Extended Package">EP</abbr></term>
+            <description>An implementation-independent set of security requirements for a category
+              of products, which extends those in a Protection Profile.</description>
           </entry>
           <entry>
             <term><abbr title="Protection Profile">PP</abbr></term>
@@ -165,13 +170,13 @@
   </chapter>
   <chapter title="Conformance Claims" id="conf">
     <h3>CC Conformance Claims</h3>
-    <description>This EP is conformant to Parts 2 (extended) of Common Criteria <a href="#biblio"
-        >[CC]</a> Version 3.1, Revision 4.</description>
+    <description>This <abbr linkend="EP"/> is conformant to Parts 2 (extended) of Common Criteria
+      <cite linkend="bibCC"/> Version 3.1, Revision 4.</description>
     <h3>PP Claim</h3>
-    <description>This EP extends the Protection Profile for Application Software but does not claim
-      conformance to any other Protection Profile.</description>
+    <description>This <abbr linkend="EP"/> extends the Protection Profile for Application Software
+      but does not claim conformance to any other Protection Profile.</description>
     <h3>Package Claim</h3>
-    <description>This EP does not claim conformance to any packages.</description>
+    <description>This <abbr linkend="EP"/> does not claim conformance to any packages.</description>
   </chapter>
   <chapter title="Security Problem Description" id="spd">The following describes the problems that
     compliant TOEs will address. <section title="Threats" id="threats">
@@ -415,8 +420,8 @@
   </chapter>
 
   <chapter title="Security Requirements" id="req">This chapter describes the security requirements
-    which have to be fulfilled by the TOE. Those requirements comprise functional components from
-    Part 2 of <a href="#biblio">[CC]</a>. The following notations are used: <ul>
+    which have to be fulfilled by the <abbr linkend="TOE"/>. Those requirements comprise functional
+    components from Part 2 of <cite linkend="bibCC"/>. The following notations are used: <ul>
       <li>
         <b>Refinement</b> operation (denoted by <b>bold text</b>): is used to add details to a
         requirement, and thus further restricts a requirement.</li>
@@ -683,18 +688,19 @@
                   <selectable>TSF</selectable>
                   <selectable>TOE platform</selectable>
                 </selectables> shall implement mechanisms for retrieval of Certificate Revocation
-                Lists (CRLs) and certificates <selectables linebreak="yes">
+                Lists (<abbr linkend="CRL"/>s) and certificates <selectables linebreak="yes">
                   <selectable>each time needed</selectable>
                   <selectable>for incoming/outgoing messages</selectable>
                   <selectable>periodically</selectable>
                 </selectables>.</title>
               <note role="application"> The TOE can define how this mechanism behaves, but it is
-                required that a mechanism exist such that revocation status is supported via CRLs
+                required that a mechanism exist such that revocation status is supported via
+                <abbr linkend="CRL"/>s
                 and so that certificates can be retrieved for sending/receiving messages. In this
                 requirement ―periodically‖ can be interpreted as a one-time function with local
                 storage, as a regularly scheduled retrieval, or as a mechanism that requires manual
                 intervention. If the retrieval mechanism is periodic in nature, then the ST author
-                will need to include an iteration of FCS for storage of CRLs; storage of
+                will need to include an iteration of FCS for storage of <abbr linkend="CRL"/>s; storage of
                 certificates is covered in FCS_CKM. The import of certificates and certificate
                 chains is not included in this requirement, but is covered in FIA_X509 and FMT_MOF. </note>
               <aactivity>
@@ -872,9 +878,10 @@
                     basicConstraints extension and that the cA flag is set to TRUE for all CA
                     certificates.</li>
                   <li>The TSF shall validate the revocation status of the certificate using a
-                    Certificate Revocation List (CRL) as specified in RFC 5759 and <selectables>
-                      <selectable>the Online Certificate Status Protocol (OCSP) as specified in RFC
-                        2560</selectable>
+                    Certificate Revocation List (<abbr linkend="CRL"/>) as specified in RFC 5759 and
+                    <selectables>
+                      <selectable>the Online Certificate Status Protocol (<abbr linkend="OCSP"/>)
+                        as specified in RFC 2560</selectable>
                       <selectable>no other revocation status checking mechanism</selectable>
                     </selectables>.</li>
                   <li>The TSF shall validate the extendedKeyUsage field according to the following
@@ -894,7 +901,8 @@
               </title>
               <note role="application"> FIA_X509_EXT.1.1 lists the rules for validating
                 certificates. The ST author shall select whether revocation status is verified using
-                OCSP or CRLs. Certificates may optionally be used for trusted updates of the TOE
+                <abbr linkend="OCSP"/> or <abbr linkend="CRL"/>s. Certificates may optionally be used
+                for trusted updates of the TOE
                 (FPT_TUD_EXT.1.3) and installation of plug-ins and extensions (FPT_TUD_EXT.1.2) and,
                 if implemented by the TOE, must be validated to contain the Code Signing purpose
                 extendedKeyUsage. Certificates must be used to perform authentication with Web
@@ -977,7 +985,7 @@
                   <selectable>TSF</selectable>
                   <selectable>TOE platform</selectable>
                 </selectables> shall use X.509v3 certificates as defined by RFC 5280 to support
-                authentication for TLS. </title>
+                authentication for <abbr linkend="TLS"/>. </title>
             </f-element>
             <f-element id="FIA_X509_EXT.2.1(2)">
               <title>The <selectables>
@@ -1015,7 +1023,8 @@
                   <selectable>not accept the certificate</selectable>
                 </selectables>. <note role="application"> Often a connection must be established to
                   perform a verification of the revocation status of a certificate - either to
-                  download a CRL or to perform OCSP. The selection is used to describe the behavior
+                  download a <abbr linkend="CRL"/> or to perform <abbr linkend="OCSP"/>. The
+                  selection is used to describe the behavior
                   in the event that such a connection cannot be established (for example, due to a
                   network error). If the TOE has determined the certificate valid according to all
                   other rules in FIA_X509_EXT.1, the behavior indicated in the second selection
@@ -1031,9 +1040,9 @@
                   <selectable>TOE platform</selectable>
                 </selectables> shall not establish a trusted communication channel if the peer
                 certificate is deemed invalid. </title>
-              <note role="application"> Trusted communication channels include any of TLS performed
-                by the TSF. Validity is determined by the certificate path, the expiration date, and
-                the revocation status in accordance with RFC 5280. </note>
+              <note role="application"> Trusted communication channels include any of <abbr linkend="TLS"/>
+                performed by the TSF. Validity is determined by the certificate path, the expiration date,
+                and the revocation status in accordance with RFC 5280. </note>
             </f-element>
             <f-element id="FIA_X509_EXT.2.4">
               <title> The <selectables>
@@ -1117,7 +1126,7 @@
                 <selectables linebreak="yes">
                   <selectable><li>Enable/disable email notifications</li></selectable>
                   <selectable><li>Configure certificates for S/MIME use</li></selectable>
-                  <selectable><li>Configure certificates for TLS use</li></selectable>
+                  <selectable><li>Configure certificates for <abbr linkend="TLS"/> use</li></selectable>
                   <selectable><li>Enable/disable display of email contents in email
                       notifications</li></selectable>
                   <selectable><li>Configure a certificate repository for
@@ -1224,7 +1233,7 @@
               <title>The <selectables>
                   <selectable>TSF</selectable>
                   <selectable>TOE platform</selectable>
-                </selectables> shall use TLS to provide a trusted communication channel between
+              </selectables> shall use <abbr linkend="TLS"/> to provide a trusted communication channel between
                 itself and authorized IT entities supporting the following capabilities <selectables>
                   <selectable>directory server</selectable>
                   <selectable>administrative configuration server</selectable>
@@ -1329,8 +1338,8 @@
             <title>The TOE shall provide the capability to delete extensions so that all information
               is removed, including extensions, configuration elements, and stored information. </title>
             <aactivity>
-              <h4>TSS</h4> The evaluator shall examine the TSS to ensure that it documents where
-              extensions are stored, where extensions are allowed to store information.
+              <h4>TSS</h4> The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it
+              documents where extensions are stored, where extensions are allowed to store information.
                 <h4>Guidance</h4> The evaluator shall examine the operational guidance to verify
               that it includes instructions for how the user can delete extensions. <h4>Tests</h4>
               The evaluator shall perform the following tests: <testlist>
@@ -1387,9 +1396,10 @@
             <title>The TOE shall prevent the automatic installation of plug-ins.</title>
           </f-element>
           <aactivity>
-            <h4>TSS</h4> The evaluator shall examine the TSS to verify that it states that the TSF
-            will reject plug-ins from unapproved sources. <h4>Guidance</h4> The evaluator shall
-            examine the operational guidance to verify that it includes instructions on how to
+            <h4>TSS</h4> The evaluator shall examine the <abbr linkend="TSS"/> to verify that it
+            states that the <abbr linkend="TSF"/> will reject plug-ins from unapproved sources.
+            <h4>Guidance</h4> The evaluator
+            shall examine the operational guidance to verify that it includes instructions on how to
             configure the TOE with trusted plug-in sources. <h4>Tests</h4> The evaluator shall
             perform the following tests:<br/>
             <testlist>
@@ -1519,10 +1529,6 @@
       <entry>
         <term>HTML</term>
         <description>HyperText Markup Language</description>
-      </entry>
-      <entry>
-        <term>HTML5</term>
-        <description>HyperText Markup Language version 5</description>
       </entry>
       <entry>
         <term>HTTP</term>
