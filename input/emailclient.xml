@@ -609,7 +609,7 @@
             </f-element>
           </f-component>
         </subsubsection>
-        <f-component id="FDP_DEL_EXT.1" name="Extended: Deletion of Information">
+        <f-component id="FDP_DEL_EXT.1" name="Deletion of Information">
           <f-element id="FDP_DEL_EXT.1.1" status="sel-based">
             <title>The email client shall provide the capability to delete extensions so that all
               information is removed, including extensions, configuration elements, and stored
@@ -918,7 +918,7 @@
           </f-element>
         </f-component>
         <subsubsection title="X.509 Validation" id="x509validation">
-          <f-component id="FIA_X509_EXT.1" name="Extended: X509 Validation">
+          <f-component id="FIA_X509_EXT.1" name="X509 Validation">
             <f-element id="FIA_X509_EXT.1.1">
               <title>The <selectables>
                   <selectable>TSF</selectable>
@@ -1028,7 +1028,7 @@
           </f-component>
         </subsubsection>
         <subsubsection title="X.509 Authentication and Encryption" id="x509auth">
-          <f-component id="FIA_X509_EXT.2" name="Extended: X509 Authentication and Encryption">
+          <f-component id="FIA_X509_EXT.2" name="X509 Authentication and Encryption">
             <f-element id="FIA_X509_EXT.2.1(1)">
               <title>The <selectables>
                   <selectable>TSF</selectable>
@@ -1239,7 +1239,7 @@
         </f-component>
       </subsection>
       <subsection title="Protection of the TSF (FPT)" id="toefpt">
-        <f-component id="FPT_TST_EXT.1" name="Extended: TSF Self-Test">
+        <f-component id="FPT_TST_EXT.1" name="TSF Self-Test">
           <f-element id="FPT_TST_EXT.1.1">
             <title> The <selectables>
                 <selectable>TOE</selectable>
@@ -1271,7 +1271,7 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="FPT_TUD_EXT.2" name="Extended: Trusted Plug-in Update">
+        <f-component id="FPT_TUD_EXT.2" name="Trusted Plug-in Update">
           <f-element id="FPT_TUD_EXT.2.1" status="sel-based">
             <title>The TOE shall provide the ability to query the current version of the
               plug-in.</title>
