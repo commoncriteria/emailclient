@@ -494,8 +494,7 @@
             </aactivity>
           </f-element>
         </f-component>
-        <subsubsection title="Data Notification" id="dn">
-          <f-component id="FDP_NOT_EXT.1" name="Notification of Email Receipt">
+        <f-component id="FDP_NOT_EXT.1" name="Notification of Email Receipt">
             <f-element id="FDP_NOT_EXT.1.1">
               <title>The <abbr linkend="TSF"/> shall display notifications of email receipt.</title>
               <note role="application">The notification may be visual or auditory and may or may not
@@ -575,10 +574,8 @@
                     the full URI of the embedded link is displayed. </test></testlist>
               </aactivity>
             </f-element>
-          </f-component>
-        </subsubsection>
-        <subsubsection title="Rendering of Message Content" id="rmc">
-          <f-component id="FDP_REN_EXT.1" name="Rendering of Message Content">
+        </f-component>
+        <f-component id="FDP_REN_EXT.1" name="Rendering of Message Content">
             <f-element id="FDP_REN_EXT.1.1">
               <title>The <abbr linkend="TSF"/> shall have a plaintext only mode.</title>
               <note role="application"> Plaintext only mode prevents the automatic downloading of
@@ -607,8 +604,7 @@
                 </testlist>
               </aactivity>
             </f-element>
-          </f-component>
-        </subsubsection>
+       </f-component>
        <f-component id="FDP_DEL_EXT.1" name="Deletion of Information">
           <f-element id="FDP_DEL_EXT.1.1" status="sel-based">
             <selection-depends req="FPT_TUD_EXT.1.7"/>
@@ -665,11 +661,9 @@
     </section>
     <section title="TOE or TOE Platform Security Functional requirements" id="tpsfr">This section
       addresses Security Functional Requirements that may be met by either the TOE itself, by the
-      TOE platform, or by a combination of the TOE and the TOE platform. <subsection
-        title="Cryptographic Support (FCS)" id="toefcs">
-        <subsubsection title="Secure/Multipurpose Internet Mail Extensions (S/MIME)"
-          id="mailextensions">
-          <f-component id="FCS_SMIME_EXT.1" name="S/MIME">
+      TOE platform, or by a combination of the TOE and the TOE platform. 
+        <subsection title="Cryptographic Support (FCS)" id="toefcs">
+          <f-component id="FCS_SMIME_EXT.1" name="Secure/Multipurpose Internet Mail Extensions (S/MIME)">
             <f-element id="FCS_SMIME_EXT.1.1">
               <title>The <selectables>
                   <selectable>TSF</selectable>
@@ -825,7 +819,6 @@
               </aactivity>
             </f-element>
           </f-component>
-        </subsubsection>
       </subsection>
       <subsection title="Identification and Authentication (FIA)" id="toefia">
         <f-component id="FIA_SMIME_EXT.1" name="S/MIME">
@@ -849,7 +842,7 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="FIA_SASL_EXT.1" name="SASL">
+        <f-component id="FIA_SASL_EXT.1" name="Simple Authentication and Security Layer (SASL)">
           <f-element id="FIA_SASL_EXT.1.1">
             <title>The <selectables>
                 <selectable>TSF</selectable>
