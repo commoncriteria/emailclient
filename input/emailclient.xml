@@ -153,6 +153,7 @@
 	  communicating between email clients and servers. Some clients support
 	  multiple protocols for doing the same task, allowing them to be
 	  configured according to email server specifications.
+	</section>
     <section title="Use Cases" id="usecases">Email clients perform tasks associated primarily with
       the following use case. <usecases>
         <usecase title="Sending, receiving, accessing, managing and displaying email">
@@ -208,162 +209,21 @@
         </threat>
       </threats>
     </section>
-    <section title="Assumptions" id="assumptable"> The specific conditions listed in the following
-      subsections are assumed to exist in the TOE's Operational Environment. These assumptions
-      include both practical realities in the development of the TOE security requirements and the
-      essential environmental conditions on the use of the TOE.<br/> ST authors should ensure that
-      the assumptions still hold for their particular technology; the table should be modified as
-      appropriate. <table>
-        <TR class="header">
-          <TH colspan="2">Table 1: TOE Assumptions</TH>
-        </TR>
-        <TR>
-          <TH>Assumption Name</TH>
-          <TH>Assumption Definition</TH>
-        </TR>
-        <TR>
-          <TD>A.PLATFORMS</TD>
-          <TD>The email clients described in this document will run on any operating system,
-            regardless of the underlying platform.</TD>
-        </TR>
-        <TR>
-          <TD>A.PHYSICAL</TD>
-          <TD>Physical security, commensurate with the value of the TOE and the data it contains, is
-            assumed to be provided by the environment.</TD>
-        </TR>
-        <TR>
-          <TD>A.TRUSTED_ADMIN</TD>
-          <TD>TOE Administrators are trusted to follow and apply all administrator guidance in a
-            trusted manner.</TD>
-        </TR>
-        <TR>
-          <TD>A.TRUSTED_USER</TD>
-          <TD>The email client user is not malicious, and exercises appropriate precautions.</TD>
-        </TR>
-        <TR>
-          <TD>A.PLATFORM_FUNCTIONS</TD>
-          <TD>The platform supporting the email client shall offer file system and other operating
-            system capabilities.</TD>
-        </TR>
-      </table>
-    </section>
   </chapter>
   <chapter title="Security Objectives" id="sobj">
-    <section title="Security Objectives of the TOE" id="sot">
-      <SOs>
-        <SO id="O.COMMS">
-          <description> Protected Communications: To address the network attack and network
-            eavesdropping threats described in the Threats section, the TOE must provide for
-            protected communications between the email client and a given email server in instances
-            where such protected communications are desirable. The data between these two entities
-            in the operational environment are protected via a trusted path, implemented using one
-            or more of these standard protocols: Transport Layer Security (TLS), Secure Multipurpose
-            Internet Mail Extensions (S/MIME) and Simple Authentication and Security Layer (SASL).
-          </description>
-        </SO>
-        <SO id="O.CONFIG">
-          <description> TOE Configuration: In order to protect sensitive data stored (either
-            temporarily or permanently) or processed by the email client, conformant TOEs will
-            provide the capability to define, configure, and apply security policies defined by the
-            administrator. If enterprise policies are configured by the administrator for the TOE,
-            these must take precedence over any user-defined settings. </description>
-        </SO>
-        <SO id="O.INTEGRITY">
-          <description> Integrity of the TOE: To ensure the integrity of the email client is
-            maintained, conformant TOEs will perform self-tests to insure the integrity of software
-            and data has been maintained.<br/> To address issues associated with malicious or flawed
-            email client software, plug-ins or extensions, conformant TOEs must implement mechanisms
-            to ensure the integrity of email client software, plug-ins and extensions, and to ensure
-            that they come from legitimate sources. The TOE must provide mechanisms and enforce
-            policies that enable any client software, plug-ins and extensions, as well as any
-            subsequent updates to them, to be verified upon installation and execution. In addition,
-            the TOE shall also control the downloading and launching of executables. </description>
-        </SO>
-        <SO id="O.STORAGE">
-          <description> Secure Storage of Sensitive Information: Email clients handle many types of
-            potentially sensitive user information (e.g., passwords, cryptographic keys, digital
-            certificates). It is critical that clients protect this information when it is stored.
-            The email client shall make use of platform encryption and authentication mechanisms and
-            libraries to protect this information rather than mechanisms and libraries that are part
-            of the email client itself. </description>
-        </SO>
-      </SOs>
+	<section title="Security Objectives for the TOE" id="SecurityObjectivesTOE">
+	<SOs>
+		<SO id="O.ADDON_INTEGRITY">
+		<description>
+		To address issues associated with malicious or
+		flawed plug-ins or extensions, conformant browsers 
+		implement mechanisms to ensure their integrity.
+		This includes verification at installation time and update.
+		</description>
+	</SO>
+	</SOs>
     </section>
 
-    <!-- <section title="Threats" id="threattable"> The following threats should be integrated into the
-      threats that are specific to the technology by the EP authors when including the requirements
-      described in this document. Modifications, omissions, and additions to the requirements may
-      impact this list, so the EP author should modify or delete these threats as appropriate. <table>
-        <TR class="header">
-          <TH colspan="2">Table 2: Threats</TH>
-        </TR>
-        <TR>
-          <TH>Threat Name</TH>
-          <TH>Threat Definition</TH>
-        </TR>
-        <TR>
-          <TD>T.UNAUTHORIZED_ADDON</TD>
-          <TD>Malicious or exploitable extensions or plug-ins could be used knowingly or unknowingly
-            by a developer, possibly resulting in the capability of attacks against the platform„s
-            system software.</TD>
-        </TR>
-        <TR>
-          <TD>T.UNAUTHORIZED_UPDATE</TD>
-          <TD>Malicious or exploitable software could be used knowingly or unknowingly by a
-            developer, possibly resulting in the capability of attacks against the platform„s system
-            software.</TD>
-        </TR>
-        <TR>
-          <TD>T.NETWORK_EAVESDROP</TD>
-          <TD>If positioned on a wireless communications channel or elsewhere on the network,
-            attackers may monitor and gain access to data exchanged between the email client and
-            other endpoints</TD>
-        </TR>
-        <TR>
-          <TD>T.NETWORK_ATTACK</TD>
-          <TD>An attacker may initiate communications with the email client or alter communications
-            between the email client and other endpoints.</TD>
-        </TR>
-      </table>
-    </section>
-    -->
-
-    <!--  <section title="Security Objectives for the TOE" id="objtable">
-      <table>
-        <tr class="header">
-          <TH colspan="2">Table 3: Security Objectives for the TOE</TH>
-        </tr>
-        <TR>
-          <TH>TOE Security Objective</TH>
-          <TH>TOE Objective Definition</TH>
-        </TR>
-        <TR>
-          <TD>O.COMMS</TD>
-          <TD>The TOE will provide the capability to communicate using one (or more) standard
-            protocols as a means to maintain the confidentiality of data that are transmitted
-            outside of the TOE.</TD>
-        </TR>
-        <TR>
-          <TD>O.CONFIG</TD>
-          <TD>The TOE will provide the capability to configure and apply security policies. This
-            ensures the email client can protect user and enterprise data that it may store or
-            process.</TD>
-        </TR>
-        <TR>
-          <TD>O.INTEGRITY</TD>
-          <TD>The TOE will provide the capability to perform self-tests to ensure the integrity of
-            critical functionality, software/firmware and data has been maintained. The TOE will
-            also provide a means to verify the integrity of downloaded updates, and to verify the
-            integrity of extensions and plug-ins and that they are from a trusted source.</TD>
-        </TR>
-        <TR>
-          <TD>O.STORAGE</TD>
-          <TD>The TOE will provide the capability to encrypt all user and enterprise data and
-            authentication keys to ensure the confidentiality of data that it stores.</TD>
-        </TR>
-      </table>
-    </section>
-  -->
 
     <section title="Security Threats to Security Objectives" id="threattoobjtable">The following
       table contains a mapping of Security Threats to Objectives for the TOE. <table>
@@ -1185,30 +1045,6 @@
                   these policies to the client, attempt to override each setting as the user, and
                   ensure that the TSF does not permit it.</test>
               </testlist></aactivity>
-          </f-element>
-        </f-component>
-        <f-component id="FMT_SMR.1" name="Security Management Roles">
-          <f-element id="FMT_SMR.1.1">
-            <title> The <selectables><selectable>TOE</selectable><selectable>TOE
-                  platform</selectable></selectables> shall maintain the roles: Administrator.
-            </title>
-          </f-element>
-          <f-element id="FMT_SMR.1.2">
-            <title> The <selectables><selectable>TOE</selectable><selectable>TOE
-                  platform</selectable></selectables> shall be able to associate users with roles. </title>
-            <aactivity>
-              <b>TSS</b><br/> The evaluator shall examine the TSS and user documents to verify that
-              they describe the administrator role and the powers granted to and limitations of the role.<br/>
-              <b>Guidance</b><br/> The evaluator shall examine the operational guidance to ensure
-              that it contains instructions for administering the TOE and which interfaces are supported.<br/>
-              <b>Tests</b><br/> In the course of performing the testing activities for the
-              evaluation, the evaluator shall use all supported interfaces, although it is not
-              necessary to repeat each test involving an administrative action with each interface.
-              The evaluator shall ensure, however, that each supported method of administering the
-              TOE that conforms to the requirements of this EP be tested; for instance, if the TOE
-              can be administered through a local hardware interface or TLS/HTTPS then both methods
-              of administration must be exercised during the evaluation team‟s test activities.
-            </aactivity>
           </f-element>
         </f-component>
       </subsection>
