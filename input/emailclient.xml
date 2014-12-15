@@ -1040,38 +1040,6 @@
         </f-component>
       </subsection>
       <subsection title="Protection of the TSF (FPT)" id="fpt">
-        <f-component id="FPT_TST_EXT.1" name="TSF Self-Test">
-          <f-element id="FPT_TST_EXT.1.1">
-            <title> The email client shall <selectables>
-                <selectable>provide the ability</selectable>
-                <selectable>leverage the platform</selectable>
-              </selectables> to run a suite of self-tests during initial start-up (on power on)
-              to ensure the integrity of its executable and data. </title>
-            <aactivity>
-              <b>TSS</b><br/> The evaluator shall examine the TSS to ensure that it specifies the
-              self-tests that are performed at start-up; this description should include an outline
-              of what the tests are actually doing (e.g., verifying the integrity of the TOE
-              executable). The TSS must include any error states that the TSF or TOE platform may
-              enter when self-tests fail, and the conditions and actions necessary to exit the error
-              states and resume normal operation. The evaluator shall verify that the TSS indicates
-              these self-tests are run at start-up automatically, and do not involve any inputs from
-              or actions by the user or operator.<br/>
-              <b>Guidance</b><br/> N/A <br/>
-              <b>Tests</b>
-              <br/> The evaluator shall perform the following tests:<br/>
-              <testlist>
-                <test>The evaluator shall perform the integrity check on a known good TSF executable
-                  and verify that the check is successful.</test>
-                <test>The evaluator shall modify the TOE executable, performs the integrity check on
-                  the modified TSF executable and verify that the check fails.</test>
-                <test>The evaluator shall perform the integrity check on known good TOE data and
-                  verify that the check is successful.</test>
-                <test>the evaluator shall modify the TOE configuration data, perform the integrity
-                  check on the modified TOE data, and verify that the check fails. </test>
-              </testlist>
-            </aactivity>
-          </f-element>
-        </f-component>
         <f-component id="FPT_TUD_EXT.1" name="Integrity for Installation and Update">
           <f-element id="FPT_TUD_EXT.1.7" name="Plug-in and Extension Loading">
             <title>The email client shall include the capability to load 
