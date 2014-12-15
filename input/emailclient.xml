@@ -974,42 +974,41 @@
       <subsection title="Security Management (FMT)" id="fmt">
         <f-component id="FMT_MOF.1" name="Management of Functions in TSF">
           <f-element id="FMT_MOF.1.1(1)">
-            <title>The TSF and <selectables>
-                <selectable>TOE platform</selectable>
-                <selectable>no other mechanism</selectable>
-              </selectables> shall restrict the ability to perform the functions: <ol>
-                <li>Enable/disable downloading embedded objects globally and <selectables>
+            <title>The email client shall restrict to the platform administrator the management functions: 
+			  <selectables linebreak="yes">
+                <selectable>Enable/disable downloading embedded objects globally and <selectables>
                     <selectable>by domain</selectable>
                     <selectable>by sender</selectable>
                     <selectable>no other method</selectable>
                   </selectables>
-                </li>
-                <li>Enable/disable plaintext only mode globally and <selectables>
+				</selectable>
+                <selectable>Enable/disable plaintext only mode globally and
+				  <selectables>
                     <selectable>by domain</selectable>
                     <selectable>by sender</selectable>
                     <selectable>no other method</selectable>
                   </selectables>
-                </li>
-                <li>Enable/disable rendering and execution of attachments globally and <selectables>
+				</selectable>
+                <selectable>Enable/disable rendering and execution of attachments globally and 
+				  <selectables>
                     <selectable>by domain</selectable>
                     <selectable>by sender</selectable>
                     <selectable>no other method</selectable>
                   </selectables>
-                </li>
-                <selectables linebreak="yes">
-                  <selectable><li>Enable/disable email notifications</li></selectable>
-                  <selectable><li>Configure certificates for S/MIME use</li></selectable>
-                  <selectable><li>Configure certificates for TLS use</li></selectable>
-                  <selectable><li>Enable/disable display of email contents in email
-                      notifications</li></selectable>
-                  <selectable><li>Configure a certificate repository for
-                    encryption</li></selectable>
-                  <selectable><li>Configure whether to establish a trusted channel or disallow
-                      establishment if the TSF cannot establish a connection to determine the
-                      validity of a certificate</li></selectable>
-                  <selectable><li>No other management functions]</li></selectable>
+				</selectable>
+                <selectable>Enable/disable email notifications</selectable>
+                <selectable>Configure certificates for S/MIME use</selectable>
+                <selectable>Configure certificates for TLS use</selectable>
+                <selectable>Enable/disable display of email contents in email
+                      notifications</selectable>
+                <selectable>Configure a certificate repository for
+                  encryption</selectable>
+                <selectable>Configure whether to establish a trusted channel or disallow
+                    establishment if the TSF cannot establish a connection to determine the
+                    validity of a certificate</selectable>
+                <selectable>No other management functions</selectable>
                 </selectables>
-              </ol> to the administrator according the administrator policy. </title>
+              </title>
             <note role="application"> The Administrator is responsible for management activities,
               including setting the policy that is applied by the enterprise on the email client.
               This administrator is likely to be acting remotely and could be the MTA administrator
