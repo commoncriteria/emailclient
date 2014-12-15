@@ -1038,30 +1038,6 @@
               </testlist></aactivity>
           </f-element>
         </f-component>
-        <f-component id="FMT_SMR.1" name="Security Management Roles">
-          <f-element id="FMT_SMR.1.1">
-            <title> The <selectables><selectable>TOE</selectable><selectable>TOE
-                  platform</selectable></selectables> shall maintain the roles: Administrator.
-            </title>
-          </f-element>
-          <f-element id="FMT_SMR.1.2">
-            <title> The <selectables><selectable>TOE</selectable><selectable>TOE
-                  platform</selectable></selectables> shall be able to associate users with roles. </title>
-            <aactivity>
-              <b>TSS</b><br/> The evaluator shall examine the TSS and user documents to verify that
-              they describe the administrator role and the powers granted to and limitations of the role.<br/>
-              <b>Guidance</b><br/> The evaluator shall examine the operational guidance to ensure
-              that it contains instructions for administering the TOE and which interfaces are supported.<br/>
-              <b>Tests</b><br/> In the course of performing the testing activities for the
-              evaluation, the evaluator shall use all supported interfaces, although it is not
-              necessary to repeat each test involving an administrative action with each interface.
-              The evaluator shall ensure, however, that each supported method of administering the
-              TOE that conforms to the requirements of this EP be tested; for instance, if the TOE
-              can be administered through a local hardware interface or TLS/HTTPS then both methods
-              of administration must be exercised during the evaluation team‟s test activities.
-            </aactivity>
-          </f-element>
-        </f-component>
       </subsection>
       <subsection title="Protection of the TSF (FPT)" id="fpt">
         <f-component id="FPT_TST_EXT.1" name="TSF Self-Test">
