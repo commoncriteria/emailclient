@@ -31,9 +31,7 @@
   </RevisionHistory>
   <chapter title="Introduction" id="int">
     <section title="Overview" id="ppoverview">The scope of this Extended Package (EP) is to describe
-      the security functionality of email clients in terms of <cite linkend="bibCC"/>. This EP is
-      not complete in itself, but rather extends the Security Requirements for the Protection
-      Profile for Application Software (App PP). </section>
+      the security functionality of email clients in terms of <cite linkend="bibCC"/>. </section>
     <section id="glossary" title="Terms">The following sections provide both Common Criteria and
       technology terms used in this Extended Package. <subsection title="Common Criteria Terms"
         id="ccterms">
@@ -131,18 +129,18 @@
     </section>
     <section title="Compliant Targets of Evaluation" id="TOEdescription"> This document provides an
       extended set of Security Functional Requirements (SFRs) for an email client, which is the
-      Target of Evaluation (TOE). <br/> The App PP defines the baseline SFRs for application
-      software which runs on mobile devices ("apps"), as well as on desktop and server platforms.
-      This Extended Package (EP) for email clients is not complete in itself, but rather extends the
-      baseline of App PP. <br/> Email clients are applications used to send, receive, access and
-      manage email provided by an email server. The complexity of email content and email clients
-      has grown over time. Modern email clients can render HTML as well as plaintext, and may
-      include functionality to display common attachment formats, such as Adobe PDF and Microsoft
-      Word documents. Some email clients allow their functionality to be modified by users through
-      the addition of add-ons. This complex and rich feature set makes email clients a target for
-      attackers. Protocols have also been defined for communicating between email clients and
-      servers. Some clients support multiple protocols for doing the same task, allowing them to be
-      configured according to email server specifications. </section>
+      Target of Evaluation (TOE). <br/> The Protection Profile for Application Software (App PP)
+      defines the baseline SFRs for application software which runs on mobile devices ("apps"), as
+      well as on desktop and server platforms. This Extended Package (EP) for email clients is not
+      complete in itself, but rather extends the baseline of App PP. <br/> Email clients are
+      applications used to send, receive, access and manage email provided by an email server. The
+      complexity of email content and email clients has grown over time. Modern email clients can
+      render HTML as well as plaintext, and may include functionality to display common attachment
+      formats, such as Adobe PDF and Microsoft Word documents. Some email clients allow their
+      functionality to be modified by users through the addition of add-ons. This complex and rich
+      feature set makes email clients a target for attackers. Protocols have also been defined for
+      communicating between email clients and servers. Some clients support multiple protocols for
+      doing the same task, allowing them to be configured according to email server specifications. </section>
     <section title="Use Cases" id="usecases">Email clients perform tasks associated primarily with
       the following use case. <usecases>
         <usecase title="Sending, receiving, accessing, managing and displaying email">
@@ -332,9 +330,9 @@
                 <selectable>for incoming/outgoing messages</selectable>
                 <selectable>periodically</selectable>
               </selectables>.</title>
-            <note role="application"> The TOE can define how this mechanism behaves, but it is
-              required that a mechanism exist such that revocation status is supported via CRLs and
-              so that certificates can be retrieved for sending/receiving messages. In this
+            <note role="application"> The email client can define how this mechanism behaves, but it
+              is required that a mechanism exist such that revocation status is supported via CRLs
+              and so that certificates can be retrieved for sending/receiving messages. In this
               requirement ―periodically‖ can be interpreted as a one-time function with local
               storage, as a regularly scheduled retrieval, or as a mechanism that requires manual
               intervention. If the retrieval mechanism is periodic in nature, then the ST author
@@ -346,24 +344,24 @@
               TSS to ensure that the proper version is specified. In addition, the evaluator shall
               verify that the algorithms supported are specified, and that the algorithms specified
               are those listed for this component. The evaluator shall also review the Operational
-              Guidance to ensure that it contains instructions on configuring the TOE such that it
-              complies to the description in the TSS.<br/> The evaluator shall verify that the TSS
-              describes the ContentEncryptionAlgorithmIdentifier and whether the required behavior
-              is performed by default or may be configured. If the TSS indicates that the algorithms
+              Guidance to ensure that it contains instructions on configuring the email client such
+              that it complies to the description in the TSS.<br/> The evaluator shall verify that
+              the TSS describes the ContentEncryptionAlgorithmIdentifier and whether the required
+              behavior is performed by default or may be configured. If the TSS indicates that the
+              algorithms must be configured to meet the requirement, the evaluator shall verify that
+              the AGD guidance includes the configuration of this ID.<br/> The evaluator shall
+              verify that the TSS describes the digestAlgorithm and whether the required behavior is
+              performed by default or may be configured. If the TSS indicates that the algorithms
               must be configured to meet the requirement, the evaluator shall verify that the AGD
-              guidance includes the configuration of this ID.<br/> The evaluator shall verify that
-              the TSS describes the digestAlgorithm and whether the required behavior is performed
-              by default or may be configured. If the TSS indicates that the algorithms must be
+              guidance includes the configuration.<br/> The evaluator shall verify that the TSS
+              describes the AlgorithmIdentifier and whether the required behavior is performed by
+              default or may be configured. If the TSS indicates that the algorithms must be
               configured to meet the requirement, the evaluator shall verify that the AGD guidance
-              includes the configuration.<br/> The evaluator shall verify that the TSS describes the
-              AlgorithmIdentifier and whether the required behavior is performed by default or may
-              be configured. If the TSS indicates that the algorithms must be configured to meet the
-              requirement, the evaluator shall verify that the AGD guidance includes the
-              configuration of this ID.<br/> The evaluator shall verify that the TSS describes the
-              retrieval mechanisms for both CRLs and certificates as well as the frequency at which
-              these mechanisms are implemented. If the TSS indicates that the mechanisms are
-              configurable, the evaluator shall verify that the AGD guidance includes the
-              configuration of these mechanisms.<br/> The evaluator shall perform the following
+              includes the configuration of this ID.<br/> The evaluator shall verify that the TSS
+              describes the retrieval mechanisms for both CRLs and certificates as well as the
+              frequency at which these mechanisms are implemented. If the TSS indicates that the
+              mechanisms are configurable, the evaluator shall verify that the AGD guidance includes
+              the configuration of these mechanisms.<br/> The evaluator shall perform the following
               tests:<br/> These tests can be performed in conjunction with the tests defined in
               FIA_X509 for certificate/certificate chain verification. <testlist>
                 <test>The evaluator shall both send and receive a message with no protection (no
@@ -392,79 +390,66 @@
                   to modify at least one byte of the message such that the encryption and signature
                   are no longer valid. The evaluator shall verify that the received message fails to
                   decrypt, fails the signature validation check, and/or both. </test>
-                <test>The evaluator shall send a signed message to the TOE using a signature
-                  algorithm not supported according to the digestAlgorithm ID (e.g., SHA1). The
-                  evaluator shall verify that the TOE does not accept the message. </test>
+                <test>The evaluator shall send a signed message to the email client using a
+                  signature algorithm not supported according to the digestAlgorithm ID (e.g.,
+                  SHA1). The evaluator shall verify that the email client does not accept the
+                  message. </test>
                 <test>The evaluator shall send an encrypted message to the TOE using an encryption
                   algorithm not supported according to the AlgorithmIdentifier field. The evaluator
-                  shall verify that the TOE does not accept the message. </test>
-                <test>The evaluator shall send the TOE a message signed by a certificate without the
-                  digitalSignature bit set. The evaluator shall verify that the TOE notifies the
-                  user that the signature is invalid. </test>
-                <test>The evaluator shall send the TOE a message signed by a certificate without the
-                  Email Protection purpose in the extendedKeyUsage. The evaluator shall verify that
-                  the TOE notifies the user that the signature is invalid.</test>
+                  shall verify that the email client does not accept the message. </test>
+                <test>The evaluator shall send the email client a message signed by a certificate
+                  without the digitalSignature bit set. The evaluator shall verify that the email
+                  client notifies the user that the signature is invalid. </test>
+                <test>The evaluator shall send the email client a message signed by a certificate
+                  without the Email Protection purpose in the extendedKeyUsage. The evaluator shall
+                  verify that the email client notifies the user that the signature is
+                  invalid.</test>
               </testlist>
             </aactivity>
           </f-element>
         </f-component>
-      </subsection>
-      <subsection title="User Data Protection (FDP)" id="fdp">
-        <f-component id="FDP_SMIME_EXT.1" name="S/MIME">
-          <f-element id="FDP_SMIME_EXT.1.1">
-            <title>The <abbr linkend="TSF"/> shall use Secure/Multipurpose Internet Mail Extensions
-              (S/MIME) to sign, verify, encrypt, and decrypt mail.</title>
-            <note role="application">S/MIME is used to sign messages at the request of the user
-              (FMT_SMF.1.1 Function 7) upon sending email via the Mail Transfer Agent. S/MIME is
-              used by a recipient to verify the digital signature on a signed message upon receipt
-              or viewing of the message. Encryption of messages occurs at the request of the user
-              (FMT_SMF.1.1 Function 8) upon sending email via the Mail Transfer Agent, and
-              decryption of emails occurs upon receipt or viewing of the message. Note that this
-              requirement does not mandate that S/MIME be used for all incoming/outgoing messages,
-              or that the TOE automatically encrypt and/or sign/verify all sent or received
-              messages. This requirement only specifies that the mechanism for digital signature and
-              encryption must be S/MIME.</note>
-            <aactivity>The evaluator shall verify that the TSS contains a description of the S/MIME
-              implementation and its use to protect mail from undetected modification using digital
-              signatures and unauthorized disclosure using encryption. The evaluator shall verify
-              that the TSS describes whether signature verification and decryption occur at receipt
-              or viewing of the message contents, and whether messages are stored with their S/MIME
-              envelopes.<br/> The evaluator shall ensure that the AGD guidance includes instructions
-              for configuring a certificate for S/MIME use and instructions for signing and
-              encrypting email.<br/> Tests for this element are performed in conjunction with tests
-              for FCS_SMIME_EXT.1, FDP_NOT_EXT.1, and FMT_SMF.1.</aactivity><br/>
+      </subsection> <subsection title="User Data Protection (FDP)" id="fdp">        
+        <!-- <f-component id="FDP_DEL_EXT.1" name="Deletion of Information">
+          <f-element id="FDP_DEL_EXT.1.1" status="sel-based">
+            <selection-depends req="FPT_ETUD_EXT.1.1"/>
+            <title>The email client shall provide the capability to delete extensions so that all
+              information is removed, including extensions, configuration elements, and stored
+              information. </title>
+            <aactivity>
+              <h4>TSS</h4> The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it
+              documents where extensions are stored, where extensions are allowed to store
+              information. <h4>Guidance</h4> The evaluator shall examine the operational guidance to
+              verify that it includes instructions for how the user can delete extensions.
+                <h4>Tests</h4> The evaluator shall perform the following tests: <testlist>
+                <test>The evaluator shall install an email client extension, then examine the email client‟s file
+                  system to verify that the extension and extension data are stored as documented.
+                  The evaluator shall then uninstall the email client extension and examine the email client‟s file
+                  system to verify that the extension and extension data are removed from the
+                  documented locations. </test>
+              </testlist>
+            </aactivity>
           </f-element>
-          <f-element id="FDP_SMIME_EXT.1.2">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall provide access to a certificate repository for the purposes of
-              S/MIME encryption.</title>
-            <note role="application">Encryption requires access to the recipient’s public key in the
-              form of an X.509v3 certificate; thus, these public keys must be accessible via a local
-              or remote repository. Configuration of this repository is required to be performed
-              either by the TOE or TOE platform according to FMT_SMF.1.1 Function 10.</note>
-            <aactivity>The evaluator shall verify that the TSS contains a description of the
-              certificate repository implementation which must at least indicate whether the
-              repository is local, remote, or both, and whether the repository is managed by the TOE
-              or by the platform. If the description indicates that a remote repository may be used,
-              the evaluator shall ensure that the description indicates which protocols may be used
-              for interfacing with that repository. The evaluator shall also verify that the
-              description of the local repository indicates whether certificates are loaded
-              automatically or must be added manually. If loaded automatically, the evaluator shall
-              ensure that a description of the automatic mechanism is provided (for example, when
-              signed emails are received the associated certificates are loaded into the local
-              repository).<br/> The evaluator shall also verify that the AGD guidance contains
-              instructions for configuring the certificate repository used for S/MIME encryption. If
-              the TSS indicates that the repository is local, the evaluator shall verify that the
-              instructions indicate how certificates are loaded and removed. If the TSS indicates
-              that the repository is remote, the evaluator shall verify that the instruction
-              indicate how a user or administrator configures the remote server information.<br/>
-              Tests for this element are performed in conjunction with tests for FCS_SMIME_EXT.1 and
-              FMT_SMF.1.<br/>
+          <f-element id="FDP_DEL_EXT.1.2" status="sel-based">
+            <selection-depends req="FPT_ETUD_EXT.1.1"/>
+            <title> The email client shall provide the capability to delete add-ons so that all
+              information is removed, including add-ons, configuration elements, and stored
+              information. </title>
+            <aactivity>
+              <h4>TSS</h4> The evaluator shall examine the TSS to ensure that it documents where
+              add-ons are stored, where add-ons are allowed to store information, and whether the
+              option exists to delete all add-on information. <h4>Guidance</h4> The evaluator shall
+              examine the operational guidance to verify that it includes instructions for how the
+              user can delete add-ons and associated content. <h4>Tests</h4> The evaluator shall
+              perform the following tests: <testlist><test>The evaluator shall install an email client add-on,
+                  then examine the email client‟s file system to verify that the add-on and add-on data are
+                  stored as documented. The evaluator shall then uninstall the email client add-on and
+                  examine the email client‟s file system to verify that the add-on and add-on data are
+                  removed from the documented locations.</test>
+              </testlist>
             </aactivity>
           </f-element>
         </f-component>
+        -->
         <f-component id="FDP_NOT_EXT.1" name="Notification of Email Receipt">
           <f-element id="FDP_NOT_EXT.1.1">
             <title>The <abbr linkend="TSF"/> shall display notifications of email receipt.</title>
@@ -545,7 +530,19 @@
                   the full URI of the embedded link is displayed. </test></testlist>
             </aactivity>
           </f-element>
-        </f-component>
+        </f-component>                       
+          <f-component id="FDP_PST_EXT.1" name="Storage of Persistent Information">
+          <f-element id="FDP_PST_EXT.1.1" status="objective">
+            <title>The email client shall be capable of operating without storing persistent
+              information to the file system.</title>
+            <note role="application">Exceptions from this requirement are credentials and
+              configuration information.</note>
+            <aactivity>The evaluator shall operate the email client for a period of time, ensuring
+              that a wide variety of email client functionality has been exercised. The evaluator
+              shall then examine the email client to ensure that no files have been written to the
+              file system other than credentials or configuration information.</aactivity>
+          </f-element>
+        </f-component>       
         <f-component id="FDP_REN_EXT.1" name="Rendering of Message Content">
           <f-element id="FDP_REN_EXT.1.1">
             <title>The <abbr linkend="TSF"/> shall have a plaintext only mode.</title>
@@ -554,104 +551,85 @@
               objects. FMT_SMF.1.1 function 3 addresses configuration of this mode. </note>
             <aactivity> The evaluator shall ensure that the TSS describes plaintext only mode for
               sending and receiving messages. The evaluator shall verify that the TSS describes
-              whether the TOE is capable of rendering and executing HTML or JavaScript. If the TOE
-              can render or execute HTML or JavaScript, this description must indicate how the TOE
-              handles received messages that contain HTML or JavaScript while in plaintext only
-              mode, and the evaluator shall ensure that that description indicates that embedded
-              objects of these types are not rendered or executed and that images are not
-              automatically downloaded.<br/> The evaluator shall examine the AGD guidance and verify
-              that it contains instructions for enabling plaintext only mode.<br/> The evaluator
-              shall perform the following tests:<br/>
+              whether the email client is capable of rendering and executing HTML or JavaScript. If
+              the email client can render or execute HTML or JavaScript, this description must
+              indicate how the email client handles received messages that contain HTML or
+              JavaScript while in plaintext only mode, and the evaluator shall ensure that that
+              description indicates that embedded objects of these types are not rendered or
+              executed and that images are not automatically downloaded.<br/> The evaluator shall
+              examine the AGD guidance and verify that it contains instructions for enabling
+              plaintext only mode.<br/> The evaluator shall perform the following tests:<br/>
               <testlist>
-                <test>(conditional) If the TOE is capable of rendering HTML, the evaluator shall
-                  send a message to the client containing HTML embedded objects and shall verify
-                  that the HTML renders. The evaluator shall then enable plaintext only mode and
-                  verify that the HTML does not render.</test>
-                <test>(conditional) If the TOE is capable of rendering and executing JavaScript, the
-                  evaluator shall send a message to the client containing JavaScript embedded
-                  objects and shall verify that the JavaScript renders and executes. The evaluator
-                  shall then enable plaintext only mode and verify that the JavaScript does not
-                  render or execute.</test>
+                <test>(conditional) If the email client is capable of rendering HTML, the evaluator
+                  shall send a message to the client containing HTML embedded objects and shall
+                  verify that the HTML renders. The evaluator shall then enable plaintext only mode
+                  and verify that the HTML does not render.</test>
+                <test>(conditional) If the email client is capable of rendering and executing
+                  JavaScript, the evaluator shall send a message to the client containing JavaScript
+                  embedded objects and shall verify that the JavaScript renders and executes. The
+                  evaluator shall then enable plaintext only mode and verify that the JavaScript
+                  does not render or execute.</test>
               </testlist>
             </aactivity>
           </f-element>
-        </f-component>
-        <!-- <f-component id="FDP_DEL_EXT.1" name="Deletion of Information">
-          <f-element id="FDP_DEL_EXT.1.1" status="sel-based">
-            <selection-depends req="FPT_TUD_EXT.1.7"/>
-            <title>The email client shall provide the capability to delete extensions so that all
-              information is removed, including extensions, configuration elements, and stored
-              information. </title>
-            <aactivity>
-              <h4>TSS</h4> The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it
-              documents where extensions are stored, where extensions are allowed to store
-              information. <h4>Guidance</h4> The evaluator shall examine the operational guidance to
-              verify that it includes instructions for how the user can delete extensions.
-                <h4>Tests</h4> The evaluator shall perform the following tests: <testlist>
-                <test>The evaluator shall install a TOE extension, then examine the TOE‟s file
-                  system to verify that the extension and extension data are stored as documented.
-                  The evaluator shall then uninstall the TOE extension and examine the TOE‟s file
-                  system to verify that the extension and extension data are removed from the
-                  documented locations. </test>
-              </testlist>
-            </aactivity>
+        </f-component>        
+        <f-component id="FDP_SMIME_EXT.1" name="S/MIME">
+          <f-element id="FDP_SMIME_EXT.1.1">
+            <title>The <abbr linkend="TSF"/> shall use Secure/Multipurpose Internet Mail Extensions
+              (S/MIME) to sign, verify, encrypt, and decrypt mail.</title>
+            <note role="application">S/MIME is used to sign messages at the request of the user
+              (FMT_SMF.1.1 Function 7) upon sending email via the Mail Transfer Agent. S/MIME is
+              used by a recipient to verify the digital signature on a signed message upon receipt
+              or viewing of the message. Encryption of messages occurs at the request of the user
+              (FMT_SMF.1.1 Function 8) upon sending email via the Mail Transfer Agent, and
+              decryption of emails occurs upon receipt or viewing of the message. Note that this
+              requirement does not mandate that S/MIME be used for all incoming/outgoing messages,
+              or that the email client automatically encrypt and/or sign/verify all sent or received
+              messages. This requirement only specifies that the mechanism for digital signature and
+              encryption must be S/MIME.</note>
+            <aactivity>The evaluator shall verify that the TSS contains a description of the S/MIME
+              implementation and its use to protect mail from undetected modification using digital
+              signatures and unauthorized disclosure using encryption. The evaluator shall verify
+              that the TSS describes whether signature verification and decryption occur at receipt
+              or viewing of the message contents, and whether messages are stored with their S/MIME
+              envelopes.<br/> The evaluator shall ensure that the AGD guidance includes instructions
+              for configuring a certificate for S/MIME use and instructions for signing and
+              encrypting email.<br/> Tests for this element are performed in conjunction with tests
+              for FCS_SMIME_EXT.1, FDP_NOT_EXT.1, and FMT_SMF.1.</aactivity><br/>
           </f-element>
-          <f-element id="FDP_DEL_EXT.1.2" status="sel-based">
-            <selection-depends req="FPT_TUD_EXT.1.7"/>
-            <title> The email client shall provide the capability to delete add-ons so that all
-              information is removed, including add-ons, configuration elements, and stored
-              information. </title>
-            <aactivity>
-              <h4>TSS</h4> The evaluator shall examine the TSS to ensure that it documents where
-              add-ons are stored, where add-ons are allowed to store information, and whether the
-              option exists to delete all add-on information. <h4>Guidance</h4> The evaluator shall
-              examine the operational guidance to verify that it includes instructions for how the
-              user can delete add-ons and associated content. <h4>Tests</h4> The evaluator shall
-              perform the following tests: <testlist><test>The evaluator shall install a TOE add-on,
-                  then examine the TOE‟s file system to verify that the add-on and add-on data are
-                  stored as documented. The evaluator shall then uninstall the TOE add-on and
-                  examine the TOE's file system to verify that the add-on and add-on data are
-                  removed from the documented locations.</test>
-              </testlist>
+          <f-element id="FDP_SMIME_EXT.1.2">
+            <title>The <selectables>
+              <selectable>TSF</selectable>
+              <selectable>TOE platform</selectable>
+            </selectables> shall provide access to a certificate repository for the purposes of
+              S/MIME encryption.</title>
+            <note role="application">Encryption requires access to the recipient’s public key in the
+              form of an X.509v3 certificate; thus, these public keys must be accessible via a local
+              or remote repository. Configuration of this repository is required to be performed
+              either by the TOE or TOE platform according to FMT_SMF.1.1 Function 10.</note>
+            <aactivity>The evaluator shall verify that the TSS contains a description of the
+              certificate repository implementation which must at least indicate whether the
+              repository is local, remote, or both, and whether the repository is managed by the TOE
+              or by the platform. If the description indicates that a remote repository may be used,
+              the evaluator shall ensure that the description indicates which protocols may be used
+              for interfacing with that repository. The evaluator shall also verify that the
+              description of the local repository indicates whether certificates are loaded
+              automatically or must be added manually. If loaded automatically, the evaluator shall
+              ensure that a description of the automatic mechanism is provided (for example, when
+              signed emails are received the associated certificates are loaded into the local
+              repository).<br/> The evaluator shall also verify that the AGD guidance contains
+              instructions for configuring the certificate repository used for S/MIME encryption. If
+              the TSS indicates that the repository is local, the evaluator shall verify that the
+              instructions indicate how certificates are loaded and removed. If the TSS indicates
+              that the repository is remote, the evaluator shall verify that the instruction
+              indicate how a user or administrator configures the remote server information.<br/>
+              Tests for this element are performed in conjunction with tests for FCS_SMIME_EXT.1 and
+              FMT_SMF.1.<br/>
             </aactivity>
-          </f-element>
-        </f-component>
-        -->
-        <f-component id="FDP_PST_EXT.1" name="Storage of Persistent Information">
-          <f-element id="FDP_PST_EXT.1.1" status="objective">
-            <title>The email client shall be capable of operating without storing persistent
-              information to the file system.</title>
-            <note role="application">Exceptions from this requirement are credentials and
-              configuration information.</note>
-            <aactivity>The evaluator shall operate the TOE for a period of time, ensuring that a
-              wide variety of TOE functionality has been exercised. The evaluator shall then examine
-              the email client to ensure that no files have been written to the file system other
-              than credentials or configuration information.</aactivity>
           </f-element>
         </f-component>
       </subsection>
       <subsection title="Identification and Authentication (FIA)" id="fia">
-        <f-component id="FIA_SMIME_EXT.1" name="S/MIME">
-          <f-element id="FIA_SMIME_EXT.1.1">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall only send/receive messages using the cryptographic algorithms
-              defined in FCS_SMIME_EXT.1. The TSF shall not allow for weaker algorithms to be used
-              for encryption. </title>
-            <note role="application"> While S/MIME v.3.2 requires default algorithms, these default
-              algorithms are substantially weaker than required by this EP. This requirement
-              indicates that the evaluated configuration of the client must disable these weaker
-              algorithms. </note>
-            <aactivity> The TSS description and operational guidance associated with this
-              requirement are performed in conjunction with FCS_SMIME_EXT.1.<br/> The evaluator
-              shall perform the following test:<br/>
-              <testlist><test>The evaluator shall attempt to send the client a message signed and
-                  encrypted with disallowed algorithms and shall verify that the client rejects the
-                  message.</test></testlist>
-            </aactivity>
-          </f-element>
-        </f-component>
         <f-component id="FIA_SASL_EXT.1" name="Simple Authentication and Security Layer (SASL)">
           <f-element id="FIA_SASL_EXT.1.1">
             <title>The <selectables>
@@ -661,17 +639,18 @@
               (SASL) that complies with RFC 4422. </title>
             <br/>
             <aactivity> The evaluator shall examine the TSS to determine that it describes the
-              details of the TOE connecting to Mail User Agent and a Mail Transfer Agent in terms of
-              the SASL connection, along with TOE -specific options or procedures that might not be
-              reflected in the specification.<br/> The evaluator shall confirm that the operational
-              guidance contains instructions for establishing the connection to the Mail User Agent
-              and the Mail Transfer Agent. The evaluator shall also perform the following test:<br/>
+              details of the email client connecting to Mail User Agent and a Mail Transfer Agent in
+              terms of the SASL connection, along with email client -specific options or procedures
+              that might not be reflected in the specification.<br/> The evaluator shall confirm
+              that the operational guidance contains instructions for establishing the connection to
+              the Mail User Agent and the Mail Transfer Agent. The evaluator shall also perform the
+              following test:<br/>
               <br/>
               <testlist>
-                <test>The evaluators shall ensure that the TOE is able to initiate communications
-                  with a Mail User Agent using POP, IMAP, and any assigned protocols specified in
-                  the requirement, setting up the connections as described in the operational
-                  guidance and ensuring that communication is successful.</test>
+                <test>The evaluators shall ensure that the email client is able to initiate
+                  communications with a Mail User Agent using POP, IMAP, and any assigned protocols
+                  specified in the requirement, setting up the connections as described in the
+                  operational guidance and ensuring that communication is successful.</test>
                 <test>The evaluators shall verify that a successful SASL handshake takes place. To
                   perform this test, the evaluator shall use a sniffer and a packet analyzer. The
                   packet analyzer must indicate that the protocol in use is SASL.</test>
@@ -704,16 +683,17 @@
               5043, the AUTHENTICATION and CAPABILITY extensions for IMAP, as described in RFC 4959
               and the AUTH extension for SMTP, as described in RFC 4954. </note>
             <aactivity> The evaluator shall examine the TSS to determine that it describes the
-              details of the TOE connecting to a Mail User Agent and a Mail Transfer Agent in terms
-              of the SASL connection, along with TOE-specific options or procedures that might not
-              be reflected in the specification.<br/> The evaluator shall confirm that the
-              operational guidance contains instructions for establishing the connection to the Mail
-              User Agent and the Mail Transfer Agent. The evaluator shall also perform the following tests:<br/>
+              details of the email client connecting to a Mail User Agent and a Mail Transfer Agent
+              in terms of the SASL connection, along with email client -specific options or
+              procedures that might not be reflected in the specification.<br/> The evaluator shall
+              confirm that the operational guidance contains instructions for establishing the
+              connection to the Mail User Agent and the Mail Transfer Agent. The evaluator shall
+              also perform the following tests:<br/>
               <testlist>
-                <test>The evaluators shall ensure that the TOE is able to initiate communications
-                  with a Mail User Agent using POP, IMAP and SMTP and requiring SASL, setting up the
-                  connections as described in the operational guidance and ensuring that
-                  communication is successful.</test>
+                <test>The evaluators shall ensure that the email client is able to initiate
+                  communications with a Mail User Agent using POP, IMAP and SMTP and requiring SASL,
+                  setting up the connections as described in the operational guidance and ensuring
+                  that communication is successful.</test>
                 <test>The evaluator shall ensure, for each communication channel with an authorized
                   IT entity in tests 1, that a valid SASL handshake is performed. To perform this
                   test, the evaluator shall use a sniffer and a packet analyzer. The packet analyzer
@@ -721,7 +701,28 @@
               </testlist>
             </aactivity>
           </f-element>
-        </f-component>
+        </f-component>        
+        <f-component id="FIA_SMIME_EXT.1" name="S/MIME">
+          <f-element id="FIA_SMIME_EXT.1.1">
+            <title>The <selectables>
+              <selectable>TSF</selectable>
+              <selectable>TOE platform</selectable>
+            </selectables> shall only send/receive messages using the cryptographic algorithms
+              defined in FCS_SMIME_EXT.1. The TSF shall not allow for weaker algorithms to be used
+              for encryption. </title>
+            <note role="application"> While S/MIME v.3.2 requires default algorithms, these default
+              algorithms are substantially weaker than required by this EP. This requirement
+              indicates that the evaluated configuration of the client must disable these weaker
+              algorithms. </note>
+            <aactivity> The TSS description and operational guidance associated with this
+              requirement are performed in conjunction with FCS_SMIME_EXT.1.<br/> The evaluator
+              shall perform the following test:<br/>
+              <testlist><test>The evaluator shall attempt to send the client a message signed and
+                encrypted with disallowed algorithms and shall verify that the client rejects the
+                message.</test></testlist>
+            </aactivity>
+          </f-element>
+        </f-component>        
         <f-component id="FIA_X509_EXT.1" name="X509 Validation">
           <f-element id="FIA_X509_EXT.1.1">
             <title>The <selectables>
@@ -754,31 +755,31 @@
             </title>
             <note role="application"> FIA_X509_EXT.1.1 lists the rules for validating certificates.
               The ST author shall select whether revocation status is verified using OCSP or CRLs.
-              Certificates may optionally be used for trusted updates of the TOE (FPT_TUD_EXT.1.3)
-              and installation of add-ons (FPT_TUD_EXT.1.2) and, if implemented by the TOE, must be
-              validated to contain the Code Signing purpose extendedKeyUsage. Certificates must be
-              used to perform authentication with Web Servers using FCS_TLSC_EXT.1 and must be
-              validated to contain the Server Authentication purpose extendedKeyUsage. Certificates
-              must be used for S/MIME email encryption and signature using FCS_SMIME_EXT.1 and must
-              be validated to contain the Email Protection purpose extendedKeyUsage.<br/> Regardless
-              of the selection of TSF or TOE platform, the validation is expected to end in a
-              trusted root certificate in a root store managed by the platform.<br/> While
-              FIA_X509_EXT.1.1 requires that the TOE perform certain checks on the certificate
-              presented by a TLS server, there are corresponding checks that the server will have to
-              perform on a certificate presented by the client; namely that the extendedKeyUsage
-              field of the client certificate includes "Client Authentication", that the digital
-              signature bit is set, and that the key agreement bit (for the Diffie-Hellman
-              ciphersuites) or the key encipherment bit (for RSA ciphersuites) be set. Certificates
-              obtained for use by the TOE will have to conform to these requirements in order to be
-              used in the enterprise.<br/> While FIA_X509_EXT.1.1 requires that the TOE perform
-              certain checks on the certificates presented for S/MIME, there are corresponding
-              checks that the sender/recipient will have to perform on a certificate presented by
-              the client; namely that the extendedKeyUsage field of the client certificate includes
-              "Email Protection", that the digital signature bit (for S/MIME signatures) is set, and
-              that the key agreement bit (for Diffie-Hellman encryption schemes) or the key
-              encipherment bit (for RSA encryption schemes) be set. Certificates obtained for use by
-              the TOE will have to conform to these requirements in order to be used in the
-              enterprise. </note>
+              Certificates may optionally be used for trusted updates of the email client
+              (FPT_TUD_EXT.1.3) and installation of add-ons (FPT_TUD_EXT.1.2) and, if implemented by
+              the email client, must be validated to contain the Code Signing purpose
+              extendedKeyUsage. Certificates must be used to perform authentication with Web Servers
+              using FCS_TLSC_EXT.1 and must be validated to contain the Server Authentication
+              purpose extendedKeyUsage. Certificates must be used for S/MIME email encryption and
+              signature using FCS_SMIME_EXT.1 and must be validated to contain the Email Protection
+              purpose extendedKeyUsage.<br/> Regardless of the selection of TSF or TOE platform, the
+              validation is expected to end in a trusted root certificate in a root store managed by
+              the platform.<br/> While FIA_X509_EXT.1.1 requires that the email client perform
+              certain checks on the certificate presented by a TLS server, there are corresponding
+              checks that the server will have to perform on a certificate presented by the client;
+              namely that the extendedKeyUsage field of the client certificate includes "Client
+              Authentication", that the digital signature bit is set, and that the key agreement bit
+              (for the Diffie-Hellman ciphersuites) or the key encipherment bit (for RSA
+              ciphersuites) be set. Certificates obtained for use by the email client will have to
+              conform to these requirements in order to be used in the enterprise.<br/> While
+              FIA_X509_EXT.1.1 requires that the email client perform certain checks on the
+              certificates presented for S/MIME, there are corresponding checks that the
+              sender/recipient will have to perform on a certificate presented by the client; namely
+              that the extendedKeyUsage field of the client certificate includes "Email Protection",
+              that the digital signature bit (for S/MIME signatures) is set, and that the key
+              agreement bit (for Diffie-Hellman encryption schemes) or the key encipherment bit (for
+              RSA encryption schemes) be set. Certificates obtained for use by the email client will
+              have to conform to these requirements in order to be used in the enterprise. </note>
           </f-element>
           <f-element id="FIA_X509_EXT.1.2">
             <title>The <selectables>
@@ -849,8 +850,7 @@
                 <selectable>TSF</selectable>
                 <selectable>TOE platform</selectable>
               </selectables> shall use X.509v3 certificates as defined by RFC 5280 to support code
-              signing for TOE updates and <selectables linebreak="yes">
-                <selectable>code signing for extension installation</selectable>
+              signing for email client updates and <selectables linebreak="yes">
                 <selectable>code signing for add-on installation</selectable>
                 <selectable>no additional uses</selectable>. </selectables>
             </title>
@@ -874,12 +874,12 @@
                 perform a verification of the revocation status of a certificate - either to
                 download a CRL or to perform OCSP. The selection is used to describe the behavior in
                 the event that such a connection cannot be established (for example, due to a
-                network error). If the TOE has determined the certificate valid according to all
-                other rules in FIA_X509_EXT.1, the behavior indicated in the second selection shall
-                determine the validity. The email client must not accept the certificate if it fails
-                any of the other validation rules in FIA_X509_EXT.1. If the administrator-configured
-                option is selected by the ST Author, the ST Author must also select function 10 in
-                FMT_SMF.1. </note>
+                network error). If the email client has determined the certificate valid according
+                to all other rules in FIA_X509_EXT.1, the behavior indicated in the second selection
+                shall determine the validity. The email client must not accept the certificate if it
+                fails any of the other validation rules in FIA_X509_EXT.1. If the
+                administrator-configured option is selected by the ST Author, the ST Author must
+                also select function 10 in FMT_SMF.1. </note>
             </title>
           </f-element>
           <f-element id="FIA_X509_EXT.2.3">
@@ -914,16 +914,17 @@
                 <selectable>TOE platform</selectable>
               </selectables> shall notify the user if an email is signed with an invalid
               certificate. </title>
-            <aactivity> The evaluator shall check the TSS to ensure that it describes how the TOE
-              chooses which certificates to use, and any necessary instructions in the
-              administrative guidance for configuring the operating environment so that the TOE can
-              use the certificates.<br/> The evaluator shall examine the TSS to confirm that it
-              describes the behavior of the TOE when a connection cannot be established during the
-              validity check of a certificate used in establishing a trusted channel and protecting
-              email. If the requirement that the administrator is able to specify the default
-              action, then the evaluator shall ensure that the operational guidance contains
-              instructions on how this configuration action is performed.<br/> The evaluator shall
-              perform Test 1 for each function listed in FIA_X509_EXT.2.1 that requires the use of certificates:<br/>
+            <aactivity> The evaluator shall check the TSS to ensure that it describes how the email
+              client chooses which certificates to use, and any necessary instructions in the
+              administrative guidance for configuring the operating environment so that the email
+              client can use the certificates.<br/> The evaluator shall examine the TSS to confirm
+              that it describes the behavior of the email client when a connection cannot be
+              established during the validity check of a certificate used in establishing a trusted
+              channel and protecting email. If the requirement that the administrator is able to
+              specify the default action, then the evaluator shall ensure that the operational
+              guidance contains instructions on how this configuration action is performed.<br/> The
+              evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1 that
+              requires the use of certificates:<br/>
               <testlist>
                 <test>The evaluator shall demonstrate that using a certificate without a valid
                   certification path results in the function failing or in the receipt of a user
@@ -934,11 +935,11 @@
                 <test>The evaluator shall demonstrate that using a valid certificate that requires
                   certificate validation checking to be performed in at least some part by
                   communicating with a non-TOE IT entity. The evaluator shall then manipulate the
-                  environment so that the TOE is unable to verify the validity of the certificate,
-                  and observe that the action selected in FIA_X509_EXT.2.2 is performed. If the
-                  selected action is administrator-configurable, then the evaluator shall follow the
-                  operational guidance to determine that all supported administrator-configurable
-                  options behave in their documented manner.</test>
+                  environment so that the email client is unable to verify the validity of the
+                  certificate, and observe that the action selected in FIA_X509_EXT.2.2 is
+                  performed. If the selected action is administrator-configurable, then the
+                  evaluator shall follow the operational guidance to determine that all supported
+                  administrator-configurable options behave in their documented manner.</test>
               </testlist>
             </aactivity>
           </f-element>
@@ -1009,27 +1010,27 @@
         </f-component>
       </subsection>
       <subsection title="Protection of the TSF (FPT)" id="fpt">
-        <f-component id="FPT_TUD_EXT.1" name="Integrity for Installation and Update">
-          <f-element id="FPT_TUD_EXT.1.7" name="Add-on Installation">
+        <f-component id="FPT_ETUD_EXT.1" name="Trusted Installation of Add-ons">
+          <f-element id="FPT_ETUD_EXT.1.1">
             <title>The email client shall include the capability to load <selectables>
                 <selectable>none</selectable>
                 <selectable>email client add-ons</selectable>
               </selectables>. </title>
           </f-element>
         </f-component>
-        <f-component id="FPT_TUD_EXT.2" name="Trusted Add-on Update">
+        <f-component id="FPT_TUD_EXT.2" name="Trusted Updates for Add-ons">
           <f-element id="FPT_TUD_EXT.2.1" status="sel-based">
-            <selection-depends req="FPT_TUD_EXT.1.7"/>
+            <selection-depends req="FPT_ETUD_EXT.1.1"/>
             <title>The email client shall provide the ability to query the current version of the
               add-on.</title>
           </f-element>
           <f-element id="FPT_TUD_EXT.2.2" status="sel-based">
-            <selection-depends req="FPT_TUD_EXT.1.7"/>
+            <selection-depends req="FPT_ETUD_EXT.1.1"/>
             <title>The email client shall provide the ability to initiate the downloading of add-ons
               and add-on updates.</title>
           </f-element>
           <f-element id="FPT_TUD_EXT.2.3" status="sel-based">
-            <selection-depends req="FPT_TUD_EXT.1.7"/>
+            <selection-depends req="FPT_ETUD_EXT.1.1"/>
             <title>The email client shall provide a means to verify add-ons using a digital
               signature mechanism and <selectables>
                 <selectable>published hash</selectable>
@@ -1037,7 +1038,7 @@
               </selectables> prior to installing the add-on.</title>
           </f-element>
           <f-element id="FPT_TUD_EXT.2.4" status="sel-based">
-            <selection-depends req="FPT_TUD_EXT.1.7"/>
+            <selection-depends req="FPT_ETUD_EXT.1.1"/>
             <title>The email client shall prevent the automatic installation of add-ons.</title>
           </f-element>
           <aactivity>
@@ -1144,10 +1145,10 @@
     the ST. </appendix>
 
   <appendix title="Selection-Based Requirements" id="sel-based">As indicated in the introduction to
-    this EP, the baseline requirements (those that must be performed by the TOE or its underlying
-    platform) are contained in the App PP and in the body of this EP. There are additional
-    requirements based on selections from the App PP and/or in the body of the EP: if certain
-    selections are made, then additional requirements below will need to be included. </appendix>
+    this EP, the baseline requirements (those that must be performed by the email client or its
+    underlying platform) are contained in the App PP and in the body of this EP. There are
+    additional requirements based on selections from the App PP and/or in the body of the EP: if
+    certain selections are made, then additional requirements below will need to be included. </appendix>
 
   <appendix title="Objective Requirements" id="objective"> This Annex includes requirements that
     specify security functionality which also addresses threats. The requirements are not currently
