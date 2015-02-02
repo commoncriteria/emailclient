@@ -31,9 +31,10 @@
   </RevisionHistory>
   <chapter title="Introduction" id="int">
     <section title="Overview" id="ppoverview">The scope of this Extended Package (EP) is to describe
-      the security functionality of email clients in terms of <cite linkend="bibCC"/>. This EP is
-      not complete in itself, but rather extends the Security Requirements for the Application
-      Software Protection Profile (ASPP). </section>
+      the security functionality of email clients in terms of <cite linkend="bibCC"/>. 
+	 	This EP is not complete in itself, but rather extends the security requirements of the
+		Protection Profile for Application Software (<cite linkend="bibAppPP"/>).
+		</section>
     <section id="glossary" title="Terms">The following sections provide both Common Criteria and
       technology terms used in this Extended Package. <subsection title="Common Criteria Terms"
         id="ccterms">
@@ -104,8 +105,8 @@
           <entry>
             <term>MAPI</term>
             <description>Messaging Application Programming Interface for HTTP - protocol used by
-              Microsoft Exchange for sending/receiving email; defined in
-              MS-OXCMAPIHTTP</description>
+              Microsoft Exchange for sending/receiving email; defined in <cite linkend="bibmapispec"/>.
+              </description>
           </entry>
           <entry>
             <term>MTA</term>
@@ -185,7 +186,7 @@
 	Application Software (App PP), though they all apply given the conformance
 	and hence dependence of this EP on it. Together the threats, assumptions
 	and organzational security policites of the App PP and those defined in
-	this EP describe those addressed by a web browser as the Target of
+	this EP describe those addressed by an email client  as the Target of
 	Evaluation. 
 	<br/>
 	Notably, email clients are particularly at risk from the Network Attack threat
@@ -211,6 +212,8 @@
     </section>
   </chapter>
   <chapter title="Security Objectives" id="sobj">
+   This Extended Package adds security objectives to those identified in the Protection Profile for
+   Application Software (App PP).
 	<section title="Security Objectives for the TOE" id="SecurityObjectivesTOE">
 	<SOs>
 		<SO id="O.ADDON_INTEGRITY">
@@ -224,7 +227,7 @@
 	</SOs>
     </section>
 
-
+<!--  keeping these until we figure out if a mapping is necessary at all
     <section title="Security Threats to Security Objectives" id="threattoobjtable">The following
       table contains a mapping of Security Threats to Objectives for the TOE. <table>
         <TR class="header">
@@ -255,7 +258,7 @@
           <TD>O.STORAGE; O.CONFIG</TD>
         </TR>
       </table></section>
-
+-->
   </chapter>
 
   <chapter title="Security Requirements" id="req">This chapter describes the security requirements
@@ -1207,11 +1210,18 @@
               September 2012.</li>
           </ul></description>
       </entry>
-      <entry id="bibCC">
+      <entry id="bibAppPP">
         <tag>AppPP</tag>
         <description>
-          <a href="https://www.niap-ccevs.org/pp/PP_APP_v1.1/">Protection Profile for Application
+          <a href="https://www.niap-ccevs.org/pp/">Protection Profile for Application
             Software</a>
+        </description>
+      </entry>
+      <entry id="bibmapispec">
+        <tag>MS-OXCMAPIHTTP</tag>
+        <description>
+          <a href="https://msdn.microsoft.com/en-us/library/dn530952(v=exchg.80).aspx">
+		  Messaging Application Programming Interface (MAPI) Extensions for HTTP</a>
         </description>
       </entry>
     </bibliography>
