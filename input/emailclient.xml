@@ -263,20 +263,14 @@
         <f-component id="FCS_SMIME_EXT.1"
           name="Secure/Multipurpose Internet Mail Extensions (S/MIME)">
           <f-element id="FCS_SMIME_EXT.1.1">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall implement both a sending and receiving S/MIME v3.2 Agent as
+            <title>The email client shall implement both a sending and receiving S/MIME v3.2 Agent as
               defined in RFC 5751, using CMS as defined in RFCs 5652, 5754, and 3565. </title>
             <note role="application"> The RFCs allow for an agent to be either sending or receiving,
               or to include both capabilities. The intent of this requirement is to ensure that the
               email client is capable of both sending and receiving S/MIME v3.2 messages. </note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.2">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall transmit the ContentEncryptionAlgorithmIdentifier for AES-128 CBC
+            <title>The email client shall transmit the ContentEncryptionAlgorithmIdentifier for AES-128 CBC
               and <selectables>
                 <selectable>AES-256 CBC</selectable>
                 <selectable>no others</selectable>
@@ -284,10 +278,7 @@
             <note role="application"> AES was added to CMS as defined in RFC 3565.</note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.3">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall present the digestAlgorithm field with the following Message
+            <title>The email client shall present the digestAlgorithm field with the following Message
               Digest Algorithm identifiers <selectables>
                 <selectable>id-sha256</selectable>
                 <selectable>id-sha384</selectable>
@@ -295,10 +286,7 @@
               </selectables> and no others. </title>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.4">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall present the AlgorithmIdentifier field with the following
+            <title>The email client shall present the AlgorithmIdentifier field with the following
               sha256withRSAEncryption and <selectables linebreak="yes">
                 <selectable>sha384WithRSAEncryption</selectable>
                 <selectable>sha512WithRSAEncryption</selectable>
@@ -314,25 +302,16 @@
               future versions of this EP. </note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.5">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall use separate private keys (and associated certificates) for
+            <title>The email client shall use separate private keys (and associated certificates) for
               signature and for encryption. </title></f-element>
           <f-element id="FCS_SMIME_EXT.1.6">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall only accept a signature from a certificate with the
+            <title>The email client shall only accept a signature from a certificate with the
               digitalSignature bit set. </title>
             <note role="application"> It is acceptable to assume that the digitalSignature bit is
               set in cases where there is no keyUsage extension. </note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.7">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall implement mechanisms for retrieval of Certificate Revocation
+            <title>The email client shall implement mechanisms for retrieval of Certificate Revocation
               Lists (CRLs) and certificates <selectables linebreak="yes">
                 <selectable>each time needed</selectable>
                 <selectable>for incoming/outgoing messages</selectable>
@@ -606,10 +585,7 @@
               for FCS_SMIME_EXT.1, FDP_NOT_EXT.1, and FMT_SMF.1.</aactivity><br/>
           </f-element>
           <f-element id="FDP_SMIME_EXT.1.2">
-            <title>The <selectables>
-              <selectable>TSF</selectable>
-              <selectable>TOE platform</selectable>
-            </selectables> shall provide access to a certificate repository for the purposes of
+            <title>The email client shall provide access to a certificate repository for the purposes of
               S/MIME encryption.</title>
             <note role="application">Encryption requires access to the recipient’s public key in the
               form of an X.509v3 certificate; thus, these public keys must be accessible via a local
@@ -640,10 +616,7 @@
       <subsection title="Identification and Authentication (FIA)" id="fia">
         <f-component id="FIA_SASL_EXT.1" name="Simple Authentication and Security Layer (SASL)">
           <f-element id="FIA_SASL_EXT.1.1">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall implement support for Simple Authentication and Security Layer
+            <title>The email client shall implement support for Simple Authentication and Security Layer
               (SASL) that complies with RFC 4422. </title>
             <br/>
             <aactivity> The evaluator shall examine the TSS to determine that it describes the
@@ -666,24 +639,15 @@
             </aactivity>
           </f-element>
           <f-element id="FIA_SASL_EXT.1.2">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> must support the POP3 CAPA and AUTH extensions for the SASL mechanism.
+            <title>The email client must support the POP3 CAPA and AUTH extensions for the SASL mechanism.
             </title>
           </f-element>
           <f-element id="FIA_SASL_EXT.1.3">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> must support the IMAP CAPABILITY and AUTHENTICATE extensions for the
+            <title>The email client must support the IMAP CAPABILITY and AUTHENTICATE extensions for the
               SASL mechanism. </title>
           </f-element>
           <f-element id="FIA_SASL_EXT.1.4">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> must support the SMTP AUTH extension for the SASL mechanism. </title>
+            <title>The email client must support the SMTP AUTH extension for the SASL mechanism. </title>
             <note role="application"> In order for an email clients to support PKI X.509
               Certificates for POP3, IMAP and SMTP as required in this document, the client must
               support the Simple Authentication and Security Layer (SASL) authentication method as
@@ -712,10 +676,7 @@
         </f-component>        
         <f-component id="FIA_SMIME_EXT.1" name="S/MIME">
           <f-element id="FIA_SMIME_EXT.1.1">
-            <title>The <selectables>
-              <selectable>TSF</selectable>
-              <selectable>TOE platform</selectable>
-            </selectables> shall only send/receive messages using the cryptographic algorithms
+            <title>The email client shall only send/receive messages using the cryptographic algorithms
               defined in FCS_SMIME_EXT.1. The TSF shall not allow for weaker algorithms to be used
               for encryption. </title>
             <note role="application"> While S/MIME v.3.2 requires default algorithms, these default
@@ -733,10 +694,7 @@
         </f-component>        
         <f-component id="FIA_X509_EXT.1" name="X509 Validation">
           <f-element id="FIA_X509_EXT.1.1">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall validate certificates in accordance with the following rules: <ul>
+            <title>The email client shall validate certificates in accordance with the following rules: <ul>
                 <li>RFC 5280 certificate validation and certificate path validation.</li>
                 <li>The TSF shall validate a certificate path by ensuring the presence of the
                   basicConstraints extension and that the cA flag is set to TRUE for all CA
@@ -790,10 +748,7 @@
               have to conform to these requirements in order to be used in the enterprise. </note>
           </f-element>
           <f-element id="FIA_X509_EXT.1.2">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall only treat a certificate as a CA certificate if the
+            <title>The email client shall only treat a certificate as a CA certificate if the
               basicConstraints extension is present and the CA flag is set to TRUE. </title>
             <note role="application"> This requirement applies to certificates that are used and
               processed by the Email Client or platform. </note>
@@ -840,24 +795,15 @@
         </f-component>
         <f-component id="FIA_X509_EXT.2" name="X509 Authentication and Encryption">
           <f-element id="FIA_X509_EXT.2.1(1)">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall use X.509v3 certificates as defined by RFC 5280 to support
+            <title>The email client shall use X.509v3 certificates as defined by RFC 5280 to support
               authentication for TLS. </title>
           </f-element>
           <f-element id="FIA_X509_EXT.2.1(2)">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall use X.509v3 certificates as defined by RFC 5280 to support
+            <title>The email client shall use X.509v3 certificates as defined by RFC 5280 to support
               encryption and authentication for S/MIME. </title>
           </f-element>
           <f-element id="FIA_X509_EXT.2.1(3)">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall use X.509v3 certificates as defined by RFC 5280 to support code
+            <title>The email client shall use X.509v3 certificates as defined by RFC 5280 to support code
               signing for email client updates and <selectables linebreak="yes">
                 <selectable>code signing for add-on installation</selectable>
                 <selectable>no additional uses</selectable>. </selectables>
@@ -866,14 +812,8 @@
               software and may optionally be used for installation of add-ons. </note>
           </f-element>
           <f-element id="FIA_X509_EXT.2.2">
-            <title>When the <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> cannot establish a connection to determine the validity of a
-              certificate, the <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall <selectables linebreak="yes">
+            <title>When the email client cannot establish a connection to determine the validity of a
+              certificate, the email client shall <selectables linebreak="yes">
                 <selectable>allow the administrator to choose whether to accept the certificate in
                   these cases</selectable>
                 <selectable>accept the certificate</selectable>
@@ -891,36 +831,24 @@
             </title>
           </f-element>
           <f-element id="FIA_X509_EXT.2.3">
-            <title> The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall not establish a trusted communication channel if the peer
+            <title> The email client shall not establish a trusted communication channel if the peer
               certificate is deemed invalid. </title>
             <note role="application"> Trusted communication channels include any of TLS performed by
               the TSF. Validity is determined by the certificate path, the expiration date, and the
               revocation status in accordance with RFC 5280. </note>
           </f-element>
           <f-element id="FIA_X509_EXT.2.4">
-            <title> The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall not install code if the code signing certificate is deemed
+            <title> The email client shall not install code if the code signing certificate is deemed
               invalid. </title>
             <note role="application"> Certificates may optionally be used for trusted updates of
               system software (FPT_TUD_EXT.1.3). </note>
           </f-element>
           <f-element id="FIA_X509_EXT.2.5">
-            <title> The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall not encrypt email if the email protection certificate is deemed
+            <title> The email client shall not encrypt email if the email protection certificate is deemed
               invalid. </title>
           </f-element>
           <f-element id="FIA_X509_EXT.2.6">
-            <title> The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall notify the user if an email is signed with an invalid
+            <title> The email client shall notify the user if an email is signed with an invalid
               certificate. </title>
             <aactivity> The evaluator shall check the TSS to ensure that it describes how the email
               client chooses which certificates to use, and any necessary instructions in the
@@ -1076,10 +1004,7 @@
       <subsection title="Trusted Path/Channels (FTP)" id="ftp">
         <f-component id="FTP_ITC.1" name="Inter-TSF Trusted Channel">
           <f-element id="FTP_ITC.1.1">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall use TLS to provide a trusted communication channel between itself
+            <title>The email client shall use TLS to provide a trusted communication channel between itself
               and authorized IT entities supporting the following capabilities <selectables>
                 <selectable>directory server</selectable>
                 <selectable>administrative configuration server</selectable>
@@ -1090,17 +1015,11 @@
             </title>
           </f-element>
           <f-element id="FTP_ITC.1.2">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall permit the <abbr linkend="TSF"/> to initiate or receive
+            <title>The email client shall permit the <abbr linkend="TSF"/> to initiate or receive
               communication via the trusted channel. </title>
           </f-element>
           <f-element id="FTP_ITC.1.3">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable>TOE platform</selectable>
-              </selectables> shall initiate communication via the trusted channel for <selectables
+            <title>The email client shall initiate communication via the trusted channel for <selectables
                 linebreak="yes">
                 <selectable>IMAP</selectable>
                 <selectable>SMTP</selectable>
