@@ -31,10 +31,9 @@
   </RevisionHistory>
   <chapter title="Introduction" id="int">
     <section title="Overview" id="ppoverview">The scope of this Extended Package (EP) is to describe
-      the security functionality of email clients in terms of <cite linkend="bibCC"/>. 
-	 	This EP is not complete in itself, but rather extends the security requirements of the
-		Protection Profile for Application Software (<cite linkend="bibAppPP"/>).
-		</section>
+      the security functionality of email clients in terms of <cite linkend="bibCC"/>. This EP is
+      not complete in itself, but rather extends the security requirements of the Protection Profile
+      for Application Software (<cite linkend="bibAppPP"/>). </section>
     <section id="glossary" title="Terms">The following sections provide both Common Criteria and
       technology terms used in this Extended Package. <subsection title="Common Criteria Terms"
         id="ccterms">
@@ -105,8 +104,8 @@
           <entry>
             <term>MAPI</term>
             <description>Messaging Application Programming Interface for HTTP - protocol used by
-              Microsoft Exchange for sending/receiving email; defined in <cite linkend="bibmapispec"/>.
-              </description>
+              Microsoft Exchange for sending/receiving email; defined in <cite linkend="bibmapispec"
+              />. </description>
           </entry>
           <entry>
             <term>MTA</term>
@@ -191,23 +190,18 @@
       </threats>
     </section>
   </chapter>
-  <chapter title="Security Objectives" id="sobj">
-   This Extended Package adds security objectives to those identified in the Protection Profile for
-   Application Software (App PP).
-	<section title="Security Objectives for the TOE" id="SecurityObjectivesTOE">
-	<SOs>
-		<SO id="O.ADDON_INTEGRITY">
-		<description>
-		To address issues associated with malicious or
-		flawed plug-ins or extensions, conformant browsers 
-		implement mechanisms to ensure their integrity.
-		This includes verification at installation time and update.
-		</description>
-	</SO>
-	</SOs>
+  <chapter title="Security Objectives" id="sobj"> This Extended Package adds security objectives to
+    those identified in the Protection Profile for Application Software (App PP). <section
+      title="Security Objectives for the TOE" id="SecurityObjectivesTOE">
+      <SOs>
+        <SO id="O.ADDON_INTEGRITY">
+          <description> To address issues associated with malicious or flawed plug-ins or
+            extensions, conformant browsers implement mechanisms to ensure their integrity. This
+            includes verification at installation time and update. </description>
+        </SO>
+      </SOs>
     </section>
-
-<!--  keeping these until we figure out if a mapping is necessary at all
+    <!--  keeping these until we figure out if a mapping is necessary at all
     <section title="Security Threats to Security Objectives" id="threattoobjtable">The following
       table contains a mapping of Security Threats to Objectives for the email client. <table>
         <TR class="header">
@@ -263,23 +257,23 @@
         <f-component id="FCS_SMIME_EXT.1"
           name="Secure/Multipurpose Internet Mail Extensions (S/MIME)">
           <f-element id="FCS_SMIME_EXT.1.1">
-            <title>The email client shall implement both a sending and receiving S/MIME v3.2 Agent as
-              defined in RFC 5751, using CMS as defined in RFCs 5652, 5754, and 3565. </title>
+            <title>The email client shall implement both a sending and receiving S/MIME v3.2 Agent
+              as defined in RFC 5751, using CMS as defined in RFCs 5652, 5754, and 3565. </title>
             <note role="application"> The RFCs allow for an agent to be either sending or receiving,
               or to include both capabilities. The intent of this requirement is to ensure that the
               email client is capable of both sending and receiving S/MIME v3.2 messages. </note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.2">
-            <title>The email client shall transmit the ContentEncryptionAlgorithmIdentifier for AES-128 CBC
-              and <selectables>
+            <title>The email client shall transmit the ContentEncryptionAlgorithmIdentifier for
+              AES-128 CBC and <selectables>
                 <selectable>AES-256 CBC</selectable>
                 <selectable>no others</selectable>
               </selectables>. </title>
             <note role="application"> AES was added to CMS as defined in RFC 3565.</note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.3">
-            <title>The email client shall present the digestAlgorithm field with the following Message
-              Digest Algorithm identifiers <selectables>
+            <title>The email client shall present the digestAlgorithm field with the following
+              Message Digest Algorithm identifiers <selectables>
                 <selectable>id-sha256</selectable>
                 <selectable>id-sha384</selectable>
                 <selectable>id-sha512</selectable>
@@ -302,8 +296,8 @@
               future versions of this EP. </note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.5">
-            <title>The email client shall use separate private keys (and associated certificates) for
-              signature and for encryption. </title></f-element>
+            <title>The email client shall use separate private keys (and associated certificates)
+              for signature and for encryption. </title></f-element>
           <f-element id="FCS_SMIME_EXT.1.6">
             <title>The email client shall only accept a signature from a certificate with the
               digitalSignature bit set. </title>
@@ -311,8 +305,8 @@
               set in cases where there is no keyUsage extension. </note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.7">
-            <title>The email client shall implement mechanisms for retrieval of Certificate Revocation
-              Lists (CRLs) and certificates <selectables linebreak="yes">
+            <title>The email client shall implement mechanisms for retrieval of Certificate
+              Revocation Lists (CRLs) and certificates <selectables linebreak="yes">
                 <selectable>each time needed</selectable>
                 <selectable>for incoming/outgoing messages</selectable>
                 <selectable>periodically</selectable>
@@ -395,7 +389,8 @@
             </aactivity>
           </f-element>
         </f-component>
-      </subsection> <subsection title="User Data Protection (FDP)" id="fdp">        
+      </subsection>
+      <subsection title="User Data Protection (FDP)" id="fdp">
         <!-- <f-component id="FDP_DEL_EXT.1" name="Deletion of Information">
           <f-element id="FDP_DEL_EXT.1.1" status="sel-based">
             <selection-depends req="FPT_ETUD_EXT.1.1"/>
@@ -437,8 +432,8 @@
           </f-element>
         </f-component>
         -->
-        <f-component id="FDP_NOT_EXT.1" name="Notification of Email Receipt">
-          <f-element id="FDP_NOT_EXT.1.1">
+        <!-- <f-component id="FDP_NOT_EXT.1" name="Notification of Email Receipt">
+            <f-element id="FDP_NOT_EXT.1.1">
             <title>The <abbr linkend="TSF"/> shall display notifications of email receipt.</title>
             <note role="application">The notification may be visual or auditory and may or may not
               additional information about the email(s) or the number of emails received. Some
@@ -464,8 +459,8 @@
                   notification(s) appear(s) as described. </test>
               </testlist>
             </aactivity>
-          </f-element>
-        </f-component>
+          </f-element> 
+        </f-component> -->
         <f-component id="FDP_NOT_EXT.2" name="Notification of S/MIME Status">
           <f-element id="FDP_NOT_EXT.2.1">
             <title>The <abbr linkend="TSF"/> shall display a notification of the S/MIME status of
@@ -517,8 +512,8 @@
                   the full URI of the embedded link is displayed. </test></testlist>
             </aactivity>
           </f-element>
-        </f-component>                       
-          <f-component id="FDP_PST_EXT.1" name="Storage of Persistent Information">
+        </f-component>
+        <f-component id="FDP_PST_EXT.1" name="Storage of Persistent Information">
           <f-element id="FDP_PST_EXT.1.1" status="objective">
             <title>The email client shall be capable of operating without storing persistent
               information to the file system.</title>
@@ -529,7 +524,7 @@
               shall then examine the email client to ensure that no files have been written to the
               file system other than credentials or configuration information.</aactivity>
           </f-element>
-        </f-component>       
+        </f-component>
         <f-component id="FDP_REN_EXT.1" name="Rendering of Message Content">
           <f-element id="FDP_REN_EXT.1.1">
             <title>The <abbr linkend="TSF"/> shall have a plaintext only mode.</title>
@@ -559,7 +554,7 @@
               </testlist>
             </aactivity>
           </f-element>
-        </f-component>        
+        </f-component>
         <f-component id="FDP_SMIME_EXT.1" name="S/MIME">
           <f-element id="FDP_SMIME_EXT.1.1">
             <title>The <abbr linkend="TSF"/> shall use Secure/Multipurpose Internet Mail Extensions
@@ -584,7 +579,7 @@
               encrypting email.<br/> Tests for this element are performed in conjunction with tests
               for FCS_SMIME_EXT.1, FDP_NOT_EXT.1, and FMT_SMF.1.</aactivity><br/>
           </f-element>
-          <f-element id="FDP_SMIME_EXT.1.2">
+          <!-- <f-element id="FDP_SMIME_EXT.1.2">
             <title>The email client shall provide access to a certificate repository for the purposes of
               S/MIME encryption.</title>
             <note role="application">Encryption requires access to the recipient’s public key in the
@@ -610,14 +605,14 @@
               Tests for this element are performed in conjunction with tests for FCS_SMIME_EXT.1 and
               FMT_SMF.1.<br/>
             </aactivity>
-          </f-element>
+          </f-element> -->
         </f-component>
       </subsection>
       <subsection title="Identification and Authentication (FIA)" id="fia">
         <f-component id="FIA_SASL_EXT.1" name="Simple Authentication and Security Layer (SASL)">
           <f-element id="FIA_SASL_EXT.1.1">
-            <title>The email client shall implement support for Simple Authentication and Security Layer
-              (SASL) that complies with RFC 4422. </title>
+            <title>The email client shall implement support for Simple Authentication and Security
+              Layer (SASL) that complies with RFC 4422. </title>
             <br/>
             <aactivity> The evaluator shall examine the TSS to determine that it describes the
               details of the email client connecting to Mail User Agent and a Mail Transfer Agent in
@@ -639,12 +634,12 @@
             </aactivity>
           </f-element>
           <f-element id="FIA_SASL_EXT.1.2">
-            <title>The email client must support the POP3 CAPA and AUTH extensions for the SASL mechanism.
-            </title>
+            <title>The email client must support the POP3 CAPA and AUTH extensions for the SASL
+              mechanism. </title>
           </f-element>
           <f-element id="FIA_SASL_EXT.1.3">
-            <title>The email client must support the IMAP CAPABILITY and AUTHENTICATE extensions for the
-              SASL mechanism. </title>
+            <title>The email client must support the IMAP CAPABILITY and AUTHENTICATE extensions for
+              the SASL mechanism. </title>
           </f-element>
           <f-element id="FIA_SASL_EXT.1.4">
             <title>The email client must support the SMTP AUTH extension for the SASL mechanism. </title>
@@ -673,12 +668,12 @@
               </testlist>
             </aactivity>
           </f-element>
-        </f-component>        
+        </f-component>
         <f-component id="FIA_SMIME_EXT.1" name="S/MIME">
           <f-element id="FIA_SMIME_EXT.1.1">
-            <title>The email client shall only send/receive messages using the cryptographic algorithms
-              defined in FCS_SMIME_EXT.1. The TSF shall not allow for weaker algorithms to be used
-              for encryption. </title>
+            <title>The email client shall only send/receive messages using the cryptographic
+              algorithms defined in FCS_SMIME_EXT.1. The TSF shall not allow for weaker algorithms
+              to be used for encryption. </title>
             <note role="application"> While S/MIME v.3.2 requires default algorithms, these default
               algorithms are substantially weaker than required by this EP. This requirement
               indicates that the evaluated configuration of the client must disable these weaker
@@ -687,12 +682,12 @@
               requirement are performed in conjunction with FCS_SMIME_EXT.1.<br/> The evaluator
               shall perform the following test:<br/>
               <testlist><test>The evaluator shall attempt to send the client a message signed and
-                encrypted with disallowed algorithms and shall verify that the client rejects the
-                message.</test></testlist>
+                  encrypted with disallowed algorithms and shall verify that the client rejects the
+                  message.</test></testlist>
             </aactivity>
           </f-element>
-        </f-component>        
-        <f-component id="FIA_X509_EXT.1" name="X509 Validation">
+        </f-component>
+        <!-- <f-component id="FIA_X509_EXT.1" name="X509 Validation">
           <f-element id="FIA_X509_EXT.1.1">
             <title>The email client shall validate certificates in accordance with the following rules: <ul>
                 <li>RFC 5280 certificate validation and certificate path validation.</li>
@@ -792,17 +787,17 @@
               </testlist>
             </aactivity>
           </f-element>
-        </f-component>
+        </f-component> -->
         <f-component id="FIA_X509_EXT.2" name="X509 Authentication and Encryption">
-          <f-element id="FIA_X509_EXT.2.1(1)">
+          <!-- <f-element id="FIA_X509_EXT.2.1(1)">
             <title>The email client shall use X.509v3 certificates as defined by RFC 5280 to support
               authentication for TLS. </title>
-          </f-element>
+          </f-element> -->
           <f-element id="FIA_X509_EXT.2.1(2)">
             <title>The email client shall use X.509v3 certificates as defined by RFC 5280 to support
               encryption and authentication for S/MIME. </title>
           </f-element>
-          <f-element id="FIA_X509_EXT.2.1(3)">
+          <!-- <f-element id="FIA_X509_EXT.2.1(3)">
             <title>The email client shall use X.509v3 certificates as defined by RFC 5280 to support code
               signing for email client updates and <selectables linebreak="yes">
                 <selectable>code signing for add-on installation</selectable>
@@ -810,8 +805,8 @@
             </title>
             <note role="application"> Certificates must be used for trusted updates of email client
               software and may optionally be used for installation of add-ons. </note>
-          </f-element>
-          <f-element id="FIA_X509_EXT.2.2">
+          </f-element> -->
+          <!-- <f-element id="FIA_X509_EXT.2.2">
             <title>When the email client cannot establish a connection to determine the validity of a
               certificate, the email client shall <selectables linebreak="yes">
                 <selectable>allow the administrator to choose whether to accept the certificate in
@@ -829,7 +824,7 @@
                 administrator-configured option is selected by the ST Author, the ST Author must
                 also select function 10 in FMT_SMF.1. </note>
             </title>
-          </f-element>
+          </f-element> -->
           <f-element id="FIA_X509_EXT.2.3">
             <title> The email client shall not establish a trusted communication channel if the peer
               certificate is deemed invalid. </title>
@@ -838,14 +833,14 @@
               revocation status in accordance with RFC 5280. </note>
           </f-element>
           <f-element id="FIA_X509_EXT.2.4">
-            <title> The email client shall not install code if the code signing certificate is deemed
-              invalid. </title>
+            <title> The email client shall not install code if the code signing certificate is
+              deemed invalid. </title>
             <note role="application"> Certificates may optionally be used for trusted updates of
               system software (FPT_TUD_EXT.1.3). </note>
           </f-element>
           <f-element id="FIA_X509_EXT.2.5">
-            <title> The email client shall not encrypt email if the email protection certificate is deemed
-              invalid. </title>
+            <title> The email client shall not encrypt email if the email protection certificate is
+              deemed invalid. </title>
           </f-element>
           <f-element id="FIA_X509_EXT.2.6">
             <title> The email client shall notify the user if an email is signed with an invalid
@@ -1004,8 +999,8 @@
       <subsection title="Trusted Path/Channels (FTP)" id="ftp">
         <f-component id="FTP_ITC.1" name="Inter-TSF Trusted Channel">
           <f-element id="FTP_ITC.1.1">
-            <title>The email client shall use TLS to provide a trusted communication channel between itself
-              and authorized IT entities supporting the following capabilities <selectables>
+            <title>The email client shall use TLS to provide a trusted communication channel between
+              itself and authorized IT entities supporting the following capabilities <selectables>
                 <selectable>directory server</selectable>
                 <selectable>administrative configuration server</selectable>
                 <selectable>no other entities</selectable> that is logically distinct from other
@@ -1019,8 +1014,8 @@
               communication via the trusted channel. </title>
           </f-element>
           <f-element id="FTP_ITC.1.3">
-            <title>The email client shall initiate communication via the trusted channel for <selectables
-                linebreak="yes">
+            <title>The email client shall initiate communication via the trusted channel for
+                <selectables linebreak="yes">
                 <selectable>IMAP</selectable>
                 <selectable>SMTP</selectable>
                 <selectable>POP</selectable>
@@ -1103,15 +1098,14 @@
       <entry id="bibAppPP">
         <tag>AppPP</tag>
         <description>
-          <a href="https://www.niap-ccevs.org/pp/">Protection Profile for Application
-            Software</a>
+          <a href="https://www.niap-ccevs.org/pp/">Protection Profile for Application Software</a>
         </description>
       </entry>
       <entry id="bibmapispec">
         <tag>MS-OXCMAPIHTTP</tag>
         <description>
-          <a href="https://msdn.microsoft.com/en-us/library/dn530952(v=exchg.80).aspx">
-		  Messaging Application Programming Interface (MAPI) Extensions for HTTP</a>
+          <a href="https://msdn.microsoft.com/en-us/library/dn530952(v=exchg.80).aspx"> Messaging
+            Application Programming Interface (MAPI) Extensions for HTTP</a>
         </description>
       </entry>
     </bibliography>
