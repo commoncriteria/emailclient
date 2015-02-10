@@ -154,14 +154,32 @@
     </section>
   </chapter>
   <chapter title="Conformance Claims" id="conf">
-    <h3>CC Conformance Claims</h3>
+    <!-- <h3>CC Conformance Claims</h3>
     <description>This <abbr linkend="EP"/> is conformant to Part 2 (extended) of Common Criteria
         <cite linkend="bibCC"/> Version 3.1, Revision 4.</description>
     <h3>PP Claim</h3>
     <description>This <abbr linkend="EP"/> extends the App PP but does not claim conformance to any
       other Protection Profile.</description>
     <h3>Package Claim</h3>
-    <description>This <abbr linkend="EP"/> does not claim conformance to any packages.</description>
+    <description>This <abbr linkend="EP"/> does not claim conformance to any packages.</description> -->
+    <cclaims>
+      <cclaim id="Conformance Statement">
+        <description> The <i>Protection Profile for Application Software</i> (App PP) defines the
+          baseline Security Functional Requirements (SFRs) and Security Assurance Requirements
+          (SARs) for application software products. This EP serves to extend the App PP baseline
+          with additional SFRs and associated Assurance Activities specific to an email client.
+          Assurance Activities are the actions that the evaluator performs in order to determine a
+          TOE’s compliance to the SFRs.<br/> This EP conforms to Common Criteria <cite
+            linkend="bibCC"/> for Information Technology Security Evaluation, Version 3.1, Revision
+          4. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to this
+          EP, the ST must include all components in this EP and the associated App PP that are:
+              <ul><li>unconditional (which are always required)</li>
+            <li>selection-based (which are required when certain selections are chosen in the
+              unconditional requirements)</li>
+          </ul> and may include components that are: <ul><li>optional or</li>
+            <li>objective.</li></ul></description>
+      </cclaim>
+    </cclaims>
   </chapter>
   <chapter title="Security Problem Description" id="spd"> The security problem is described in terms
     of the threats that the email client is expected to address, assumptions about the operational
@@ -879,6 +897,39 @@
       <subsection title="Security Management (FMT)" id="fmt">
         <f-component id="FMT_MOF.1" name="Management of Functions in TSF">
           <f-element id="FMT_MOF.1.1(1)">
+            <!-- Section edited.  This is the original text.
+              <title>The email client shall restrict to the platform administrator the management
+              functions: <selectables linebreak="yes">
+                <selectable>Enable/disable downloading embedded objects globally and <selectables>
+                    <selectable>by domain</selectable>
+                    <selectable>by sender</selectable>
+                    <selectable>no other method</selectable>
+                  </selectables>
+                </selectable>
+                <selectable>Enable/disable plaintext only mode globally and <selectables>
+                    <selectable>by domain</selectable>
+                    <selectable>by sender</selectable>
+                    <selectable>no other method</selectable>
+                  </selectables>
+                </selectable>
+                <selectable>Enable/disable rendering and execution of attachments globally and <selectables>
+                    <selectable>by domain</selectable>
+                    <selectable>by sender</selectable>
+                    <selectable>no other method</selectable>
+                  </selectables>
+                </selectable>
+                <selectable>Enable/disable email notifications</selectable>
+                <selectable>Configure certificates for S/MIME use</selectable>
+                <selectable>Configure certificates for TLS use</selectable>
+                <selectable>Enable/disable display of email contents in email
+                  notifications</selectable>
+                <selectable>Configure a certificate repository for encryption</selectable>
+                <selectable>Configure whether to establish a trusted channel or disallow
+                  establishment if the TSF cannot establish a connection to determine the validity
+                  of a certificate</selectable>
+                <selectable>No other management functions</selectable>
+              </selectables>
+            </title> -->
             <title>The email client shall restrict to the platform administrator the management
               functions: <selectables linebreak="yes">
                 <selectable>Enable/disable downloading embedded objects globally and <selectables>
@@ -899,6 +950,15 @@
                     <selectable>no other method</selectable>
                   </selectables>
                 </selectable>
+                <selectable>Configure <selectables>
+                    <selectable>visual</selectable>
+                    <selectable>auditory</selectable></selectables>email notifications to
+                  enable/disable display of additional information about the email <selectables>
+                    <selectable>number of emails received</selectable>
+                    <selectable>subject</selectable>
+                    <selectable>sender</selectable>
+                    <selectable>partial content</selectable></selectables></selectable>
+                <!-- Added to address the deleted FPD_NOT-EXT.1.1 -->
                 <selectable>Enable/disable email notifications</selectable>
                 <selectable>Configure certificates for S/MIME use</selectable>
                 <selectable>Configure certificates for TLS use</selectable>
@@ -998,7 +1058,7 @@
       </subsection>
       <subsection title="Trusted Path/Channels (FTP)" id="ftp">
         <f-component id="FTP_ITC.1" name="Inter-TSF Trusted Channel">
-          <f-element id="FTP_ITC.1.1">
+          <!-- <f-element id="FTP_ITC.1.1">
             <title>The email client shall use TLS to provide a trusted communication channel between
               itself and authorized IT entities supporting the following capabilities <selectables>
                 <selectable>directory server</selectable>
@@ -1008,7 +1068,7 @@
                 protection of the channel data from disclosure and detection of modification of the
                 channel data. </selectables>
             </title>
-          </f-element>
+          </f-element> -->
           <f-element id="FTP_ITC.1.2">
             <title>The email client shall permit the <abbr linkend="TSF"/> to initiate or receive
               communication via the trusted channel. </title>
