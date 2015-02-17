@@ -216,6 +216,8 @@
           <description> To address issues associated with malicious or flawed plug-ins or
             extensions, conformant browsers implement mechanisms to ensure their integrity. This
             includes verification at installation time and update. </description>
+            <component-refer ref="fia_x509_ext.2.4"/>
+            <component-refer ref="fpt_tud_ext.2"/>
         </SO>
       </SOs>
     </section>
