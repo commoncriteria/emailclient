@@ -4,9 +4,9 @@
   <PPReference title="PP Reference" id="ID003">
     <ReferenceTable>
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
-      <PPVersion>Draft 1.5</PPVersion>
+      <PPVersion>Draft 1.6</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2014-12-11</PPPubDate>
+      <PPPubDate>2015-02-23</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -89,7 +89,7 @@
           <entry>
             <term>ActiveSync</term>
             <description>Microsoft protocol for synchronizing data between mobile and desktop
-              environments</description>
+              environments.</description>
           </entry>
           <entry>
             <term>Add-on</term>
@@ -98,12 +98,12 @@
           </entry>
           <entry>
             <term>IMAP</term>
-            <description>Internet Message Access Protocol - protocol for an email client to retrieve
-              email from an email server over TCP/IP; IMAP4 defined in RFC 3501</description>
+            <description>Internet Message Access Protocol - Protocol for an email client to retrieve
+              email from an email server over TCP/IP; IMAP4 defined in RFC 3501.</description>
           </entry>
           <entry>
             <term>MAPI</term>
-            <description>Messaging Application Programming Interface for HTTP - protocol used by
+            <description>Messaging Application Programming Interface for HTTP - Protocol used by
               Microsoft Exchange for sending/receiving email; defined in <cite linkend="bibmapispec"
               />. </description>
           </entry>
@@ -113,18 +113,18 @@
           </entry>
           <entry>
             <term>POP</term>
-            <description>Post Office Protocol - protocol for an email client to retrieve email from
-              an email server over TCP/IP; POP3 defined in RFC 1939</description>
+            <description>Post Office Protocol - Protocol for an email client to retrieve email from
+              an email server over TCP/IP; POP3 defined in RFC 1939.</description>
           </entry>
           <entry>
             <term>RPC</term>
             <description>Remote Procedure Call - Protocol used by Microsoft Exchange to send/receive
-              MAPI commands; defined in MS-OXCRPC</description>
+              MAPI commands; defined in MS-OXCRPC.</description>
           </entry>
           <entry>
             <term>SMTP</term>
-            <description>Simple Mail Transfer Protocol - protocol for an email client to send email
-              to an email server over TCP/IP; SMTP defined in RFC 5321</description>
+            <description>Simple Mail Transfer Protocol - Protocol for an email client to send email
+              to an email server over TCP/IP; SMTP defined in RFC 5321.</description>
           </entry>
         </glossary>
       </subsection>
@@ -164,18 +164,19 @@
     <description>This <abbr linkend="EP"/> does not claim conformance to any packages.</description> -->
     <cclaims>
       <cclaim id="Conformance Statement">
-        <description> The <i>Protection Profile for Application Software</i> (App PP) defines the
-          baseline Security Functional Requirements (SFRs) and Security Assurance Requirements
-          (SARs) for application software products. This EP serves to extend the App PP baseline
-          with additional SFRs and associated Assurance Activities specific to an email client.
-          Assurance Activities are the actions that the evaluator performs in order to determine a
-          TOE’s compliance to the SFRs.<br/> This EP conforms to Common Criteria <cite
-            linkend="bibCC"/> for Information Technology Security Evaluation, Version 3.1, Revision
-          4. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to this
-          EP, the ST must include all components in this EP and the associated App PP that are:
-              <ul><li>unconditional (which are always required)</li>
-            <li>selection-based (which are required when certain selections are chosen in the
-              unconditional requirements)</li>
+        <description> The Protection Profile for Application Software (App PP) defines the
+          baseline Security Functional Requirements (SFRs) and Security Assurance
+          Requirements (SARs) for application software products. This EP serves to extend
+          the App PP baseline with additional SFRs and associated Assurance Activities
+          specific to a web browser. Assurance Activities are the actions that the
+          evaluator performs in order to determine a TOE’s compliance to the SFRs.<br/>
+          This EP conforms to Common Criteria <cite linkend="bibCC"/> for Information
+          Technology Security Evaluation, Version 3.1, Revision 4. It is CC Part 2
+          extended and CC Part 3 conformant. In order to be conformant to this EP, the ST
+          must include all components in this EP and the associated App PP that are:
+          <ul><li>unconditional (which are always required)</li>
+            <li>selection-based (which are required when certain selections are chosen
+              in the unconditional requirements)</li>
           </ul> and may include components that are: <ul><li>optional or</li>
             <li>objective.</li></ul></description>
       </cclaim>
@@ -191,7 +192,8 @@
     Evaluation. <br/> Notably, email clients are particularly at risk from the Network Attack threat
     identified in the App PP. Attackers can send malicious email messages directly to users, and the
     email client will render or otherwise process this untrusted content. <section title="Threats"
-      id="threats">
+      id="threats">The following threat is specific to email clients, and represents an
+      addition to those identified in the App PP. 
       <threats>
         <threat id="T.FLAWED_ADDON">
           <description> Email client functionality can be extended with integration of third-party
@@ -254,13 +256,9 @@
       </table></section>
 -->
   </chapter>
-
   <chapter title="Security Requirements" id="req">This chapter describes the security requirements
     which have to be fulfilled by the <abbr linkend="TOE"/>. Those requirements comprise functional
     components from Part 2 of <cite linkend="bibCC"/>. The following notations are used: <ul>
-      <li>
-        <b>Refinement</b> operation (denoted by <b>bold text</b>): is used to add details to a
-        requirement, and thus further restricts a requirement.</li>
       <li>
         <b>Selection</b> (denoted by <i>italicized text</i>): is used to select one or more options
         provided by the [CC] in stating a requirement.</li>
@@ -270,7 +268,7 @@
         value in square brackets indicates assignment.</li>
       <li>
         <b>Iteration</b> operation: are identified with a number inside parentheses (e.g.
-        "(1)")</li>
+        "(1)").</li>
     </ul>
     <section title="Security Functional Requirements" id="sfr">
       <subsection title="Cryptographic Support (FCS)" id="fcs">
