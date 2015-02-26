@@ -371,7 +371,7 @@
       <subsection title="User Data Protection (FDP)" id="fdp">
         <f-component id="FDP_NOT_EXT.2" name="Notification of S/MIME Status">
           <f-element id="FDP_NOT_EXT.2.1">
-            <title>The <abbr linkend="TSF"/> shall display a notification of the S/MIME status of
+            <title>The email client shall display a notification of the S/MIME status of
               received emails upon viewing.</title>
             <note role="application"> S/MIME status is whether the email has been signed or
               encrypted and whether the signature verifies and the associated certificate validates.
@@ -402,7 +402,7 @@
         </f-component>
         <f-component id="FDP_NOT_EXT.3" name="Notification of URI">
           <f-element id="FDP_NOT.EXT.3.1">
-            <title>The <abbr linkend="TSF"/> shall display the full Uniform Resource Identifier
+            <title>The email client shall display the full Uniform Resource Identifier
               (URI) of any embedded links.</title>
             <note role="application"> Embedded links are HTML URI objects which may have a tag (such
               as a word, phrase, icon, or picture) that obfuscates the URI of the link. The intent
@@ -435,7 +435,7 @@
         </f-component>
         <f-component id="FDP_REN_EXT.1" name="Rendering of Message Content">
           <f-element id="FDP_REN_EXT.1.1">
-            <title>The <abbr linkend="TSF"/> shall have a plaintext only mode.</title>
+            <title>The email client shall have a plaintext only mode.</title>
             <note role="application"> Plaintext only mode prevents the automatic downloading of
               images and rendering and execution of embedded objects such as HTML or JavaScript
               objects. FMT_SMF.1.1 function 3 addresses configuration of this mode. </note>
@@ -465,7 +465,7 @@
         </f-component>
         <f-component id="FDP_SMIME_EXT.1" name="S/MIME">
           <f-element id="FDP_SMIME_EXT.1.1">
-            <title>The <abbr linkend="TSF"/> shall use Secure/Multipurpose Internet Mail Extensions
+            <title>The email client shall use Secure/Multipurpose Internet Mail Extensions
               (S/MIME) to sign, verify, encrypt, and decrypt mail.</title>
             <note role="application">S/MIME is used to sign messages at the request of the user
               (FMT_SMF.1.1 Function 7) upon sending email via the Mail Transfer Agent. S/MIME is
