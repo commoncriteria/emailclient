@@ -625,10 +625,10 @@
         </f-component>
       </subsection>
       <subsection title="Security Management (FMT)" id="fmt">
-        <f-component id="FMT_MOF.1" name="Management of Functions in TSF">
-          <f-element id="FMT_MOF.1.1(1)">
-            <title>The email client shall restrict to the platform administrator the management
-              functions: <ul>
+        <f-component id="FMT_MO_EXT.1" name="Management of Functions Behavior">
+          <f-element id="FMT_MOF_EXT.1.1">
+            <title>The email client shall restrict the ability to manage/perform functions as follows:
+              <ul>
                 <li>X = Mandatory</li>
                 <li>O = Optional</li></ul>
               <table><tr class="header">
