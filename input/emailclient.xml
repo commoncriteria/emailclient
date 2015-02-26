@@ -625,7 +625,7 @@
         </f-component>
       </subsection>
       <subsection title="Security Management (FMT)" id="fmt">
-        <f-component id="FMT_MO_EXT.1" name="Management of Functions Behavior">
+        <f-component id="FMT_MOF_EXT.1" name="Management of Functions Behavior">
           <f-element id="FMT_MOF_EXT.1.1">
             <title>The email client shall restrict the ability to manage/perform functions as follows:
               <ul>
