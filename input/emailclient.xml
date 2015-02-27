@@ -159,7 +159,7 @@
         <description> The Protection Profile for Application Software (App PP) defines the baseline
           Security Functional Requirements (SFRs) and Security Assurance Requirements (SARs) for
           application software products. This EP serves to extend the App PP baseline with
-          additional SFRs and associated Assurance Activities specific to a web browser. Assurance
+          additional SFRs and associated Assurance Activities specific to an email client. Assurance
           Activities are the actions that the evaluator performs in order to determine a TOE’s
           compliance to the SFRs.<br/> This EP conforms to Common Criteria <cite linkend="bibCC"/>
           for Information Technology Security Evaluation, Version 3.1, Revision 4. It is CC Part 2
@@ -206,8 +206,8 @@
       <SOs>
         <SO id="O.ADDON_INTEGRITY">
           <description> To address issues associated with malicious or flawed plug-ins or
-            extensions, conformant browsers implement mechanisms to ensure their integrity. This
-            includes verification at installation time and update. </description>
+            extensions, conformant email clients implement mechanisms to ensure their integrity.
+            This includes verification at installation time and update. </description>
           <component-refer ref="fia_x509_ext.2.4"/>
           <component-refer ref="fpt_tud_ext.2"/>
         </SO>
@@ -371,8 +371,8 @@
       <subsection title="User Data Protection (FDP)" id="fdp">
         <f-component id="FDP_NOT_EXT.2" name="Notification of S/MIME Status">
           <f-element id="FDP_NOT_EXT.2.1">
-            <title>The email client shall display a notification of the S/MIME status of
-              received emails upon viewing.</title>
+            <title>The email client shall display a notification of the S/MIME status of received
+              emails upon viewing.</title>
             <note role="application"> S/MIME status is whether the email has been signed or
               encrypted and whether the signature verifies and the associated certificate validates.
               This notification satisfies FIA_X509_EXT.2.6. This notification must at least display
@@ -402,8 +402,8 @@
         </f-component>
         <f-component id="FDP_NOT_EXT.3" name="Notification of URI">
           <f-element id="FDP_NOT.EXT.3.1">
-            <title>The email client shall display the full Uniform Resource Identifier
-              (URI) of any embedded links.</title>
+            <title>The email client shall display the full Uniform Resource Identifier (URI) of any
+              embedded links.</title>
             <note role="application"> Embedded links are HTML URI objects which may have a tag (such
               as a word, phrase, icon, or picture) that obfuscates the URI of the link. The intent
               of this requirement is de-obfuscate the link. The URI may be displayed as a
@@ -465,8 +465,8 @@
         </f-component>
         <f-component id="FDP_SMIME_EXT.1" name="S/MIME">
           <f-element id="FDP_SMIME_EXT.1.1">
-            <title>The email client shall use Secure/Multipurpose Internet Mail Extensions
-              (S/MIME) to sign, verify, encrypt, and decrypt mail.</title>
+            <title>The email client shall use Secure/Multipurpose Internet Mail Extensions (S/MIME)
+              to sign, verify, encrypt, and decrypt mail.</title>
             <note role="application">S/MIME is used to sign messages at the request of the user
               (FMT_SMF.1.1 Function 7) upon sending email via the Mail Transfer Agent. S/MIME is
               used by a recipient to verify the digital signature on a signed message upon receipt
@@ -553,7 +553,7 @@
         <f-component id="FIA_SMIME_EXT.1" name="S/MIME">
           <f-element id="FIA_SMIME_EXT.1.1">
             <title>The email client shall only send/receive messages using the cryptographic
-              algorithms defined in FCS_SMIME_EXT.1. The TSF shall require those or stronger
+              algorithms defined in FCS_SMIME_EXT.1. The TSF shall require equivalent or more robust
               algorithms to be used for encryption. </title>
             <note role="application"> While S/MIME v.3.2 requires default algorithms, these default
               algorithms are substantially weaker than required by this EP. This requirement
@@ -627,8 +627,8 @@
       <subsection title="Security Management (FMT)" id="fmt">
         <f-component id="FMT_MOF_EXT.1" name="Management of Functions Behavior">
           <f-element id="FMT_MOF_EXT.1.1">
-            <title>The email client shall restrict the ability to manage/perform functions as follows:
-              <ul>
+            <title>The email client shall restrict the ability to manage/perform functions as
+              follows: <ul>
                 <li>X = Mandatory</li>
                 <li>O = Optional</li></ul>
               <table><tr class="header">
