@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.6</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-02-23</PPPubDate>
+      <PPPubDate>2015-03-02</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -550,7 +550,7 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="FIA_SMIME_EXT.1" name="S/MIME">
+        <!-- <f-component id="FIA_SMIME_EXT.1" name="S/MIME">
           <f-element id="FIA_SMIME_EXT.1.1">
             <title>The email client shall only send/receive messages using the cryptographic
               algorithms defined in FCS_SMIME_EXT.1. The TSF shall require equivalent or more robust
@@ -567,7 +567,7 @@
                   message.</test></testlist>
             </aactivity>
           </f-element>
-        </f-component>
+        </f-component> -->
         <f-component id="FIA_X509_EXT.2" name="X509 Authentication and Encryption">
           <f-element id="FIA_X509_EXT.2.1(2)">
             <title>The email client shall use X.509v3 certificates as defined by RFC 5280 to support
@@ -674,6 +674,9 @@
                     if the TSF cannot establish a connection to determine the validity of a
                     certificate</td>
                   <td>O</td><td>O</td></tr>
+                <!-- FIA_SMIME_EXT.1 -->
+                <tr><td>Configure email client to only send/receive messages using the cryptographic
+                    algorithms defined in FCS_SMIME_EXT.1. </td><td>O</td><td>0</td></tr>
               </table>
               <!-- <selectables linebreak="yes">
                 <selectable>Enable/disable downloading embedded objects globally and <selectables>
