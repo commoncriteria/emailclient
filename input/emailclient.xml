@@ -675,8 +675,8 @@
                     certificate</td>
                   <td>O</td><td>O</td></tr>
                 <!-- FIA_SMIME_EXT.1 -->
-                <tr><td>Configure email client to only send/receive messages using the cryptographic
-                    algorithms defined in FCS_SMIME_EXT.1. </td><td>O</td><td>0</td></tr>
+                <tr><td>Configure message sending/receiving to only use cryptographic algorithms
+                    defined in FCS_SMIME_EXT.1. </td><td>O</td><td>O</td></tr>
               </table>
               <!-- <selectables linebreak="yes">
                 <selectable>Enable/disable downloading embedded objects globally and <selectables>
