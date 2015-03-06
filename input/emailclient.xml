@@ -634,49 +634,52 @@
               <table><tr class="header">
                   <td>Management Function</td><td>Administrator</td><td>User</td></tr>
                 <!-- Revised -->
-                <tr><td>Enable/disable downloading embedded objects globally and by <selectables>
+                <tr><td>1. Enable/disable downloading embedded objects globally and by <selectables>
                       <selectable>domain</selectable>
                       <selectable>sender</selectable>
                       <selectable>no other method</selectable>
                     </selectables>
                   </td><td>O</td><td>O</td></tr>
-                <tr><td>Enable/disable plaintext only mode globally and by<selectables>
+                <tr><td>2. Enable/disable plaintext only mode globally and by<selectables>
                       <selectable>domain</selectable>
                       <selectable>sender</selectable>
                       <selectable>no other method</selectable>
                     </selectables>
                   </td><td>O</td><td>O</td></tr>
-                <tr><td>Enable/disable rendering and execution of attachments globally and by<selectables>
+                <tr><td>3. Enable/disable rendering and execution of attachments globally and by<selectables>
                       <selectable>domain</selectable>
                       <selectable>sender</selectable>
                       <selectable>no other method</selectable></selectables>
                   </td><td>O</td><td>O</td></tr>
-                <tr><td> Configure
-                        <selectables><selectable>visual</selectable><selectable>auditory</selectable></selectables>
-                    email notifications to display <selectables>
-                      <selectable>number of emails received</selectable>
-                      <selectable>subject</selectable>
-                      <selectable>sender</selectable>
-                      <selectable>partial content</selectable></selectables>
-                  </td><td>O</td><td>O</td></tr>
+                 <tr><td>4. Configure <selectables>
+                    <selectable>visual</selectable>
+                    <selectable>auditory</selectable></selectables>email notifications to
+                  enable/disable display of additional information about the email <selectables>
+                    <selectable>number of emails received</selectable>
+                    <selectable>subject</selectable>
+                    <selectable>sender</selectable>
+                    <selectable>partial content</selectable></selectables>
+                </td>
+                <td>O</td><td>O</td></tr>
                 <!-- Added to address the deleted FPD_NOT-EXT.1.1 -->
-                <tr><td>Enable/disable email notifications</td>
+                <tr><td>5. Enable/disable email notifications</td>
                   <td>O</td><td>O</td></tr>
-                <tr><td>Configure certificates for S/MIME use</td>
+                <tr><td>6. Configure certificates for S/MIME use</td>
                   <td>O</td><td>O</td></tr>
-                <tr><td>Configure certificates for TLS use</td>
+                <tr><td>7. Configure certificates for TLS use</td>
                   <td>O</td><td>O</td></tr>
-                <tr><td>Enable/disable display of email contents in email notifications</td>
+                <tr><td>8. Enable/disable display of email contents in email notifications</td>
                   <td>O</td><td>O</td></tr>
-                <tr><td>Configure a certificate repository for encryption</td>
+                <tr><td>9. Configure a certificate repository for encryption</td>
                   <td>O</td><td>O</td></tr>
-                <tr><td>Configure whether to establish a trusted channel or disallow establishment
+                <tr><td>10. Configure whether to establish a trusted channel or disallow establishment
                     if the TSF cannot establish a connection to determine the validity of a
                     certificate</td>
                   <td>O</td><td>O</td></tr>
                 <!-- FIA_SMIME_EXT.1 -->
-                <tr><td>Configure message sending/receiving to only use cryptographic algorithms
+                <tr><td>11. Configure message sending/receiving to only use cryptographic algorithms
                     defined in FCS_SMIME_EXT.1. </td><td>O</td><td>O</td></tr>
+                <tr><td>12. No other management functions</td><td>O</td><td>O</td></tr>
               </table>
               <!-- <selectables linebreak="yes">
                 <selectable>Enable/disable downloading embedded objects globally and <selectables>
@@ -724,8 +727,8 @@
               requirement is to allow the administrator to configure the email client with a policy
               that may not be over-ridden by the user. If the administrator has not set a policy for
               a particular function, the user may still perform that function. Enforcement of the
-              policy is done by the email cient itself, or the email client and the email client
-              platform in coordination with each other.<br/> For Function #9 per FIA_X509_EXT.2.2,
+              policy is done by the email client itself, or the email client and the email client
+              platform in coordination with each other.<br/> For Function #10 per FIA_X509_EXT.2.2,
               the administrator has the option of accepting or rejecting all certificates that
               cannot be validated, accepting a given certificate that cannot be validated, or not
               accepting a given certificate that cannot be validated. Depending on the choice that
@@ -739,7 +742,7 @@
                   client.</test>
                 <test>The evaluator shall create policies which collectively include all management
                   functions which are controlled by the (enterprise) administrator and cannot be
-                  overridden by the user as defined in FMT_MOF.1.1(2). The evaluator shall apply
+                  overridden by the user as defined in FMT_MOF.1.1. The evaluator shall apply
                   these policies to the client, attempt to override each setting as the user, and
                   ensure that the TSF does not permit it.</test>
               </testlist></aactivity>
