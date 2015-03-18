@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.6</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-03-02</PPPubDate>
+      <PPPubDate>2015-03-18</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -103,9 +103,9 @@
           </entry>
           <entry>
             <term>MAPI</term>
-            <description>Messaging Application Programming Interface for HTTP - Protocol used by
-              Microsoft Exchange for sending/receiving email; defined in <cite linkend="bibmapispec"
-              />. </description>
+            <description>Messaging Application Programming Interface - open specification used by
+              email clients including Microsoft Outlook and Thunderbird; defined in <cite
+                linkend="bibmapispec"/>. </description>
           </entry>
           <entry>
             <term>MTA</term>
@@ -131,18 +131,19 @@
     </section>
     <section title="Compliant Targets of Evaluation" id="TOEdescription"> This document provides an
       extended set of Security Functional Requirements (SFRs) for an email client, which is the
-      Target of Evaluation (TOE). <br/> The Protection Profile for Application Software (App PP)
-      defines the baseline SFRs for application software which runs on mobile devices ("apps"), as
-      well as on desktop and server platforms. This Extended Package (EP) for email clients is not
-      complete in itself, but rather extends the baseline of App PP. <br/> Email clients are
-      applications used to send, receive, access and manage email provided by an email server. The
-      complexity of email content and email clients has grown over time. Modern email clients can
-      render HTML as well as plaintext, and may include functionality to display common attachment
-      formats, such as Adobe PDF and Microsoft Word documents. Some email clients allow their
-      functionality to be modified by users through the addition of add-ons. This complex and rich
-      feature set makes email clients a target for attackers. Protocols have also been defined for
-      communicating between email clients and servers. Some clients support multiple protocols for
-      doing the same task, allowing them to be configured according to email server specifications. </section>
+      Target of Evaluation (TOE). The terms email client and TOE are interchangeable in this
+      document.<br/> The Protection Profile for Application Software (App PP) defines the baseline
+      SFRs for application software which runs on mobile devices ("apps"), as well as on desktop and
+      server platforms. This Extended Package (EP) for email clients is not complete in itself, but
+      rather extends the baseline of App PP. <br/> Email clients are applications used to send,
+      receive, access and manage email provided by an email server. The complexity of email content
+      and email clients has grown over time. Modern email clients can render HTML as well as
+      plaintext, and may include functionality to display common attachment formats, such as Adobe
+      PDF and Microsoft Word documents. Some email clients allow their functionality to be modified
+      by users through the addition of add-ons. This complex and rich feature set makes email
+      clients a target for attackers. Protocols have also been defined for communicating between
+      email clients and servers. Some clients support multiple protocols for doing the same task,
+      allowing them to be configured according to email server specifications. </section>
     <section title="Use Cases" id="usecases">Email clients perform tasks associated primarily with
       the following use case. <usecases>
         <usecase title="Sending, receiving, accessing, managing and displaying email">
@@ -160,11 +161,11 @@
           Security Functional Requirements (SFRs) and Security Assurance Requirements (SARs) for
           application software products. This EP serves to extend the App PP baseline with
           additional SFRs and associated Assurance Activities specific to an email client. Assurance
-          Activities are the actions that the evaluator performs in order to determine a TOE’s
-          compliance to the SFRs.<br/> This EP conforms to Common Criteria <cite linkend="bibCC"/>
-          for Information Technology Security Evaluation, Version 3.1, Revision 4. It is CC Part 2
-          extended and CC Part 3 conformant. In order to be conformant to this EP, the ST must
-          include all components in this EP and the associated App PP that are:
+          Activities are the actions that the evaluator performs in order to determine an email
+          client’s compliance to the SFRs.<br/> This EP conforms to Common Criteria <cite
+            linkend="bibCC"/> for Information Technology Security Evaluation, Version 3.1, Revision
+          4. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to this
+          EP, the ST must include all components in this EP and the associated App PP that are:
               <ul><li>unconditional (which are always required)</li>
             <li>selection-based (which are required when certain selections are chosen in the
               unconditional requirements)</li>
@@ -422,11 +423,14 @@
           </f-element>
         </f-component>
         <f-component id="FDP_PST_EXT.1" name="Storage of Persistent Information">
-          <f-element id="FDP_PST_EXT.1.1" status="objective">
+          <!-- Change FDP_PST_EXT.1 from an objective to optional requirement -->
+          <f-element id="FDP_PST_EXT.1.1" status="optional">
             <title>The email client shall be capable of operating without storing persistent
               information to the file system.</title>
-            <note role="application">Exceptions from this requirement are credentials and
-              configuration information.</note>
+            <note role="application">Any data that persists after the email client closes, including 
+              temporary files, is considered to be persistent data. Satisfying this requirement
+              would require the use of IMAP. It is not compatible with POP. Exceptions from this
+              requirement are credentials and configuration information.</note>
             <aactivity>The evaluator shall operate the email client for a period of time, ensuring
               that a wide variety of email client functionality has been exercised. The evaluator
               shall then examine the email client to ensure that no files have been written to the
@@ -651,16 +655,16 @@
                       <selectable>sender</selectable>
                       <selectable>no other method</selectable></selectables>
                   </td><td>O</td><td>O</td></tr>
-                 <tr><td>4. Configure <selectables>
-                    <selectable>visual</selectable>
-                    <selectable>auditory</selectable></selectables>email notifications to
-                  enable/disable display of additional information about the email <selectables>
-                    <selectable>number of emails received</selectable>
-                    <selectable>subject</selectable>
-                    <selectable>sender</selectable>
-                    <selectable>partial content</selectable></selectables>
-                </td>
-                <td>O</td><td>O</td></tr>
+                <tr><td>4. Configure <selectables>
+                      <selectable>visual</selectable>
+                      <selectable>auditory</selectable></selectables>email notifications to
+                    enable/disable display of additional information about the email <selectables>
+                      <selectable>number of emails received</selectable>
+                      <selectable>subject</selectable>
+                      <selectable>sender</selectable>
+                      <selectable>partial content</selectable></selectables>
+                  </td>
+                  <td>O</td><td>O</td></tr>
                 <!-- Added to address the deleted FPD_NOT-EXT.1.1 -->
                 <tr><td>5. Enable/disable email notifications</td>
                   <td>O</td><td>O</td></tr>
@@ -672,9 +676,9 @@
                   <td>O</td><td>O</td></tr>
                 <tr><td>9. Configure a certificate repository for encryption</td>
                   <td>O</td><td>O</td></tr>
-                <tr><td>10. Configure whether to establish a trusted channel or disallow establishment
-                    if the TSF cannot establish a connection to determine the validity of a
-                    certificate</td>
+                <tr><td>10. Configure whether to establish a trusted channel or disallow
+                    establishment if the TSF cannot establish a connection to determine the validity
+                    of a certificate</td>
                   <td>O</td><td>O</td></tr>
                 <!-- FIA_SMIME_EXT.1 -->
                 <tr><td>11. Configure message sending/receiving to only use cryptographic algorithms
@@ -742,9 +746,9 @@
                   client.</test>
                 <test>The evaluator shall create policies which collectively include all management
                   functions which are controlled by the (enterprise) administrator and cannot be
-                  overridden by the user as defined in FMT_MOF.1.1. The evaluator shall apply
-                  these policies to the client, attempt to override each setting as the user, and
-                  ensure that the TSF does not permit it.</test>
+                  overridden by the user as defined in FMT_MOF.1.1. The evaluator shall apply these
+                  policies to the client, attempt to override each setting as the user, and ensure
+                  that the TSF does not permit it.</test>
               </testlist></aactivity>
           </f-element>
         </f-component>
