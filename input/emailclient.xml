@@ -104,7 +104,7 @@
           <entry>
             <term>MAPI</term>
             <description>Messaging Application Programming Interface - open specification used by
-              email clients including Microsoft Outlook and Thunderbird; defined in <cite
+              email clients such as Microsoft Outlook and Thunderbird; defined in <cite
                 linkend="bibmapispec"/>. </description>
           </entry>
           <entry>
@@ -427,7 +427,7 @@
           <f-element id="FDP_PST_EXT.1.1" status="optional">
             <title>The email client shall be capable of operating without storing persistent
               information to the file system.</title>
-            <note role="application">Any data that persists after the email client closes, including 
+            <note role="application">Any data that persists after the email client closes, including
               temporary files, is considered to be persistent data. Satisfying this requirement
               would require the use of IMAP. It is not compatible with POP. Exceptions from this
               requirement are credentials and configuration information.</note>
@@ -518,7 +518,8 @@
               </testlist>
             </aactivity>
           </f-element>
-          <f-element id="FIA_SASL_EXT.1.2">
+          <f-element id="FIA_SASL_EXT.1.2" status="sel-based">
+            <selection-depends req="FTP_ITC.1.3"/>
             <title>The email client must support the POP3 CAPA and AUTH extensions for the SASL
               mechanism. </title>
           </f-element>
@@ -825,6 +826,8 @@
                 <selectable>MAPI/RPC</selectable>
                 <selectable>ActiveSync</selectable>
               </selectables>. </title>
+            <note role="application">If <i>POP</i> is chosen, then <linkref
+                linkend="FIA_SASL_EXT.1.2"/> shall be included in the <abbr linkend="ST"/>.</note>
             <aactivity> The evaluator shall examine the TSS to determine that it describes the
               details of the email client connecting to Mail User Agent and a Mail Transfer Agent in
               terms of the TLS connection, along with email client-specific options or procedures
