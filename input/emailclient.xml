@@ -444,7 +444,9 @@
             <title>The email client shall have a plaintext only mode.</title>
             <note role="application"> Plaintext only mode prevents the automatic downloading of
               images and rendering and execution of embedded objects such as HTML or JavaScript
-              objects. FMT_SMF.1.1 function 3 addresses configuration of this mode. </note>
+              objects. FMT_MOF.1.1 Function 2
+              <!-- changed from FMT_SMF.1.1 Function 3 to FMT_MOF.1.1 Function 2 -->addresses
+              configuration of this mode. </note>
             <aactivity> The evaluator shall ensure that the TSS describes plaintext only mode for
               sending and receiving messages. The evaluator shall verify that the TSS describes
               whether the email client is capable of rendering and executing HTML or JavaScript. If
@@ -474,15 +476,17 @@
             <title>The email client shall use Secure/Multipurpose Internet Mail Extensions (S/MIME)
               to sign, verify, encrypt, and decrypt mail.</title>
             <note role="application">S/MIME is used to sign messages at the request of the user
-              (FMT_SMF.1.1 Function 7) upon sending email via the Mail Transfer Agent. S/MIME is
-              used by a recipient to verify the digital signature on a signed message upon receipt
-              or viewing of the message. Encryption of messages occurs at the request of the user
-              (FMT_SMF.1.1 Function 8) upon sending email via the Mail Transfer Agent, and
-              decryption of emails occurs upon receipt or viewing of the message. Note that this
-              requirement does not mandate that S/MIME be used for all incoming/outgoing messages,
-              or that the email client automatically encrypt and/or sign/verify all sent or received
-              messages. This requirement only specifies that the mechanism for digital signature and
-              encryption must be S/MIME.</note>
+              <!-- removed FMT_SMF.1.1 Function 7 --> upon sending email via the Mail Transfer
+              Agent. S/MIME is used by a recipient to verify the digital signature on a signed
+              message upon receipt or viewing of the message. Encryption of messages occurs at the
+              request of the user (FMT_MOF_EXT.1.1 Function 7)
+              <!-- changed from FMT_SMF.1.1 Function 8 to FMT_MOF_EXT.1.1 Function 7 --> upon
+              sending email via the Mail Transfer Agent, and decryption of emails occurs upon
+              receipt or viewing of the message. Note that this requirement does not mandate that
+              S/MIME be used for all incoming/outgoing messages, or that the email client
+              automatically encrypt and/or sign/verify all sent or received messages. This
+              requirement only specifies that the mechanism for digital signature and encryption
+              must be S/MIME.</note>
             <aactivity>The evaluator shall verify that the TSS contains a description of the S/MIME
               implementation and its use to protect mail from undetected modification using digital
               signatures and unauthorized disclosure using encryption. The evaluator shall verify
@@ -531,12 +535,12 @@
           </f-element>
           <f-element id="FIA_SASL_EXT.1.4">
             <title>The email client must support the SMTP AUTH extension for the SASL mechanism. </title>
-            <note role="application"> In order for an email client to support PKI X.509
-              Certificates for POP3, IMAP and SMTP as required in this document, the client must
-              support the Simple Authentication and Security Layer (SASL) authentication method as
-              described in RFC 4422, the AUTH and CAPA extensions for POP3, as described in RFC
-              5043, the AUTHENTICATION and CAPABILITY extensions for IMAP, as described in RFC 4959
-              and the AUTH extension for SMTP, as described in RFC 4954. </note>
+            <note role="application"> In order for an email client to support PKI X.509 Certificates
+              for POP3, IMAP and SMTP as required in this document, the client must support the
+              Simple Authentication and Security Layer (SASL) authentication method as described in
+              RFC 4422, the AUTH and CAPA extensions for POP3, as described in RFC 5043, the
+              AUTHENTICATION and CAPABILITY extensions for IMAP, as described in RFC 4959 and the
+              AUTH extension for SMTP, as described in RFC 4954. </note>
             <aactivity> The evaluator shall examine the TSS to determine that it describes the
               details of the email client connecting to a Mail User Agent and a Mail Transfer Agent
               in terms of the SASL connection, along with email client -specific options or
@@ -827,7 +831,7 @@
                 <selectable>MAPI Extensions for HTTP</selectable>
                 <selectable>MAPI/RPC</selectable>
                 <selectable>ActiveSync</selectable>
-                  <selectable>[assignment: other protocol]</selectable>
+                <selectable>[assignment: other protocol]</selectable>
               </selectables>. </title>
             <note role="application">If <i>POP</i> is chosen, then <linkref
                 linkend="FIA_SASL_EXT.1.2"/> shall be included in the <abbr linkend="ST"/>.</note>
