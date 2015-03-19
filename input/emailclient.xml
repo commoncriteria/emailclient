@@ -688,7 +688,7 @@
                   <td>O</td><td>O</td></tr>
                 <!-- FIA_SMIME_EXT.1 -->
                 <tr><td>11. Configure message sending/receiving to only use cryptographic algorithms
-                    defined in FCS_SMIME_EXT.1. </td><td>O</td><td>O</td></tr>
+                    defined in <linkref linkend="FCS_SMIME_EXT.1"/>.</td><td>O</td><td>O</td></tr>
                 <tr><td>12. No other management functions</td><td>O</td><td>O</td></tr>
               </table>
               <!-- <selectables linebreak="yes">
