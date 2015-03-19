@@ -44,11 +44,6 @@
               Evaluation.</description>
           </entry>
           <entry>
-            <term><abbr title="Common Evaluation Methodology">CEM</abbr></term>
-            <description>Common Evaluation Methodology for Information Technology Security
-              Evaluation.</description>
-          </entry>
-          <entry>
             <term><abbr title="Extended Package">EP</abbr></term>
             <description>An implementation-independent set of security requirements for a category
               of products, which extends those in a Protection Profile.</description>
@@ -81,6 +76,11 @@
             <term><abbr title="Security Functional Requirement">SFR</abbr></term>
             <description>A requirement for security enforcement by the <abbr linkend="TOE"/>.
             </description>
+          </entry>
+          <entry>
+            <term><abbr title="Security Assurance Requirement">SAR</abbr></term>
+            <description>A requirement to assure the security of the <abbr linkend="TOE"
+            />. </description>
           </entry>
         </glossary>
       </subsection>
