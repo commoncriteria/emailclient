@@ -97,6 +97,11 @@
               extensions or other controls.</description>
           </entry>
           <entry>
+            <term>Email Client</term>
+            <description>Application used to send, receive, access and manage email provided 
+            by an email server. The terms email client and TOE are interchangeable in this document.</description>
+          </entry>
+          <entry>
             <term>IMAP</term>
             <description>Internet Message Access Protocol - Protocol for an email client to retrieve
               email from an email server over TCP/IP; IMAP4 defined in RFC 3501.</description>
