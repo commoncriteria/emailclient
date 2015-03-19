@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.6</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-03-18</PPPubDate>
+      <PPPubDate>2015-03-19</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -79,8 +79,8 @@
           </entry>
           <entry>
             <term><abbr title="Security Assurance Requirement">SAR</abbr></term>
-            <description>A requirement to assure the security of the <abbr linkend="TOE"
-            />. </description>
+            <description>A requirement to assure the security of the <abbr linkend="TOE"/>.
+            </description>
           </entry>
         </glossary>
       </subsection>
@@ -98,8 +98,9 @@
           </entry>
           <entry>
             <term>Email Client</term>
-            <description>Application used to send, receive, access and manage email provided 
-            by an email server. The terms email client and TOE are interchangeable in this document.</description>
+            <description>Application used to send, receive, access and manage email provided by an
+              email server. The terms email client and TOE are interchangeable in this
+              document.</description>
           </entry>
           <entry>
             <term>IMAP</term>
@@ -111,10 +112,6 @@
             <description>Messaging Application Programming Interface - open specification used by
               email clients such as Microsoft Outlook and Thunderbird; defined in <cite
                 linkend="bibmapispec"/>. </description>
-          </entry>
-          <entry>
-            <term>MTA</term>
-            <description>Mail Transfer Agent</description>
           </entry>
           <entry>
             <term>POP</term>
@@ -221,7 +218,7 @@
     </section>
   </chapter>
   <chapter title="Security Requirements" id="req">This chapter describes the security requirements
-    which have to be fulfilled by the <abbr linkend="TOE"/>. Those requirements comprise functional
+    which have to be fulfilled by the email client. Those requirements comprise functional
     components from Part 2 of <cite linkend="bibCC"/>. The following notations are used: <ul>
       <li>
         <b>Selection</b> (denoted by <i>italicized text</i>): is used to select one or more options
@@ -248,7 +245,7 @@
               email client is capable of both sending and receiving S/MIME v3.2 messages. </note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.2">
-            <title>The email client shall transmit the Content Encryption Algorithm Identifier for
+            <title>The email client shall transmit the ContentEncryptionAlgorithmIdentifier for
               AES-128 CBC and <selectables>
                 <selectable>AES-256 CBC</selectable>
                 <selectable>no others</selectable>
@@ -256,7 +253,7 @@
             <note role="application"> AES was added to CMS as defined in RFC 3565.</note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.3">
-            <title>The email client shall present the digest Algorithm field with the following
+            <title>The email client shall present the digestAlgorithm field with the following
               Message Digest Algorithm identifiers <selectables>
                 <selectable>id-sha256</selectable>
                 <selectable>id-sha384</selectable>
@@ -264,7 +261,7 @@
               </selectables> and no others. </title>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.4">
-            <title>The email client shall present the Algorithm Identifier field with the following
+            <title>The email client shall present the AlgorithmIdentifier field with the following
               sha256withRSAEncryption and <selectables linebreak="yes">
                 <selectable>sha384WithRSAEncryption</selectable>
                 <selectable>sha512WithRSAEncryption</selectable>
@@ -534,7 +531,7 @@
           </f-element>
           <f-element id="FIA_SASL_EXT.1.4">
             <title>The email client must support the SMTP AUTH extension for the SASL mechanism. </title>
-            <note role="application"> In order for an email clients to support PKI X.509
+            <note role="application"> In order for an email client to support PKI X.509
               Certificates for POP3, IMAP and SMTP as required in this document, the client must
               support the Simple Authentication and Security Layer (SASL) authentication method as
               described in RFC 4422, the AUTH and CAPA extensions for POP3, as described in RFC
@@ -761,7 +758,7 @@
       </subsection>
       <subsection title="Protection of the TSF (FPT)" id="fpt">
         <f-component id="FPT_TUD_EXT.1" name="Support for Trusted Add-ons">
-          <f-element id="FPT_TUD_EXT.1.1">
+          <f-element id="FPT_TUD_EXT.1.7">
             <title>The email client shall include the capability to load <selectables>
                 <selectable>no add-ons</selectable>
                 <selectable>trusted email client add-ons</selectable>
@@ -770,17 +767,17 @@
         </f-component>
         <f-component id="FPT_TUD_EXT.2" name="Trusted Installation and Updates for Add-ons">
           <f-element id="FPT_TUD_EXT.2.1" status="sel-based">
-            <selection-depends req="FPT_TUD_EXT.1.1"/>
+            <selection-depends req="FPT_TUD_EXT.1.7"/>
             <title>The email client shall provide the ability to query the current version of the
               add-on.</title>
           </f-element>
           <f-element id="FPT_TUD_EXT.2.2" status="sel-based">
-            <selection-depends req="FPT_TUD_EXT.1.1"/>
+            <selection-depends req="FPT_TUD_EXT.1.7"/>
             <title>The email client shall provide the ability to initiate the downloading of add-ons
               and add-on updates.</title>
           </f-element>
           <f-element id="FPT_TUD_EXT.2.3" status="sel-based">
-            <selection-depends req="FPT_TUD_EXT.1.1"/>
+            <selection-depends req="FPT_TUD_EXT.1.7"/>
             <title>The email client shall provide a means to verify add-ons using a digital
               signature mechanism and <selectables>
                 <selectable>published hash</selectable>
@@ -788,7 +785,7 @@
               </selectables> prior to installing the add-on.</title>
           </f-element>
           <f-element id="FPT_TUD_EXT.2.4" status="sel-based">
-            <selection-depends req="FPT_TUD_EXT.1.1"/>
+            <selection-depends req="FPT_TUD_EXT.1.7"/>
             <title>The email client shall prevent the automatic installation of add-ons.</title>
           </f-element>
           <aactivity>
@@ -830,6 +827,7 @@
                 <selectable>MAPI Extensions for HTTP</selectable>
                 <selectable>MAPI/RPC</selectable>
                 <selectable>ActiveSync</selectable>
+                  <selectable>[assignment: other protocol]</selectable>
               </selectables>. </title>
             <note role="application">If <i>POP</i> is chosen, then <linkref
                 linkend="FIA_SASL_EXT.1.2"/> shall be included in the <abbr linkend="ST"/>.</note>
@@ -1002,6 +1000,10 @@
       <entry>
         <term>KDF</term>
         <description>Key Derivation Function</description>
+      </entry>
+      <entry>
+        <term>MTA</term>
+        <description>Mail Transfer Agent</description>
       </entry>
       <entry>
         <term>NIST</term>
