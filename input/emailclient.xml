@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.6</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-03-19</PPPubDate>
+      <PPPubDate>2015-03-25</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -88,8 +88,8 @@
         <glossary>
           <entry>
             <term>ActiveSync</term>
-            <description>Microsoft protocol for synchronizing data between mobile and desktop
-              environments.</description>
+            <description>Microsoft protocol for synchronizing messaging and calendar data between
+              mobile clients and email servers.</description>
           </entry>
           <entry>
             <term>Add-on</term>
