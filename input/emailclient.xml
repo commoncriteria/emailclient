@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.6</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-03-25</PPPubDate>
+      <PPPubDate>2015-03-30</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -246,10 +246,7 @@
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.2">
             <title>The email client shall transmit the ContentEncryptionAlgorithmIdentifier for
-              AES-128 CBC and <selectables>
-                <selectable>AES-256 CBC</selectable>
-                <selectable>no others</selectable>
-              </selectables>. </title>
+              AES-128 CBC and AES-256 CBC. </title>
             <note role="application"> AES was added to CMS as defined in RFC 3565.</note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.3">
@@ -272,9 +269,11 @@
             <note role="application"> RFC 5751 mandates that receiving and sending agents support
               RSA with SHA256. The algorithms to be tested in the evaluated configuration are
               limited by this requirement. Any other algorithms implemented that do not comply with
-              these requirements should not be included in an evaluated email client. The ECDSA
+              these requirements should not be included in an evaluated email client.
+              <!-- The ECDSA
               algorithms listed above are preferred for implementation and will be mandated in
-              future versions of this EP. </note>
+              future versions of this EP. -->
+            </note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.5">
             <title>The email client shall use separate private keys (and associated certificates)
@@ -431,8 +430,9 @@
               information to the file system.</title>
             <note role="application">Any data that persists after the email client closes, including
               temporary files, is considered to be persistent data. Satisfying this requirement
-              would require the use of IMAP. It is not compatible with POP. Exceptions from this
-              requirement are credentials and configuration information.</note>
+              would require the use of a protocol such as IMAP or MAPI. It is not compatible with
+              POP. Exceptions from this requirement are credentials and configuration
+              information.</note>
             <aactivity>The evaluator shall operate the email client for a period of time, ensuring
               that a wide variety of email client functionality has been exercised. The evaluator
               shall then examine the email client to ensure that no files have been written to the
@@ -501,10 +501,13 @@
       </subsection>
       <subsection title="Identification and Authentication (FIA)" id="fia">
         <f-component id="FIA_SASL_EXT.1" name="Simple Authentication and Security Layer (SASL)">
-          <f-element id="FIA_SASL_EXT.1.1">
+          <f-element id="FIA_SASL_EXT.1.1" status="sel-based">
+            <selection-depends req="FTP_ITC.1.3"/>
             <title>The email client shall implement support for Simple Authentication and Security
               Layer (SASL) that complies with RFC 4422. </title>
-            <br/>
+            <note role="application">SASL is needed if the email implements SMTP to send messages.
+              Clients that do not use SMTP (e.g., ActiveSync or MAPI) would not need to implement
+              support for SASL.</note>
             <aactivity> The evaluator shall examine the TSS to determine that it describes the
               details of the email client connecting to Mail User Agent and a Mail Transfer Agent in
               terms of the SASL connection, along with email client -specific options or procedures
@@ -512,7 +515,6 @@
               that the operational guidance contains instructions for establishing the connection to
               the Mail User Agent and the Mail Transfer Agent. The evaluator shall also perform the
               following test:<br/>
-              <br/>
               <testlist>
                 <test>The evaluators shall ensure that the email client is able to initiate
                   communications with a Mail User Agent using POP, IMAP, and any assigned protocols
@@ -529,11 +531,13 @@
             <title>The email client must support the POP3 CAPA and AUTH extensions for the SASL
               mechanism. </title>
           </f-element>
-          <f-element id="FIA_SASL_EXT.1.3">
+          <f-element id="FIA_SASL_EXT.1.3" status="sel-based">
+            <selection-depends req="FTP_ITC.1.3"/>
             <title>The email client must support the IMAP CAPABILITY and AUTHENTICATE extensions for
               the SASL mechanism. </title>
           </f-element>
-          <f-element id="FIA_SASL_EXT.1.4">
+          <f-element id="FIA_SASL_EXT.1.4" status="sel-based">
+            <selection-depends req="FTP_ITC.1.3"/>
             <title>The email client must support the SMTP AUTH extension for the SASL mechanism. </title>
             <note role="application"> In order for an email client to support PKI X.509 Certificates
               for POP3, IMAP and SMTP as required in this document, the client must support the
@@ -594,8 +598,9 @@
           <f-element id="FIA_X509_EXT.2.4">
             <title> The email client shall prevent the installation of code if the code signing
               certificate is deemed invalid. </title>
-            <note role="application"> Certificates may optionally be used for trusted updates of
-              system software (FPT_TUD_EXT.1.3). </note>
+            <!--  App note REMOVED because geared more for an OS than an email client. Email client typically would not update system software
+              <note role="application"> Certificates may optionally be used for trusted updates of
+              system software (FPT_TUD_EXT.1.3). </note>  -->
           </f-element>
           <f-element id="FIA_X509_EXT.2.5">
             <title> The email client shall prevent the encryption of email if the email protection
@@ -774,6 +779,8 @@
             <selection-depends req="FPT_TUD_EXT.1.7"/>
             <title>The email client shall provide the ability to query the current version of the
               add-on.</title>
+            <note role="application">The email client may rely on the OS to provide this
+              capability.</note>
           </f-element>
           <f-element id="FPT_TUD_EXT.2.2" status="sel-based">
             <selection-depends req="FPT_TUD_EXT.1.7"/>
