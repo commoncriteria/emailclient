@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.6</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-4-02</PPPubDate>
+      <PPPubDate>2015-4-03</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -124,6 +124,16 @@
               MAPI commands; defined in MS-OXCRPC.</description>
           </entry>
           <entry>
+            <!-- Moved S/MIME here from FDP_SMIME_EXT.1.1 App Note -->
+            <term>S/MIME</term>
+            <description> S/MIME is used to sign messages at the request of the user upon sending
+              email via the Mail Transfer Agent. S/MIME is used by a recipient to verify the digital
+              signature on a signed message upon receipt or viewing of the message. Encryption of
+              messages occurs at the request of the user <!--(FMT_MOF_EXT.1.1 Function 7) --> upon
+              sending email via the Mail Transfer Agent, and decryption of emails occurs upon
+              receipt or viewing of the message. </description>
+          </entry>
+          <entry>
             <term>SMTP</term>
             <description>Simple Mail Transfer Protocol - Protocol for an email client to send email
               to an email server over TCP/IP; SMTP defined in RFC 5321.</description>
@@ -171,10 +181,11 @@
               <ul><li>unconditional (which are always required)</li>
             <li>selection-based (which are required when certain selections are chosen in the
               unconditional requirements)</li>
-          </ul> <!-- and may include components that are: <ul><li>optional or</li>
+          </ul>
+          <!-- and may include components that are: <ul><li>optional or</li>
             <li>objective.</li></ul> -->
-        and may include optional and/or objective components that are desirable but not required for conformance. 
-        </description>
+          and may include optional and/or objective components that are desirable but not required
+          for conformance. </description>
       </cclaim>
     </cclaims>
   </chapter>
@@ -351,13 +362,15 @@
                   the signature itself. The evaluator shall verify that the received message fails
                   the signature validation check. </test>
                 <test>The evaluator shall both send and receive an encrypted message using each of
-                  the algorithms specified in the ST. S/MIME is intended for end-to-end security. As
+                  the algorithms specified in the ST.
+                  <!-- Description not needed here: S/MIME is intended for end-to-end security. As
                   a result, it is not possible to have a third party inspecting email and also have
                   secure end-to-end communications. Therefore, it is not necessary to examine the
                   encrypted traffic in an attempt to determine the ciphersuite and the proper
-                  implementation. In addition, the evaluator shall use a man-in-the-middle tool to
-                  modify at least one byte of the message such that the encryption is no longer
-                  valid. The evaluator shall verify that the received message fails to decrypt. </test>
+                  implementation. In addition, the -->
+                  The evaluator shall use a man-in-the-middle tool to modify at least one byte of
+                  the message such that the encryption is no longer valid. The evaluator shall
+                  verify that the received message fails to decrypt. </test>
                 <test>The evaluator shall both send and receive a message that is both signed and
                   encrypted. It is not necessary to examine the encrypted traffic to meet the intent
                   of the requirement. In addition, the evaluator shall use a man-in-the-middle tool
@@ -392,7 +405,7 @@
             <note role="application"> The email client can define how this mechanism behaves, but it
               is required that a mechanism exist such that revocation status is supported via CRLs
               and so that certificates can be retrieved for sending/receiving messages. In this
-              requirement ―periodically‖ can be interpreted as a one-time function with local
+              requirement "periodically" can be interpreted as a one-time function with local
               storage, as a regularly scheduled retrieval, or as a mechanism that requires manual
               intervention. If the retrieval mechanism is periodic in nature, then the ST author
               will need to include an iteration of FCS for storage of CRLs; storage of certificates
@@ -473,11 +486,11 @@
           <f-element id="FDP_NOT_EXT.2.1">
             <title>The email client shall display a notification of the S/MIME status of received
               emails upon viewing.</title>
-            <note role="application"> S/MIME status is whether the email has been signed or
-              encrypted and whether the signature verifies and the associated certificate validates.
-              This notification satisfies FIA_X509_EXT.2.6. This notification must at least display
-              when the email content is viewed. Many implementations also display the S/MIME status
-              of each email when all emails are viewed as a list. </note>
+            <note role="application">S/MIME status is whether the email has been signed or encrypted
+              and whether the signature verifies and the associated certificate validates. This
+              notification satisfies FIA_X509_EXT.2.6. This notification must at least display when
+              the email content is viewed. Many implementations also display the S/MIME status of
+              each email when all emails are viewed as a list. </note>
             <aactivity> The evaluator shall ensure that the TSS describes notifications of S/MIME
               status, including whether S/MIME status is also indicated upon viewing a list of
               emails.<br/> The evaluator shall verify that the AGD guidance proves a description
@@ -507,7 +520,7 @@
             <note role="application"> Embedded links are HTML URI objects which may have a tag (such
               as a word, phrase, icon, or picture) that obfuscates the URI of the link. The intent
               of this requirement is de-obfuscate the link. The URI may be displayed as a
-              ―mouse-over‖ event or may be rendered next to the tag. </note>
+              "mouse-over" event or may be rendered next to the tag. </note>
             <aactivity> The evaluator shall verify that the TSS includes a description of how
               embedded links are rendered and the method by which the URI of the link is
               displayed.<br/> The evaluator shall ensure that the AGD guidance includes instruction
@@ -515,7 +528,7 @@
               The evaluator shall perform the following test:<br/>
               <testlist>
                 <test>The evaluator shall send the client an HTML message with an embedded link
-                  whose tag is not the URI itself (for example, ―click here‖). The evaluator shall
+                  whose tag is not the URI itself (for example, "click here"). The evaluator shall
                   view the message and following the instructions in the AGD guidance verify that
                   the full URI of the embedded link is displayed. </test></testlist>
             </aactivity>
@@ -573,18 +586,21 @@
           <f-element id="FDP_SMIME_EXT.1.1">
             <title>The email client shall use Secure/Multipurpose Internet Mail Extensions (S/MIME)
               to sign, verify, encrypt, and decrypt mail.</title>
-            <note role="application">S/MIME is used to sign messages at the request of the user
-              <!-- removed FMT_SMF.1.1 Function 7 --> upon sending email via the Mail Transfer
+            <note role="application"><!-- Description of S/MIME removed here:  
+              S/MIME is used to sign messages at the request of the user -->
+              <!-- removed FMT_SMF.1.1 Function 7 -->
+              <!-- More description of S/MIME removed here:  upon sending email via the Mail Transfer
               Agent. S/MIME is used by a recipient to verify the digital signature on a signed
               message upon receipt or viewing of the message. Encryption of messages occurs at the
-              request of the user (FMT_MOF_EXT.1.1 Function 7)
-              <!-- changed from FMT_SMF.1.1 Function 8 to FMT_MOF_EXT.1.1 Function 7 --> upon
+              request of the user (FMT_MOF_EXT.1.1 Function 7) -->
+              <!-- changed from FMT_SMF.1.1 Function 8 to FMT_MOF_EXT.1.1 Function 7 -->
+              <!-- More description of S/MIME removed here: upon
               sending email via the Mail Transfer Agent, and decryption of emails occurs upon
-              receipt or viewing of the message. Note that this requirement does not mandate that
-              S/MIME be used for all incoming/outgoing messages, or that the email client
-              automatically encrypt and/or sign/verify all sent or received messages. This
-              requirement only specifies that the mechanism for digital signature and encryption
-              must be S/MIME.</note>
+              receipt or viewing of the message. -->
+              Note that this requirement does not mandate that S/MIME be used for all
+              incoming/outgoing messages, or that the email client automatically encrypt and/or
+              sign/verify all sent or received messages. This requirement only specifies that the
+              mechanism for digital signature and encryption must be S/MIME.</note>
             <aactivity>The evaluator shall verify that the TSS contains a description of the S/MIME
               implementation and its use to protect mail from undetected modification using digital
               signatures and unauthorized disclosure using encryption. The evaluator shall verify
