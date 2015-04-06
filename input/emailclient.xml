@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.6</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-4-03</PPPubDate>
+      <PPPubDate>2015-4-06</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -379,11 +379,15 @@
                   decrypt, fails the signature validation check, and/or both. </test>
                 <test>The evaluator shall send a signed message to the email client using a
                   signature algorithm not supported according to the digestAlgorithm ID (e.g.,
-                  SHA1). The evaluator shall verify that the email client does not accept the
-                  message. </test>
+                  SHA1). The evaluator shall verify that the email client
+                  <!-- does not accept the
+                  message --> provides a notification
+                  that the contents cannot be verified because the signature algorithm is not
+                  supported. </test>
                 <test>The evaluator shall send an encrypted message to the email client using an
                   encryption algorithm not supported according to the AlgorithmIdentifier field. The
-                  evaluator shall verify that the email client does not accept the message. </test>
+                  evaluator shall verify that the email client does not <!-- accept the message -->
+                  display/decrypt the contents of the message. </test>
                 <test>The evaluator shall send the email client a message signed by a certificate
                   without the digitalSignature bit set. The evaluator shall verify that the email
                   client notifies the user that the signature is invalid. </test>
