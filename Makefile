@@ -7,7 +7,11 @@ SIMPLIFIED=$(OUT)/emailclient-table-reqs.html
 APP_HTML=$(OUT)/emailclient.html
 APP_OP_HTML=$(OUT)/emailclient-optionsappendix.html
 APP_RELEASE_HTML=$(OUT)/emailclient-release.html
+OUTPUTS=$(TABLE) $(SIMPLIFIED) $(APP_HTML) $(APP_OP_HTML) $(APP_RELEASE_HTML)
 all: $(TABLE) $(SIMPLIFIED) $(APP_HTML)
+
+spellcheck: $(OUTPUTS)
+	bash -c "hunspell -l -H -p <(cat schema/dictionary/*) output/*.html | sort"
 
 pp:$(APP_HTML)
 $(APP_HTML):  $(TRANS)/pp2html.xsl $(APP_XML)
