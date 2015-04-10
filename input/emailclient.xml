@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.6</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-4-06</PPPubDate>
+      <PPPubDate>2015-4-10</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -395,6 +395,9 @@
                   without the Email Protection purpose in the extendedKeyUsage. The evaluator shall
                   verify that the email client notifies the user that the signature is
                   invalid.</test>
+                <!-- Added test to address iterations of FCS for storage of CRLs -->
+                <test>The evaluator shall download the CRL at the assigned frequency and ensure it
+                  is protected in accordance with data storage for the email client.</test>
               </testlist>
             </aactivity>
           </f-element>
@@ -950,7 +953,8 @@
               communication via the trusted channel. </title>
           </f-element>
           <f-element id="FTP_ITC.1.3">
-            <title>The email client shall initiate communication via the trusted channel for
+            <!-- changed from "shall initiate communication" to shall "communicate" -->
+            <title>The email client shall communicate via the trusted channel for
                 <selectables linebreak="yes">
                 <selectable>IMAP</selectable>
                 <selectable>SMTP</selectable>
