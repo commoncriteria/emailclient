@@ -124,12 +124,11 @@
               MAPI commands; defined in MS-OXCRPC.</description>
           </entry>
           <entry>
-            <!-- Moved S/MIME here from FDP_SMIME_EXT.1.1 App Note -->
             <term>S/MIME</term>
             <description> S/MIME is used to sign messages at the request of the user upon sending
               email via the Mail Transfer Agent. S/MIME is used by a recipient to verify the digital
               signature on a signed message upon receipt or viewing of the message. Encryption of
-              messages occurs at the request of the user <!--(FMT_MOF_EXT.1.1 Function 7) --> upon
+              messages occurs at the request of the user upon
               sending email via the Mail Transfer Agent, and decryption of emails occurs upon
               receipt or viewing of the message. </description>
           </entry>
@@ -182,8 +181,6 @@
             <li>selection-based (which are required when certain selections are chosen in the
               unconditional requirements)</li>
           </ul>
-          <!-- and may include components that are: <ul><li>optional or</li>
-            <li>objective.</li></ul> -->
           and may include optional and/or objective components that are desirable but not required
           for conformance. </description>
       </cclaim>
@@ -284,18 +281,7 @@
               limited to the algorithms specified in the FCS_SMIME_EXT.1.4 selection. Any other
               algorithms implemented that do not comply with these requirements should not be
               included in an evaluated email client.
-              <!-- The ECDSA
-              algorithms listed above are preferred for implementation and will be mandated in
-              future versions of this EP. -->
             </note>
-            <!-- Changed wording of note below from "by this requirement" to "to the algorithms specified in FCS_SMIME_EXT.1.4" as shown above.
-              <note role="application"> RFC 5751 mandates that receiving and sending agents support
-              RSA with SHA256. The algorithms to be tested in the evaluated configuration are
-              limited by this requirement. Any other algorithms implemented that do not comply with
-              these requirements should not be included in an evaluated email client.  The ECDSA
-              algorithms listed above are preferred for implementation and will be mandated in
-              future versions of this EP.
-            </note> -->
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.5">
             <title>The email client shall use separate private keys (and associated certificates)
@@ -401,91 +387,6 @@
               </testlist>
             </aactivity>
           </f-element>
-          <!-- Revised 1.7 to remove periodically and have an assignable frequency.  Also added MOF Function 12 to make frequency configurable.
-          <f-element id="FCS_SMIME_EXT.1.7">
-            <title>The email client shall implement mechanisms for retrieval of Certificate
-              Revocation Lists (CRLs) and certificates <selectables linebreak="yes">
-                <selectable>each time needed</selectable>
-                <selectable>for incoming/outgoing messages</selectable>
-                <selectable>periodically</selectable>
-              </selectables>.</title>
-            <note role="application"> The email client can define how this mechanism behaves, but it
-              is required that a mechanism exist such that revocation status is supported via CRLs
-              and so that certificates can be retrieved for sending/receiving messages. In this
-              requirement "periodically" can be interpreted as a one-time function with local
-              storage, as a regularly scheduled retrieval, or as a mechanism that requires manual
-              intervention. If the retrieval mechanism is periodic in nature, then the ST author
-              will need to include an iteration of FCS for storage of CRLs; storage of certificates
-              is covered in FCS_CKM. The import of certificates and certificate chains is not
-              included in this requirement, but is covered in FIA_X509 and FMT_MOF. </note>
-            <aactivity>
-              <br/> The evaluator shall check the description of the implementation of S/MIME in the
-              TSS to ensure that the proper version is specified. In addition, the evaluator shall
-              verify that the algorithms supported are specified, and that the algorithms specified
-              are those listed for this component. The evaluator shall also review the Operational
-              Guidance to ensure that it contains instructions on configuring the email client such
-              that it complies to the description in the TSS.<br/> The evaluator shall verify that
-              the TSS describes the ContentEncryptionAlgorithmIdentifier and whether the required
-              behavior is performed by default or may be configured. If the TSS indicates that the
-              algorithms must be configured to meet the requirement, the evaluator shall verify that
-              the AGD guidance includes the configuration of this ID.<br/> The evaluator shall
-              verify that the TSS describes the digestAlgorithm and whether the required behavior is
-              performed by default or may be configured. If the TSS indicates that the algorithms
-              must be configured to meet the requirement, the evaluator shall verify that the AGD
-              guidance includes the configuration.<br/> The evaluator shall verify that the TSS
-              describes the AlgorithmIdentifier and whether the required behavior is performed by
-              default or may be configured. If the TSS indicates that the algorithms must be
-              configured to meet the requirement, the evaluator shall verify that the AGD guidance
-              includes the configuration of this ID.<br/> The evaluator shall verify that the TSS
-              describes the retrieval mechanisms for both CRLs and certificates as well as the
-              frequency at which these mechanisms are implemented. If the TSS indicates that the
-              mechanisms are configurable, the evaluator shall verify that the AGD guidance includes
-              the configuration of these mechanisms.<br/> The evaluator shall perform the following
-              tests:<br/> These tests can be performed in conjunction with the tests defined in
-              FIA_X509 for certificate/certificate chain verification. <testlist>
-                <test>The evaluator shall both send and receive a message with no protection (no
-                  signature or encryption) and verify that the message is transmitted properly and
-                  can be viewed at the receiving agent. This transmission can be performed as part
-                  of a number of mechanisms; it is sufficient to observe that the message arrives at
-                  the intended recipient with the same content as when sent.</test>
-                <test>The evaluator shall both send and receive a signed message using each of the
-                  algorithms specified in the ST corresponding to the requirement. In addition, the
-                  evaluator shall use a man-in-the-middle tool to modify at least one byte of the
-                  message such that the signature is no longer valid. This can be done by modifying
-                  the content of the message over which the signature is calculated or by modifying
-                  the signature itself. The evaluator shall verify that the received message fails
-                  the signature validation check. </test>
-                <test>The evaluator shall both send and receive an encrypted message using each of
-                  the algorithms specified in the ST. S/MIME is intended for end-to-end security. As
-                  a result, it is not possible to have a third party inspecting email and also have
-                  secure end-to-end communications. Therefore, it is not necessary to examine the
-                  encrypted traffic in an attempt to determine the ciphersuite and the proper
-                  implementation. In addition, the evaluator shall use a man-in-the-middle tool to
-                  modify at least one byte of the message such that the encryption is no longer
-                  valid. The evaluator shall verify that the received message fails to decrypt. </test>
-                <test>The evaluator shall both send and receive a message that is both signed and
-                  encrypted. It is not necessary to examine the encrypted traffic to meet the intent
-                  of the requirement. In addition, the evaluator shall use a man-in-the-middle tool
-                  to modify at least one byte of the message such that the encryption and signature
-                  are no longer valid. The evaluator shall verify that the received message fails to
-                  decrypt, fails the signature validation check, and/or both. </test>
-                <test>The evaluator shall send a signed message to the email client using a
-                  signature algorithm not supported according to the digestAlgorithm ID (e.g.,
-                  SHA1). The evaluator shall verify that the email client does not accept the
-                  message. </test>
-                <test>The evaluator shall send an encrypted message to the email client using an
-                  encryption algorithm not supported according to the AlgorithmIdentifier field. The
-                  evaluator shall verify that the email client does not accept the message. </test>
-                <test>The evaluator shall send the email client a message signed by a certificate
-                  without the digitalSignature bit set. The evaluator shall verify that the email
-                  client notifies the user that the signature is invalid. </test>
-                <test>The evaluator shall send the email client a message signed by a certificate
-                  without the Email Protection purpose in the extendedKeyUsage. The evaluator shall
-                  verify that the email client notifies the user that the signature is
-                  invalid.</test>
-              </testlist>
-            </aactivity>
-          </f-element> -->
         </f-component>
       </subsection>
       <subsection title="User Data Protection (FDP)" id="fdp">
@@ -593,17 +494,7 @@
           <f-element id="FDP_SMIME_EXT.1.1">
             <title>The email client shall use Secure/Multipurpose Internet Mail Extensions (S/MIME)
               to sign, verify, encrypt, and decrypt mail.</title>
-            <note role="application"><!-- Description of S/MIME removed here:  
-              S/MIME is used to sign messages at the request of the user -->
-              <!-- removed FMT_SMF.1.1 Function 7 -->
-              <!-- More description of S/MIME removed here:  upon sending email via the Mail Transfer
-              Agent. S/MIME is used by a recipient to verify the digital signature on a signed
-              message upon receipt or viewing of the message. Encryption of messages occurs at the
-              request of the user (FMT_MOF_EXT.1.1 Function 7) -->
-              <!-- changed from FMT_SMF.1.1 Function 8 to FMT_MOF_EXT.1.1 Function 7 -->
-              <!-- More description of S/MIME removed here: upon
-              sending email via the Mail Transfer Agent, and decryption of emails occurs upon
-              receipt or viewing of the message. -->
+            <note role="application">
               Note that this requirement does not mandate that S/MIME be used for all
               incoming/outgoing messages, or that the email client automatically encrypt and/or
               sign/verify all sent or received messages. This requirement only specifies that the
@@ -686,24 +577,6 @@
             </aactivity>
           </f-element>
         </f-component>
-        <!-- <f-component id="FIA_SMIME_EXT.1" name="S/MIME">
-          <f-element id="FIA_SMIME_EXT.1.1">
-            <title>The email client shall only send/receive messages using the cryptographic
-              algorithms defined in FCS_SMIME_EXT.1. The TSF shall require equivalent or more robust
-              algorithms to be used for encryption. </title>
-            <note role="application"> While S/MIME v.3.2 requires default algorithms, these default
-              algorithms are substantially weaker than required by this EP. This requirement
-              indicates that the evaluated configuration of the client must disable these weaker
-              algorithms. </note>
-            <aactivity> The TSS description and operational guidance associated with this
-              requirement are performed in conjunction with FCS_SMIME_EXT.1.<br/> The evaluator
-              shall perform the following test:<br/>
-              <testlist><test>The evaluator shall attempt to send the client a message signed and
-                  encrypted with disallowed algorithms and shall verify that the client rejects the
-                  message.</test></testlist>
-            </aactivity>
-          </f-element>
-        </f-component> -->
         <f-component id="FIA_X509_EXT.2" name="X509 Authentication and Encryption">
           <f-element id="FIA_X509_EXT.2.1(2)">
             <title>The email client shall use X.509v3 certificates as defined by RFC 5280 to support
@@ -719,9 +592,6 @@
           <f-element id="FIA_X509_EXT.2.4">
             <title> The email client shall prevent the installation of code if the code signing
               certificate is deemed invalid. </title>
-            <!--  App note REMOVED because geared more for an OS than an email client. Email client typically would not update system software
-              <note role="application"> Certificates may optionally be used for trusted updates of
-              system software (FPT_TUD_EXT.1.3). </note>  -->
           </f-element>
           <f-element id="FIA_X509_EXT.2.5">
             <title> The email client shall prevent the encryption of email if the email protection
@@ -798,7 +668,6 @@
                       <selectable>partial content</selectable></selectables>
                   </td>
                   <td>O</td><td>O</td></tr>
-                <!-- Added to address the deleted FPD_NOT-EXT.1.1 -->
                 <tr><td>5. Enable/disable email notifications</td>
                   <td>O</td><td>O</td></tr>
                 <tr><td>6. Configure certificates for S/MIME use</td>
@@ -817,47 +686,8 @@
                 <tr><td>11. Configure message sending/receiving to only use cryptographic algorithms
                     defined in <linkref linkend="FCS_SMIME_EXT.1"/>.</td><td>O</td><td>O</td></tr>
                 <tr><td>12. Configure CRL retrieval frequency</td><td>O</td><td>O</td></tr>
-                <!-- Added Function 12 to address frequency configuration for CRL in FCS_SMIME_EXT.1.7. -->
                 <tr><td>13. No other management functions</td><td>O</td><td>O</td></tr>
               </table>
-              <!-- <selectables linebreak="yes">
-                <selectable>Enable/disable downloading embedded objects globally and <selectables>
-                    <selectable>by domain</selectable>
-                    <selectable>by sender</selectable>
-                    <selectable>no other method</selectable>
-                  </selectables>
-                </selectable>
-                <selectable>Enable/disable plaintext only mode globally and <selectables>
-                    <selectable>by domain</selectable>
-                    <selectable>by sender</selectable>
-                    <selectable>no other method</selectable>
-                  </selectables>
-                </selectable>
-                <selectable>Enable/disable rendering and execution of attachments globally and <selectables>
-                    <selectable>by domain</selectable>
-                    <selectable>by sender</selectable>
-                    <selectable>no other method</selectable>
-                  </selectables>
-                </selectable>
-                <selectable>Configure <selectables>
-                    <selectable>visual</selectable>
-                    <selectable>auditory</selectable></selectables>email notifications to
-                  enable/disable display of additional information about the email <selectables>
-                    <selectable>number of emails received</selectable>
-                    <selectable>subject</selectable>
-                    <selectable>sender</selectable>
-                    <selectable>partial content</selectable></selectables></selectable> -->
-              <!-- Added to address the deleted FPD_NOT-EXT.1.1 -->
-              <!-- <selectable>Enable/disable email notifications</selectable>
-              <selectable>Configure certificates for S/MIME use</selectable>
-              <selectable>Configure certificates for TLS use</selectable>
-              <selectable>Enable/disable display of email contents in email
-                notifications</selectable>
-              <selectable>Configure a certificate repository for encryption</selectable>
-              <selectable>Configure whether to establish a trusted channel or disallow establishment
-                if the TSF cannot establish a connection to determine the validity of a
-                certificate</selectable>
-              <selectable>No other management functions</selectable> -->
             </title>
             <note role="application"> The Administrator is responsible for management activities,
               including setting the policy that is applied by the enterprise on the email client.
@@ -920,8 +750,7 @@
           </f-element>
           <f-element id="FPT_TUD_EXT.2.4" status="sel-based">
             <selection-depends req="FPT_TUD_EXT.1.7"/>
-            <title>The email client shall prevent the automatic installation of add-ons.</title>
-          </f-element>
+            <title>The email client shall prevent the automatic installation of add-ons.</title>  
           <aactivity>
             <tss>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it
             states that the <abbr linkend="TSF"/> will reject add-ons from unapproved sources.
@@ -949,6 +778,7 @@
             </testlist>
             </tests>
           </aactivity>
+          </f-element>
         </f-component>
       </subsection>
       <subsection title="Trusted Path/Channels (FTP)" id="ftp">
