@@ -120,8 +120,7 @@ xmlns:xhtml="http://www.w3.org/1999/xhtml">
 		<body>
 		<h1 class="title">
 			Requirements from the 
-			<br/><i>Protection Profile for Application Software</i>
-			<br/>for Email Clients
+			<br/><i>Protection Profile for Email Clients</i>
 		</h1>
 		<div class="center">
 			<img src="images/niaplogo.png" />
