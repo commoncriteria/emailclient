@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.6</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-4-10</PPPubDate>
+      <PPPubDate>2015-4-22</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -128,9 +128,9 @@
             <description> S/MIME is used to sign messages at the request of the user upon sending
               email via the Mail Transfer Agent. S/MIME is used by a recipient to verify the digital
               signature on a signed message upon receipt or viewing of the message. Encryption of
-              messages occurs at the request of the user upon
-              sending email via the Mail Transfer Agent, and decryption of emails occurs upon
-              receipt or viewing of the message. </description>
+              messages occurs at the request of the user upon sending email via the Mail Transfer
+              Agent, and decryption of emails occurs upon receipt or viewing of the message.
+            </description>
           </entry>
           <entry>
             <term>SMTP</term>
@@ -180,9 +180,8 @@
               <ul><li>unconditional (which are always required)</li>
             <li>selection-based (which are required when certain selections are chosen in the
               unconditional requirements)</li>
-          </ul>
-          and may include optional and/or objective components that are desirable but not required
-          for conformance. </description>
+          </ul> and may include optional and/or objective components that are desirable but not
+          required for conformance. </description>
       </cclaim>
     </cclaims>
   </chapter>
@@ -221,7 +220,7 @@
           <description> To address issues associated with malicious or flawed plug-ins or
             extensions, conformant email clients implement mechanisms to ensure their integrity.
             This includes verification at installation time and update. </description>
-          <component-refer ref="fia_x509_ext.2.4"/>
+          <component-refer ref="fia_x509_ext.2.5"/>
           <component-refer ref="fpt_tud_ext.2"/>
         </SO>
       </SOs>
@@ -278,10 +277,9 @@
               </selectables> and no other algorithms. </title>
             <note role="application"> RFC 5751 mandates that receiving and sending agents support
               RSA with SHA256. The algorithms to be tested in the evaluated configuration are
-              limited to the algorithms specified in the FCS_SMIME_EXT.1.4 selection. Any other
-              algorithms implemented that do not comply with these requirements should not be
-              included in an evaluated email client.
-            </note>
+              limited to the algorithms specified in the <linkref linkend="FCS_SMIME_EXT.1.4"/>
+              selection. Any other algorithms implemented that do not comply with these requirements
+              should not be included in an evaluated email client. </note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.5">
             <title>The email client shall use separate private keys (and associated certificates)
@@ -302,14 +300,15 @@
             <note role="application"> The email client can define how this mechanism behaves, but it
               is required that a mechanism exist such that revocation status is supported via CRLs
               and so that certificates can be retrieved for sending/receiving messages.
-              <!-- Added next sentence. --> Frequency is configurable in FMT_MOF_EXT.1.1 Function
-              12. In this requirement frequency <!-- changed from "periodic" to "frequency" --> can
-              be interpreted as a one-time function with local storage, as a regularly scheduled
-              retrieval, or as a mechanism that requires manual intervention. If the retrieval
-              mechanism is periodic in nature, then the ST author will need to include an iteration
-              of FCS for storage of CRLs; storage of certificates is covered in FCS_CKM. The import
-              of certificates and certificate chains is not included in this requirement, but is
-              covered in FIA_X509 and FMT_MOF. </note>
+              <!-- Added next sentence. --> Frequency is configurable in <linkref
+                linkend="FMT_MOF_EXT.1.1"/> Function 12. In this requirement frequency
+              <!-- changed from "periodic" to "frequency" --> can be interpreted as a one-time
+              function with local storage, as a regularly scheduled retrieval, or as a mechanism
+              that requires manual intervention. If the retrieval mechanism is periodic in nature,
+              then the ST author will need to include an iteration of FCS for storage of CRLs;
+              storage of certificates is covered in FCS_CKM. The import of certificates and
+              certificate chains is not included in this requirement, but is covered in FIA_X509 and
+              FMT_MOF. </note>
             <aactivity>
               <br/> The evaluator shall check the description of the implementation of S/MIME in the
               TSS to ensure that the proper version is specified. In addition, the evaluator shall
@@ -405,7 +404,7 @@
               (with appropriate visual figures) of the S/MIME status notification(s), including how
               each of encryption, verified and validated signature, and unverified and unvalidated
               signature are indicated.<br/> The evaluator shall perform the following tests and may
-              perform them in conjunction with the tests for FCS_SMIME_EXT.1:<br/>
+              perform them in conjunction with the tests for <linkref linkend="FCS_SMIME_EXT.1"/>:<br/>
               <testlist>
                 <test>The evaluator shall send the client an unencrypted and unsigned email and
                   verify that no notifications are present upon viewing.</test>
@@ -494,11 +493,11 @@
           <f-element id="FDP_SMIME_EXT.1.1">
             <title>The email client shall use Secure/Multipurpose Internet Mail Extensions (S/MIME)
               to sign, verify, encrypt, and decrypt mail.</title>
-            <note role="application">
-              Note that this requirement does not mandate that S/MIME be used for all
-              incoming/outgoing messages, or that the email client automatically encrypt and/or
-              sign/verify all sent or received messages. This requirement only specifies that the
-              mechanism for digital signature and encryption must be S/MIME.</note>
+            <note role="application"> Note that this requirement does not mandate that S/MIME be
+              used for all incoming/outgoing messages, or that the email client automatically
+              encrypt and/or sign/verify all sent or received messages. This requirement only
+              specifies that the mechanism for digital signature and encryption must be
+              S/MIME.</note>
             <aactivity>The evaluator shall verify that the TSS contains a description of the S/MIME
               implementation and its use to protect mail from undetected modification using digital
               signatures and unauthorized disclosure using encryption. The evaluator shall verify
@@ -507,7 +506,8 @@
               envelopes.<br/> The evaluator shall ensure that the AGD guidance includes instructions
               for configuring a certificate for S/MIME use and instructions for signing and
               encrypting email.<br/> Tests for this element are performed in conjunction with tests
-              for FCS_SMIME_EXT.1, FDP_NOT_EXT.1, and FMT_SMF.1.</aactivity><br/>
+              for <linkref linkend="FCS_SMIME_EXT.1"/>, <linkref linkend="FDP_NOT_EXT.1"/>, and
+                <linkref linkend="FMT_SMF.1."/></aactivity><br/>
           </f-element>
         </f-component>
       </subsection>
@@ -578,26 +578,26 @@
           </f-element>
         </f-component>
         <f-component id="FIA_X509_EXT.2" name="X509 Authentication and Encryption">
-          <f-element id="FIA_X509_EXT.2.1(2)">
+          <f-element id="FIA_X509_EXT.2.3">
             <title>The email client shall use X.509v3 certificates as defined by RFC 5280 to support
               encryption and authentication for S/MIME. </title>
           </f-element>
-          <f-element id="FIA_X509_EXT.2.3">
+          <f-element id="FIA_X509_EXT.2.4">
             <title> The email client shall prevent the establishment of a trusted communication
               channel when the peer certificate is deemed invalid. </title>
             <note role="application"> Trusted communication channels include any of TLS performed by
               the TSF. Validity is determined by the certificate path, the expiration date, and the
               revocation status in accordance with RFC 5280. </note>
           </f-element>
-          <f-element id="FIA_X509_EXT.2.4">
+          <f-element id="FIA_X509_EXT.2.5">
             <title> The email client shall prevent the installation of code if the code signing
               certificate is deemed invalid. </title>
           </f-element>
-          <f-element id="FIA_X509_EXT.2.5">
+          <f-element id="FIA_X509_EXT.2.6">
             <title> The email client shall prevent the encryption of email if the email protection
               certificate is deemed invalid. </title>
           </f-element>
-          <f-element id="FIA_X509_EXT.2.6">
+          <f-element id="FIA_X509_EXT.2.7">
             <title> The email client shall notify the user if an email is signed with an invalid
               certificate. </title>
             <aactivity> The evaluator shall check the TSS to ensure that it describes how the email
@@ -686,7 +686,8 @@
                 <tr><td>11. Configure message sending/receiving to only use cryptographic algorithms
                     defined in <linkref linkend="FCS_SMIME_EXT.1"/>.</td><td>O</td><td>O</td></tr>
                 <tr><td>12. Configure CRL retrieval frequency</td><td>O</td><td>O</td></tr>
-                <tr><td>13. No other management functions</td><td>O</td><td>O</td></tr>
+                <tr><td>13. Configure add-on whitelist</td><td>O</td><td>O</td></tr>
+                <tr><td>14. No other management functions</td><td>O</td><td>O</td></tr>
               </table>
             </title>
             <note role="application"> The Administrator is responsible for management activities,
@@ -750,34 +751,30 @@
           </f-element>
           <f-element id="FPT_TUD_EXT.2.4" status="sel-based">
             <selection-depends req="FPT_TUD_EXT.1.7"/>
-            <title>The email client shall prevent the automatic installation of add-ons.</title>  
-          <aactivity>
-            <tss>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it
-            states that the <abbr linkend="TSF"/> will reject add-ons from unapproved sources.
-            </tss>
-            <guidance>The evaluator shall examine the operational guidance to verify that
-            it includes instructions on how to configure the email client with trusted add-on
-            sources.
-            </guidance>
-            <tests>
-              The evaluator shall perform the following tests
-            <testlist>
-              <test>The evaluator shall configure the email client with trusted add-on sources. The
-                evaluator shall create or obtain a add-on signed by a trusted source and attempt to
-                install it. The evaluator shall verify that the signature on the add-on is
-                valid.</test>
-              <test>The evaluator shall create or obtain an add-on signed by an untrusted source and
-                attempt to install it. The evaluator shall verify that the signed add-on is
-                rejected.</test>
-              <test>The evaluator shall create or obtain an add-on signed with an invalid
-                certificate and attempt to install it. The evaluator shall verify that the signed
-                add-on is valid.</test>
-              <test>The evaluator shall create or obtain an add-on signed by a trusted source,
-                modify the add-on without re-signing it, and attempt to install it. The evaluator
-                shall verify that the signed add-on is rejected.</test>
-            </testlist>
-            </tests>
-          </aactivity>
+            <title>The email client shall prevent the automatic installation of add-ons.</title>
+            <aactivity>
+              <tss>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it states
+                that the <abbr linkend="TSF"/> will reject add-ons from unapproved sources. </tss>
+              <guidance>The evaluator shall examine the operational guidance to verify that it
+                includes instructions on how to configure the email client with trusted add-on
+                sources. </guidance>
+              <tests> The evaluator shall perform the following tests <testlist>
+                  <test>The evaluator shall configure the email client with trusted add-on sources.
+                    The evaluator shall create or obtain a add-on signed by a trusted source and
+                    attempt to install it. The evaluator shall verify that the signature on the
+                    add-on is valid.</test>
+                  <test>The evaluator shall create or obtain an add-on signed by an untrusted source
+                    and attempt to install it. The evaluator shall verify that the signed add-on is
+                    rejected.</test>
+                  <test>The evaluator shall create or obtain an add-on signed with an invalid
+                    certificate and attempt to install it. The evaluator shall verify that the
+                    signed add-on is valid.</test>
+                  <test>The evaluator shall create or obtain an add-on signed by a trusted source,
+                    modify the add-on without re-signing it, and attempt to install it. The
+                    evaluator shall verify that the signed add-on is rejected.</test>
+                </testlist>
+              </tests>
+            </aactivity>
           </f-element>
         </f-component>
       </subsection>
@@ -789,8 +786,8 @@
           </f-element>
           <f-element id="FTP_ITC.1.3">
             <!-- changed from "shall initiate communication" to shall "communicate" -->
-            <title>The email client shall communicate via the trusted channel for
-                <selectables linebreak="yes">
+            <title>The email client shall communicate via the trusted channel for <selectables
+                linebreak="yes">
                 <selectable>IMAP</selectable>
                 <selectable>SMTP</selectable>
                 <selectable>POP</selectable>
