@@ -125,12 +125,12 @@
           </entry>
           <entry>
             <term>S/MIME</term>
-            <description> S/MIME is used to sign messages at the request of the user upon sending
-              email via the Mail Transfer Agent. S/MIME is used by a recipient to verify the digital
-              signature on a signed message upon receipt or viewing of the message. Encryption of
-              messages occurs at the request of the user upon sending email via the Mail Transfer
-              Agent, and decryption of emails occurs upon receipt or viewing of the message.
-            </description>
+            <description> Secure/Multipurpose Internet Mail Extensions - S/MIME is used to sign
+              messages at the request of the user upon sending email via the Mail Transfer Agent.
+              S/MIME is used by a recipient to verify the digital signature on a signed message upon
+              receipt or viewing of the message. Encryption of messages occurs at the request of the
+              user upon sending email via the Mail Transfer Agent, and decryption of emails occurs
+              upon receipt or viewing of the message. </description>
           </entry>
           <entry>
             <term>SMTP</term>
@@ -395,9 +395,9 @@
               emails upon viewing.</title>
             <note role="application">S/MIME status is whether the email has been signed or encrypted
               and whether the signature verifies and the associated certificate validates. This
-              notification satisfies FIA_X509_EXT.2.6. This notification must at least display when
-              the email content is viewed. Many implementations also display the S/MIME status of
-              each email when all emails are viewed as a list. </note>
+              notification satisfies <linkref linkend="FIA_X509_EXT.2.6"/>. This notification must
+              at least display when the email content is viewed. Many implementations also display
+              the S/MIME status of each email when all emails are viewed as a list. </note>
             <aactivity> The evaluator shall ensure that the TSS describes notifications of S/MIME
               status, including whether S/MIME status is also indicated upon viewing a list of
               emails.<br/> The evaluator shall verify that the AGD guidance proves a description
@@ -609,8 +609,8 @@
               channel and protecting email. If the requirement that the administrator is able to
               specify the default action, then the evaluator shall ensure that the operational
               guidance contains instructions on how this configuration action is performed.<br/> The
-              evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1 that
-              requires the use of certificates:<br/>
+              evaluator shall perform Test 1 for each function listed in <linkref
+                linkend="FIA_X509_EXT.2.1"/> that requires the use of certificates:<br/>
               <testlist>
                 <test>The evaluator shall demonstrate that using a certificate without a valid
                   certification path results in the function failing or in the receipt of a user
@@ -622,10 +622,11 @@
                   certificate validation checking to be performed in at least some part by
                   communicating with a non-TOE IT entity. The evaluator shall then manipulate the
                   environment so that the email client is unable to verify the validity of the
-                  certificate, and observe that the action selected in FIA_X509_EXT.2.2 is
-                  performed. If the selected action is administrator-configurable, then the
-                  evaluator shall follow the operational guidance to determine that all supported
-                  administrator-configurable options behave in their documented manner.</test>
+                  certificate, and observe that the action selected in <linkref
+                    linkend="FIA_X509_EXT.2.2"/> is performed. If the selected action is
+                  administrator-configurable, then the evaluator shall follow the operational
+                  guidance to determine that all supported administrator-configurable options behave
+                  in their documented manner.</test>
               </testlist>
             </aactivity>
           </f-element>
@@ -698,14 +699,15 @@
               that may not be over-ridden by the user. If the administrator has not set a policy for
               a particular function, the user may still perform that function. Enforcement of the
               policy is done by the email client itself, or the email client and the email client
-              platform in coordination with each other.<br/> For Function #10 per FIA_X509_EXT.2.2,
-              the administrator has the option of accepting or rejecting all certificates that
-              cannot be validated, accepting a given certificate that cannot be validated, or not
-              accepting a given certificate that cannot be validated. Depending on the choice that
-              the administrator has made in FIA_X509_EXT.2.2, the trusted connection will either be
-              allowed for all certificates that cannot be validated, disallowed for all certificates
-              cannot be validated, allowed for a given certificate that cannot be validated, or
-              disallowed for a given certificate that cannot be validated. </note>
+              platform in coordination with each other.<br/> For Function #10 per <linkref
+                linkend="FIA_X509_EXT.2.2"/>, the administrator has the option of accepting or
+              rejecting all certificates that cannot be validated, accepting a given certificate
+              that cannot be validated, or not accepting a given certificate that cannot be
+              validated. Depending on the choice that the administrator has made in <linkref
+                linkend="FIA_X509_EXT.2.2"/>, the trusted connection will either be allowed for all
+              certificates that cannot be validated, disallowed for all certificates cannot be
+              validated, allowed for a given certificate that cannot be validated, or disallowed for
+              a given certificate that cannot be validated. </note>
             <aactivity> The evaluator shall perform the following tests:<br/>
               <testlist>
                 <test>The evaluator shall use the test environment to deploy policies to the email
