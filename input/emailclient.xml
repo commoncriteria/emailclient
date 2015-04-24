@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.6</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-4-22</PPPubDate>
+      <PPPubDate>2015-4-24</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -381,21 +381,22 @@
                   verify that the email client notifies the user that the signature is
                   invalid.</test>
                 <!-- Added test to address iterations of FCS for storage of CRLs -->
-                <test>The evaluator shall download the CRL at the assigned frequency and ensure it
-                  is protected in accordance with data storage for the email client.</test>
+                <test>The evaluator shall verify that the email client downloads the CRL at the
+                  assigned frequency.</test>
               </testlist>
             </aactivity>
           </f-element>
         </f-component>
       </subsection>
       <subsection title="User Data Protection (FDP)" id="fdp">
-        <f-component id="FDP_NOT_EXT.2" name="Notification of S/MIME Status">
-          <f-element id="FDP_NOT_EXT.2.1">
+        <f-component id="FDP_NOT_EXT.1" name="Notification of S/MIME Status">
+          <f-element id="FDP_NOT_EXT.1.1">
+            <!-- numbering changed from .2 to .1 -->
             <title>The email client shall display a notification of the S/MIME status of received
               emails upon viewing.</title>
             <note role="application">S/MIME status is whether the email has been signed or encrypted
               and whether the signature verifies and the associated certificate validates. This
-              notification satisfies <linkref linkend="FIA_X509_EXT.2.6"/>. This notification must
+              notification satisfies <linkref linkend="FIA_X509_EXT.2.7"/>. This notification must
               at least display when the email content is viewed. Many implementations also display
               the S/MIME status of each email when all emails are viewed as a list. </note>
             <aactivity> The evaluator shall ensure that the TSS describes notifications of S/MIME
@@ -420,8 +421,9 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="FDP_NOT_EXT.3" name="Notification of URI">
-          <f-element id="FDP_NOT.EXT.3.1">
+        <f-component id="FDP_NOT_EXT.2" name="Notification of URI">
+          <f-element id="FDP_NOT_EXT.2.1">
+            <!-- numbering changed .3 to .2 -->
             <title>The email client shall display the full Uniform Resource Identifier (URI) of any
               embedded links.</title>
             <note role="application"> Embedded links are HTML URI objects which may have a tag (such
@@ -450,7 +452,7 @@
               temporary files, is considered to be persistent data. Satisfying this requirement
               would require the use of a protocol such as IMAP or MAPI. It is not compatible with
               POP. Exceptions from this requirement are credentials and configuration
-              information.</note>
+              information including CRLs.</note>
             <aactivity>The evaluator shall operate the email client for a period of time, ensuring
               that a wide variety of email client functionality has been exercised. The evaluator
               shall then examine the email client to ensure that no files have been written to the
@@ -462,7 +464,7 @@
             <title>The email client shall have a plaintext only mode.</title>
             <note role="application"> Plaintext only mode prevents the automatic downloading of
               images and rendering and execution of embedded objects such as HTML or JavaScript
-              objects. FMT_MOF.1.1 Function 2
+              objects. <linkref linkend="FMT_MOF_EXT.1.1"/> Function 2
               <!-- changed from FMT_SMF.1.1 Function 3 to FMT_MOF.1.1 Function 2 -->addresses
               configuration of this mode. </note>
             <aactivity> The evaluator shall ensure that the TSS describes plaintext only mode for
@@ -505,16 +507,17 @@
               or viewing of the message contents, and whether messages are stored with their S/MIME
               envelopes.<br/> The evaluator shall ensure that the AGD guidance includes instructions
               for configuring a certificate for S/MIME use and instructions for signing and
-              encrypting email.<br/> Tests for this element are performed in conjunction with tests
-              for <linkref linkend="FCS_SMIME_EXT.1"/>, <linkref linkend="FDP_NOT_EXT.1"/>, and
-                <linkref linkend="FMT_SMF.1."/></aactivity><br/>
+              encrypting email.<br/>
+              <!-- RECOMMEND REMOVING THIS
+                Tests for this element are performed in conjunction with tests
+              for <linkref linkend="FCS_SMIME_EXT.1"/>, and FMT_SMF.1.(<cite linkend="bibAppPP"/>) --></aactivity><br/>
           </f-element>
         </f-component>
       </subsection>
       <subsection title="Identification and Authentication (FIA)" id="fia">
         <f-component id="FIA_SASL_EXT.1" name="Simple Authentication and Security Layer (SASL)">
           <f-element id="FIA_SASL_EXT.1.1" status="sel-based">
-            <selection-depends req="FTP_ITC.1.3"/>
+            <selection-depends req="FTP_ITC_EXT.1.3"/>
             <title>The email client shall implement support for Simple Authentication and Security
               Layer (SASL) that complies with RFC 4422. </title>
             <note role="application">SASL is needed if the email implements SMTP to send messages.
@@ -539,17 +542,17 @@
             </aactivity>
           </f-element>
           <f-element id="FIA_SASL_EXT.1.2" status="sel-based">
-            <selection-depends req="FTP_ITC.1.3"/>
+            <selection-depends req="FTP_ITC_EXT.1.3"/>
             <title>The email client must support the POP3 CAPA and AUTH extensions for the SASL
               mechanism. </title>
           </f-element>
           <f-element id="FIA_SASL_EXT.1.3" status="sel-based">
-            <selection-depends req="FTP_ITC.1.3"/>
+            <selection-depends req="FTP_ITC_EXT.1.3"/>
             <title>The email client must support the IMAP CAPABILITY and AUTHENTICATE extensions for
               the SASL mechanism. </title>
           </f-element>
           <f-element id="FIA_SASL_EXT.1.4" status="sel-based">
-            <selection-depends req="FTP_ITC.1.3"/>
+            <selection-depends req="FTP_ITC_EXT.1.3"/>
             <title>The email client must support the SMTP AUTH extension for the SASL mechanism. </title>
             <note role="application"> In order for an email client to support PKI X.509 Certificates
               for POP3, IMAP and SMTP as required in this document, the client must support the
@@ -609,8 +612,8 @@
               channel and protecting email. If the requirement that the administrator is able to
               specify the default action, then the evaluator shall ensure that the operational
               guidance contains instructions on how this configuration action is performed.<br/> The
-              evaluator shall perform Test 1 for each function listed in <linkref
-                linkend="FIA_X509_EXT.2.1"/> that requires the use of certificates:<br/>
+              evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1 (<cite
+                linkend="bibAppPP"/>) that requires the use of certificates:<br/>
               <testlist>
                 <test>The evaluator shall demonstrate that using a certificate without a valid
                   certification path results in the function failing or in the receipt of a user
@@ -622,8 +625,8 @@
                   certificate validation checking to be performed in at least some part by
                   communicating with a non-TOE IT entity. The evaluator shall then manipulate the
                   environment so that the email client is unable to verify the validity of the
-                  certificate, and observe that the action selected in <linkref
-                    linkend="FIA_X509_EXT.2.2"/> is performed. If the selected action is
+                  certificate, and observe that the action selected in FIA_X509_EXT.2.2 (<cite
+                    linkend="bibAppPP"/>) is performed. If the selected action is
                   administrator-configurable, then the evaluator shall follow the operational
                   guidance to determine that all supported administrator-configurable options behave
                   in their documented manner.</test>
@@ -699,12 +702,12 @@
               that may not be over-ridden by the user. If the administrator has not set a policy for
               a particular function, the user may still perform that function. Enforcement of the
               policy is done by the email client itself, or the email client and the email client
-              platform in coordination with each other.<br/> For Function #10 per <linkref
-                linkend="FIA_X509_EXT.2.2"/>, the administrator has the option of accepting or
+              platform in coordination with each other.<br/> For Function #10 per FIA_X509_EXT.2.2
+                (<cite linkend="bibAppPP"/>), the administrator has the option of accepting or
               rejecting all certificates that cannot be validated, accepting a given certificate
               that cannot be validated, or not accepting a given certificate that cannot be
-              validated. Depending on the choice that the administrator has made in <linkref
-                linkend="FIA_X509_EXT.2.2"/>, the trusted connection will either be allowed for all
+              validated. Depending on the choice that the administrator has made in FIA_X509_EXT.2.2
+                (<cite linkend="bibAppPP"/>), the trusted connection will either be allowed for all
               certificates that cannot be validated, disallowed for all certificates cannot be
               validated, allowed for a given certificate that cannot be validated, or disallowed for
               a given certificate that cannot be validated. </note>
@@ -714,9 +717,9 @@
                   client.</test>
                 <test>The evaluator shall create policies which collectively include all management
                   functions which are controlled by the (enterprise) administrator and cannot be
-                  overridden by the user as defined in FMT_MOF.1.1. The evaluator shall apply these
-                  policies to the client, attempt to override each setting as the user, and ensure
-                  that the TSF does not permit it.</test>
+                  overridden by the user as defined in <linkref linkend="FMT_MOF_EXT.1.1"/>. The
+                  evaluator shall apply these policies to the client, attempt to override each
+                  setting as the user, and ensure that the TSF does not permit it.</test>
               </testlist></aactivity>
           </f-element>
         </f-component>
@@ -781,12 +784,12 @@
         </f-component>
       </subsection>
       <subsection title="Trusted Path/Channels (FTP)" id="ftp">
-        <f-component id="FTP_ITC.1" name="Inter-TSF Trusted Channel">
-          <f-element id="FTP_ITC.1.2">
+        <f-component id="FTP_ITC_EXT.1" name="Inter-TSF Trusted Channel">
+          <f-element id="FTP_ITC_EXT.1.2">
             <title>The email client shall permit the <abbr linkend="TSF"/> to initiate or receive
               communication via the trusted channel. </title>
           </f-element>
-          <f-element id="FTP_ITC.1.3">
+          <f-element id="FTP_ITC_EXT.1.3">
             <!-- changed from "shall initiate communication" to shall "communicate" -->
             <title>The email client shall communicate via the trusted channel for <selectables
                 linebreak="yes">
@@ -798,8 +801,10 @@
                 <selectable>ActiveSync</selectable>
                 <selectable>[assignment: other protocol]</selectable>
               </selectables>. </title>
-            <note role="application">If <i>POP</i> is chosen, then <linkref
-                linkend="FIA_SASL_EXT.1.2"/> shall be included in the <abbr linkend="ST"/>.</note>
+            <note role="application"><linkref linkend="FIA_SASL_EXT.1"/> is a selection-based
+              requirement that depends upon selections in FTP_ITC_EXT.1.3. For example, if
+                <i>POP</i> is chosen, then <linkref linkend="FIA_SASL_EXT.1.2"/> shall be included
+              in the <abbr linkend="ST"/>.</note>
             <aactivity> The evaluator shall examine the TSS to determine that it describes the
               details of the email client connecting to Mail User Agent and a Mail Transfer Agent in
               terms of the TLS connection, along with email client-specific options or procedures
@@ -874,7 +879,8 @@
       <entry id="bibAppPP">
         <tag>AppPP</tag>
         <description>
-          <a href="https://www.niap-ccevs.org/pp/">Protection Profile for Application Software</a>
+          <a href="https://www.niap-ccevs.org/pp/PP_APP_v1.1/">Protection Profile for Application
+            Software</a>
         </description>
       </entry>
       <entry id="bibmapispec">
