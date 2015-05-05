@@ -337,7 +337,7 @@
               the configuration of these mechanisms.<br/> The evaluator shall perform the following
               tests:<br/> These tests can be performed in conjunction with the tests defined in
               FIA_X509 for certificate/certificate chain verification <!-- Added --> and
-              FDP_NOT_EXT.1. <testlist>
+              <linkref linkend="FDP_NOT_EXT.1" />. <testlist>
                 <test>The evaluator shall both send and receive a message with no protection (no
                   signature or encryption) and verify that the message is transmitted properly and
                   can be viewed at the receiving agent. This transmission can be performed as part
@@ -352,7 +352,7 @@
                   the signature itself. The evaluator shall verify that the received message fails
                   the signature validation check. </test> -->
                 <test>The evaluator shall both send and receive a signed message using each of the
-                  algorithms specified in the ST corresponding to the requiremnt. The evaluator
+                  algorithms specified in the ST corresponding to the requirement. The evaluator
                   shall verify that the sent and received messages pass the signature validation
                   check. After verifying the signatures are valid, the evaluator shall send a signed
                   message using each of the algorithms specified in the ST and use a
@@ -747,7 +747,7 @@
       <subsection title="Protection of the TSF (FPT)" id="fpt">
         <f-component id="FPT_TUD_EXT.2" name="Support for Trusted Add-ons">
           <f-element id="FPT_TUD_EXT.2.1">
-            <!-- Renumber 1.7 to 2.1 -->
+            <!-- Renumbered 1.7 to 2.1 -->
             <title>The email client shall include the capability to load <selectables>
                 <selectable>no add-ons</selectable>
                 <selectable>trusted email client add-ons</selectable>
