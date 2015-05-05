@@ -4,9 +4,9 @@
   <PPReference title="PP Reference" id="ID003">
     <ReferenceTable>
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
-      <PPVersion>Draft 1.6</PPVersion>
+      <PPVersion>Draft 1.7</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-4-24</PPPubDate>
+      <PPPubDate>2015-5-5</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -299,16 +299,14 @@
               </selectables>.</title>
             <note role="application"> The email client can define how this mechanism behaves, but it
               is required that a mechanism exist such that revocation status is supported via CRLs
-              and so that certificates can be retrieved for sending/receiving messages.
-              <!-- Added next sentence. --> Frequency is configurable in <linkref
-                linkend="FMT_MOF_EXT.1.1"/> Function 12. In this requirement frequency
-              <!-- changed from "periodic" to "frequency" --> can be interpreted as a one-time
-              function with local storage, as a regularly scheduled retrieval, or as a mechanism
-              that requires manual intervention. If the retrieval mechanism is periodic in nature,
-              then the ST author will need to include an iteration of FCS for storage of CRLs;
-              storage of certificates is covered in FCS_CKM. The import of certificates and
-              certificate chains is not included in this requirement, but is covered in FIA_X509 and
-              FMT_MOF. </note>
+              and so that certificates can be retrieved for sending/receiving messages. Frequency is
+              configurable in <linkref linkend="FMT_MOF_EXT.1.1"/> Function 12. In this requirement
+              frequency can be interpreted as a one-time function with local storage, as a regularly
+              scheduled retrieval, or as a mechanism that requires manual intervention. If the
+              retrieval mechanism is periodic in nature, then the ST author will need to include an
+              iteration of FCS for storage of CRLs; storage of certificates is covered in FCS_CKM.
+              The import of certificates and certificate chains is not included in this requirement,
+              but is covered in FIA_X509 and FMT_MOF. </note>
             <aactivity>
               <br/> The evaluator shall check the description of the implementation of S/MIME in the
               TSS to ensure that the proper version is specified. In addition, the evaluator shall
@@ -347,15 +345,10 @@
                   the signature itself. The evaluator shall verify that the received message fails
                   the signature validation check. </test>
                 <test>The evaluator shall both send and receive an encrypted message using each of
-                  the algorithms specified in the ST.
-                  <!-- Description not needed here: S/MIME is intended for end-to-end security. As
-                  a result, it is not possible to have a third party inspecting email and also have
-                  secure end-to-end communications. Therefore, it is not necessary to examine the
-                  encrypted traffic in an attempt to determine the ciphersuite and the proper
-                  implementation. In addition, the -->
-                  The evaluator shall use a man-in-the-middle tool to modify at least one byte of
-                  the message such that the encryption is no longer valid. The evaluator shall
-                  verify that the received message fails to decrypt. </test>
+                  the algorithms specified in the ST. The evaluator shall use a man-in-the-middle
+                  tool to modify at least one byte of the message such that the encryption is no
+                  longer valid. The evaluator shall verify that the received message fails to
+                  decrypt. </test>
                 <test>The evaluator shall both send and receive a message that is both signed and
                   encrypted. It is not necessary to examine the encrypted traffic to meet the intent
                   of the requirement. In addition, the evaluator shall use a man-in-the-middle tool
@@ -364,15 +357,13 @@
                   decrypt, fails the signature validation check, and/or both. </test>
                 <test>The evaluator shall send a signed message to the email client using a
                   signature algorithm not supported according to the digestAlgorithm ID (e.g.,
-                  SHA1). The evaluator shall verify that the email client
-                  <!-- does not accept the
-                  message --> provides a notification
+                  SHA1). The evaluator shall verify that the email client provides a notification
                   that the contents cannot be verified because the signature algorithm is not
                   supported. </test>
                 <test>The evaluator shall send an encrypted message to the email client using an
                   encryption algorithm not supported according to the AlgorithmIdentifier field. The
-                  evaluator shall verify that the email client does not <!-- accept the message -->
-                  display/decrypt the contents of the message. </test>
+                  evaluator shall verify that the email client does not display/decrypt the contents
+                  of the message. </test>
                 <test>The evaluator shall send the email client a message signed by a certificate
                   without the digitalSignature bit set. The evaluator shall verify that the email
                   client notifies the user that the signature is invalid. </test>
@@ -380,7 +371,6 @@
                   without the Email Protection purpose in the extendedKeyUsage. The evaluator shall
                   verify that the email client notifies the user that the signature is
                   invalid.</test>
-                <!-- Added test to address iterations of FCS for storage of CRLs -->
                 <test>The evaluator shall verify that the email client downloads the CRL at the
                   assigned frequency.</test>
               </testlist>
@@ -391,7 +381,6 @@
       <subsection title="User Data Protection (FDP)" id="fdp">
         <f-component id="FDP_NOT_EXT.1" name="Notification of S/MIME Status">
           <f-element id="FDP_NOT_EXT.1.1">
-            <!-- numbering changed from .2 to .1 -->
             <title>The email client shall display a notification of the S/MIME status of received
               emails upon viewing.</title>
             <note role="application">S/MIME status is whether the email has been signed or encrypted
@@ -423,7 +412,6 @@
         </f-component>
         <f-component id="FDP_NOT_EXT.2" name="Notification of URI">
           <f-element id="FDP_NOT_EXT.2.1">
-            <!-- numbering changed .3 to .2 -->
             <title>The email client shall display the full Uniform Resource Identifier (URI) of any
               embedded links.</title>
             <note role="application"> Embedded links are HTML URI objects which may have a tag (such
@@ -444,15 +432,14 @@
           </f-element>
         </f-component>
         <f-component id="FDP_PST_EXT.1" name="Storage of Persistent Information">
-          <!-- Change FDP_PST_EXT.1 from an objective to optional requirement -->
           <f-element id="FDP_PST_EXT.1.1" status="optional">
             <title>The email client shall be capable of operating without storing persistent
               information to the file system.</title>
             <note role="application">Any data that persists after the email client closes, including
               temporary files, is considered to be persistent data. Satisfying this requirement
               would require the use of a protocol such as IMAP or MAPI. It is not compatible with
-              POP. Exceptions from this requirement are credentials and configuration
-              information including CRLs.</note>
+              POP. Exceptions from this requirement are credentials and configuration information
+              including CRLs.</note>
             <aactivity>The evaluator shall operate the email client for a period of time, ensuring
               that a wide variety of email client functionality has been exercised. The evaluator
               shall then examine the email client to ensure that no files have been written to the
@@ -464,9 +451,8 @@
             <title>The email client shall have a plaintext only mode.</title>
             <note role="application"> Plaintext only mode prevents the automatic downloading of
               images and rendering and execution of embedded objects such as HTML or JavaScript
-              objects. <linkref linkend="FMT_MOF_EXT.1.1"/> Function 2
-              <!-- changed from FMT_SMF.1.1 Function 3 to FMT_MOF.1.1 Function 2 -->addresses
-              configuration of this mode. </note>
+              objects. <linkref linkend="FMT_MOF_EXT.1.1"/> Function 2 addresses configuration of
+              this mode. </note>
             <aactivity> The evaluator shall ensure that the TSS describes plaintext only mode for
               sending and receiving messages. The evaluator shall verify that the TSS describes
               whether the email client is capable of rendering and executing HTML or JavaScript. If
@@ -508,9 +494,7 @@
               envelopes.<br/> The evaluator shall ensure that the AGD guidance includes instructions
               for configuring a certificate for S/MIME use and instructions for signing and
               encrypting email.<br/>
-              <!-- RECOMMEND REMOVING THIS
-                Tests for this element are performed in conjunction with tests
-              for <linkref linkend="FCS_SMIME_EXT.1"/>, and FMT_SMF.1.(<cite linkend="bibAppPP"/>) --></aactivity><br/>
+            </aactivity><br/>
           </f-element>
         </f-component>
       </subsection>
@@ -644,7 +628,6 @@
                 <li>O = Optional</li></ul>
               <table><tr class="header">
                   <td>Management Function</td><td>Administrator</td><td>User</td></tr>
-                <!-- Revised -->
                 <tr><td>1. Enable/disable downloading embedded objects globally and by <selectables>
                       <selectable>domain</selectable>
                       <selectable>sender</selectable>
@@ -686,7 +669,6 @@
                     establishment if the TSF cannot establish a connection to determine the validity
                     of a certificate</td>
                   <td>O</td><td>O</td></tr>
-                <!-- FIA_SMIME_EXT.1 -->
                 <tr><td>11. Configure message sending/receiving to only use cryptographic algorithms
                     defined in <linkref linkend="FCS_SMIME_EXT.1"/>.</td><td>O</td><td>O</td></tr>
                 <tr><td>12. Configure CRL retrieval frequency</td><td>O</td><td>O</td></tr>
@@ -790,7 +772,6 @@
               communication via the trusted channel. </title>
           </f-element>
           <f-element id="FTP_ITC_EXT.1.3">
-            <!-- changed from "shall initiate communication" to shall "communicate" -->
             <title>The email client shall communicate via the trusted channel for <selectables
                 linebreak="yes">
                 <selectable>IMAP</selectable>
@@ -814,11 +795,9 @@
               following tests:<br/>
               <testlist>
                 <test>The evaluators shall ensure that the email client is able to initiate
-                  communications with a Mail User Agent
-                  <!-- Changed from "using POP, IMAP and any assigned protocols" to "using any selected or assigned protocols" -->
-                  using any selected or assigned protocols specified in the requirement over TLS,
-                  setting up the connections as described in the operational guidance and ensuring
-                  that communication is successful.</test>
+                  communications with a Mail User Agent using any selected or assigned protocols
+                  specified in the requirement over TLS, setting up the connections as described in
+                  the operational guidance and ensuring that communication is successful.</test>
                 <test>The evaluators shall ensure that the email client is able to initiate
                   communications with a Mail Transfer Agent using SMTP and any assigned protocols
                   specified in the requirement over TLS, setting up the connections as described in
