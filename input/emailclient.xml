@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.7</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-5-5</PPPubDate>
+      <PPPubDate>2015-5-8</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -30,10 +30,21 @@
     </entry>
   </RevisionHistory>
   <chapter title="Introduction" id="int">
-    <section title="Overview" id="ppoverview">The scope of this Extended Package (EP) is to describe
+    <!-- Rewrote Overview 
+      <section title="Overview" id="ppoverview">The scope of this Extended Package (EP) is to describe
       the security functionality of email clients in terms of <cite linkend="bibCC"/>. This EP is
       not complete in itself, but rather extends the security requirements of the Protection Profile
-      for Application Software (<cite linkend="bibAppPP"/>). </section>
+      for Application Software (<cite linkend="bibAppPP"/>). </section> -->
+    <section title="Overview" id="ppoverview"> The Application Software Extended Package (EP) for
+      Email Clients describes the extended security functionality of email clients in terms of <cite
+        linkend="bibCC"/>. As an extension of the Protection Profile for Application Software (<cite
+        linkend="bibAppPP"/>), this EP specifies additional security functional requirements for an
+      email client. In order to determine conformance with the comprehensive set of security
+      requirements, the security target (ST) for an email client must include all required
+      components in this EP in conjunction with all the required components from the overarching
+        (<cite linkend="bibAppPP"/>). Required components include unconditional requirements,
+      selection-based requirements in accordance with the selections and/or assignments expressed,
+      and may also include optional and/or objective components if desired. </section>
     <section id="glossary" title="Terms">The following sections provide both Common Criteria and
       technology terms used in this Extended Package. <subsection title="Common Criteria Terms"
         id="ccterms">
@@ -336,8 +347,8 @@
               mechanisms are configurable, the evaluator shall verify that the AGD guidance includes
               the configuration of these mechanisms.<br/> The evaluator shall perform the following
               tests:<br/> These tests can be performed in conjunction with the tests defined in
-              FIA_X509 for certificate/certificate chain verification <!-- Added --> and
-              <linkref linkend="FDP_NOT_EXT.1" />. <testlist>
+              FIA_X509 for certificate/certificate chain verification <!-- Added --> and <linkref
+                linkend="FDP_NOT_EXT.1"/>. <testlist>
                 <test>The evaluator shall both send and receive a message with no protection (no
                   signature or encryption) and verify that the message is transmitted properly and
                   can be viewed at the receiving agent. This transmission can be performed as part
@@ -707,7 +718,8 @@
                 <tr><td>11. Configure message sending/receiving to only use cryptographic algorithms
                     defined in <linkref linkend="FCS_SMIME_EXT.1"/>.</td><td>O</td><td>O</td></tr>
                 <tr><td>12. Configure CRL retrieval frequency</td><td>O</td><td>O</td></tr>
-                <tr><td>13. Configure add-on whitelist</td><td>O</td><td>O</td></tr>
+                <tr><td>13. <!-- Revised from Configure add-on whitelist -->Add/remove whitelisted
+                    add-ons</td><td>O</td><td>O</td></tr>
                 <tr><td>14. No other management functions</td><td>O</td><td>O</td></tr>
               </table>
             </title>
@@ -752,8 +764,8 @@
                 <selectable>no add-ons</selectable>
                 <selectable>trusted email client add-ons</selectable>
               </selectables>.</title>
-            <note role="application">FPT_TUD_EXT.3 are selection-based requirements that depend on the 
-              selection made in FPT_TUD_EXT.2.1</note>
+            <note role="application">FPT_TUD_EXT.3 are selection-based requirements that depend on
+              the selection made in FPT_TUD_EXT.2.1</note>
           </f-element>
         </f-component>
         <f-component id="FPT_TUD_EXT.3" name="Trusted Installation and Updates for Add-ons">
@@ -768,8 +780,12 @@
           <f-element id="FPT_TUD_EXT.3.2" status="sel-based">
             <!-- Renumbered 2.2 to 3.2 -->
             <selection-depends req="FPT_TUD_EXT.2.1"/>
-            <title>The email client shall provide the ability to initiate the downloading of add-ons
+            <!-- Added whitelisted -->
+            <title>The email client shall provide the ability to initiate the downloading of whitelisted add-ons
               and add-on updates.</title>
+            <!-- Added app note -->
+            <note role="application">This requirement does not pertain to add-ons installed outside
+              the email client.</note>
           </f-element>
           <f-element id="FPT_TUD_EXT.3.3" status="sel-based">
             <!-- Renumbered 2.3 to 3.3 -->
@@ -785,6 +801,8 @@
             <selection-depends req="FPT_TUD_EXT.2.1"/>
             <title>The email client shall prevent the automatic installation of add-ons.</title>
             <aactivity>
+              <!-- The following stmt was added --> The following tests require the developer to
+              provide tools not typically found on consumer products. <br/>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it states
                 that the <abbr linkend="TSF"/> will reject add-ons from unapproved sources. </tss>
               <guidance>The evaluator shall examine the operational guidance to verify that it
@@ -792,7 +810,7 @@
                 sources. </guidance>
               <tests> The evaluator shall perform the following tests <testlist>
                   <test>The evaluator shall configure the email client with trusted add-on sources.
-                    The evaluator shall create or obtain a add-on signed by a trusted source and
+                    The evaluator shall create or obtain an add-on signed by a trusted source and
                     attempt to install it. The evaluator shall verify that the signature on the
                     add-on is valid.</test>
                   <test>The evaluator shall create or obtain an add-on signed by an untrusted source
@@ -969,10 +987,11 @@
         <term>NIST</term>
         <description>National Institute of Standards and Technology</description>
       </entry>
-      <entry>
+      <!-- Remove, acronym not used.  
+        <entry>
         <term>OID</term>
         <description>Object Identifier</description>
-      </entry>
+      </entry> -->
       <entry>
         <term>PDF</term>
         <description>Portable Document Format</description>
