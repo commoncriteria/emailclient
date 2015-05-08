@@ -324,28 +324,32 @@
               of certificates and certificate chains is not included in this requirement, but is
               covered in FIA_X509 and FMT_MOF. </note>
             <aactivity>
-              <br/> The evaluator shall check the description of the implementation of S/MIME in the
-              TSS to ensure that the proper version is specified. In addition, the evaluator shall
-              verify that the algorithms supported are specified, and that the algorithms specified
-              are those listed for this component. The evaluator shall also review the Operational
-              Guidance to ensure that it contains instructions on configuring the email client such
-              that it complies to the description in the TSS.<br/> The evaluator shall verify that
-              the TSS describes the ContentEncryptionAlgorithmIdentifier and whether the required
-              behavior is performed by default or may be configured. If the TSS indicates that the
-              algorithms must be configured to meet the requirement, the evaluator shall verify that
-              the AGD guidance includes the configuration of this ID.<br/> The evaluator shall
-              verify that the TSS describes the digestAlgorithm and whether the required behavior is
-              performed by default or may be configured. If the TSS indicates that the algorithms
-              must be configured to meet the requirement, the evaluator shall verify that the AGD
-              guidance includes the configuration.<br/> The evaluator shall verify that the TSS
-              describes the AlgorithmIdentifier and whether the required behavior is performed by
+              <br/>
+              <!-- Revised by sentence below
+                The evaluator shall check the description of the implementation of S/MIME in the
+              TSS to ensure that the proper version is specified. -->
+              The evaluator shall verify that the version of S/MIME implemented by the email client
+              is present in the TSS. The evaluator shall also verify that the algorithms supported
+              are specified, and that the algorithms specified are those listed for this component.
+              The evaluator shall also review the Operational Guidance to ensure that it contains
+              instructions on configuring the email client such that it complies to the description
+              in the TSS.<br/> The evaluator shall verify that the TSS describes the
+              ContentEncryptionAlgorithmIdentifier and whether the required behavior is performed by
               default or may be configured. If the TSS indicates that the algorithms must be
               configured to meet the requirement, the evaluator shall verify that the AGD guidance
               includes the configuration of this ID.<br/> The evaluator shall verify that the TSS
-              describes the retrieval mechanisms for both CRLs and certificates as well as the
-              frequency at which these mechanisms are implemented. If the TSS indicates that the
-              mechanisms are configurable, the evaluator shall verify that the AGD guidance includes
-              the configuration of these mechanisms.<br/> The evaluator shall perform the following
+              describes the digestAlgorithm and whether the required behavior is performed by
+              default or may be configured. If the TSS indicates that the algorithms must be
+              configured to meet the requirement, the evaluator shall verify that the AGD guidance
+              includes the configuration.<br/> The evaluator shall verify that the TSS describes the
+              AlgorithmIdentifier and whether the required behavior is performed by default or may
+              be configured. If the TSS indicates that the algorithms must be configured to meet the
+              requirement, the evaluator shall verify that the AGD guidance includes the
+              configuration of this ID.<br/> The evaluator shall verify that the TSS describes the
+              retrieval mechanisms for both CRLs and certificates as well as the frequency at which
+              these mechanisms are implemented. If the TSS indicates that the mechanisms are
+              configurable, the evaluator shall verify that the AGD guidance includes the
+              configuration of these mechanisms.<br/> The evaluator shall perform the following
               tests:<br/> These tests can be performed in conjunction with the tests defined in
               FIA_X509 for certificate/certificate chain verification <!-- Added --> and <linkref
                 linkend="FDP_NOT_EXT.1"/>. <testlist>
@@ -363,15 +367,17 @@
                   the signature itself. The evaluator shall verify that the received message fails
                   the signature validation check. </test> -->
                 <test>The evaluator shall both send and receive a signed message using each of the
-                  algorithms specified in the ST corresponding to the requirement. The evaluator
-                  shall verify that the sent and received messages pass the signature validation
-                  check. After verifying the signatures are valid, the evaluator shall send a signed
-                  message using each of the algorithms specified in the ST and use a
-                  man-in-the-middle tool to modify at least one byte of the message such that the
-                  signature is no longer valid. This can be done by modifying the content of the
-                  message over which the signature is calculated or by modifying the signature
-                  itself. The evaluator shall verify that the received message fails the signature
-                  validation check. </test>
+                  algorithms specified in the ST corresponding to the requirement and verify that
+                  the signature is valid for both received and sent messages.
+                  <!-- Remove because it was tacked onto the end of the first sentence. The 
+                    evaluator shall verify that the sent and received messages pass the signature validation
+                  check. -->After
+                  verifying the signatures are valid, the evaluator shall send a signed message
+                  using each of the algorithms specified in the ST and use a man-in-the-middle tool
+                  to modify at least one byte of the message such that the signature is no longer
+                  valid. This can be done by modifying the content of the message over which the
+                  signature is calculated or by modifying the signature itself. The evaluator shall
+                  verify that the received message fails the signature validation check. </test>
                 <!--Revised below to add positive test case <test>The evaluator shall both send and 
                   receive an encrypted message using each of
                   the algorithms specified in the ST. The evaluator shall use a man-in-the-middle
@@ -488,10 +494,23 @@
         <f-component id="FDP_REN_EXT.1" name="Rendering of Message Content">
           <f-element id="FDP_REN_EXT.1.1">
             <title>The email client shall have a plaintext only mode.</title>
-            <note role="application"> Plaintext only mode prevents the automatic downloading of
+            <note role="application">Plaintext only mode prevents the automatic downloading of
               images and rendering and execution of embedded objects such as HTML or JavaScript
               objects. <linkref linkend="FMT_MOF_EXT.1.1"/> Function 2 addresses configuration of
               this mode. </note>
+          </f-element>
+          <!-- Added FDP_REN_EXT.1.2 -->
+          <f-element id="FDP_REN_EXT.1.2">
+            <title>The email client shall ensure that in plaintext only mode, the rendering and
+              execution of the following content shall be disabled: <selectables>
+                <selectable>HTML</selectable>
+                <selectable>JavaScript</selectable>
+                <selectable>[assignment: other embedded content types]</selectable>
+                <selectable>no embedded content types</selectable>
+              </selectables>. </title>
+            <note role="application">The ST author must identify all content types supported by the
+              email client through selections and/or assignments. If the email client only supports
+              plaintext only mode, no embedded content types should be selected.</note>
             <aactivity> The evaluator shall ensure that the TSS describes plaintext only mode for
               sending and receiving messages. The evaluator shall verify that the TSS describes
               whether the email client is capable of rendering and executing HTML or JavaScript. If
@@ -668,8 +687,16 @@
       <subsection title="Security Management (FMT)" id="fmt">
         <f-component id="FMT_MOF_EXT.1" name="Management of Functions Behavior">
           <f-element id="FMT_MOF_EXT.1.1">
-            <title>The email client shall restrict the ability to manage/perform functions as
-              follows: <ul>
+            <!-- <title>The email client shall restrict the ability to manage/perform functions as
+              follows:
+            -->
+            <title>The <selectables>
+                <selectable>email client</selectable>
+                <selectable>email client platform</selectable>
+              </selectables> shall ensure that, for the following functions, if an administrator has
+              set the configuration, it may not be modified by a non-administrative user: <br/>
+              <!-- 
+              <ul>
                 <li>X = Mandatory</li>
                 <li>O = Optional</li></ul>
               <table><tr class="header">
@@ -718,10 +745,50 @@
                 <tr><td>11. Configure message sending/receiving to only use cryptographic algorithms
                     defined in <linkref linkend="FCS_SMIME_EXT.1"/>.</td><td>O</td><td>O</td></tr>
                 <tr><td>12. Configure CRL retrieval frequency</td><td>O</td><td>O</td></tr>
-                <tr><td>13. <!-- Revised from Configure add-on whitelist -->Add/remove whitelisted
-                    add-ons</td><td>O</td><td>O</td></tr>
-                <tr><td>14. No other management functions</td><td>O</td><td>O</td></tr>
-              </table>
+                <tr><td>13. Add/remove whitelisted add-ons</td><td>O</td><td>O</td></tr>
+                <tr><td>14. No other management functions</td><td>O</td><td>O</td></tr> </table> -->
+              <selectables>
+                <selectable> 1. Enable/disable downloading embedded objects globally and by <selectables>
+                    <selectable>domain</selectable>
+                    <selectable>sender</selectable>
+                    <selectable>no other method</selectable>
+                  </selectables>
+                </selectable>
+                <selectable><br/>2. Enable/disable plaintext only mode globally and by<selectables>
+                    <selectable>domain</selectable>
+                    <selectable>sender</selectable>
+                    <selectable>no other method</selectable>
+                  </selectables>
+                </selectable>
+                <selectable><br/> 3. Enable/disable rendering and execution of attachments globally
+                  and by<selectables>
+                    <selectable>domain</selectable>
+                    <selectable>sender</selectable>
+                    <selectable>no other method</selectable></selectables>
+                </selectable>
+                <selectable><br/> 4. Configure <selectables>
+                    <selectable>visual</selectable>
+                    <selectable>auditory</selectable></selectables>email notifications to
+                  enable/disable display of additional information about the email <selectables>
+                    <selectable>number of emails received</selectable>
+                    <selectable>subject</selectable>
+                    <selectable>sender</selectable>
+                    <selectable>partial content</selectable></selectables>
+                </selectable>
+                <selectable><br/> 5. Enable/disable email notifications </selectable>
+                <selectable><br/> 6. Configure certificates for S/MIME use </selectable>
+                <selectable><br/> 7. Configure certificates for TLS use </selectable>
+                <selectable><br/> 8. Enable/disable display of email contents in email notifications </selectable>
+                <selectable><br/> 9. Configure a certificate repository for encryption </selectable>
+                <selectable><br/> 10. Configure whether to establish a trusted channel or disallow
+                  establishment if the TSF cannot establish a connection to determine the validity
+                  of a certificate </selectable>
+                <selectable><br/> 11. Configure message sending/receiving to only use cryptographic
+                  algorithms defined in <linkref linkend="FCS_SMIME_EXT.1"/>. </selectable>
+                <selectable><br/> 12. Configure CRL retrieval frequency </selectable>
+                <selectable><br/> 13. Add/remove whitelisted add-ons </selectable>
+                <selectable><br/> 14. No other management functions </selectable>
+              </selectables>
             </title>
             <note role="application"> The Administrator is responsible for management activities,
               including setting the policy that is applied by the enterprise on the email client.
@@ -781,8 +848,8 @@
             <!-- Renumbered 2.2 to 3.2 -->
             <selection-depends req="FPT_TUD_EXT.2.1"/>
             <!-- Added whitelisted -->
-            <title>The email client shall provide the ability to initiate the downloading of whitelisted add-ons
-              and add-on updates.</title>
+            <title>The email client shall provide the ability to initiate the downloading of
+              whitelisted add-ons and add-on updates.</title>
             <!-- Added app note -->
             <note role="application">This requirement does not pertain to add-ons installed outside
               the email client.</note>
