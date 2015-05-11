@@ -492,23 +492,20 @@
           </f-element>
         </f-component>
         <f-component id="FDP_REN_EXT.1" name="Rendering of Message Content">
-          <f-element id="FDP_REN_EXT.1.1">
-            <title>The email client shall have a plaintext only mode.</title>
-            <note role="application">Plaintext only mode prevents the automatic downloading of
-              images and rendering and execution of embedded objects such as HTML or JavaScript
-              objects. <linkref linkend="FMT_MOF_EXT.1.1"/> Function 2 addresses configuration of
-              this mode. </note>
-          </f-element>
-          <!-- Added FDP_REN_EXT.1.2 -->
-          <f-element id="FDP_REN_EXT.1.2">
-            <title>The email client shall ensure that in plaintext only mode, the rendering and
-              execution of the following content shall be disabled: <selectables>
+          <f-element id="FDP_REN_EXT.1.1" status="optional">
+            <title>The email client shall have a plaintext-only mode which disables the rendering
+              and execution of 
+              <selectables>
                 <selectable>HTML</selectable>
                 <selectable>JavaScript</selectable>
                 <selectable>[assignment: other embedded content types]</selectable>
                 <selectable>no embedded content types</selectable>
               </selectables>. </title>
-            <note role="application">The ST author must identify all content types supported by the
+            <note role="application">Plaintext only mode prevents the automatic downloading of
+              images and rendering and execution of embedded objects such as HTML or JavaScript
+              objects. <linkref linkend="FMT_MOF_EXT.1.1"/> Function 2 addresses configuration of
+              this mode. 
+              The ST author must identify all content types supported by the
               email client through selections and/or assignments. If the email client only supports
               plaintext only mode, no embedded content types should be selected.</note>
             <aactivity> The evaluator shall ensure that the TSS describes plaintext only mode for
