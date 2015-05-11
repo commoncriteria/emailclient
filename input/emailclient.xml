@@ -207,7 +207,8 @@
     identified in the App PP. Attackers can send malicious email messages directly to users, and the
     email client will render or otherwise process this untrusted content. <section title="Threats"
       id="threats">The following threat is specific to email clients, and represents an addition to
-      those identified in the App PP. <threats>
+      the threats <!-- specified threats in App PP --> (T.NETWORK_ATTACK, T.NETWORK_EAVESDROP,
+      T.LOCAL_ATTACK, T.PHYSICAL_ACCESS) identified in the <cite linkend="bibAppPP"/>. <threats>
         <threat id="T.FLAWED_ADDON">
           <description> Email client functionality can be extended with integration of third-party
             utilities and tools. This expanded set of capabilities is made possible via the use of
@@ -223,9 +224,29 @@
       </threats>
     </section>
   </chapter>
-  <chapter title="Security Objectives" id="sobj"> This Extended Package adds security objectives to
-    those identified in the Protection Profile for Application Software (App PP). <section
-      title="Security Objectives for the TOE" id="SecurityObjectivesTOE">
+  <chapter title="Security Objectives" id="sobj">
+    <!-- Edit sentence This Extended Package adds security objectives to
+    those identified in the <cite linkend="bibAppPP"/>. -->
+    Security requirements in the email client correspond to the following objectives identified in the
+      <cite linkend="bibAppPP"/>: <table>
+      <tr><td>O.INTEGRITY</td><td><linkref linkend="FIA_SASL_EXT.1"/></td><td/><td/><td/></tr>
+      <tr><td>O.QUALITY</td><td><linkref linkend="FDP_NOT_EXT.1"
+      /></td><td><linkref linkend="FDP_NOT_EXT.1"/></td><td><linkref linkend="FDP_NOT_EXT.2"/></td><td><linkref linkend="FPT_TUD_EXT.3"
+        /></td><td/></tr>
+      <tr><td>O.MANAGEMENT</td><td><linkref linkend="FMT.MOF_EXT.1"/></td><td/><td/><td/></tr>
+      <tr><td>O.PROTECTED_STORAGE</td><td/><td/><td/><td/></tr>
+      <tr><td>O.PROTECTED_COMMS</td><td><linkref linkend="FCS_SMIME_EXT.1"/></td><td><linkref
+            linkend="FDP_SMIME_EXT.1"/></td><td><linkref linkend="FIA_X509_EXT.3"/></td><td><linkref
+            linkend="FTP_ITC_EXT.1"/></td></tr>
+    </table>
+    <!-- O.INTEGRITY - Addressed by: FDP_DEC_EXT.1, FMT_CFG_EXT.1, FPT_AEX_EXT.1, FPT_TUD_EXT.1 in the App PP -->
+    <!-- O.QUALITY - Addressed by: FMT_MEC_EXT.1, FPT_API_EXT.1, FPT_LIB_EXT.1 in the App PP -->
+    <!-- O.MANAGEMENT - Addressed by: FMT_SMF.1, FPT_IDV_EXT.1, FPT_TUD_EXT.1.5 in the App PP -->
+    <!-- O. PROTECTED STORAGE - Addressed by: FDP_DAR_EXT.1, FCS_STO_EXT.1, FCS_RBG_EXT.1 in the App PP -->
+    <!-- O.PROTECTED COMMS - Addressed by: FTP_DIT_EXT.1, FCS_TLSC_EXT.1, FCS_DTLS_EXT.1, FCS_RBG_EXT.1 -->
+    The following security objective is specific to email clients, and represents an addition to the
+    security objectives identified in the App PP. <section title="Security Objectives for the TOE"
+      id="SecurityObjectivesTOE">
       <SOs>
         <SO id="O.ADDON_INTEGRITY">
           <description> To address issues associated with malicious or flawed plug-ins or
@@ -494,8 +515,7 @@
         <f-component id="FDP_REN_EXT.1" name="Rendering of Message Content">
           <f-element id="FDP_REN_EXT.1.1" status="optional">
             <title>The email client shall have a plaintext-only mode which disables the rendering
-              and execution of 
-              <selectables>
+              and execution of <selectables>
                 <selectable>HTML</selectable>
                 <selectable>JavaScript</selectable>
                 <selectable>[assignment: other embedded content types]</selectable>
@@ -504,10 +524,9 @@
             <note role="application">Plaintext only mode prevents the automatic downloading of
               images and rendering and execution of embedded objects such as HTML or JavaScript
               objects. <linkref linkend="FMT_MOF_EXT.1.1"/> Function 2 addresses configuration of
-              this mode. 
-              The ST author must identify all content types supported by the
-              email client through selections and/or assignments. If the email client only supports
-              plaintext only mode, no embedded content types should be selected.</note>
+              this mode. The ST author must identify all content types supported by the email client
+              through selections and/or assignments. If the email client only supports plaintext
+              only mode, no embedded content types should be selected.</note>
             <aactivity> The evaluator shall ensure that the TSS describes plaintext only mode for
               sending and receiving messages. The evaluator shall verify that the TSS describes
               whether the email client is capable of rendering and executing HTML or JavaScript. If
@@ -684,16 +703,8 @@
       <subsection title="Security Management (FMT)" id="fmt">
         <f-component id="FMT_MOF_EXT.1" name="Management of Functions Behavior">
           <f-element id="FMT_MOF_EXT.1.1">
-            <!-- <title>The email client shall restrict the ability to manage/perform functions as
-              follows:
-            -->
-            <title>The <selectables>
-                <selectable>email client</selectable>
-                <selectable>email client platform</selectable>
-              </selectables> shall ensure that, for the following functions, if an administrator has
-              set the configuration, it may not be modified by a non-administrative user: <br/>
-              <!-- 
-              <ul>
+            <title>The email client shall restrict the ability to manage/perform functions as
+              follows: <ul>
                 <li>X = Mandatory</li>
                 <li>O = Optional</li></ul>
               <table><tr class="header">
@@ -743,7 +754,14 @@
                     defined in <linkref linkend="FCS_SMIME_EXT.1"/>.</td><td>O</td><td>O</td></tr>
                 <tr><td>12. Configure CRL retrieval frequency</td><td>O</td><td>O</td></tr>
                 <tr><td>13. Add/remove whitelisted add-ons</td><td>O</td><td>O</td></tr>
-                <tr><td>14. No other management functions</td><td>O</td><td>O</td></tr> </table> -->
+                <tr><td>14. No other management functions</td><td>O</td><td>O</td></tr>
+              </table> -->
+              <!-- Remove this 
+              <title>The <selectables>
+                <selectable>email client</selectable>
+                <selectable>email client platform</selectable>
+              </selectables> shall ensure that, for the following functions, if an administrator has
+                set the configuration, it may not be modified by a non-administrative user: <br/>
               <selectables>
                 <selectable> 1. Enable/disable downloading embedded objects globally and by <selectables>
                     <selectable>domain</selectable>
@@ -786,7 +804,7 @@
                 <selectable><br/> 13. Add/remove whitelisted add-ons </selectable>
                 <selectable><br/> 14. No other management functions </selectable>
               </selectables>
-            </title>
+            </title> --></title>
             <note role="application"> The Administrator is responsible for management activities,
               including setting the policy that is applied by the enterprise on the email client.
               This administrator is likely to be acting remotely and could be the MTA administrator
