@@ -584,6 +584,7 @@
       </subsection>
       <subsection title="Identification and Authentication (FIA)" id="fia">
         <f-component id="FIA_SASL_EXT.1" name="Simple Authentication and Security Layer (SASL)">
+          <figure entity="images/mua_mta.png" title="Figure 1" id="mua_mta"/>
           <f-element id="FIA_SASL_EXT.1.1" status="sel-based">
             <selection-depends req="FTP_ITC_EXT.1.2"/>
             <!-- Renumbered 1.3 to 1.2 -->
@@ -596,7 +597,8 @@
                 <!-- details of the email client connecting to Mail User Agent and a Mail Transfer Agent in -->
                 details of the email client/Mail User Agent connecting to a Mail Transfer Agent in
                 terms of the SASL connection, along with email client -specific options or
-                procedures that might not be reflected in the specification.</tss>
+                procedures that might not be reflected in the specification. (Refer to Figure
+                1)</tss>
               <guidance>The evaluator shall confirm that the operational guidance contains
                 instructions for establishing the connection to <!-- the Mail User Agent and --> the
                 Mail Transfer Agent. </guidance>
@@ -824,22 +826,22 @@
               <!-- Add --> For these management functions, the term “Administrator” refers to the
               administrator of a non-mobile device or the device owner of a mobile device.<br/> The
               Administrator is responsible for management activities, including setting the policy
-              that is applied by the enterprise on the email client. The Administrator could <!-- Change "is likely to" to "could" -->
-              be acting remotely and could be the MTA administrator acting through a centralized
-              management console or dashboard.<br/> The intent of this requirement is to allow the
-              Administrator to configure the email client with a policy that may not be over-ridden
-              by the user. If the Administrator has not set a policy for a particular function, the
-              user may still perform that function. Enforcement of the policy is done by the email
-              client itself, or the email client and the email client platform in coordination with
-              each other.<br/> For Function #10 per FIA_X509_EXT.2.2 (<cite linkend="bibAppPP"/>),
-              the administrator has the option of accepting or rejecting all certificates that
-              cannot be validated, accepting a given certificate that cannot be validated, or not
-              accepting a given certificate that cannot be validated. Depending on the choice that
-              the Administrator has made in FIA_X509_EXT.2.2 (<cite linkend="bibAppPP"/>), the
-              trusted connection will either be allowed for all certificates that cannot be
-              validated, disallowed for all certificates cannot be validated, allowed for a given
-              certificate that cannot be validated, or disallowed for a given certificate that
-              cannot be validated.<br/>
+              that is applied by the enterprise on the email client. The Administrator could
+              <!-- Change "is likely to" to "could" --> be acting remotely and could be the MTA
+              administrator acting through a centralized management console or dashboard.<br/> The
+              intent of this requirement is to allow the Administrator to configure the email client
+              with a policy that may not be over-ridden by the user. If the Administrator has not
+              set a policy for a particular function, the user may still perform that function.
+              Enforcement of the policy is done by the email client itself, or the email client and
+              the email client platform in coordination with each other.<br/> For Function #10 per
+              FIA_X509_EXT.2.2 (<cite linkend="bibAppPP"/>), the administrator has the option of
+              accepting or rejecting all certificates that cannot be validated, accepting a given
+              certificate that cannot be validated, or not accepting a given certificate that cannot
+              be validated. Depending on the choice that the Administrator has made in
+              FIA_X509_EXT.2.2 (<cite linkend="bibAppPP"/>), the trusted connection will either be
+              allowed for all certificates that cannot be validated, disallowed for all certificates
+              cannot be validated, allowed for a given certificate that cannot be validated, or
+              disallowed for a given certificate that cannot be validated.<br/>
               <!--Add --> Applications used to configure enterprise policy should have their own
               identification and authorization and additional security requirements to ensure that
               the remote administration is trusted.</note>
@@ -906,14 +908,14 @@
             <selection-depends req="FPT_TUD_EXT.2.1"/>
             <title>The email client shall prevent the automatic installation of add-ons.</title>
             <aactivity>
-              <!-- The following stmt was added --> The following tests require the developer to
-              provide tools not typically found on consumer products. <br/>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it states
                 that the <abbr linkend="TSF"/> will reject add-ons from unapproved sources. </tss>
               <guidance>The evaluator shall examine the operational guidance to verify that it
                 includes instructions on how to configure the email client with trusted add-on
                 sources. </guidance>
-              <tests> The evaluator shall perform the following tests <testlist>
+              <tests><!-- The following stmt was added --> The following tests require the developer
+                to provide tools not typically found on consumer products. <br/>The evaluator shall
+                perform the following tests <testlist>
                   <test>The evaluator shall configure the email client with trusted add-on sources.
                     The evaluator shall create or obtain an add-on signed by a trusted source and
                     attempt to install it. The evaluator shall verify that the signature on the
@@ -985,7 +987,6 @@
             </aactivity>
           </f-element>
         </f-component>
-        <figure entity="images/mua_mta.png" title="Figure 1" id="mua_mta"/>
       </subsection>
     </section>
   </chapter>
