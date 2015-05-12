@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.7</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-5-8</PPPubDate>
+      <PPPubDate>2015-5-12</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -205,10 +205,17 @@
     PP and those defined in this EP describe those addressed by an email client as the Target of
     Evaluation. <br/> Notably, email clients are particularly at risk from the Network Attack threat
     identified in the App PP. Attackers can send malicious email messages directly to users, and the
-    email client will render or otherwise process this untrusted content. <section title="Threats"
-      id="threats">The following threat is specific to email clients, and represents an addition to
-      the threats <!-- specified threats in App PP --> (T.NETWORK_ATTACK, T.NETWORK_EAVESDROP,
-      T.LOCAL_ATTACK, T.PHYSICAL_ACCESS) identified in the <cite linkend="bibAppPP"/>. <threats>
+    email client will render or otherwise process this untrusted content.<br/>Threats are extended
+    from the <cite linkend="bibAppPP"/> and include an additional threat that is specific to email
+    clients. <section title="Threats" id="threats">
+      <!-- The following threat is specific to email clients and represents an addition to
+      the threats (T.NETWORK_ATTACK, T.NETWORK_EAVESDROP,
+      T.LOCAL_ATTACK, T.PHYSICAL_ACCESS) identified in the <cite linkend="bibAppPP"/>: -->
+      <threats>
+        <threat id="T.NETWORK_ATTACK"/>
+        <threat id="T.NETWORK_EAVESDROP"/>
+        <threat id="T.LOCAL_ATTACK"/>
+        <threat id="T.PHYSICAL_ACCESS"/>
         <threat id="T.FLAWED_ADDON">
           <description> Email client functionality can be extended with integration of third-party
             utilities and tools. This expanded set of capabilities is made possible via the use of
@@ -224,30 +231,26 @@
       </threats>
     </section>
   </chapter>
-  <chapter title="Security Objectives" id="sobj">
-    <!-- Edit sentence This Extended Package adds security objectives to
-    those identified in the <cite linkend="bibAppPP"/>. -->
-    Security requirements in the email client correspond to the following objectives identified in the
-      <cite linkend="bibAppPP"/>: <table>
-      <tr><td>O.INTEGRITY</td><td><linkref linkend="FIA_SASL_EXT.1"/></td><td/><td/><td/></tr>
-      <tr><td>O.QUALITY</td><td><linkref linkend="FDP_NOT_EXT.1"
-      /></td><td><linkref linkend="FDP_NOT_EXT.1"/></td><td><linkref linkend="FDP_NOT_EXT.2"/></td><td><linkref linkend="FPT_TUD_EXT.3"
-        /></td><td/></tr>
-      <tr><td>O.MANAGEMENT</td><td><linkref linkend="FMT.MOF_EXT.1"/></td><td/><td/><td/></tr>
-      <tr><td>O.PROTECTED_STORAGE</td><td/><td/><td/><td/></tr>
-      <tr><td>O.PROTECTED_COMMS</td><td><linkref linkend="FCS_SMIME_EXT.1"/></td><td><linkref
-            linkend="FDP_SMIME_EXT.1"/></td><td><linkref linkend="FIA_X509_EXT.3"/></td><td><linkref
-            linkend="FTP_ITC_EXT.1"/></td></tr>
-    </table>
-    <!-- O.INTEGRITY - Addressed by: FDP_DEC_EXT.1, FMT_CFG_EXT.1, FPT_AEX_EXT.1, FPT_TUD_EXT.1 in the App PP -->
-    <!-- O.QUALITY - Addressed by: FMT_MEC_EXT.1, FPT_API_EXT.1, FPT_LIB_EXT.1 in the App PP -->
-    <!-- O.MANAGEMENT - Addressed by: FMT_SMF.1, FPT_IDV_EXT.1, FPT_TUD_EXT.1.5 in the App PP -->
-    <!-- O. PROTECTED STORAGE - Addressed by: FDP_DAR_EXT.1, FCS_STO_EXT.1, FCS_RBG_EXT.1 in the App PP -->
-    <!-- O.PROTECTED COMMS - Addressed by: FTP_DIT_EXT.1, FCS_TLSC_EXT.1, FCS_DTLS_EXT.1, FCS_RBG_EXT.1 -->
-    The following security objective is specific to email clients, and represents an addition to the
-    security objectives identified in the App PP. <section title="Security Objectives for the TOE"
-      id="SecurityObjectivesTOE">
+  <chapter title="Security Objectives" id="sobj"> Security objectives are extended from the <cite
+      linkend="bibAppPP"/> and include an additional security objective that is specific to email
+    clients. <!-- The following security objective is specific to email clients, and represents an addition to the
+    security objectives in the App PP.  -->
+    <section title="Security Objectives for the TOE" id="SecurityObjectivesTOE">
       <SOs>
+        <SO id="O.QUALITY">
+          <component-refer ref="FDP_NOT_EXT.1"/>
+          <component-refer ref="FDP_NOT_EXT.2"/>
+          <component-refer ref="FIA_X509_EXT.3"/>
+        </SO>
+        <SO id="O.MANAGEMENT">
+          <component-refer ref="FMT.MOF_EXT.1"/>
+        </SO>
+        <SO id="O.O.PROTECTED_COMMS">
+          <component-refer ref="FCS_SMIME_EXT.1"/>
+          <component-refer ref="FDP_SMIME_EXT.1"/>
+          <component-refer ref="FTP_ITC_EXT.1"/>
+          <component-refer ref="FIA_SASL_EXT.1"/>
+        </SO>
         <SO id="O.ADDON_INTEGRITY">
           <description> To address issues associated with malicious or flawed plug-ins or
             extensions, conformant email clients implement mechanisms to ensure their integrity.
@@ -255,6 +258,7 @@
           <component-refer ref="fia_x509_ext.3.3"/>
           <!-- renumbered FIA_X509 so changed ref from 2.5 to 3.3 -->
           <component-refer ref="fpt_tud_ext.2"/>
+          <component-refer ref="fpt_tud_ext.3"/>
         </SO>
       </SOs>
     </section>
@@ -583,15 +587,16 @@
               Clients that do not use SMTP (e.g., ActiveSync or MAPI) would not need to implement
               support for SASL.</note>
             <aactivity> The evaluator shall examine the TSS to determine that it describes the
-              details of the email client connecting to Mail User Agent and a Mail Transfer Agent in
+              <!-- details of the email client connecting to Mail User Agent and a Mail Transfer Agent in -->
+              details of the email client/Mail User Agent connecting to a Mail Transfer Agent in
               terms of the SASL connection, along with email client -specific options or procedures
               that might not be reflected in the specification.<br/> The evaluator shall confirm
               that the operational guidance contains instructions for establishing the connection to
-              the Mail User Agent and the Mail Transfer Agent. The evaluator shall also perform the
+              <!-- the Mail User Agent and --> the Mail Transfer Agent. The evaluator shall also perform the
               following test:<br/>
               <testlist>
                 <test>The evaluators shall ensure that the email client is able to initiate
-                  communications with a Mail User Agent using POP, IMAP, and any assigned protocols
+                  communications with a <!-- Mail User Agent changed to Mail Delivery Agent --> Mail Delivery Agent using POP, IMAP, and any assigned protocols
                   specified in the requirement, setting up the connections as described in the
                   operational guidance and ensuring that communication is successful.</test>
                 <test>The evaluators shall verify that a successful SASL handshake takes place. To
@@ -620,15 +625,15 @@
               AUTHENTICATION and CAPABILITY extensions for IMAP, as described in RFC 4959 and the
               AUTH extension for SMTP, as described in RFC 4954. </note>
             <aactivity> The evaluator shall examine the TSS to determine that it describes the
-              details of the email client connecting to a Mail User Agent and a Mail Transfer Agent
+              details of the email client connecting to <!-- a Mail User Agent and --> a Mail Transfer Agent
               in terms of the SASL connection, along with email client -specific options or
               procedures that might not be reflected in the specification.<br/> The evaluator shall
               confirm that the operational guidance contains instructions for establishing the
-              connection to the Mail User Agent and the Mail Transfer Agent. The evaluator shall
+              connection to the <!-- Mail User Agent and the --> Mail Transfer Agent. The evaluator shall
               also perform the following tests:<br/>
               <testlist>
                 <test>The evaluators shall ensure that the email client is able to initiate
-                  communications with a Mail User Agent using POP, IMAP and SMTP and requiring SASL,
+                  communications <!-- with a Mail User Agent --> using POP, IMAP and SMTP and requiring SASL,
                   setting up the connections as described in the operational guidance and ensuring
                   that communication is successful.</test>
                 <test>The evaluator shall ensure, for each communication channel with an authorized
@@ -935,15 +940,15 @@
               in the <abbr linkend="ST"/>. <!-- Added -->Selections must include at least one
               sending and one receiving protocol. </note>
             <aactivity> The evaluator shall examine the TSS to determine that it describes the
-              details of the email client connecting to Mail User Agent and a Mail Transfer Agent in
+              details of the email client connecting to <!-- Mail User Agent and --> a Mail Transfer Agent in
               terms of the TLS connection, along with email client-specific options or procedures
               that might not be reflected in the specification.<br/> The evaluator shall confirm
               that the operational guidance contains instructions for establishing the connection to
-              the Mail User Agent and the Mail Transfer Agent. The evaluator shall also perform the
+              <!-- the Mail User Agent and --> the Mail Transfer Agent. The evaluator shall also perform the
               following tests:<br/>
               <testlist>
                 <test>The evaluators shall ensure that the email client is able to initiate
-                  communications with a Mail User Agent using any selected or assigned protocols
+                  communications <!-- with a Mail User Agent --> using any selected or assigned protocols
                   specified in the requirement over TLS, setting up the connections as described in
                   the operational guidance and ensuring that communication is successful.</test>
                 <test>The evaluators shall ensure that the email client is able to initiate
@@ -958,6 +963,7 @@
             </aactivity>
           </f-element>
         </f-component>
+        <figure entity="images/mua_mta.png" title="Figure 1" id="mua_mta"/>
       </subsection>
     </section>
   </chapter>
