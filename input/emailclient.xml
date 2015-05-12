@@ -353,37 +353,38 @@
               <!-- Revised by sentence below
                 The evaluator shall check the description of the implementation of S/MIME in the
               TSS to ensure that the proper version is specified. -->
-              The evaluator shall verify that the version of S/MIME implemented by the email client
-              is present in the TSS. The evaluator shall also verify that the algorithms supported
-              are specified, and that the algorithms specified are those listed for this component.
-              The evaluator shall also review the Operational Guidance to ensure that it contains
-              instructions on configuring the email client such that it complies to the description
-              in the TSS.<br/> The evaluator shall verify that the TSS describes the
-              ContentEncryptionAlgorithmIdentifier and whether the required behavior is performed by
-              default or may be configured. If the TSS indicates that the algorithms must be
-              configured to meet the requirement, the evaluator shall verify that the AGD guidance
-              includes the configuration of this ID.<br/> The evaluator shall verify that the TSS
-              describes the digestAlgorithm and whether the required behavior is performed by
-              default or may be configured. If the TSS indicates that the algorithms must be
-              configured to meet the requirement, the evaluator shall verify that the AGD guidance
-              includes the configuration.<br/> The evaluator shall verify that the TSS describes the
-              AlgorithmIdentifier and whether the required behavior is performed by default or may
-              be configured. If the TSS indicates that the algorithms must be configured to meet the
-              requirement, the evaluator shall verify that the AGD guidance includes the
-              configuration of this ID.<br/> The evaluator shall verify that the TSS describes the
-              retrieval mechanisms for both CRLs and certificates as well as the frequency at which
-              these mechanisms are implemented. If the TSS indicates that the mechanisms are
-              configurable, the evaluator shall verify that the AGD guidance includes the
-              configuration of these mechanisms.<br/> The evaluator shall perform the following
-              tests:<br/> These tests can be performed in conjunction with the tests defined in
-              FIA_X509 for certificate/certificate chain verification <!-- Added --> and <linkref
-                linkend="FDP_NOT_EXT.1"/>. <testlist>
-                <test>The evaluator shall both send and receive a message with no protection (no
-                  signature or encryption) and verify that the message is transmitted properly and
-                  can be viewed at the receiving agent. This transmission can be performed as part
-                  of a number of mechanisms; it is sufficient to observe that the message arrives at
-                  the intended recipient with the same content as when sent.</test>
-                <!--Revised below to add positive test case  <test> The evaluator shall both send and 
+              <tss>The evaluator shall verify that the version of S/MIME implemented by the email
+                client is present in the TSS. The evaluator shall also verify that the algorithms
+                supported are specified, and that the algorithms specified are those listed for this
+                component. The evaluator shall also review the Operational Guidance to ensure that
+                it contains instructions on configuring the email client such that it complies to
+                the description in the TSS.<br/> The evaluator shall verify that the TSS describes
+                the ContentEncryptionAlgorithmIdentifier and whether the required behavior is
+                performed by default or may be configured. If the TSS indicates that the algorithms
+                must be configured to meet the requirement, the evaluator shall verify that the AGD
+                guidance includes the configuration of this ID.<br/> The evaluator shall verify that
+                the TSS describes the digestAlgorithm and whether the required behavior is performed
+                by default or may be configured. If the TSS indicates that the algorithms must be
+                configured to meet the requirement, the evaluator shall verify that the AGD guidance
+                includes the configuration.<br/> The evaluator shall verify that the TSS describes
+                the AlgorithmIdentifier and whether the required behavior is performed by default or
+                may be configured. If the TSS indicates that the algorithms must be configured to
+                meet the requirement, the evaluator shall verify that the AGD guidance includes the
+                configuration of this ID.<br/> The evaluator shall verify that the TSS describes the
+                retrieval mechanisms for both CRLs and certificates as well as the frequency at
+                which these mechanisms are implemented. If the TSS indicates that the mechanisms are
+                configurable, the evaluator shall verify that the AGD guidance includes the
+                configuration of these mechanisms.</tss>
+              <tests> The evaluator shall perform the following tests:<br/> These tests can be
+                performed in conjunction with the tests defined in FIA_X509 for
+                certificate/certificate chain verification <!-- Added --> and <linkref
+                  linkend="FDP_NOT_EXT.1"/>. <testlist>
+                  <test>The evaluator shall both send and receive a message with no protection (no
+                    signature or encryption) and verify that the message is transmitted properly and
+                    can be viewed at the receiving agent. This transmission can be performed as part
+                    of a number of mechanisms; it is sufficient to observe that the message arrives
+                    at the intended recipient with the same content as when sent.</test>
+                  <!--Revised below to add positive test case  <test> The evaluator shall both send and 
                   receive a signed message using each of the
                   algorithms specified in the ST corresponding to the requirement. In addition, the
                   evaluator shall use a man-in-the-middle tool to modify at least one byte of the
@@ -391,56 +392,58 @@
                   the content of the message over which the signature is calculated or by modifying
                   the signature itself. The evaluator shall verify that the received message fails
                   the signature validation check. </test> -->
-                <test>The evaluator shall both send and receive a signed message using each of the
-                  algorithms specified in the ST corresponding to the requirement and verify that
-                  the signature is valid for both received and sent messages.
-                  <!-- Remove because it was tacked onto the end of the first sentence. The 
+                  <test>The evaluator shall both send and receive a signed message using each of the
+                    algorithms specified in the ST corresponding to the requirement and verify that
+                    the signature is valid for both received and sent messages.
+                    <!-- Remove because it was tacked onto the end of the first sentence. The 
                     evaluator shall verify that the sent and received messages pass the signature validation
                   check. -->After
-                  verifying the signatures are valid, the evaluator shall send a signed message
-                  using each of the algorithms specified in the ST and use a man-in-the-middle tool
-                  to modify at least one byte of the message such that the signature is no longer
-                  valid. This can be done by modifying the content of the message over which the
-                  signature is calculated or by modifying the signature itself. The evaluator shall
-                  verify that the received message fails the signature validation check. </test>
-                <!--Revised below to add positive test case <test>The evaluator shall both send and 
+                    verifying the signatures are valid, the evaluator shall send a signed message
+                    using each of the algorithms specified in the ST and use a man-in-the-middle
+                    tool to modify at least one byte of the message such that the signature is no
+                    longer valid. This can be done by modifying the content of the message over
+                    which the signature is calculated or by modifying the signature itself. The
+                    evaluator shall verify that the received message fails the signature validation
+                    check. </test>
+                  <!--Revised below to add positive test case <test>The evaluator shall both send and 
                   receive an encrypted message using each of
                   the algorithms specified in the ST. The evaluator shall use a man-in-the-middle
                   tool to modify at least one byte of the message such that the encryption is no
                   longer valid. The evaluator shall verify that the received message fails to
                   decrypt. </test> -->
-                <test>The evaluator shall both send and receive an encrypted message using each of
-                  the algorithms specified in the ST. The evaluator shall verify that the received
-                  message decrypts. After verifying the message decrypts, the evaluator shall send
-                  an encrypted message using each of the algorithms specified in the ST and use a
-                  man-in-the-middle tool to modify at least one byte of the message such that the
-                  encryption is no longer valid. The evaluator shall verify that the received
-                  message fails to decrypt. </test>
-                <test>The evaluator shall both send and receive a message that is both signed and
-                  encrypted. It is not necessary to examine the encrypted traffic to meet the intent
-                  of the requirement. In addition, the evaluator shall use a man-in-the-middle tool
-                  to modify at least one byte of the message such that the encryption and signature
-                  are no longer valid. The evaluator shall verify that the received message fails to
-                  decrypt, fails the signature validation check, and/or both. </test>
-                <test>The evaluator shall send a signed message to the email client using a
-                  signature algorithm not supported according to the digestAlgorithm ID (e.g.,
-                  SHA1). The evaluator shall verify that the email client provides a notification
-                  that the contents cannot be verified because the signature algorithm is not
-                  supported. </test>
-                <test>The evaluator shall send an encrypted message to the email client using an
-                  encryption algorithm not supported according to the AlgorithmIdentifier field. The
-                  evaluator shall verify that the email client does not display/decrypt the contents
-                  of the message. </test>
-                <test>The evaluator shall send the email client a message signed by a certificate
-                  without the digitalSignature bit set. The evaluator shall verify that the email
-                  client notifies the user that the signature is invalid. </test>
-                <test>The evaluator shall send the email client a message signed by a certificate
-                  without the Email Protection purpose in the extendedKeyUsage. The evaluator shall
-                  verify that the email client notifies the user that the signature is
-                  invalid.</test>
-                <test>The evaluator shall verify that the email client downloads the CRL at the
-                  assigned frequency.</test>
-              </testlist>
+                  <test>The evaluator shall both send and receive an encrypted message using each of
+                    the algorithms specified in the ST. The evaluator shall verify that the received
+                    message decrypts. After verifying the message decrypts, the evaluator shall send
+                    an encrypted message using each of the algorithms specified in the ST and use a
+                    man-in-the-middle tool to modify at least one byte of the message such that the
+                    encryption is no longer valid. The evaluator shall verify that the received
+                    message fails to decrypt. </test>
+                  <test>The evaluator shall both send and receive a message that is both signed and
+                    encrypted. It is not necessary to examine the encrypted traffic to meet the
+                    intent of the requirement. In addition, the evaluator shall use a
+                    man-in-the-middle tool to modify at least one byte of the message such that the
+                    encryption and signature are no longer valid. The evaluator shall verify that
+                    the received message fails to decrypt, fails the signature validation check,
+                    and/or both. </test>
+                  <test>The evaluator shall send a signed message to the email client using a
+                    signature algorithm not supported according to the digestAlgorithm ID (e.g.,
+                    SHA1). The evaluator shall verify that the email client provides a notification
+                    that the contents cannot be verified because the signature algorithm is not
+                    supported. </test>
+                  <test>The evaluator shall send an encrypted message to the email client using an
+                    encryption algorithm not supported according to the AlgorithmIdentifier field.
+                    The evaluator shall verify that the email client does not display/decrypt the
+                    contents of the message. </test>
+                  <test>The evaluator shall send the email client a message signed by a certificate
+                    without the digitalSignature bit set. The evaluator shall verify that the email
+                    client notifies the user that the signature is invalid. </test>
+                  <test>The evaluator shall send the email client a message signed by a certificate
+                    without the Email Protection purpose in the extendedKeyUsage. The evaluator
+                    shall verify that the email client notifies the user that the signature is
+                    invalid.</test>
+                  <test>The evaluator shall verify that the email client downloads the CRL at the
+                    assigned frequency.</test>
+                </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -458,25 +461,26 @@
               notification must at least display when the email content is viewed. Many
               implementations also display the S/MIME status of each email when all emails are
               viewed as a list. </note>
-            <aactivity> The evaluator shall ensure that the TSS describes notifications of S/MIME
-              status, including whether S/MIME status is also indicated upon viewing a list of
-              emails.<br/> The evaluator shall verify that the AGD guidance proves a description
-              (with appropriate visual figures) of the S/MIME status notification(s), including how
-              each of encryption, verified and validated signature, and unverified and unvalidated
-              signature are indicated.<br/> The evaluator shall perform the following tests and may
-              perform them in conjunction with the tests for <linkref linkend="FCS_SMIME_EXT.1"/>:<br/>
-              <testlist>
-                <test>The evaluator shall send the client an unencrypted and unsigned email and
-                  verify that no notifications are present upon viewing.</test>
-                <test>The evaluator shall send the client an encrypted email and verify that the
-                  encrypted notification is present upon viewing.</test>
-                <test>The evaluator shall send the client a valid signed email and verify that the
-                  signed notification is present upon viewing.</test>
-                <test>The evaluator shall send the client an invalid signed email (for example,
-                  using a certificate that does not contain the correct email address or a
-                  certificate that does not chain to the root store) and verify that the invalid
-                  signature notification is present upon viewing.</test>
-              </testlist>
+            <aactivity><tss>The evaluator shall ensure that the TSS describes notifications of
+                S/MIME status, including whether S/MIME status is also indicated upon viewing a list
+                of emails.<br/></tss><guidance>The evaluator shall verify that the AGD guidance
+                proves a description (with appropriate visual figures) of the S/MIME status
+                notification(s), including how each of encryption, verified and validated signature,
+                and unverified and unvalidated signature are indicated.<br/></guidance><tests>The
+                evaluator shall perform the following tests and may perform them in conjunction with
+                the tests for <linkref linkend="FCS_SMIME_EXT.1"/>:<br/>
+                <testlist>
+                  <test>The evaluator shall send the client an unencrypted and unsigned email and
+                    verify that no notifications are present upon viewing.</test>
+                  <test>The evaluator shall send the client an encrypted email and verify that the
+                    encrypted notification is present upon viewing.</test>
+                  <test>The evaluator shall send the client a valid signed email and verify that the
+                    signed notification is present upon viewing.</test>
+                  <test>The evaluator shall send the client an invalid signed email (for example,
+                    using a certificate that does not contain the correct email address or a
+                    certificate that does not chain to the root store) and verify that the invalid
+                    signature notification is present upon viewing.</test>
+                </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -488,16 +492,17 @@
               as a word, phrase, icon, or picture) that obfuscates the URI of the link. The intent
               of this requirement is de-obfuscate the link. The URI may be displayed as a
               "mouse-over" event or may be rendered next to the tag. </note>
-            <aactivity> The evaluator shall verify that the TSS includes a description of how
-              embedded links are rendered and the method by which the URI of the link is
-              displayed.<br/> The evaluator shall ensure that the AGD guidance includes instruction
-              (with any appropriate visual figures) for viewing the URI of an embedded link.<br/>
-              The evaluator shall perform the following test:<br/>
-              <testlist>
-                <test>The evaluator shall send the client an HTML message with an embedded link
-                  whose tag is not the URI itself (for example, "click here"). The evaluator shall
-                  view the message and following the instructions in the AGD guidance verify that
-                  the full URI of the embedded link is displayed. </test></testlist>
+            <aactivity><tss>The evaluator shall verify that the TSS includes a description of how
+                embedded links are rendered and the method by which the URI of the link is
+                displayed.</tss>
+              <guidance>The evaluator shall ensure that the AGD guidance includes instruction (with
+                any appropriate visual figures) for viewing the URI of an embedded link.</guidance>
+              <tests>The evaluator shall perform the following test:<br/>
+                <testlist>
+                  <test>The evaluator shall send the client an HTML message with an embedded link
+                    whose tag is not the URI itself (for example, "click here"). The evaluator shall
+                    view the message and following the instructions in the AGD guidance verify that
+                    the full URI of the embedded link is displayed. </test></testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -510,10 +515,11 @@
               would require the use of a protocol such as IMAP or MAPI. It is not compatible with
               POP. Exceptions from this requirement are credentials and configuration information
               including CRLs.</note>
-            <aactivity>The evaluator shall operate the email client for a period of time, ensuring
-              that a wide variety of email client functionality has been exercised. The evaluator
-              shall then examine the email client to ensure that no files have been written to the
-              file system other than credentials or configuration information.</aactivity>
+            <aactivity><tests>The evaluator shall operate the email client for a period of time,
+                ensuring that a wide variety of email client functionality has been exercised. The
+                evaluator shall then examine the email client to ensure that no files have been
+                written to the file system other than credentials or configuration
+                information.</tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FDP_REN_EXT.1" name="Rendering of Message Content">
@@ -531,27 +537,27 @@
               this mode. The ST author must identify all content types supported by the email client
               through selections and/or assignments. If the email client only supports plaintext
               only mode, no embedded content types should be selected.</note>
-            <aactivity> The evaluator shall ensure that the TSS describes plaintext only mode for
-              sending and receiving messages. The evaluator shall verify that the TSS describes
-              whether the email client is capable of rendering and executing HTML or JavaScript. If
-              the email client can render or execute HTML or JavaScript, this description must
-              indicate how the email client handles received messages that contain HTML or
-              JavaScript while in plaintext only mode, and the evaluator shall ensure that that
-              description indicates that embedded objects of these types are not rendered or
-              executed and that images are not automatically downloaded.<br/> The evaluator shall
-              examine the AGD guidance and verify that it contains instructions for enabling
-              plaintext only mode.<br/> The evaluator shall perform the following tests:<br/>
-              <testlist>
-                <test>(conditional) If the email client is capable of rendering HTML, the evaluator
-                  shall send a message to the client containing HTML embedded objects and shall
-                  verify that the HTML renders. The evaluator shall then enable plaintext only mode
-                  and verify that the HTML does not render.</test>
-                <test>(conditional) If the email client is capable of rendering and executing
-                  JavaScript, the evaluator shall send a message to the client containing JavaScript
-                  embedded objects and shall verify that the JavaScript renders and executes. The
-                  evaluator shall then enable plaintext only mode and verify that the JavaScript
-                  does not render or execute.</test>
-              </testlist>
+            <aactivity><tss>The evaluator shall ensure that the TSS describes plaintext only mode
+                for sending and receiving messages. The evaluator shall verify that the TSS
+                describes whether the email client is capable of rendering and executing HTML or
+                JavaScript. If the email client can render or execute HTML or JavaScript, this
+                description must indicate how the email client handles received messages that
+                contain HTML or JavaScript while in plaintext only mode, and the evaluator shall
+                ensure that that description indicates that embedded objects of these types are not
+                rendered or executed and that images are not automatically
+                downloaded.</tss><guidance>The evaluator shall examine the AGD guidance and verify
+                that it contains instructions for enabling plaintext only mode.</guidance><tests>The
+                evaluator shall perform the following tests: <testlist>
+                  <test>(conditional) If the email client is capable of rendering HTML, the
+                    evaluator shall send a message to the client containing HTML embedded objects
+                    and shall verify that the HTML renders. The evaluator shall then enable
+                    plaintext only mode and verify that the HTML does not render.</test>
+                  <test>(conditional) If the email client is capable of rendering and executing
+                    JavaScript, the evaluator shall send a message to the client containing
+                    JavaScript embedded objects and shall verify that the JavaScript renders and
+                    executes. The evaluator shall then enable plaintext only mode and verify that
+                    the JavaScript does not render or execute.</test>
+                </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -564,14 +570,14 @@
               encrypt and/or sign/verify all sent or received messages. This requirement only
               specifies that the mechanism for digital signature and encryption must be
               S/MIME.</note>
-            <aactivity>The evaluator shall verify that the TSS contains a description of the S/MIME
-              implementation and its use to protect mail from undetected modification using digital
-              signatures and unauthorized disclosure using encryption. The evaluator shall verify
-              that the TSS describes whether signature verification and decryption occur at receipt
-              or viewing of the message contents, and whether messages are stored with their S/MIME
-              envelopes.<br/> The evaluator shall ensure that the AGD guidance includes instructions
-              for configuring a certificate for S/MIME use and instructions for signing and
-              encrypting email.<br/>
+            <aactivity><tss>The evaluator shall verify that the TSS contains a description of the
+                S/MIME implementation and its use to protect mail from undetected modification using
+                digital signatures and unauthorized disclosure using encryption. The evaluator shall
+                verify that the TSS describes whether signature verification and decryption occur at
+                receipt or viewing of the message contents, and whether messages are stored with
+                their S/MIME envelopes.</tss><guidance>The evaluator shall ensure that the AGD
+                guidance includes instructions for configuring a certificate for S/MIME use and
+                instructions for signing and encrypting email.</guidance>
             </aactivity><br/>
           </f-element>
         </f-component>
@@ -586,23 +592,25 @@
             <note role="application">SASL is needed if the email implements SMTP to send messages.
               Clients that do not use SMTP (e.g., ActiveSync or MAPI) would not need to implement
               support for SASL.</note>
-            <aactivity> The evaluator shall examine the TSS to determine that it describes the
-              <!-- details of the email client connecting to Mail User Agent and a Mail Transfer Agent in -->
-              details of the email client/Mail User Agent connecting to a Mail Transfer Agent in
-              terms of the SASL connection, along with email client -specific options or procedures
-              that might not be reflected in the specification.<br/> The evaluator shall confirm
-              that the operational guidance contains instructions for establishing the connection to
-              <!-- the Mail User Agent and --> the Mail Transfer Agent. The evaluator shall also perform the
-              following test:<br/>
-              <testlist>
-                <test>The evaluators shall ensure that the email client is able to initiate
-                  communications with a <!-- Mail User Agent changed to Mail Delivery Agent --> Mail Delivery Agent using POP, IMAP, and any assigned protocols
-                  specified in the requirement, setting up the connections as described in the
-                  operational guidance and ensuring that communication is successful.</test>
-                <test>The evaluators shall verify that a successful SASL handshake takes place. To
-                  perform this test, the evaluator shall use a sniffer and a packet analyzer. The
-                  packet analyzer must indicate that the protocol in use is SASL.</test>
-              </testlist>
+            <aactivity><tss>The evaluator shall examine the TSS to determine that it describes the
+                <!-- details of the email client connecting to Mail User Agent and a Mail Transfer Agent in -->
+                details of the email client/Mail User Agent connecting to a Mail Transfer Agent in
+                terms of the SASL connection, along with email client -specific options or
+                procedures that might not be reflected in the specification.</tss>
+              <guidance>The evaluator shall confirm that the operational guidance contains
+                instructions for establishing the connection to <!-- the Mail User Agent and --> the
+                Mail Transfer Agent. </guidance>
+              <tests>The evaluator shall also perform the following test:<br/>
+                <testlist>
+                  <test>The evaluators shall ensure that the email client is able to initiate
+                    communications with a <!-- Mail User Agent changed to Mail Delivery Agent -->
+                    Mail Delivery Agent using POP, IMAP, and any assigned protocols specified in the
+                    requirement, setting up the connections as described in the operational guidance
+                    and ensuring that communication is successful.</test>
+                  <test>The evaluators shall verify that a successful SASL handshake takes place. To
+                    perform this test, the evaluator shall use a sniffer and a packet analyzer. The
+                    packet analyzer must indicate that the protocol in use is SASL.</test>
+                </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FIA_SASL_EXT.1.2" status="sel-based">
@@ -624,23 +632,24 @@
               RFC 4422, the AUTH and CAPA extensions for POP3, as described in RFC 5043, the
               AUTHENTICATION and CAPABILITY extensions for IMAP, as described in RFC 4959 and the
               AUTH extension for SMTP, as described in RFC 4954. </note>
-            <aactivity> The evaluator shall examine the TSS to determine that it describes the
-              details of the email client connecting to <!-- a Mail User Agent and --> a Mail Transfer Agent
-              in terms of the SASL connection, along with email client -specific options or
-              procedures that might not be reflected in the specification.<br/> The evaluator shall
-              confirm that the operational guidance contains instructions for establishing the
-              connection to the <!-- Mail User Agent and the --> Mail Transfer Agent. The evaluator shall
-              also perform the following tests:<br/>
-              <testlist>
-                <test>The evaluators shall ensure that the email client is able to initiate
-                  communications <!-- with a Mail User Agent --> using POP, IMAP and SMTP and requiring SASL,
-                  setting up the connections as described in the operational guidance and ensuring
-                  that communication is successful.</test>
-                <test>The evaluator shall ensure, for each communication channel with an authorized
-                  IT entity in tests 1, that a valid SASL handshake is performed. To perform this
-                  test, the evaluator shall use a sniffer and a packet analyzer. The packet analyzer
-                  must indicate that the protocol in use is SASL.</test>
-              </testlist>
+            <aactivity><tss>The evaluator shall examine the TSS to determine that it describes the
+                details of the email client connecting to <!-- a Mail User Agent and --> a Mail
+                Transfer Agent in terms of the SASL connection, along with email client -specific
+                options or procedures that might not be reflected in the specification.</tss>
+              <guidance>The evaluator shall confirm that the operational guidance contains
+                instructions for establishing the connection to the <!-- Mail User Agent and the -->
+                Mail Transfer Agent.</guidance>
+              <tests>The evaluator shall also perform the following tests:<br/>
+                <testlist>
+                  <test>The evaluators shall ensure that the email client is able to initiate
+                    communications <!-- with a Mail User Agent --> using POP, IMAP and SMTP and
+                    requiring SASL, setting up the connections as described in the operational
+                    guidance and ensuring that communication is successful.</test>
+                  <test>The evaluator shall ensure, for each communication channel with an
+                    authorized IT entity in tests 1, that a valid SASL handshake is performed. To
+                    perform this test, the evaluator shall use a sniffer and a packet analyzer. The
+                    packet analyzer must indicate that the protocol in use is SASL.</test>
+                </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -673,34 +682,35 @@
             <!-- was 2.7 -->
             <title> The email client shall notify the user if an email is signed with an invalid
               certificate. </title>
-            <aactivity> The evaluator shall check the TSS to ensure that it describes how the email
-              client chooses which certificates to use, and any necessary instructions in the
-              administrative guidance for configuring the operating environment so that the email
-              client can use the certificates.<br/> The evaluator shall examine the TSS to confirm
-              that it describes the behavior of the email client when a connection cannot be
-              established during the validity check of a certificate used in establishing a trusted
-              channel and protecting email. If the requirement that the administrator is able to
-              specify the default action, then the evaluator shall ensure that the operational
-              guidance contains instructions on how this configuration action is performed.<br/> The
-              evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1 (<cite
-                linkend="bibAppPP"/>) that requires the use of certificates:<br/>
-              <testlist>
-                <test>The evaluator shall demonstrate that using a certificate without a valid
-                  certification path results in the function failing or in the receipt of a user
-                  notification (as required by elements 3, 4, 5, and 6). The evaluator shall then
-                  load into the platform’s root store any certificates needed to validate the
-                  certificate to be used in the function, and demonstrate that the function succeeds
-                  or results in no user notification.</test>
-                <test>The evaluator shall demonstrate that using a valid certificate that requires
-                  certificate validation checking to be performed in at least some part by
-                  communicating with a non-TOE IT entity. The evaluator shall then manipulate the
-                  environment so that the email client is unable to verify the validity of the
-                  certificate, and observe that the action selected in FIA_X509_EXT.2.2 (<cite
-                    linkend="bibAppPP"/>) is performed. If the selected action is
-                  administrator-configurable, then the evaluator shall follow the operational
-                  guidance to determine that all supported administrator-configurable options behave
-                  in their documented manner.</test>
-              </testlist>
+            <aactivity><tss>The evaluator shall check the TSS to ensure that it describes how the
+                email client chooses which certificates to use, and any necessary instructions in
+                the administrative guidance for configuring the operating environment so that the
+                email client can use the certificates.<br/> The evaluator shall examine the TSS to
+                confirm that it describes the behavior of the email client when a connection cannot
+                be established during the validity check of a certificate used in establishing a
+                trusted channel and protecting email. If the requirement that the administrator is
+                able to specify the default action, then the evaluator shall ensure that the
+                operational guidance contains instructions on how this configuration action is
+                performed.</tss>
+              <tests>The evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1
+                  (<cite linkend="bibAppPP"/>) that requires the use of certificates:<br/>
+                <testlist>
+                  <test>The evaluator shall demonstrate that using a certificate without a valid
+                    certification path results in the function failing or in the receipt of a user
+                    notification (as required by elements 3, 4, 5, and 6). The evaluator shall then
+                    load into the platform’s root store any certificates needed to validate the
+                    certificate to be used in the function, and demonstrate that the function
+                    succeeds or results in no user notification.</test>
+                  <test>The evaluator shall demonstrate that using a valid certificate that requires
+                    certificate validation checking to be performed in at least some part by
+                    communicating with a non-TOE IT entity. The evaluator shall then manipulate the
+                    environment so that the email client is unable to verify the validity of the
+                    certificate, and observe that the action selected in FIA_X509_EXT.2.2 (<cite
+                      linkend="bibAppPP"/>) is performed. If the selected action is
+                    administrator-configurable, then the evaluator shall follow the operational
+                    guidance to determine that all supported administrator-configurable options
+                    behave in their documented manner.</test>
+                </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -810,36 +820,44 @@
                 <selectable><br/> 14. No other management functions </selectable>
               </selectables>
             </title> --></title>
-            <note role="application"> The Administrator is responsible for management activities,
-              including setting the policy that is applied by the enterprise on the email client.
-              This administrator is likely to be acting remotely and could be the MTA administrator
-              acting through a centralized management console or dashboard.<br/> The intent of this
-              requirement is to allow the administrator to configure the email client with a policy
-              that may not be over-ridden by the user. If the administrator has not set a policy for
-              a particular function, the user may still perform that function. Enforcement of the
-              policy is done by the email client itself, or the email client and the email client
-              platform in coordination with each other.<br/> For Function #10 per FIA_X509_EXT.2.2
-                (<cite linkend="bibAppPP"/>), the administrator has the option of accepting or
-              rejecting all certificates that cannot be validated, accepting a given certificate
-              that cannot be validated, or not accepting a given certificate that cannot be
-              validated. Depending on the choice that the administrator has made in FIA_X509_EXT.2.2
-                (<cite linkend="bibAppPP"/>), the trusted connection will either be allowed for all
-              certificates that cannot be validated, disallowed for all certificates cannot be
-              validated, allowed for a given certificate that cannot be validated, or disallowed for
-              a given certificate that cannot be validated. </note>
-            <aactivity> The evaluator shall perform the following tests:<br/>
-              <testlist>
-                <!-- Remove test <test>The evaluator shall use the test environment to deploy policies to the email
+            <note role="application">
+              <!-- Add --> For these management functions, the term “Administrator” refers to the
+              administrator of a non-mobile device or the device owner of a mobile device.<br/> The
+              Administrator is responsible for management activities, including setting the policy
+              that is applied by the enterprise on the email client. The Administrator could <!-- Change "is likely to" to "could" -->
+              be acting remotely and could be the MTA administrator acting through a centralized
+              management console or dashboard.<br/> The intent of this requirement is to allow the
+              Administrator to configure the email client with a policy that may not be over-ridden
+              by the user. If the Administrator has not set a policy for a particular function, the
+              user may still perform that function. Enforcement of the policy is done by the email
+              client itself, or the email client and the email client platform in coordination with
+              each other.<br/> For Function #10 per FIA_X509_EXT.2.2 (<cite linkend="bibAppPP"/>),
+              the administrator has the option of accepting or rejecting all certificates that
+              cannot be validated, accepting a given certificate that cannot be validated, or not
+              accepting a given certificate that cannot be validated. Depending on the choice that
+              the Administrator has made in FIA_X509_EXT.2.2 (<cite linkend="bibAppPP"/>), the
+              trusted connection will either be allowed for all certificates that cannot be
+              validated, disallowed for all certificates cannot be validated, allowed for a given
+              certificate that cannot be validated, or disallowed for a given certificate that
+              cannot be validated.<br/>
+              <!--Add --> Applications used to configure enterprise policy should have their own
+              identification and authorization and additional security requirements to ensure that
+              the remote administration is trusted.</note>
+            <aactivity>
+              <tests>The evaluator shall perform the following tests:<br/>
+                <testlist>
+                  <!-- Remove test <test>The evaluator shall use the test environment to deploy policies to the email
                   client.</test> -->
-                <test>The evaluator shall create policies which collectively include all management
-                  functions which are controlled by the (enterprise) administrator and cannot be
-                  overridden by the user as defined in <linkref linkend="FMT_MOF_EXT.1.1"/>. The
-                  evaluator shall apply these policies to the client, attempt to override each
-                  setting as the user, and ensure that the TSF does not permit it.</test>
-                <!-- Add new test -->
-                <test>The evaluator shall verify that functions perform as intended by enabling,
-                  disabling, and configuring the functions.</test>
-              </testlist></aactivity>
+                  <test>The evaluator shall create policies which collectively include all
+                    management functions which are controlled by the (enterprise) administrator and
+                    cannot be overridden by the user as defined in <linkref
+                      linkend="FMT_MOF_EXT.1.1"/>. The evaluator shall apply these policies to the
+                    client, attempt to override each setting as the user, and ensure that the TSF
+                    does not permit it.</test>
+                  <!-- Add new test -->
+                  <test>The evaluator shall verify that functions perform as intended by enabling,
+                    disabling, and configuring the functions.</test>
+                </testlist></tests></aactivity>
           </f-element>
         </f-component>
       </subsection>
@@ -939,27 +957,31 @@
                 <i>POP</i> is chosen, then <linkref linkend="FIA_SASL_EXT.1.2"/> shall be included
               in the <abbr linkend="ST"/>. <!-- Added -->Selections must include at least one
               sending and one receiving protocol. </note>
-            <aactivity> The evaluator shall examine the TSS to determine that it describes the
-              details of the email client connecting to <!-- Mail User Agent and --> a Mail Transfer Agent in
-              terms of the TLS connection, along with email client-specific options or procedures
-              that might not be reflected in the specification.<br/> The evaluator shall confirm
-              that the operational guidance contains instructions for establishing the connection to
-              <!-- the Mail User Agent and --> the Mail Transfer Agent. The evaluator shall also perform the
-              following tests:<br/>
-              <testlist>
-                <test>The evaluators shall ensure that the email client is able to initiate
-                  communications <!-- with a Mail User Agent --> using any selected or assigned protocols
-                  specified in the requirement over TLS, setting up the connections as described in
-                  the operational guidance and ensuring that communication is successful.</test>
-                <test>The evaluators shall ensure that the email client is able to initiate
-                  communications with a Mail Transfer Agent using SMTP and any assigned protocols
-                  specified in the requirement over TLS, setting up the connections as described in
-                  the operational guidance and ensuring that communication is successful.</test>
-                <test>The evaluator shall ensure, for each communication channel with an authorized
-                  IT entity in tests 1 and 2, the channel data is not sent in plaintext. To perform
-                  this test, the evaluator shall use a sniffer and a packet analyzer. The packet
-                  analyzer must indicate that the protocol in use is TLS.</test>
-              </testlist>
+            <aactivity><tss>The evaluator shall examine the TSS to determine that it describes the
+                details of the email client connecting to <!-- Mail User Agent and --> a Mail
+                Transfer Agent in terms of the TLS connection, along with email client-specific
+                options or procedures that might not be reflected in the specification.</tss>
+              <guidance>The evaluator shall confirm that the operational guidance contains
+                instructions for establishing the connection to <!-- the Mail User Agent and --> the
+                Mail Transfer Agent.</guidance>
+              <tests>The evaluator shall also perform the following tests:<br/>
+                <testlist>
+                  <test>The evaluators shall ensure that the email client is able to initiate
+                    communications <!-- with a Mail User Agent --> using any selected or assigned
+                    protocols specified in the requirement over TLS, setting up the connections as
+                    described in the operational guidance and ensuring that communication is
+                    successful.</test>
+                  <test>The evaluators shall ensure that the email client is able to initiate
+                    communications with a Mail Transfer Agent using SMTP and any assigned protocols
+                    specified in the requirement over TLS, setting up the connections as described
+                    in the operational guidance and ensuring that communication is
+                    successful.</test>
+                  <test>The evaluator shall ensure, for each communication channel with an
+                    authorized IT entity in tests 1 and 2, the channel data is not sent in
+                    plaintext. To perform this test, the evaluator shall use a sniffer and a packet
+                    analyzer. The packet analyzer must indicate that the protocol in use is
+                    TLS.</test>
+                </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
