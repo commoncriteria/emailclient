@@ -333,7 +333,7 @@
               Revocation Lists (CRLs) and certificates <selectables linebreak="yes">
                 <selectable>each time needed</selectable>
                 <selectable>for incoming/outgoing messages</selectable>
-                <selectable>[assignment: frequency]</selectable>
+                <selectable><assignable>frequency</assignable></selectable>
               </selectables>
               <!-- added -->as part of the S/MIME protocol.</title>
             <note role="application"> The email client can define how this mechanism behaves, but it
@@ -528,7 +528,7 @@
               and execution of <selectables linebreak="yes">
                 <selectable>HTML</selectable>
                 <selectable>JavaScript</selectable>
-                <selectable>[assignment: other embedded content types]</selectable>
+                <selectable><assignable>other embedded content types</assignable></selectable>
                 <selectable>no embedded content types</selectable>
               </selectables>. </title>
             <note role="application">Plaintext only mode prevents the automatic downloading of
@@ -953,8 +953,8 @@
                 <selectable>MAPI Extensions for HTTP</selectable>
                 <selectable>MAPI/RPC</selectable>
                 <selectable>ActiveSync</selectable>
-                <selectable>[assignment: other protocol (reference RFC or
-                  specification)]</selectable>
+                <selectable><assignable>other protocol (reference RFC or
+                  specification)</assignable></selectable>
               </selectables>. </title>
             <note role="application"><linkref linkend="FIA_SASL_EXT.1"/> is a selection-based
               requirement that depends upon selections in FTP_ITC_EXT.1.2. For example, if
