@@ -525,7 +525,7 @@
         <f-component id="FDP_REN_EXT.1" name="Rendering of Message Content">
           <f-element id="FDP_REN_EXT.1.1" status="optional">
             <title>The email client shall have a plaintext-only mode which disables the rendering
-              and execution of <selectables>
+              and execution of <selectables linebreak="yes">
                 <selectable>HTML</selectable>
                 <selectable>JavaScript</selectable>
                 <selectable>[assignment: other embedded content types]</selectable>
