@@ -585,7 +585,7 @@
       <subsection title="Identification and Authentication (FIA)" id="fia">
         <f-component id="FIA_SASL_EXT.1" name="Simple Authentication and Security Layer (SASL)">
           <f-element id="FIA_SASL_EXT.1.1" status="sel-based">
-            <selection-depends req="FTP_ITC_EXT.1.2"/>
+            <selection-depends req="FTP_ITC_EXT.1.1"/>
             <!-- Renumbered 1.3 to 1.2 -->
             <title>The email client shall implement support for Simple Authentication and Security
               Layer (SASL) that complies with RFC 4422. </title>
@@ -615,22 +615,22 @@
             </aactivity>
           </f-element>
           <f-element id="FIA_SASL_EXT.1.2" status="sel-based">
-            <selection-depends req="FTP_ITC_EXT.1.2"/>
+            <selection-depends req="FTP_ITC_EXT.1.1"/>
             <title>The email client must support the POP3 CAPA and AUTH extensions for the SASL
               mechanism. </title>
           </f-element>
           <f-element id="FIA_SASL_EXT.1.3" status="sel-based">
-            <selection-depends req="FTP_ITC_EXT.1.2"/>
+            <selection-depends req="FTP_ITC_EXT.1.1"/>
             <title>The email client must support the IMAP CAPABILITY and AUTHENTICATE extensions for
               the SASL mechanism. </title>
           </f-element>
           <f-element id="FIA_SASL_EXT.1.4" status="sel-based">
-            <selection-depends req="FTP_ITC_EXT.1.2"/>
+            <selection-depends req="FTP_ITC_EXT.1.1"/>
             <title>The email client must support the SMTP AUTH extension for the SASL mechanism. </title>
             <note role="application"> In order for an email client to support PKI X.509 Certificates
               for POP3, IMAP and SMTP as required in this document, the client must support the
               Simple Authentication and Security Layer (SASL) authentication method as described in
-              RFC 4422, the AUTH and CAPA extensions for POP3, as described in RFC 5043, the
+              RFC 4422, the AUTH and CAPA extensions for POP3, as described in RFC 5034, the
               AUTHENTICATION and CAPABILITY extensions for IMAP, as described in RFC 4959 and the
               AUTH extension for SMTP, as described in RFC 4954. </note>
             <aactivity><tss>The evaluator shall examine the TSS to determine that it describes the
@@ -940,12 +940,14 @@
         <f-component id="FTP_ITC_EXT.1" name="Inter-TSF Trusted Channel">
           <f-element id="FTP_ITC_EXT.1.1">
             <!-- Renumbered 1.2 to 1.1 -->
-            <title>The email client shall permit the <abbr linkend="TSF"/> to initiate or receive
+            <!-- Remove old 1.1 -->
+            <!-- <title>The email client shall permit the <abbr linkend="TSF"/> to initiate or receive
               communication via the trusted channel. </title>
           </f-element>
-          <f-element id="FTP_ITC_EXT.1.2">
+          <f-element id="FTP_ITC_EXT.1.2"> -->
             <!-- Renumbered 1.3 to 1.2 -->
-            <title>The email client shall communicate via the trusted channel for <selectables
+            <!-- Renumber 1.2 to 1.1 and revise wording to shall initiate or receive communication -->
+            <title>The email client shall initiate or receive communication via the trusted channel for <selectables
                 linebreak="yes">
                 <selectable>IMAP</selectable>
                 <selectable>SMTP</selectable>
@@ -957,7 +959,7 @@
                   specification)</assignable></selectable>
               </selectables>. </title>
             <note role="application"><linkref linkend="FIA_SASL_EXT.1"/> is a selection-based
-              requirement that depends upon selections in FTP_ITC_EXT.1.2. For example, if
+              requirement that depends upon selections in FTP_ITC_EXT.1.1. For example, if
                 <i>POP</i> is chosen, then <linkref linkend="FIA_SASL_EXT.1.2"/> shall be included
               in the <abbr linkend="ST"/>.<br/>
               <!-- Added -->Selections must include at least one sending and one receiving protocol.
