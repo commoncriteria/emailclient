@@ -212,10 +212,10 @@
       the threats (T.NETWORK_ATTACK, T.NETWORK_EAVESDROP,
       T.LOCAL_ATTACK, T.PHYSICAL_ACCESS) identified in the <cite linkend="bibAppPP"/>: -->
       <threats>
-        <threat id="T.NETWORK_ATTACK"/>
+        <!-- Remove, in App PP <threat id="T.NETWORK_ATTACK"/>
         <threat id="T.NETWORK_EAVESDROP"/>
         <threat id="T.LOCAL_ATTACK"/>
-        <threat id="T.PHYSICAL_ACCESS"/>
+        <threat id="T.PHYSICAL_ACCESS"/> -->
         <threat id="T.FLAWED_ADDON">
           <description> Email client functionality can be extended with integration of third-party
             utilities and tools. This expanded set of capabilities is made possible via the use of
@@ -527,17 +527,34 @@
         <f-component id="FDP_PST_EXT.1" name="Storage of Persistent Information">
           <f-element id="FDP_PST_EXT.1.1" status="optional">
             <title>The email client shall be capable of operating without storing persistent
-              information to the file system.</title>
+              information to the client platform with the following exceptions:
+                  <selectables><selectable>credentials</selectable><selectable>configuration
+                  information</selectable><selectable>no
+              exceptions</selectable></selectables>.</title>
+            <!--Revised <title>The email client shall be capable of operating without storing persistent
+              information to the file system.</title> -->
             <note role="application">Any data that persists after the email client closes, including
               temporary files, is considered to be persistent data. Satisfying this requirement
               would require the use of a protocol such as IMAP or MAPI. It is not compatible with
               POP. Exceptions from this requirement are credentials and configuration information
               including CRLs.</note>
+            <!-- Revised 
             <aactivity><tests>The evaluator shall operate the email client for a period of time,
                 ensuring that a wide variety of email client functionality has been exercised. The
                 evaluator shall then examine the email client to ensure that no files have been
                 written to the file system other than credentials or configuration
-                information.</tests></aactivity>
+                information.</tests></aactivity> -->
+            <aactivity><tss>The evaluator shall examine the TSS to determine that it describes all
+                persistent information stored on the platform, and the locations on the platform
+                where these data are stored. The evaluator shall confirm that the persistent data
+                described is limited to the data identified in the selection.</tss><tests><test>The
+                  evaluator shall operate the email client so that several messages, signed,
+                  encrypted, and unsigned, are processed. The evaluator shall also exercise
+                  functionality such as moving messages to folders, writing unsent drafts of
+                  messages, etc., as provided by the client. The evaluator shall then examine the
+                  client platform to determine that the only persistent information stored is that
+                  identified in the TSS.</test></tests>
+            </aactivity>
           </f-element>
         </f-component>
         <f-component id="FDP_REN_EXT.1" name="Rendering of Message Content">
@@ -845,19 +862,20 @@
               <!-- Add --> For these management functions, the term "Administrator" refers to the
               administrator of a non-mobile device or the device owner of a mobile device.
               <!-- Added -->Functions are listed as optional for both Administrators and Users to
-              account for mobile devices that do not have an administrator (or device owner) to configure the device   
-              for other users. <br/> The Administrator is responsible for management activities,
-              including setting the policy that is applied by the enterprise on the email client.
-              The Administrator could <!-- Change "is likely to" to "could" --> be acting remotely
-              and could be the MTA administrator acting through a centralized management console or
-              dashboard.<br/> The intent of this requirement is to allow the Administrator to
-              configure the email client with a policy that may not be over-ridden by the user. If
-              the Administrator has not set a policy for a particular function, the user may still
-              perform that function. Enforcement of the policy is done by the email client itself,
-              or the email client and the email client platform in coordination with each
-              other.<br/>            <!--Add --> Applications used to configure enterprise policy should have their own
+              account for mobile devices that do not have an administrator (or device owner) to
+              configure the device for other users. <br/> The Administrator is responsible for
+              management activities, including setting the policy that is applied by the enterprise
+              on the email client. The Administrator could <!-- Change "is likely to" to "could" -->
+              be acting remotely and could be the MTA administrator acting through a centralized
+              management console or dashboard.<br/> The intent of this requirement is to allow the
+              Administrator to configure the email client with a policy that may not be over-ridden
+              by the user. If the Administrator has not set a policy for a particular function, the
+              user may still perform that function. Enforcement of the policy is done by the email
+              client itself, or the email client and the email client platform in coordination with
+              each other.<br/>
+              <!--Add --> Applications used to configure enterprise policy should have their own
               identification and authorization and additional security requirements to ensure that
-              the remote administration is trusted.<br />
+              the remote administration is trusted.<br/>
               <!-- Replaced with text below - For Function #10 per FIA_X509_EXT.2.2 (<cite linkend="bibAppPP"/>), the
               Administrator has the option of accepting or rejecting all certificates that cannot be
               validated, accepting a given certificate that cannot be validated, or not accepting a
@@ -866,15 +884,15 @@
               connection will either be allowed for all certificates that cannot be validated,
               disallowed for all certificates cannot be validated, allowed for a given certificate
               that cannot be validated, or disallowed for a given certificate that cannot be validated. -->
-              Function 10 corresponds to the functionality described in FIA_X509_EXT.2.2 (<cite linkend="bibAppPP"/>). The
-              Administrator has the option of accepting or rejecting all certificates that cannot be
-              validated, accepting a given certificate that cannot be validated, or not accepting a
-              given certificate that cannot be validated. Depending on the choice that the
-              Administrator has made in FIA_X509_EXT.2.2 (<cite linkend="bibAppPP"/>), the trusted
-              connection will either be allowed for all certificates that cannot be validated,
-              disallowed for all certificates cannot be validated, allowed for a given certificate
-              that cannot be validated, or disallowed for a given certificate that cannot be validated. 
-   </note>
+              Function 10 corresponds to the functionality described in FIA_X509_EXT.2.2 (<cite
+                linkend="bibAppPP"/>). The Administrator has the option of accepting or rejecting
+              all certificates that cannot be validated, accepting a given certificate that cannot
+              be validated, or not accepting a given certificate that cannot be validated. Depending
+              on the choice that the Administrator has made in FIA_X509_EXT.2.2 (<cite
+                linkend="bibAppPP"/>), the trusted connection will either be allowed for all
+              certificates that cannot be validated, disallowed for all certificates cannot be
+              validated, allowed for a given certificate that cannot be validated, or disallowed for
+              a given certificate that cannot be validated. </note>
             <aactivity>
               <tests>The evaluator shall perform the following tests:<br/>
                 <testlist>
@@ -919,9 +937,11 @@
           <f-element id="FPT_AON_EXT.2.2" status="sel-based">
             <!-- Renumbered 2.2 to 3.2 -->
             <selection-depends req="FPT_AON_EXT.1.1"/>
-            <!-- Added whitelisted -->
-            <title>The email client shall provide the ability to initiate the downloading of
-              whitelisted add-ons and add-on updates.</title>
+            <!-- Added whitelisted; Added admin & user selections -->
+            <title>The email client shall provide the
+                  <selectables><selectable>administrator</selectable><selectable>user</selectable></selectables>
+              the ability to initiate the downloading of whitelisted add-ons and add-on
+              updates.</title>
             <!-- Added app note -->
             <note role="application">This requirement does not pertain to add-ons installed outside
               the email client.</note>
@@ -934,12 +954,11 @@
                 <selectable>published hash</selectable>
                 <selectable>no other functions</selectable>
               </selectables> prior to installing the add-on.</title>
-          </f-element>
-          <f-element id="FPT_AON_EXT.2.4" status="sel-based">
-            <!-- Renumbered 2.4 to 3.4 -->
+            <!-- Removed 2.4 and added admin & user selections to 2.2</f-element>
+            <f-element id="FPT_AON_EXT.2.4" status="sel-based">
+            Renumbered 2.4 to 3.4 
             <selection-depends req="FPT_AON_EXT.1.1"/>
-            <title>The email client shall prevent the automatic installation of add-ons.</title>
-            <aactivity>
+            <title>The email client shall prevent the automatic installation of add-ons.</title>--> <aactivity>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it states
                 that the <abbr linkend="TSF"/> will reject add-ons from unapproved sources. </tss>
               <guidance>The evaluator shall examine the operational guidance to verify that it
@@ -993,9 +1012,12 @@
               requirement that depends upon selections in FTP_ITC_EXT.1.1. For example, if
                 <i>POP</i> is chosen, then <linkref linkend="FIA_SASL_EXT.1.2"/> shall be included
               in the <abbr linkend="ST"/>.<br/>
-              <!-- Added -->Selections must include at least one sending and one receiving protocol.
-              <br/>If the assignment is used, the ST author must also include a reference for
-              protocol (e.g., an RFC number). </note>
+              <!-- Added -->Selections must include at least one sending and one receiving protocol. <br/>
+              <!-- Added --> If SMTP is chosen, then the ST author must also choose either POP or
+              IMAP. As long as one of the SMTP-POP/IMAP, MAPI, or ActiveSync protocols is chosen,
+              the ST can also fill in the assignment with another protocol or protocols used by the
+              email client for sending/receiving messages. If the assignment is used, the ST author
+              must also include a reference for protocol (e.g., an RFC number). </note>
             <aactivity><tss>The evaluator shall examine the TSS to determine that it describes the
                 details of the email client connecting to <!-- Mail User Agent and --> a Mail
                 Transfer Agent in terms of the TLS connection, along with email client-specific
