@@ -958,7 +958,8 @@
             <f-element id="FPT_AON_EXT.2.4" status="sel-based">
             Renumbered 2.4 to 3.4 
             <selection-depends req="FPT_AON_EXT.1.1"/>
-            <title>The email client shall prevent the automatic installation of add-ons.</title>--> <aactivity>
+            <title>The email client shall prevent the automatic installation of add-ons.</title>-->
+            <aactivity>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it states
                 that the <abbr linkend="TSF"/> will reject add-ons from unapproved sources. </tss>
               <guidance>The evaluator shall examine the operational guidance to verify that it
@@ -966,7 +967,8 @@
                 sources. </guidance>
               <tests><!-- The following stmt was added --> The following tests require the developer
                 to provide tools not typically found on consumer products. <br/>The evaluator shall
-                perform the following tests <testlist>
+                perform the following tests <!-- Revise tests
+                <testlist>
                   <test>The evaluator shall configure the email client with trusted add-on sources.
                     The evaluator shall create or obtain an add-on signed by a trusted source and
                     attempt to install it. The evaluator shall verify that the signature on the
@@ -980,6 +982,22 @@
                   <test>The evaluator shall create or obtain an add-on signed by a trusted source,
                     modify the add-on without re-signing it, and attempt to install it. The
                     evaluator shall verify that the signed add-on is rejected.</test>
+                </testlist> -->
+                <testlist>
+                  <test>The evaluator shall configure the email client with trusted add-on sources.
+                    The evaluator shall create or obtain a <!-- added --> whitelisted add-on signed by a trusted source and
+                    attempt to install it. The evaluator shall verify that the signature on the
+                    add-on is valid <!-- Added --> and shall verify that the administrator/user can/cannot install
+                    the add-on based on the selection(s) in FPT_AON_EXT.2.2.</test>
+                  <test>The evaluator shall create or obtain an add-on signed by an untrusted source
+                    and attempt to install it. The evaluator shall verify that the signed add-on is
+                    rejected <!-- added --> and cannot be installed.</test>
+                  <test>The evaluator shall create or obtain an add-on signed with an invalid
+                    certificate and attempt to install it. The evaluator shall verify that the
+                    signed add-on is <!-- added --> rejected and cannot be installed.</test>
+                  <test>The evaluator shall create or obtain an add-on signed by a trusted source,
+                    modify the add-on without re-signing it, and attempt to install it. The
+                    evaluator shall verify that the signed add-on is rejected and cannot be installed.</test>
                 </testlist>
               </tests>
             </aactivity>
