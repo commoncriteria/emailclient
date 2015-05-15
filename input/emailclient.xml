@@ -210,7 +210,7 @@
     clients. -->
     <section title="Threats" id="threats">
       <!-- Added -->
-      The following threats are specific to email clients, and represent an addition to those identified in the App PP.
+      The following threat is specific to email clients, and represents an addition to those identified in the App PP.
       <!-- The following threat is specific to email clients and represents an addition to
       the threats (T.NETWORK_ATTACK, T.NETWORK_EAVESDROP,
       T.LOCAL_ATTACK, T.PHYSICAL_ACCESS) identified in the <cite linkend="bibAppPP"/>: -->
