@@ -899,6 +899,13 @@
               validated, allowed for a given certificate that cannot be validated, or disallowed for
               a given certificate that cannot be validated. </note>
             <aactivity>
+              <tss>The evaluator shall verify that the TSS describes those management
+                functions which may only be configured by the email client platform 
+                administrator and cannot be over-ridden by the user when set
+                according to policy. </tss>
+              <guidance>The evaluator shall examine the operational guidance to verify
+                that it includes instructions for an email client platform administrator
+                to configure the functions listed in FMT_MOF.1.1. </guidance>
               <tests>The evaluator shall perform the following tests:<br/>
                 <testlist>
                   <!-- Remove test <test>The evaluator shall use the test environment to deploy policies to the email
