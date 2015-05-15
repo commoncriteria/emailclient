@@ -205,9 +205,12 @@
     PP and those defined in this EP describe those addressed by an email client as the Target of
     Evaluation. <br/> Notably, email clients are particularly at risk from the Network Attack threat
     identified in the App PP. Attackers can send malicious email messages directly to users, and the
-    email client will render or otherwise process this untrusted content.<br/>Threats are extended
+    email client will render or otherwise process this untrusted content.<!-- <br/> Delete - Threats are extended
     from the <cite linkend="bibAppPP"/> and include an additional threat that is specific to email
-    clients. <section title="Threats" id="threats">
+    clients. -->
+    <section title="Threats" id="threats">
+      <!-- Added -->
+      The following threats are specific to email clients, and represent an addition to those identified in the App PP.
       <!-- The following threat is specific to email clients and represents an addition to
       the threats (T.NETWORK_ATTACK, T.NETWORK_EAVESDROP,
       T.LOCAL_ATTACK, T.PHYSICAL_ACCESS) identified in the <cite linkend="bibAppPP"/>: -->
@@ -231,9 +234,11 @@
       </threats>
     </section>
   </chapter>
-  <chapter title="Security Objectives" id="sobj"> Security objectives are extended from the <cite
+  <chapter title="Security Objectives" id="sobj"> This Extended Package adds security objectives
+    to those identified in the Protection Profile for Application Software (App PP). 
+<!-- Delete to make wording consistent with browser - Security objectives are extended from the <cite
       linkend="bibAppPP"/> and include an additional security objective that is specific to email
-    clients. <!-- The following security objective is specific to email clients, and represents an addition to the
+    clients.  The following security objective is specific to email clients, and represents an addition to the
     security objectives in the App PP.  -->
     <section title="Security Objectives for the TOE" id="SecurityObjectivesTOE">
       <SOs>
