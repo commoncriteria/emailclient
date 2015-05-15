@@ -209,9 +209,8 @@
     from the <cite linkend="bibAppPP"/> and include an additional threat that is specific to email
     clients. -->
     <section title="Threats" id="threats">
-      <!-- Added -->
-      The following threat is specific to email clients, and represents an addition to those identified in the App PP.
-      <!-- The following threat is specific to email clients and represents an addition to
+      <!-- Added --> The following threat is specific to email clients, and represents an addition
+      to those identified in the App PP. <!-- The following threat is specific to email clients and represents an addition to
       the threats (T.NETWORK_ATTACK, T.NETWORK_EAVESDROP,
       T.LOCAL_ATTACK, T.PHYSICAL_ACCESS) identified in the <cite linkend="bibAppPP"/>: -->
       <threats>
@@ -234,9 +233,8 @@
       </threats>
     </section>
   </chapter>
-  <chapter title="Security Objectives" id="sobj"> This Extended Package adds security objectives
-    to those identified in the Protection Profile for Application Software (App PP). 
-<!-- Delete to make wording consistent with browser - Security objectives are extended from the <cite
+  <chapter title="Security Objectives" id="sobj"> This Extended Package adds security objectives to
+    those identified in the Protection Profile for Application Software (App PP). <!-- Delete to make wording consistent with browser - Security objectives are extended from the <cite
       linkend="bibAppPP"/> and include an additional security objective that is specific to email
     clients.  The following security objective is specific to email clients, and represents an addition to the
     security objectives in the App PP.  -->
@@ -899,13 +897,12 @@
               validated, allowed for a given certificate that cannot be validated, or disallowed for
               a given certificate that cannot be validated. </note>
             <aactivity>
-              <tss>The evaluator shall verify that the TSS describes those management
-                functions which may only be configured by the email client platform 
-                administrator and cannot be over-ridden by the user when set
-                according to policy. </tss>
-              <guidance>The evaluator shall examine the operational guidance to verify
-                that it includes instructions for an email client platform administrator
-                to configure the functions listed in FMT_MOF.1.1. </guidance>
+              <tss>The evaluator shall verify that the TSS describes those management functions
+                which may only be configured by the email client platform administrator and cannot
+                be over-ridden by the user when set according to policy. </tss>
+              <guidance>The evaluator shall examine the operational guidance to verify that it
+                includes instructions for an email client platform administrator to configure the
+                functions listed in FMT_MOF.1.1. </guidance>
               <tests>The evaluator shall perform the following tests:<br/>
                 <testlist>
                   <!-- Remove test <test>The evaluator shall use the test environment to deploy policies to the email
@@ -938,7 +935,12 @@
         </f-component>
         <f-component id="FPT_AON_EXT.2" name="Trusted Installation and Updates for Add-ons">
           <f-element id="FPT_AON_EXT.2.1" status="sel-based">
-            <!-- Renumbered 2.1 to 3.1 -->
+            <!-- Added new 2.1 -->
+            <selection-depends req="FPT_AON_EXT.1.1"/>
+            <title>The email client shall be capable of maintaining a list of approved whitelisted
+              add-ons. </title>
+          </f-element>
+          <f-element id="FPT_AON_EXT.2.2" status="sel-based">
             <!-- All FPT_TUD_EXT.3.1 Renamed AON -->
             <selection-depends req="FPT_AON_EXT.1.1"/>
             <title>The email client shall provide the ability to query the current version of the
@@ -946,8 +948,7 @@
             <note role="application">The email client may rely on the OS to provide this
               capability.</note>
           </f-element>
-          <f-element id="FPT_AON_EXT.2.2" status="sel-based">
-            <!-- Renumbered 2.2 to 3.2 -->
+          <f-element id="FPT_AON_EXT.2.3" status="sel-based">
             <selection-depends req="FPT_AON_EXT.1.1"/>
             <!-- Added whitelisted; Added admin & user selections -->
             <title>The email client shall provide the
@@ -958,22 +959,23 @@
             <note role="application">This requirement does not pertain to add-ons installed outside
               the email client.</note>
           </f-element>
-          <f-element id="FPT_AON_EXT.2.3" status="sel-based">
-            <!-- Renumbered 2.3 to 3.3 -->
+          <f-element id="FPT_AON_EXT.2.4" status="sel-based">
             <selection-depends req="FPT_AON_EXT.1.1"/>
             <title>The email client shall provide a means to verify add-ons using a digital
               signature mechanism and <selectables>
                 <selectable>published hash</selectable>
                 <selectable>no other functions</selectable>
               </selectables> prior to installing the add-on.</title>
-            <!-- Removed 2.4 and added admin & user selections to 2.2</f-element>
-            <f-element id="FPT_AON_EXT.2.4" status="sel-based">
-            Renumbered 2.4 to 3.4 
+            </f-element>
+            <f-element id="FPT_AON_EXT.2.5" status="sel-based">
             <selection-depends req="FPT_AON_EXT.1.1"/>
             <title>The email client shall prevent the automatic installation of add-ons.</title>-->
             <aactivity>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it states
-                that the <abbr linkend="TSF"/> will reject add-ons from unapproved sources. </tss>
+                how an add-on is deemed approved; where this information is stored and protected;
+                and how add-ons are processed to check that they are coming from an approved source.<br />
+                The evaluator shall examine the <abbr linkend="TSS"/> to verify that it states that
+                the <abbr linkend="TSF"/> will reject add-ons from unapproved sources. </tss>
               <guidance>The evaluator shall examine the operational guidance to verify that it
                 includes instructions on how to configure the email client with trusted add-on
                 sources. </guidance>
@@ -997,10 +999,11 @@
                 </testlist> -->
                 <testlist>
                   <test>The evaluator shall configure the email client with trusted add-on sources.
-                    The evaluator shall create or obtain a <!-- added --> whitelisted add-on signed by a trusted source and
-                    attempt to install it. The evaluator shall verify that the signature on the
-                    add-on is valid <!-- Added --> and shall verify that the administrator/user can/cannot install
-                    the add-on based on the selection(s) in FPT_AON_EXT.2.2.</test>
+                    The evaluator shall create or obtain a <!-- added --> whitelisted add-on signed
+                    by a trusted source and attempt to install it. The evaluator shall verify that
+                    the signature on the add-on is valid <!-- Added --> and shall verify that the
+                    administrator/user can/cannot install the add-on based on the selection(s) in
+                    FPT_AON_EXT.2.2.</test>
                   <test>The evaluator shall create or obtain an add-on signed by an untrusted source
                     and attempt to install it. The evaluator shall verify that the signed add-on is
                     rejected <!-- added --> and cannot be installed.</test>
@@ -1009,7 +1012,8 @@
                     signed add-on is <!-- added --> rejected and cannot be installed.</test>
                   <test>The evaluator shall create or obtain an add-on signed by a trusted source,
                     modify the add-on without re-signing it, and attempt to install it. The
-                    evaluator shall verify that the signed add-on is rejected and cannot be installed.</test>
+                    evaluator shall verify that the signed add-on is rejected and cannot be
+                    installed.</test>
                 </testlist>
               </tests>
             </aactivity>
