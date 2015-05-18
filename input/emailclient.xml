@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.7</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-5-14</PPPubDate>
+      <PPPubDate>2015-5-18</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -440,12 +440,13 @@
                     encryption is no longer valid. The evaluator shall verify that the received
                     message fails to decrypt. </test>
                   <test>The evaluator shall both send and receive a message that is both signed and
-                    encrypted. It is not necessary to examine the encrypted traffic to meet the
-                    intent of the requirement. In addition, the evaluator shall use a
-                    man-in-the-middle tool to modify at least one byte of the message such that the
-                    encryption and signature are no longer valid. The evaluator shall verify that
-                    the received message fails to decrypt, fails the signature validation check,
-                    and/or both. </test>
+                    encrypted.
+                    <!-- It is not necessary to examine the encrypted traffic to meet the
+                    intent of the requirement. -->
+                    In addition, the evaluator shall use a man-in-the-middle tool to modify at least
+                    one byte of the message such that the encryption and signature are no longer
+                    valid. The evaluator shall verify that the received message fails to decrypt,
+                    fails the signature validation check, and/or both. </test>
                   <test>The evaluator shall send a signed message to the email client using a
                     signature algorithm not supported according to the digestAlgorithm ID (e.g.,
                     SHA1). The evaluator shall verify that the email client provides a notification
@@ -462,8 +463,10 @@
                     without the Email Protection purpose in the extendedKeyUsage. The evaluator
                     shall verify that the email client notifies the user that the signature is
                     invalid.</test>
-                  <test>The evaluator shall verify that the email client downloads the CRL at the
-                    assigned frequency.</test>
+                  <!-- REVISED <test>The evaluator shall verify that the email client downloads the CRL at the
+                    assigned frequency.</test> -->
+                  <test>The evaluator shall verify that the email client uses OCSP or downloads the
+                    CRL at the assigned frequency.</test>
                 </testlist></tests>
             </aactivity>
           </f-element>
@@ -532,8 +535,8 @@
             <title>The email client shall be capable of operating without storing persistent
               information to the client platform with the following exceptions:
                   <selectables><selectable>credentials</selectable><selectable>configuration
-                  information</selectable><selectable>no
-              exceptions</selectable></selectables>.</title>
+                  information</selectable><selectable>CRL</selectable><selectable>no
+                  exceptions</selectable></selectables>.</title>
             <!--Revised <title>The email client shall be capable of operating without storing persistent
               information to the file system.</title> -->
             <note role="application">Any data that persists after the email client closes, including
@@ -586,15 +589,25 @@
                 downloaded.</tss><guidance>The evaluator shall examine the AGD guidance and verify
                 that it contains instructions for enabling plaintext only mode.</guidance><tests>The
                 evaluator shall perform the following tests: <testlist>
-                  <test>(conditional) If the email client is capable of rendering HTML, the
+                  <test> (conditional)
+                    <!-- If the email client is capable of rendering HTML  If plain-text only mode disables HTML, the
                     evaluator shall send a message to the client containing HTML embedded objects
                     and shall verify that the HTML renders. The evaluator shall then enable
-                    plaintext only mode and verify that the HTML does not render.</test>
-                  <test>(conditional) If the email client is capable of rendering and executing
+                    plaintext only mode and verify that the HTML does not render.</test> -->
+                    If HTML is selected in FDP_REN_EXT.1.1, the evaluator shall send a message to
+                    the client containing HTML embedded objects and shall verify that the HTML
+                    renders. The evaluator shall then enable plaintext only mode and verify that the
+                    HTML does not render.</test>
+                  <!-- <test>(conditional) If the email client is capable of rendering and executing
                     JavaScript, the evaluator shall send a message to the client containing
                     JavaScript embedded objects and shall verify that the JavaScript renders and
                     executes. The evaluator shall then enable plaintext only mode and verify that
-                    the JavaScript does not render or execute.</test>
+                    the JavaScript does not render or execute.</test> -->
+                  <test>(conditional) If JavaScript is selected in FDP_REN_EXT.1.1, the evaluator
+                    shall send a message to the client containing JavaScript embedded objects and
+                    shall verify that the JavaScript renders and executes. The evaluator shall then
+                    enable plaintext only mode and verify that the JavaScript does not render or
+                    execute.</test>
                 </testlist></tests>
             </aactivity>
           </f-element>
@@ -809,7 +822,7 @@
                 <tr><td>11. Configure message sending/receiving to only use cryptographic algorithms
                     defined in <linkref linkend="FCS_SMIME_EXT.1"/>.</td><td>O</td><td>O</td></tr>
                 <tr><td>12. Configure CRL retrieval frequency</td><td>O</td><td>O</td></tr>
-                <tr><td>13. Add/remove whitelisted add-ons</td><td>O</td><td>O</td></tr>
+                <tr><td>13. Add/remove trusted add-ons</td><td>O</td><td>O</td></tr>
                 <tr><td>14. No other management functions</td><td>O</td><td>O</td></tr>
               </table>
               <!-- Remove this 
@@ -893,7 +906,7 @@
               be validated, or not accepting a given certificate that cannot be validated. Depending
               on the choice that the Administrator has made in FIA_X509_EXT.2.2 (<cite
                 linkend="bibAppPP"/>), the trusted connection will either be allowed for all
-              certificates that cannot be validated, disallowed for all certificates cannot be
+              certificates that cannot be validated, disallowed for all certificates that cannot be
               validated, allowed for a given certificate that cannot be validated, or disallowed for
               a given certificate that cannot be validated. </note>
             <aactivity>
@@ -905,14 +918,15 @@
                 functions listed in FMT_MOF.1.1. </guidance>
               <tests>The evaluator shall perform the following tests:<br/>
                 <testlist>
-                  <!-- Remove test <test>The evaluator shall use the test environment to deploy policies to the email
+                  <!-- <test>The evaluator shall deploy policies to the email
                   client.</test> -->
-                  <test>The evaluator shall create policies which collectively include all
-                    management functions which are controlled by the (enterprise) administrator and
-                    cannot be overridden by the user as defined in <linkref
-                      linkend="FMT_MOF_EXT.1.1"/>. The evaluator shall apply these policies to the
-                    client, attempt to override each setting as the user, and ensure that the TSF
-                    does not permit it.</test>
+                  <test>The evaluator shall set
+                    <!-- create policies which collectively include all --> management functions
+                    which are controlled by the (enterprise) administrator and cannot be overridden
+                    by the user as defined in <linkref linkend="FMT_MOF_EXT.1.1"/>. The evaluator
+                    shall apply these <!-- policies --> functions to the client, attempt to override
+                    each setting as the user, and ensure that the email client <!-- TSF --> does not
+                    permit it.</test>
                   <!-- Add new test -->
                   <test>The evaluator shall verify that functions perform as intended by enabling,
                     disabling, and configuring the functions.</test>
@@ -937,23 +951,21 @@
           <f-element id="FPT_AON_EXT.2.1" status="sel-based">
             <!-- Added new 2.1 -->
             <selection-depends req="FPT_AON_EXT.1.1"/>
-            <title>The email client shall be capable of maintaining a list of approved whitelisted
-              add-ons. </title>
+            <title>The email client shall be capable of maintaining a list of trusted add-ons.
+            </title>
           </f-element>
           <f-element id="FPT_AON_EXT.2.2" status="sel-based">
             <!-- All FPT_TUD_EXT.3.1 Renamed AON -->
             <selection-depends req="FPT_AON_EXT.1.1"/>
             <title>The email client shall provide the ability to query the current version of the
               add-on.</title>
-            <note role="application">The email client may rely on the OS to provide this
-              capability.</note>
           </f-element>
           <f-element id="FPT_AON_EXT.2.3" status="sel-based">
             <selection-depends req="FPT_AON_EXT.1.1"/>
             <!-- Added whitelisted; Added admin & user selections -->
             <title>The email client shall provide the
                   <selectables><selectable>administrator</selectable><selectable>user</selectable></selectables>
-              the ability to initiate the downloading of whitelisted add-ons and add-on
+              the ability to initiate the downloading of trusted add-ons and add-on
               updates.</title>
             <!-- Added app note -->
             <note role="application">This requirement does not pertain to add-ons installed outside
@@ -966,16 +978,17 @@
                 <selectable>published hash</selectable>
                 <selectable>no other functions</selectable>
               </selectables> prior to installing the add-on.</title>
-            </f-element>
-            <f-element id="FPT_AON_EXT.2.5" status="sel-based">
+          </f-element>
+          <f-element id="FPT_AON_EXT.2.5" status="sel-based">
             <selection-depends req="FPT_AON_EXT.1.1"/>
             <title>The email client shall prevent the automatic installation of add-ons.</title>-->
-            <aactivity>
+              <note role="application">The email client may rely on the OS to provide capabilities
+              in FPT_AON_EXT.2 .</note><aactivity>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it states
                 how an add-on is deemed approved; where this information is stored and protected;
-                and how add-ons are processed to check that they are coming from an approved source.<br />
-                The evaluator shall examine the <abbr linkend="TSS"/> to verify that it states that
-                the <abbr linkend="TSF"/> will reject add-ons from unapproved sources. </tss>
+                and how add-ons are processed to check that they are coming from an approved
+                source.<br/> The evaluator shall examine the <abbr linkend="TSS"/> to verify that it
+                states that the email client will reject add-ons from unapproved sources. </tss>
               <guidance>The evaluator shall examine the operational guidance to verify that it
                 includes instructions on how to configure the email client with trusted add-on
                 sources. </guidance>
@@ -999,7 +1012,7 @@
                 </testlist> -->
                 <testlist>
                   <test>The evaluator shall configure the email client with trusted add-on sources.
-                    The evaluator shall create or obtain a <!-- added --> whitelisted add-on signed
+                    The evaluator shall create or obtain a <!-- added --> trusted add-on signed
                     by a trusted source and attempt to install it. The evaluator shall verify that
                     the signature on the add-on is valid <!-- Added --> and shall verify that the
                     administrator/user can/cannot install the add-on based on the selection(s) in
@@ -1047,11 +1060,12 @@
                 <i>POP</i> is chosen, then <linkref linkend="FIA_SASL_EXT.1.2"/> shall be included
               in the <abbr linkend="ST"/>.<br/>
               <!-- Added -->Selections must include at least one sending and one receiving protocol. <br/>
-              <!-- Added --> If SMTP is chosen, then the ST author must also choose either POP or
+              <!-- Don't include If SMTP is chosen, then the ST author must also choose either POP or
               IMAP. As long as one of the SMTP-POP/IMAP, MAPI, or ActiveSync protocols is chosen,
               the ST can also fill in the assignment with another protocol or protocols used by the
-              email client for sending/receiving messages. If the assignment is used, the ST author
-              must also include a reference for protocol (e.g., an RFC number). </note>
+              email client for sending/receiving messages. -->
+              If the assignment is used, the ST author must also include a reference for protocol
+              (e.g., an RFC number). </note>
             <aactivity><tss>The evaluator shall examine the TSS to determine that it describes the
                 details of the email client connecting to <!-- Mail User Agent and --> a Mail
                 Transfer Agent in terms of the TLS connection, along with email client-specific
