@@ -761,57 +761,35 @@
         </f-component>
       </subsection>
       <subsection title="Protection of the TSF (FPT)" id="fpt">
-        <f-component id="FPT_AON_EXT.1" name="Support for Trusted Add-ons">
+        <f-component id="FPT_AON_EXT.1" name="Support for Only Trusted Add-ons">
           <f-element id="FPT_AON_EXT.1.1">
-            <title>The email client shall include the capability to load <selectables>
+            <title>The email client shall include the capability to load
+			  <selectables>
                 <selectable>trusted add-ons</selectable>
-                <selectable>signed add-ons</selectable>
                 <selectable>no add-ons</selectable>
               </selectables>.</title>
-            <note role="application"><linkref linkend="FPT_AON_EXT.2"/> are selection-based
-              requirements that depend on the selection made in FPT_AON_EXT.1.1. Trusted add-ons
-              should be signed and trusted by an administrator or user (<linkref
-                linkend="FMT_MOF_EXT.1.1"/> Function 13).</note>
+            <note role="application"><linkref linkend="FPT_AON_EXT.2"/> depends upon the
+              selection made here.  If the
+			  email client does not include support for installing only trusted add-ons,
+			  this requirement can be met by demonstrating the ability to disable all support 
+			  for add-ons as specified in <linkref linkend="FMT_MOF_EXT.1"/>.
+              </note>
           </f-element>
         </f-component>
-        <f-component id="FPT_AON_EXT.2" name="Trusted Installation and Updates for Add-ons">
+        <f-component id="FPT_AON_EXT.2" name="Trusted Update for Add-ons">
           <f-element id="FPT_AON_EXT.2.1" status="sel-based">
             <selection-depends req="FPT_AON_EXT.1.1"/>
-            <title>The email client shall be capable of maintaining a list of trusted add-ons. </title>
-            <note role="application">FPT_AON_EXT.2.1 applies if "trusted add-ons" are selected in
-              FPT_AON_EXT.1.1.</note>
-          </f-element>
-          <f-element id="FPT_AON_EXT.2.2" status="sel-based">
-            <selection-depends req="FPT_AON_EXT.1.1"/>
-            <title>The email client shall <selectables><selectable>provide the
-                  ability</selectable><selectable>leverage the platform</selectable></selectables>
-              to query the current version of the add-on.</title>
-          </f-element>
-          <f-element id="FPT_AON_EXT.2.3" status="sel-based">
-            <selection-depends req="FPT_AON_EXT.1.1"/>
-            <title>The email client shall provide the ability to initiate the downloading and
-              installation of
-                  <selectables><selectable>trusted</selectable><selectable>signed</selectable></selectables>
-              add-ons and add-on updates.</title>
-            <note role="application"><linkref linkend="FMT_MOF_EXT.1.1"/> Function 13 addresses the
-              ability for an administrator or user to add/remove trusted add-ons. FPT_AON_EXT.2.3
-              does not pertain to add-ons installed outside the email client.</note>
-          </f-element>
-          <f-element id="FPT_AON_EXT.2.4" status="sel-based">
-            <selection-depends req="FPT_AON_EXT.1.1"/>
-            <title>The email client shall <selectables><selectable>provide the
-                  ability</selectable><selectable>leverage the platform</selectable></selectables>
-              to provide a means to verify add-ons using a digital signature mechanism and <selectables>
+            <title>The email client shall 
+			  <selectables>
+			    <selectable>provide the ability</selectable>
+				<selectable>leverage the platform</selectable>
+			  </selectables>
+              to provide a means to cryptographically verify add-ons using a digital signature mechanism and 
+			  <selectables>
                 <selectable>published hash</selectable>
                 <selectable>no other functions</selectable>
-              </selectables> to cryptographically verify the add-ons prior to installation. </title>
-          </f-element>
-          <note application="role">The application installation package and its updates shall be
-            digitally signed such that its platform can cryptographically verify them prior to
-            installation.</note>
-          <f-element id="FPT_AON_EXT.2.5" status="sel-based">
-            <selection-depends req="FPT_AON_EXT.1.1"/>
-            <title>The email client shall prevent the automatic installation of add-ons.</title>
+              </selectables>prior to installation.
+			</title>
             <aactivity>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it states
                 that the email client will reject add-ons from untrusted sources. </tss>
