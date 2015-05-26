@@ -304,7 +304,7 @@
               should not be included in an evaluated email client. </note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.5">
-            <title>The email client shall use separate private keys (and associated certificates)
+            <title>The email client shall support use of different private keys (and associated certificates)
               for signature and for encryption as part of the S/MIME protocol. </title></f-element>
           <f-element id="FCS_SMIME_EXT.1.6">
             <title>The email client shall only accept a signature from a certificate with the
@@ -441,7 +441,7 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="FDP_NOT_EXT.2" name="Notification of URI">
+        <f-component id="FDP_NOT_EXT.2" name="Notification of URI" status="optional">
           <f-element id="FDP_NOT_EXT.2.1">
             <title>The email client shall display the full Uniform Resource Identifier (URI) of any
               embedded links.</title>
@@ -678,11 +678,12 @@
       <subsection title="Security Management (FMT)" id="fmt">
         <f-component id="FMT_MOF_EXT.1" name="Management of Functions Behavior">
           <f-element id="FMT_MOF_EXT.1.1">
-            <title>The email client shall restrict the ability to manage/perform functions as
-              follows: <ul>
+            <title>The email client shall be capable of performing the following management functions,
+			controlled by the user or administrator as shown:
+              <ul>
                 <li>X = Mandatory</li>
                 <li>O = Optional</li>
-                <li>A = Administratively controlled</li></ul>
+              </ul>
               <table><tr class="header">
                   <td>Management Function</td><td>Administrator</td><td>User</td></tr>
                 <tr><td>1. Enable/disable downloading embedded objects globally and by <selectables>
@@ -691,56 +692,36 @@
                       <selectable>no other method</selectable>
                     </selectables>
                   </td><td>O</td><td>O</td></tr>
-                <tr><td>2. Enable/disable plaintext only mode globally and by<selectables>
+                <tr><td>Enable/disable plaintext only mode globally and by<selectables>
                       <selectable>domain</selectable>
                       <selectable>sender</selectable>
                       <selectable>no other method</selectable>
                     </selectables>
                   </td><td>O</td><td>O</td></tr>
-                <tr><td>3. Enable/disable rendering and execution of attachments globally and by<selectables>
+                <tr><td>Enable/disable rendering and execution of attachments globally and by<selectables>
                       <selectable>domain</selectable>
                       <selectable>sender</selectable>
                       <selectable>no other method</selectable></selectables>
                   </td><td>O</td><td>O</td></tr>
-                <tr><td>4. Configure <selectables>
-                      <selectable>visual</selectable>
-                      <selectable>auditory</selectable></selectables>email notifications to
-                    enable/disable display of additional information about the email <selectables>
-                      <selectable>number of emails received</selectable>
-                      <selectable>subject</selectable>
-                      <selectable>sender</selectable>
-                      <selectable>partial content</selectable></selectables>
-                  </td>
+                <tr><td>nable/disable email notifications</td>
                   <td>O</td><td>O</td></tr>
-                <tr><td>5. Enable/disable email notifications</td>
+                <tr><td>Configure a certificate repository for encryption</td>
                   <td>O</td><td>O</td></tr>
-                <tr><td>6. Configure certificates for S/MIME use</td>
-                  <td>O</td><td>O</td></tr>
-                <tr><td>7. Configure certificates for TLS use</td>
-                  <td>O</td><td>O</td></tr>
-                <tr><td>8. Enable/disable display of email contents in email notifications</td>
-                  <td>O</td><td>O</td></tr>
-                <tr><td>9. Configure a certificate repository for encryption</td>
-                  <td>O</td><td>O</td></tr>
-                <tr><td>10. Configure whether to establish a trusted channel or disallow
+                <tr><td>Configure whether to establish a trusted channel or disallow
                     establishment if the email client cannot establish a connection to determine the
                     validity of a certificate</td>
                   <td>O</td><td>O</td></tr>
-                <tr><td>11. Configure message sending/receiving to only use cryptographic algorithms
+                <tr><td>Configure message sending/receiving to only use cryptographic algorithms
                     defined in <linkref linkend="FCS_SMIME_EXT.1"/>.</td><td>O</td><td>O</td></tr>
-                <tr><td>12. Configure CRL retrieval frequency</td><td>O</td><td>O</td></tr>
-                <tr><td>13. Add/remove trusted add-ons</td><td>O</td><td>O</td></tr>
-                <tr><td>14. No other management functions</td><td>O</td><td>O</td></tr>
+                <tr><td>Configure CRL retrieval frequency</td><td>O</td><td>O</td></tr>
+                <tr><td>Enable/disable support for add-ons</td><td>O</td><td>O</td></tr>
+                <tr><td><assignable>Other management functions</assignable></td><td>O</td><td>O</td></tr>
               </table>
-            </title></f-element>
-          <f-element id="FMT_MOF_EXT.1.2">
-            <title>Functions administratively configured in <linkref linkend="FMT_MOF_EXT.1.1"/>
-              shall not be modified by a non-administrative user.</title>
+            </title>
             <note role="application"> For these management functions, the term "Administrator"
               refers to the administrator of a non-mobile device or the device owner of a mobile
-              device. Functions are listed as optional for both Administrators and Users to account
-              for mobile devices that do not have an administrator (or device owner) to configure
-              the device for other users. <br/> The Administrator is responsible for management
+              device. 
+              <br/> The Administrator is responsible for management
               activities, including setting the policy that is applied by the enterprise on the
               email client. The Administrator could be acting remotely and could be the MTA
               administrator acting through a centralized management console or dashboard.<br/> The
