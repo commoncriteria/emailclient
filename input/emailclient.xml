@@ -674,15 +674,16 @@
           </f-element>
         </f-component>
       </subsection>
-      <figure entity="images/mua_mta.png" width="textwidth" height="!"
+      <figure entity="images/mua_mta.png"
         title="Figure 1 - Mail User Agent connecting to a Mail Transfer Agent" id="mua_mta"/>
       <subsection title="Security Management (FMT)" id="fmt">
         <f-component id="FMT_MOF_EXT.1" name="Management of Functions Behavior">
           <f-element id="FMT_MOF_EXT.1.1">
             <title>The email client shall be capable of performing the following management
-              functions, controlled by the user or administrator as shown: <ul>
-                <li>X = Mandatory</li>
-                <li>O = Optional</li>
+              functions, controlled by the user or administrator as shown: 
+              <ul>
+                <li> X: Mandatory</li>
+                <li> O: Optional</li>
               </ul>
               <management-function-set>
                 <manager>Administrator</manager>
