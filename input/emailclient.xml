@@ -340,7 +340,7 @@
               covered in FIA_X509 and FMT_MOF. </note>
             <aactivity>
               <br/>
-              <tss>The evaluator shall verify that the version of S/MIME implemented by the email
+              <!-- Separated TSS and Guidance <tss>The evaluator shall verify that the version of S/MIME implemented by the email
                 client is present in the <abbr linkend="TSS"/>. The evaluator shall also verify that
                 the algorithms supported are specified, and that the algorithms specified are those
                 listed for this component. The evaluator shall also review the Operational Guidance
@@ -361,11 +361,38 @@
                 algorithms must be configured to meet the requirement, the evaluator shall verify
                 that the AGD guidance includes the configuration of this ID.<br/> The evaluator
                 shall verify that the <abbr linkend="TSS"/> describes the retrieval mechanisms for
-                both <!-- CRLs and --> certificates <!-- add --> and certificate revocation as well
+                both  certificates  and certificate revocation as well
                 as the frequency at which these mechanisms are implemented. If the <abbr
                   linkend="TSS"/> indicates that the mechanisms are configurable, the evaluator
                 shall verify that the AGD guidance includes the configuration of these
-                mechanisms.</tss>
+                mechanisms.</tss> -->
+              <tss>The evaluator shall verify that the version of S/MIME implemented by the email
+                client is present in the <abbr linkend="TSS"/>. The evaluator shall also verify that
+                the algorithms supported are specified, and that the algorithms specified are those
+                listed for this component. <br/> The evaluator shall verify that the <abbr
+                  linkend="TSS"/> describes the ContentEncryptionAlgorithmIdentifier and whether the
+                required behavior is performed by default or may be configured. <br/> The evaluator
+                shall verify that the <abbr linkend="TSS"/> describes the digestAlgorithm and
+                whether the required behavior is performed by default or may be configured.<br/> The
+                evaluator shall verify that the <abbr linkend="TSS"/> describes the
+                AlgorithmIdentifier and whether the required behavior is performed by default or may
+                be configured. <br/> The evaluator shall verify that the <abbr linkend="TSS"/>
+                describes the retrieval mechanisms for both <!-- CRLs and --> certificates
+                <!-- add --> and certificate revocation as well as the frequency at which these
+                mechanisms are implemented. <br/>
+              </tss> <guidance>The evaluator shall also review the Operational Guidance to ensure
+                that it contains instructions on configuring the email client such that it complies
+                with the description in the <abbr linkend="TSS"/>.<br/> If the <abbr linkend="TSS"/>
+                indicates that the algorithms in FCS_SMIME_EXT.1.2 must be configured to meet the
+                requirement, the evaluator shall verify that the AGD guidance includes the
+                configuration of this ID.<br/> If the <abbr linkend="TSS"/> indicates that the
+                algorithms in FCS_SMIME_EXT.1.3 must be configured to meet the requirement, the
+                evaluator shall verify that the AGD guidance includes the configuration.<br/> If the
+                  <abbr linkend="TSS"/> indicates that the algorithms in FCS_SMIME_EXT.1.4 must be
+                configured to meet the requirement, the evaluator shall verify that the AGD guidance
+                includes the configuration of this ID.<br/> If the <abbr linkend="TSS"/> indicates
+                that the mechanisms in FCS_SMIME_EXT.1.7 are configurable, the evaluator shall
+                verify that the AGD guidance includes the configuration of these mechanisms. </guidance>
               <tests> The evaluator shall perform the following tests:<br/> These tests can be
                 performed in conjunction with the tests defined in FIA_X509 for
                 certificate/certificate chain verification and <linkref linkend="FDP_NOT_EXT.1"/>. <testlist>
@@ -424,10 +451,12 @@
             <title>The email client shall display a notification of the S/MIME status of received
               emails upon viewing.</title>
             <note role="application">S/MIME status is whether the email has been signed or encrypted
-              and whether the signature verifies and the associated certificate validates. <!-- This
-              notification satisfies <linkref linkend="FIA_X509_EXT.3.5"/>. --> This notification must
-              at least display when the email content is viewed. Many implementations also display
-              the S/MIME status of each email when all emails are viewed as a list. </note>
+              and whether the signature verifies and the associated certificate validates.
+              <!-- This
+              notification satisfies <linkref linkend="FIA_X509_EXT.3.5"/>. -->
+              This notification must at least display when the email content is viewed. Many
+              implementations also display the S/MIME status of each email when all emails are
+              viewed as a list. </note>
             <aactivity><tss>The evaluator shall ensure that the <abbr linkend="TSS"/> describes
                 notifications of S/MIME status, including whether S/MIME status is also indicated
                 upon viewing a list of emails.<br/></tss><guidance>The evaluator shall verify that
