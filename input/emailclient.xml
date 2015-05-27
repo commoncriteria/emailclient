@@ -164,8 +164,8 @@
       communicating between email clients and servers. Some clients support multiple protocols for
       doing the same task, allowing them to be configured according to email server
       specifications.
-      <figure entity="images/mua_mta.png" width="textwidth" height="!"
-        title="Figure 1 - Mail User Agent connecting to a Mail Transfer Agent" id="mua_mta"/>
+      <figure id="mua_mta" src="images/mua_mta.png" max-width="inherit"
+        title="Figure 1 - Mail User Agent connecting to a Mail Transfer Agent"/>
 	  </section>
     <section title="Use Cases" id="usecases">Email clients perform tasks associated primarily with
       the following use case. <usecases>
@@ -679,8 +679,6 @@
           </f-element>
         </f-component>
       </subsection>
-      <figure entity="images/mua_mta.png"
-        title="Figure 1 - Mail User Agent connecting to a Mail Transfer Agent" id="mua_mta"/>
       <subsection title="Security Management (FMT)" id="fmt">
         <f-component id="FMT_MOF_EXT.1" name="Management of Functions Behavior">
           <f-element id="FMT_MOF_EXT.1.1">
