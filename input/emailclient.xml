@@ -442,8 +442,8 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="FDP_NOT_EXT.2" name="Notification of URI" status="optional">
-          <f-element id="FDP_NOT_EXT.2.1">
+        <f-component id="FDP_NOT_EXT.2" name="Notification of URI" >
+          <f-element id="FDP_NOT_EXT.2.1" status="optional">
             <title>The email client shall display the full Uniform Resource Identifier (URI) of any
               embedded links.</title>
             <note role="application"> Embedded links are HTML URI objects which may have a tag (such
