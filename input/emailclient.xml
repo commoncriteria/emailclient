@@ -341,27 +341,30 @@
             <aactivity>
               <br/>
               <tss>The evaluator shall verify that the version of S/MIME implemented by the email
-                client is present in the <abbr linkend="TSS"/>. The evaluator shall also verify that the algorithms
-                supported are specified, and that the algorithms specified are those listed for this
-                component. The evaluator shall also review the Operational Guidance to ensure that
-                it contains instructions on configuring the email client such that it complies with
-                the description in the <abbr linkend="TSS"/>.<br/> The evaluator shall verify that the <abbr linkend="TSS"/> describes
-                the ContentEncryptionAlgorithmIdentifier and whether the required behavior is
-                performed by default or may be configured. If the <abbr linkend="TSS"/> indicates that the algorithms
-                must be configured to meet the requirement, the evaluator shall verify that the AGD
-                guidance includes the configuration of this ID.<br/> The evaluator shall verify that
-                the <abbr linkend="TSS"/> describes the digestAlgorithm and whether the required behavior is performed
-                by default or may be configured. If the <abbr linkend="TSS"/> indicates that the algorithms must be
-                configured to meet the requirement, the evaluator shall verify that the AGD guidance
-                includes the configuration.<br/> The evaluator shall verify that the <abbr linkend="TSS"/> describes
-                the AlgorithmIdentifier and whether the required behavior is performed by default or
-                may be configured. If the <abbr linkend="TSS"/> indicates that the algorithms must be configured to
-                meet the requirement, the evaluator shall verify that the AGD guidance includes the
-                configuration of this ID.<br/> The evaluator shall verify that the <abbr linkend="TSS"/> describes the
-                retrieval mechanisms for both <!-- CRLs and --> certificates <!-- add --> and
-                certificate revocation as well as the frequency at which these mechanisms are
-                implemented. If the <abbr linkend="TSS"/> indicates that the mechanisms are configurable, the
-                evaluator shall verify that the AGD guidance includes the configuration of these
+                client is present in the <abbr linkend="TSS"/>. The evaluator shall also verify that
+                the algorithms supported are specified, and that the algorithms specified are those
+                listed for this component. The evaluator shall also review the Operational Guidance
+                to ensure that it contains instructions on configuring the email client such that it
+                complies with the description in the <abbr linkend="TSS"/>.<br/> The evaluator shall
+                verify that the <abbr linkend="TSS"/> describes the
+                ContentEncryptionAlgorithmIdentifier and whether the required behavior is performed
+                by default or may be configured. If the <abbr linkend="TSS"/> indicates that the
+                algorithms must be configured to meet the requirement, the evaluator shall verify
+                that the AGD guidance includes the configuration of this ID.<br/> The evaluator
+                shall verify that the <abbr linkend="TSS"/> describes the digestAlgorithm and
+                whether the required behavior is performed by default or may be configured. If the
+                  <abbr linkend="TSS"/> indicates that the algorithms must be configured to meet the
+                requirement, the evaluator shall verify that the AGD guidance includes the
+                configuration.<br/> The evaluator shall verify that the <abbr linkend="TSS"/>
+                describes the AlgorithmIdentifier and whether the required behavior is performed by
+                default or may be configured. If the <abbr linkend="TSS"/> indicates that the
+                algorithms must be configured to meet the requirement, the evaluator shall verify
+                that the AGD guidance includes the configuration of this ID.<br/> The evaluator
+                shall verify that the <abbr linkend="TSS"/> describes the retrieval mechanisms for
+                both <!-- CRLs and --> certificates <!-- add --> and certificate revocation as well
+                as the frequency at which these mechanisms are implemented. If the <abbr
+                  linkend="TSS"/> indicates that the mechanisms are configurable, the evaluator
+                shall verify that the AGD guidance includes the configuration of these
                 mechanisms.</tss>
               <tests> The evaluator shall perform the following tests:<br/> These tests can be
                 performed in conjunction with the tests defined in FIA_X509 for
@@ -421,16 +424,16 @@
             <title>The email client shall display a notification of the S/MIME status of received
               emails upon viewing.</title>
             <note role="application">S/MIME status is whether the email has been signed or encrypted
-              and whether the signature verifies and the associated certificate validates. This
-              notification satisfies <linkref linkend="FIA_X509_EXT.3.5"/>. This notification must
+              and whether the signature verifies and the associated certificate validates. <!-- This
+              notification satisfies <linkref linkend="FIA_X509_EXT.3.5"/>. --> This notification must
               at least display when the email content is viewed. Many implementations also display
               the S/MIME status of each email when all emails are viewed as a list. </note>
-            <aactivity><tss>The evaluator shall ensure that the <abbr linkend="TSS"/> describes notifications of
-                S/MIME status, including whether S/MIME status is also indicated upon viewing a list
-                of emails.<br/></tss><guidance>The evaluator shall verify that the AGD guidance
-                provides a description (with appropriate visual figures) of the S/MIME status
-                notification(s), including how each of the following are indicated: encryption,
-                verified and validated signature, and unverified and unvalidated
+            <aactivity><tss>The evaluator shall ensure that the <abbr linkend="TSS"/> describes
+                notifications of S/MIME status, including whether S/MIME status is also indicated
+                upon viewing a list of emails.<br/></tss><guidance>The evaluator shall verify that
+                the AGD guidance provides a description (with appropriate visual figures) of the
+                S/MIME status notification(s), including how each of the following are indicated:
+                encryption, verified and validated signature, and unverified and unvalidated
                 signature.<br/></guidance><tests>The evaluator shall perform the following tests and
                 may perform them in conjunction with the tests for <linkref
                   linkend="FCS_SMIME_EXT.1"/>:<br/>
@@ -457,9 +460,9 @@
               as a word, phrase, icon, or picture) that obfuscates the URI of the link. The intent
               of this requirement is to de-obfuscate the link. The URI may be displayed as a
               "mouse-over" event or may be rendered next to the tag. </note>
-            <aactivity><tss>The evaluator shall verify that the <abbr linkend="TSS"/> includes a description of how
-                embedded links are rendered and the method by which the URI of the link is
-                displayed.</tss>
+            <aactivity><tss>The evaluator shall verify that the <abbr linkend="TSS"/> includes a
+                description of how embedded links are rendered and the method by which the URI of
+                the link is displayed.</tss>
               <guidance>The evaluator shall ensure that the AGD guidance includes instructions (with
                 any appropriate visual figures) for viewing the URI of an embedded link.</guidance>
               <tests>The evaluator shall perform the following test:<br/>
@@ -483,17 +486,18 @@
               would require the use of a protocol such as IMAP or MAPI. It is not compatible with
               POP. Exceptions from this requirement are credentials and configuration information
               including CRLs.</note>
-            <aactivity><tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that it describes all
-                persistent information stored on the platform, and the locations on the platform
-                where these data are stored. The evaluator shall confirm that the persistent data
-                described is limited to the data identified in the selection.</tss><tests>The
-                evaluator shall perform the following tests:<testlist><test>The evaluator shall
-                    operate the email client so that several messages, signed, encrypted, and
-                    unsigned, are processed. The evaluator shall also exercise functionality such as
-                    moving messages to folders, writing unsent drafts of messages, etc., as provided
-                    by the client. The evaluator shall then examine the client platform to determine
-                    that the only persistent information stored is that identified in the
-                  <abbr linkend="TSS"/>.</test></testlist></tests>
+            <aactivity><tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that
+                it describes all persistent information stored on the platform, and the locations on
+                the platform where these data are stored. The evaluator shall confirm that the
+                persistent data described is limited to the data identified in the
+                selection.</tss><tests>The evaluator shall perform the following
+                    tests:<testlist><test>The evaluator shall operate the email client so that
+                    several messages, signed, encrypted, and unsigned, are processed. The evaluator
+                    shall also exercise functionality such as moving messages to folders, writing
+                    unsent drafts of messages, etc., as provided by the client. The evaluator shall
+                    then examine the client platform to determine that the only persistent
+                    information stored is that identified in the <abbr linkend="TSS"
+                  />.</test></testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -515,17 +519,17 @@
               supported by the email client through selections and/or assignments. If the email
               client only supports plaintext only mode, no embedded content types should be
               selected.</note>
-            <aactivity><tss>The evaluator shall ensure that the <abbr linkend="TSS"/> describes plaintext only mode
-              for sending and receiving messages. The evaluator shall verify that the <abbr linkend="TSS"/>
-                describes whether the email client is capable of rendering and executing HTML or
-                JavaScript. If the email client can render or execute HTML or JavaScript, this
-                description must indicate how the email client handles received messages that
-                contain HTML or JavaScript while in plaintext only mode, and the evaluator shall
-                ensure that the description indicates that embedded objects of these types are not
-                rendered or executed and images/external resources are not automatically
-                downloaded.</tss><guidance>The evaluator shall examine the AGD guidance and verify
-                that it contains instructions for enabling plaintext only mode.</guidance><tests>The
-                evaluator shall perform the following tests: <testlist>
+            <aactivity><tss>The evaluator shall ensure that the <abbr linkend="TSS"/> describes
+                plaintext only mode for sending and receiving messages. The evaluator shall verify
+                that the <abbr linkend="TSS"/> describes whether the email client is capable of
+                rendering and executing HTML or JavaScript. If the email client can render or
+                execute HTML or JavaScript, this description must indicate how the email client
+                handles received messages that contain HTML or JavaScript while in plaintext only
+                mode, and the evaluator shall ensure that the description indicates that embedded
+                objects of these types are not rendered or executed and images/external resources
+                are not automatically downloaded.</tss><guidance>The evaluator shall examine the AGD
+                guidance and verify that it contains instructions for enabling plaintext only
+                mode.</guidance><tests>The evaluator shall perform the following tests: <testlist>
                   <test> If HTML is selected in FDP_REN_EXT.1.1, the evaluator shall send a message
                     to the client containing HTML embedded objects and shall verify that the HTML
                     renders. The evaluator shall then enable plaintext only mode and verify that the
@@ -548,16 +552,16 @@
               encrypt and/or sign/verify all sent or received messages. This requirement only
               specifies that the mechanism for digital signature and encryption must be
               S/MIME.</note>
-            <aactivity><tss>The evaluator shall verify that the <abbr linkend="TSS"/> contains a description of the
-                S/MIME implementation and its use to protect mail from undetected modification using
-                digital signatures and unauthorized disclosure using encryption. The evaluator shall
-                verify that the <abbr linkend="TSS"/> describes whether signature verification and decryption occur at
-                receipt or viewing of the message contents, and whether messages are stored with
-                their S/MIME envelopes.</tss><guidance>The evaluator shall ensure that the AGD
-                guidance includes instructions for configuring a certificate for S/MIME use and
-                instructions for signing and encrypting email.</guidance><tests>Tests for this
-                element are performed in conjunction with tests for FCS_SMIME_EXT.1 and
-                FDP_NOT_EXT.1.</tests>
+            <aactivity><tss>The evaluator shall verify that the <abbr linkend="TSS"/> contains a
+                description of the S/MIME implementation and its use to protect mail from undetected
+                modification using digital signatures and unauthorized disclosure using encryption.
+                The evaluator shall verify that the <abbr linkend="TSS"/> describes whether
+                signature verification and decryption occur at receipt or viewing of the message
+                contents, and whether messages are stored with their S/MIME
+                envelopes.</tss><guidance>The evaluator shall ensure that the AGD guidance includes
+                instructions for configuring a certificate for S/MIME use and instructions for
+                signing and encrypting email.</guidance><tests>Tests for this element are performed
+                in conjunction with tests for FCS_SMIME_EXT.1 and FDP_NOT_EXT.1.</tests>
             </aactivity><br/>
           </f-element>
         </f-component>
@@ -571,10 +575,11 @@
             <note role="application">SASL is needed if the email implements SMTP to send messages.
               Clients that do not use SMTP (e.g., ActiveSync or MAPI) would not need to implement
               support for SASL.</note>
-            <aactivity><tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that it describes the
-                details of the email client/Mail User Agent connecting to a Mail Transfer Agent in
-                terms of the SASL connection, along with email client-specific options or procedures
-                that might not be reflected in the specification. (Refer to Figure 1)</tss>
+            <aactivity><tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that
+                it describes the details of the email client/Mail User Agent connecting to a Mail
+                Transfer Agent in terms of the SASL connection, along with email client-specific
+                options or procedures that might not be reflected in the specification. (Refer to
+                Figure 1)</tss>
               <guidance>The evaluator shall confirm that the operational guidance contains
                 instructions for establishing the connection to the Mail Transfer Agent. </guidance>
               <tests>The evaluator shall also perform the following test:<br/>
@@ -609,10 +614,10 @@
               RFC 4422, the AUTH and CAPA extensions for POP3, as described in RFC 5034, the
               AUTHENTICATION and CAPABILITY extensions for IMAP, as described in RFC 4959 and the
               AUTH extension for SMTP, as described in RFC 4954. </note>
-            <aactivity><tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that it describes the
-                details of the email client connecting to a Mail Transfer Agent in terms of the SASL
-                connection, along with email client-specific options or procedures that might not be
-                reflected in the specification.</tss>
+            <aactivity><tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that
+                it describes the details of the email client connecting to a Mail Transfer Agent in
+                terms of the SASL connection, along with email client-specific options or procedures
+                that might not be reflected in the specification.</tss>
               <guidance>The evaluator shall confirm that the operational guidance contains
                 instructions for establishing the connection to the Mail Transfer Agent.</guidance>
               <tests>The evaluator shall also perform the following tests:<br/>
@@ -649,28 +654,34 @@
             <title> The email client shall prevent the encryption of email if the email protection
               certificate is deemed invalid. </title>
           </f-element>
-          <f-element id="FIA_X509_EXT.3.5">
+          <!-- Removed old 3.5 because we have FDP_NOT_EXT.1.1 <f-element id="FIA_X509_EXT.3.5">
             <title> The email client shall notify the user if an email is signed with an invalid
-              certificate. </title>
-            <aactivity><tss>The evaluator shall check the <abbr linkend="TSS"/> to ensure that it describes how the
-                email client chooses which certificates to use, and any necessary instructions in
-                the administrative guidance for configuring the operating environment so that the
-                email client can use the certificates.<br/> The evaluator shall examine the <abbr linkend="TSS"/> to
-                confirm that it describes the behavior of the email client when a connection cannot
-                be established during the validity check of a certificate used in establishing a
-                trusted channel and protecting email. If the requirement that the administrator is
-                able to specify the default action, then the evaluator shall ensure that the
-                operational guidance contains instructions on how this configuration action is
-                performed.</tss>
+              certificate. </title> -->
+          <!-- Add new 3.5 -->
+          <f-element id="FIA_X509_EXT.3.5">
+            <title> The email client shall prevent the signing of email if the email protection
+              certificate is deemed invalid. </title>
+            <!--</f-element> -->
+            <aactivity><tss>The evaluator shall check the <abbr linkend="TSS"/> to ensure that it
+                describes how the email client chooses which certificates to use, and any necessary
+                instructions in the administrative guidance for configuring the operating
+                environment so that the email client can use the certificates.<br/> The evaluator
+                shall examine the <abbr linkend="TSS"/> to confirm that it describes the behavior of
+                the email client when a connection cannot be established during the validity check
+                of a certificate used in establishing a trusted channel and protecting email. If the
+                requirement that the administrator is able to specify the default action, then the
+                evaluator shall ensure that the operational guidance contains instructions on how
+                this configuration action is performed.</tss>
               <tests>The evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1
                   (<cite linkend="bibAppPP"/>) that requires the use of certificates:<br/>
                 <testlist>
                   <test>The evaluator shall demonstrate that using a certificate without a valid
-                    certification path results in the function failing or in the receipt of a user
-                    notification (as required by elements 2, 3, 4, and 5). The evaluator shall then
-                    load into the platform’s root store any certificates needed to validate the
-                    certificate to be used in the function, and demonstrate that the function
-                    succeeds or results in no user notification.</test>
+                    certification path results in the function
+                    failing<!-- or in the receipt of a user
+                    notification (as required by elements 2, 3, 4, and 5)-->.
+                    The evaluator shall then load into the platform’s root store any certificates
+                    needed to validate the certificate to be used in the function, and demonstrate
+                    that the function succeeds<!-- or results in no user notification-->.</test>
                   <test>The evaluator shall demonstrate that using a valid certificate that requires
                     certificate validation checking to be performed in at least some part by
                     communicating with a non-TOE IT entity. The evaluator shall then manipulate the
@@ -754,9 +765,9 @@
               that cannot be validated, allowed for a given certificate that cannot be validated, or
               disallowed for a given certificate that cannot be validated. </note>
             <aactivity>
-              <tss>The evaluator shall verify that the <abbr linkend="TSS"/> describes those management functions
-                which may only be configured by the email client platform administrator and cannot
-                be over-ridden by the user when set according to policy. </tss>
+              <tss>The evaluator shall verify that the <abbr linkend="TSS"/> describes those
+                management functions which may only be configured by the email client platform
+                administrator and cannot be over-ridden by the user when set according to policy. </tss>
               <guidance>The evaluator shall examine the operational guidance to verify that it
                 includes instructions for an email client platform administrator to configure the
                 functions listed in <linkref linkend="FMT_MOF_EXT.1.1"/>. </guidance>
@@ -880,11 +891,11 @@
               Selections must include at least one sending and one receiving protocol. If the
               assignment is used, the ST author must also include a reference for protocol (e.g., an
               RFC number). </note>
-            <aactivity><tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that it describes the
-                details of the email client connecting to a Mail Transfer Agent in terms of the
-                trusted connection (i.e., TLS) according to FTP_DIT_EXT.1 <cite linkend="bibAppPP"
-                />, along with email client-specific options or procedures that might not be
-                reflected in the specification.</tss>
+            <aactivity><tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that
+                it describes the details of the email client connecting to a Mail Transfer Agent in
+                terms of the trusted connection (i.e., TLS) according to FTP_DIT_EXT.1 <cite
+                  linkend="bibAppPP"/>, along with email client-specific options or procedures that
+                might not be reflected in the specification.</tss>
               <guidance>The evaluator shall confirm that the operational guidance contains
                 instructions for establishing the connection to the Mail Transfer Agent.</guidance>
               <tests>The evaluator shall also perform the following tests:<br/>
