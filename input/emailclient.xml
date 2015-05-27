@@ -339,7 +339,6 @@
               certificates and certificate chains is not included in this requirement, but is
               covered in FIA_X509 and FMT_MOF. </note>
             <aactivity>
-              <br/>
               <!-- Separated TSS and Guidance <tss>The evaluator shall verify that the version of S/MIME implemented by the email
                 client is present in the <abbr linkend="TSS"/>. The evaluator shall also verify that
                 the algorithms supported are specified, and that the algorithms specified are those
@@ -379,10 +378,10 @@
                 be configured. <br/> The evaluator shall verify that the <abbr linkend="TSS"/>
                 describes the retrieval mechanisms for both <!-- CRLs and --> certificates
                 <!-- add --> and certificate revocation as well as the frequency at which these
-                mechanisms are implemented. <br/>
-              </tss> <guidance>The evaluator shall also review the Operational Guidance to ensure
-                that it contains instructions on configuring the email client such that it complies
-                with the description in the <abbr linkend="TSS"/>.<br/> If the <abbr linkend="TSS"/>
+                mechanisms are implemented.</tss>
+              <guidance>The evaluator shall also review the Operational Guidance to ensure that it
+                contains instructions on configuring the email client such that it complies with the
+                description in the <abbr linkend="TSS"/>.<br/> If the <abbr linkend="TSS"/>
                 indicates that the algorithms in FCS_SMIME_EXT.1.2 must be configured to meet the
                 requirement, the evaluator shall verify that the AGD guidance includes the
                 configuration of this ID.<br/> If the <abbr linkend="TSS"/> indicates that the
@@ -459,13 +458,12 @@
               viewed as a list. </note>
             <aactivity><tss>The evaluator shall ensure that the <abbr linkend="TSS"/> describes
                 notifications of S/MIME status, including whether S/MIME status is also indicated
-                upon viewing a list of emails.<br/></tss><guidance>The evaluator shall verify that
-                the AGD guidance provides a description (with appropriate visual figures) of the
-                S/MIME status notification(s), including how each of the following are indicated:
+                upon viewing a list of emails.</tss><guidance>The evaluator shall verify that the
+                AGD guidance provides a description (with appropriate visual figures) of the S/MIME
+                status notification(s), including how each of the following are indicated:
                 encryption, verified and validated signature, and unverified and unvalidated
-                signature.<br/></guidance><tests>The evaluator shall perform the following tests and
-                may perform them in conjunction with the tests for <linkref
-                  linkend="FCS_SMIME_EXT.1"/>:<br/>
+                signature.</guidance><tests>The evaluator shall perform the following tests and may
+                perform them in conjunction with the tests for <linkref linkend="FCS_SMIME_EXT.1"/>:<br/>
                 <testlist>
                   <test>The evaluator shall send the client an unencrypted and unsigned email and
                     verify that no notifications are present upon viewing.</test>
@@ -590,7 +588,8 @@
                 envelopes.</tss><guidance>The evaluator shall ensure that the AGD guidance includes
                 instructions for configuring a certificate for S/MIME use and instructions for
                 signing and encrypting email.</guidance><tests>Tests for this element are performed
-                in conjunction with tests for FCS_SMIME_EXT.1 and FDP_NOT_EXT.1.</tests>
+                in conjunction with tests for <linkref linkend="FCS_SMIME_EXT.1"/> and <linkref
+                  linkend="FDP_NOT_EXT.1"/></tests>
             </aactivity><br/>
           </f-element>
         </f-component>
@@ -691,7 +690,7 @@
             <title> The email client shall prevent the signing of email if the email protection
               certificate is deemed invalid. </title>
             <!--</f-element> -->
-            <aactivity><tss>The evaluator shall check the <abbr linkend="TSS"/> to ensure that it
+            <aactivity><!-- <tss>The evaluator shall check the <abbr linkend="TSS"/> to ensure that it
                 describes how the email client chooses which certificates to use, and any necessary
                 instructions in the administrative guidance for configuring the operating
                 environment so that the email client can use the certificates.<br/> The evaluator
@@ -700,7 +699,17 @@
                 of a certificate used in establishing a trusted channel and protecting email. If the
                 requirement that the administrator is able to specify the default action, then the
                 evaluator shall ensure that the operational guidance contains instructions on how
-                this configuration action is performed.</tss>
+                this configuration action is performed.</tss> -->
+              <tss>The evaluator shall check the <abbr linkend="TSS"/> to ensure that it describes
+                how the email client chooses which certificates to use so that the email client can
+                use the certificates.<br/> The evaluator shall examine the <abbr linkend="TSS"/> to
+                confirm that it describes the behavior of the email client when a connection cannot
+                be established during the validity check of a certificate used in establishing a
+                trusted channel and protecting email. </tss>
+              <guidance>The evaluator shall verify that the administrative guidance contains any
+                necessary instructions for configuring the operating environment so that the email
+                client can use the certificates.<br/>
+              </guidance>
               <tests>The evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1
                   (<cite linkend="bibAppPP"/>) that requires the use of certificates:<br/>
                 <testlist>
