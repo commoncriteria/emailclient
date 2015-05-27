@@ -747,18 +747,7 @@
   <xsl:template match="cc:figure">
     <div class="figure">
       <img>
-        <xsl:attribute name="id">
-          <xsl:value-of select="@id" />
-        </xsl:attribute>
-        <xsl:attribute name="src">
-          <xsl:value-of select="@entity" />
-        </xsl:attribute>
-        <xsl:attribute name="width">
-          <xsl:value-of select="@width" />
-        </xsl:attribute>
-        <xsl:attribute name="height">
-          <xsl:value-of select="@height" />
-        </xsl:attribute>
+        <xsl:copy-of select="@*"/>
       </img>
       <p />
       <b>
