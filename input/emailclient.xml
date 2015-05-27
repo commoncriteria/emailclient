@@ -152,8 +152,10 @@
       document.<br/> The Protection Profile for Application Software (App PP) defines the baseline
       SFRs for application software which runs on mobile devices ("apps"), as well as on desktop and
       server platforms. This Extended Package (EP) for email clients is not complete in itself, but
-      rather extends the Protection Profile for Application Software. <br/> Email clients are
-      applications used to send, receive, access and manage email provided by an email server. The
+      rather extends the Protection Profile for Application Software. 
+	  <br/>
+	  Email clients are user applications that provide functionality to send, receive, access 
+	  and manage email.  They are also referred to as a Mail User Agent (MUA).  The
       complexity of email content and email clients has grown over time. Modern email clients can
       render HTML as well as plaintext, and may include functionality to display common attachment
       formats, such as Adobe PDF and Microsoft Word documents. Some email clients allow their
@@ -161,7 +163,10 @@
       feature set makes email clients a target for attackers. Protocols have also been defined for
       communicating between email clients and servers. Some clients support multiple protocols for
       doing the same task, allowing them to be configured according to email server
-      specifications.</section>
+      specifications.
+      <figure entity="images/mua_mta.png" width="textwidth" height="!"
+        title="Figure 1 - Mail User Agent connecting to a Mail Transfer Agent" id="mua_mta"/>
+	  </section>
     <section title="Use Cases" id="usecases">Email clients perform tasks associated primarily with
       the following use case. <usecases>
         <usecase title="Sending, receiving, accessing, managing and displaying email">
