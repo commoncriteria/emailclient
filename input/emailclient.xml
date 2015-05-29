@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.7</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-5-27</PPPubDate>
+      <PPPubDate>2015-5-28</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -443,7 +443,381 @@
             </aactivity>
           </f-element>
         </f-component>
-      </subsection>
+        <!-- Added for CSFC DAR (FCS_CKM.1(c) -->
+        <f-component id="FCS_CKM.1(c)" name="Cryptographic Symmetric Key Generation">
+          <f-element id="FCS_CKM.1.1(c)">
+            <title>The email client shall generate symmetric cryptographic keys using a Random Bit
+              Generator as specified in FCS_RBG_EXT.1 <cite linkend="bibAppPP"/> and specified
+              cryptographic key sizes <selectables>
+                <selectable>128 bit</selectable>
+                <selectable>256 bit</selectable>
+                <!-- </selectables> that meet the following: <selectables>
+                <assignment>specify standard</assignment>
+                <selectable>no standard</selectable>
+            </selectables> --></selectables>. </title>
+            <note role="application">Symmetric keys may be used to generate keys along the key
+              chain.</note>
+            <aactivity>
+              <tss>The evaluator shall review the TSS to determine that it describes how the
+                functionality described by FCS_RBG_EXT.1 <cite linkend="bibAppPP"/> is invoked.<br/>
+                If the email client is relying on random from the host platform, the evaluator shall
+                verify the TSS includes the name/manufacturer of the external RBG. If different
+                external RBGs are used for different platforms, the TSS identifies each one for each
+                platform. <br/>If the email client is relying on random from the host platform, the
+                evaluator shall verify the TSS describes the function call and parameters used when
+                calling the external DRBG function. Also, the TSS includes a short description of
+                the vendor's assumption for the amount of entropy seeding the external DRBG. The
+                evaluator uses the description of the RBG functionality in FCS_RBG_EXT or
+                documentation available for the operational environment to determine that the key
+                size being requested is identical to the key size and mode to be used for the
+                encryption/decryption of the user data <!-- (FCS_COP.1(f)) -->. </tss>
+            </aactivity>
+          </f-element>
+        </f-component>
+        <!-- Added for CSFC DAR (FCS_CKM.4) -->
+        <f-component id="FCS_CKM_EXT.4" name="Cryptographic Key Destruction">
+          <f-element id="FCS_CKM_EXT.4.1">
+            <title>The email client shall <selectables>
+                <selectable>invoke platform-provided key destruction</selectable>
+                <selectable>implement key destruction using <selectables>
+                    <selectable>For volatile memory, the erasure shall be executed by a single
+                      direct overwrite <selectables>
+                        <selectable>consisting of a pseudo-random pattern using the TSF’s
+                          RBG</selectable>
+                        <selectable>consisting of a pseudo-random pattern using the host platform’s
+                          RBG</selectable>
+                        <selectable>consisting of zeroes</selectable>. </selectables>following by a
+                      read-verify. </selectable></selectables></selectable>
+                <selectable>For non-volatile storage, the erasure shall be executed by <selectables>
+                    <selectable>single</selectable>
+                    <selectable>three or more times</selectable>
+                  </selectables> overwrite of key data storage location consisting of <selectables>
+                    <selectable>a pseudo random pattern using the TSF’s RBG (as specified in
+                      FCS_RBG_EXT.1</selectable>
+                    <selectable>a pseudo-random pattern using the host platform’s RBG</selectable>
+                    <selectable>a static pattern</selectable>
+                  </selectables> followed by a <selectables>
+                    <selectable>read-verify</selectable>
+                    <selectable>none</selectable>
+                  </selectables>
+                </selectable>
+              </selectables> If read-verification of the overwritten data fails, the process shall
+              be repeated again that meets the following: <selectables>
+                <selectable>NIST SP800-88</selectable>
+                <selectable>no standard</selectable>
+              </selectables> for destroying all plaintext keying material and cryptographic security
+              parameters when no longer needed. </title>
+            <note role="application">For the purposes of this requirement, plaintext keying material
+              refers to authentication data, passwords, symmetric keys, data used to derive keys,
+              etc. <br/>For Mobile Devices, it is assumed that the email client will call the
+              platform for the memory management calls (and the Platform meets the MDF PP) to
+              destroy the plaintext keying material when it is no longer necessary, including when
+              the email client is powered down and when the wipe function is performed. In the
+              future, "no longer needed", will include keys generated for protecting sensitive data
+              received while in a locked state. <br/>The destruction indicated above applies to each
+              intermediate storage area for plaintext key/cryptographic critical security parameter
+              (i.e., any storage, such as memory buffers, that is included in the path of such data)
+              upon the transfer of the key/cryptographic critical security parameter to another
+              memory location. </note>
+            <aactivity>
+              <tss>If the platform provides the key destruction, then the evaluator shall examine
+                the TSS to verify that it describes how the key destruction functionality is
+                invoked.<br/> If the application invokes key destruction, the evaluator shall check
+                to ensure the TSS describes each of the secret keys (keys used for symmetric
+                encryption and/or data authentication), private keys, and CSPs used to generate key;
+                when they are zeroized (for example, immediately after use, on system shutdown,
+                etc.); and the type of zeroization procedure that is performed (overwrite with
+                zeros, overwrite three times with random pattern, etc.). If different types of
+                memory are used to store the materials to be protected, the evaluator shall check to
+                ensure that the TSS describes the zeroization procedure in terms of the memory in
+                which the data are stored (for example, "secret keys stored on flash are zeroized by
+                overwriting once with zeros, while secret keys stored on the internal hard drive are
+                zeroized by overwriting three times with a random pattern that is changed before
+                each write"). </tss>
+              <!-- Guidance None -->
+              <tests>The evaluator shall perform the following test for key destruction provided by
+                the email client:<testlight>
+                  <test>For each type of authorization service, encryption mode and encryption
+                    operation, a known authorization factor, and chain of keys must be provided to
+                    the evaluator with an associated ciphertext data set (e.g. if a passphrase is
+                    used to create a intermediate key, then the ciphertext containing the encrypted
+                    key as well as the intermediate key itself must be provided to the evaluator.)
+                    The evaluator will use the email client in conjunction with a debugging or
+                    forensics utility to attempt to authorize themselves, resulting in the
+                    generation of a key or decryption of a key. The evaluator will ascertain from
+                    the TSS what the vendor defines as "no longer needed" and execute the sequence
+                    of actions via the email client to invoke this state. At this point, the
+                    evaluator should take a dump of volatile memory and search the retrieved dump
+                    for the provided authorization credentials or keys (e.g. if the password was
+                    "PaSSw0rd", perform a string search of the forensics dump for "PaSSw0rd"). The
+                    evaluator must document each command, program or action taken during this
+                    process, and must confirm that no plaintext keying material resides in volatile
+                    memory. The evaluator must perform this test three times to ensure
+                    repeatability. If during the course of this testing the evaluator finds that
+                    keying material remains in volatile memory, they should be able to identify the
+                    cause (i.e. execution of the grep command for "PaSSw0rd" caused a false
+                    positive) and document the reason for failure to comply with this requirement.
+                    The evaluator will repeat this same test, but looking for keying material in
+                    non-volatile memory - in some cases, the non-volatile memory testing may be
+                    satisfied by other assurance activities (see FCS_CKM_EXT.1 and FPT_FEK_EXT.1).
+                  </test>
+                </testlight></tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        <!-- Added for CSFC DAR (FCS_KYC_EXT.1) -->
+        <f-component id="FCS_KYC_EXT.1" name="Key Chaining">
+          <f-element id="FCS_KYC_EXT.1.1">
+            <title> The email client shall maintain a key chain of: <selectables>
+                <selectable>one</selectable>
+                <selectable>a key stored in platform key storage</selectable>
+                <selectable>intermediate keys originating from: <selectables>
+                    <selectable>a password as specified in <linkref linkend="FCS_CKM.1.1(A)"
+                      /></selectable>
+                    <selectable>one or more other authorization factors(s)</selectable>
+                    <selectable>credentials stored in platform key storage</selectable>
+                  </selectables>
+                  <selectable>to the data encryption/decryption key(s) using the following
+                    method(s): <selectables>
+                      <selectable>utilization of the platform key storage</selectable>
+                      <selectable>utilization of platform key storage that performs key wrap with a
+                        TSF provided key</selectable>
+                      <selectable>implement key wrapping as specified in <linkref
+                          linkend="FCS_COP.1(5)"/></selectable>
+                      <selectable>implement key combining as specified in <linkref
+                          linkend="FCS_SMC_EXT.1"/></selectable>
+                      <selectable>while maintaining an effective strength of <selectables>
+                          <selectable>128 bits</selectable>
+                          <selectable>256 bits</selectable>
+                        </selectables>
+                      </selectable>
+                    </selectables>
+                  </selectable>
+                </selectable>
+              </selectables>
+            </title>
+            <note role="application">Key Chaining is the method of using multiple layers of
+              encryption keys to ultimately secure the data encryption key. The number of
+              intermediate keys will vary. This applies to all keys that contribute to the ultimate
+              wrapping or derivation of the data encryption key; including those in areas of
+              protected. This requirement also describes how keys are stored. </note>
+            <aactivity>
+              <tss>The evaluator shall verify the TSS* describes a high level description of the key
+                hierarchy for all authorizations methods selected in FIA_AUT_EXT that are used to
+                protect the encryption keys. The evaluator shall examine the TSS to ensure it
+                describes the key chain in detail. The description of the key chain shall be
+                reviewed to ensure it maintains a chain of keys using key wrap that meet <linkref
+                  linkend="FCS_COP.1(5)"/>. The evaluator shall verify the TSS* to ensure that it
+                describes how the key chain process functions, such that it does not expose any
+                material that might compromise any key in the chain. A high-level description should
+                include a diagram illustrating the key hierarchy implemented and detail where all
+                keys and keying material is stored or what it is derived from. The evaluator shall
+                examine the key hierarchy to ensure that at no point the chain could be broken
+                without a cryptographic exhaust or knowledge of the a key within the chain and the
+                effective strength of the data encryption key is maintained throughout the Key
+                Chain. *if necessary, this information could be contained in a proprietary document
+                and not appear in the TSS.<br/> If the platform provides the IV generation, then the
+                evaluator shall examine the TSS to verify that it describes how the IV generation is
+                invoked. <!-- Guidance None, Tests None -->
+              </tss>
+            </aactivity>
+          </f-element>
+        </f-component>
+        <!-- Added for CSFC DAR (FCS_SNI_EXT.1.1, 1.2, 1.3) -->
+        <!-- Salts, IVs, Nonces - Needs to be altered for modes used in this EP -->
+        <f-component id="FCS_SNI_EXT.1"
+          name="Cryptographic Operation (Salt, Nonce, and Initialization Vector Generation)">
+          <f-element id="FCS_SNI_EXT.1.1">
+            <title>The email client shall only use salts that are generated by a <selectables>
+                <selectable>RNG as specified in FCS_RBG_EXT.1</selectable>
+                <selectable>RNG provided by the host platform</selectable>
+              </selectables>
+            </title>
+          </f-element>
+          <f-element id="FCS_SNI_EXT.1.2">
+            <title>The email client shall only use unique nonces with a minimum size of [64]
+              bits.</title>
+          </f-element>
+          <f-element id="FCS_SNI_EXT.1.3">
+            <title>The email client shall create IVs in the following manner: <selectables>
+                <selectable>CBC: IVs shall be non-repeating</selectable>
+                <selectable>CCM: Nonce shall be non-repeating</selectable>
+                <selectable>XTS: No IV. Tweak values shall be non-negative integers, assigned
+                  consecutively, and starting at an arbitrary non-negative integer</selectable>
+                <selectable>GCM: IV shall be non-repeating. The number of invocations of GCM shall
+                  not exceed 2^32 for a given secret key.</selectable>
+              </selectables>[ </title>
+            <note role="application">This requirement covers several important factors – the salt
+              must be random, but the nonces only have to be unique. FCS_SNI_EXT.1.3 specifies how
+              the IV should be handled for each encryption mode. CBC, XTS, and GCM are allowed for
+              AES encryption of the data. AES-CCM is an allowed mode for Key Wrapping </note>
+            <aactivity>
+              <tss>The evaluator shall ensure the TSS describes how salts are generated. The
+                evaluator shall confirm that the salt is generating using an RBG described in
+                FCS_RBG_EXT.1 <cite linkend="bibAppPP"/> or by the Operational Environment. If
+                external function is used for this purpose, the TSS should include the specific API
+                that is called with inputs. <br/>The evaluator shall ensure the TSS describes how
+                nonces are created uniquely and how IVs and tweaks are handled (based on the AES
+                mode). The evaluator shall confirm that the nonces are unique and the IVs and tweaks
+                meet the stated requirements. <br/>If the email client is relying on random from the
+                host platform, the evaluator shall verify the TSS includes the name/manufacturer of
+                the external RBG. If different external RBGs are used for different platforms, the
+                TSS identifies each one for each platform. <br/>If the email client is relying on
+                random from the host platform, the evaluator shall verify the TSS describes the
+                function call and parameters used when calling the external DRBG function. Also, the
+                TSS includes a short description of the vendor's assumption for the amount of
+                entropy seeding the external DRBG. </tss>
+            </aactivity>
+          </f-element>
+        </f-component>
+        <!-- Added for CSFC DAR (FCS_CKM.1(A)) -->
+        <f-component id="FCS_CKM.1(A)"
+          name="Cryptographic Key Generation (Password/Passphrase Conditioning)" status="objective">
+          <f-element id="FCS_CKM.1.1(A)">
+            <!-- recommend requiring
+        for csfc dar -->
+            <title>A password/passphrase used to generate a password authorization factor shall
+              enable up to <selectables>
+                <selectable>positive integer of 64 or more</selectable>
+                <selectable>characters in the set of <selectables>
+                    <selectable>upper case characters, lower case characters, numbers, and the
+                      following special characters: "!", "@", "#", "$", "%", "^", ampersand, "*",
+                      "(", and ")" <selectables>
+                        <assignment>and other supported special characters</assignment>
+                      </selectables>
+                    </selectable>
+                  </selectables>
+                </selectable>
+              </selectables> and shall perform [Password-based Key Derivation Functions] in
+              accordance with a specified cryptographic algorithm <selectables>
+                <selectable>HMAC-SHA-256</selectable>
+                <selectable>HMAC-SHA-384</selectable>
+                <selectable>HMAC-SHA-512</selectable>
+              </selectables> with [assignment: positive integer of 4096 or more] iterations, and
+              output cryptographic key sizes <selectables>
+                <selectable>128 bits</selectable>
+                <selectable>256 bits</selectable>
+              </selectables> that meet the following: [NIST SP 800-132]. </title>
+            <note role="application">The password/passphrase is represented on the host machine as a
+              sequence of characters whose encoding depends on the email client and the underlying
+              OS. This sequence must be conditioned into a string of bits that is to be used as a
+              key of equivalent size to the rest of the key chain.1 The key cryptographic key sizes
+              in the fourth selection should be made to correspond to the key sizes selected in
+              FCS_CKM_EXT.1. <br/>This password/passphrase must be conditioned into a string of bits
+              that forms the submask to be used as input into a key. Conditioning can be performed
+              using one of the identified hash functions or the process described in NIST SP
+              800-132; the method used is selected by the ST Author. SP 800-132 requires the use of
+              a pseudo-random function (PRF) consisting of HMAC with an approved hash function. The
+              ST author selects the hash function used, also includes the appropriate requirements
+              for HMAC and the hash function. <br/> Appendix A of SP 800-132 recommends setting the
+              iteration count in order to increase the computation needed to derive a key from a
+              password and, therefore, increase the workload of performing a password recovery
+              attack. However, for this EP, a minimum iteration count of 4096 is required in order
+              to ensure that twelve bits of security is added to the password/passphrase value. A
+              significantly higher value is recommended to ensure optimal security. </note>
+            <aactivity>
+              <tss>FCS_CKM_1.1(A): There are two aspects of this component that require evaluation:
+                passwords/passphrases of the length specified in the requirement (at least 64
+                characters) are supported, and that the characters that are input are subject to the
+                selected conditioning function. These activities are separately addressed in the
+                text below. Support for minimum length: The evaluators shall check the TSS section
+                to determine that it specifies that a capability exists to accept
+                passwords/passphrases with the minimum number of characters specified in the ST in
+                this assignment statement. Support for PBKDF: The evaluator shall examine the
+                password hierarchy TSS to ensure that the formation of all keys (as decided in the
+                FCS_CKM_EXT.1 selection) is described and that the key sizes match that described by
+                the ST author. The evaluator shall check that the TSS describes the method by which
+                the password/passphrase is first encoded and then fed to the SHA algorithm. The
+                settings for the algorithm (padding, blocking, etc.) shall be described, and the
+                evaluator shall verify that these are supported by the selections in this component
+                as well as the selections concerning the hash function itself. The evaluator shall
+                verify that the TSS contains a description of how the output of the hash function is
+                used to form the submask that will be input into the function and is the same length
+                as the key as specified in FCS_CKM_EXT.4. For the NIST SP 800-132-based conditioning
+                of the password/passphrase, the required assurance activities will be performed when
+                doing the assurance activities for the appropriate requirements (FCS_COP.1.1(4)
+                  <cite linkend="bibAppPP"/>). If any manipulation of the key is performed in
+                forming the submask that will be used to form the key, that process shall be
+                described in the TSS. No explicit testing of the formation of the submask from the
+                input password is required. </tss>
+              <guidance>Support for minimum length: The evaluators shall also check the Operational
+                Guidance to determine that there are instructions for guidance on how to generate
+                large passwords/passphrases external to the email client and instructions for how to
+                configure the password/passphrase length and optional complexity settings (note to
+                Management section). This is important because many default settings for
+                passwords/passphrases will not meet the necessary entropy needed as specified in
+                this EP. </guidance>
+              <tests>Support for minimum length: In addition to the analysis above, the evaluator
+                shall also perform the following tests on a email client configured according to the
+                AGD_PRE guidance: <testlist>
+                  <test>Ensure that the email client supports passwords/passphrases of 64
+                    characters. </test>
+                  <test>Try entering a password/passphrase less than 64 characters. </test>
+                  <test>If the email client supports a password/passphrase length up to a maximum
+                    number of characters, n (which would be greater than 64), then ensure that the
+                    email client will not accept more than n characters. </test> Conditioning: No
+                  explicit testing of the formation of the authorization factor from the input
+                  password/passphrase is required. Iteration count: The evaluator shall verify that
+                  the iteration count for PBKDFs performed by the email client comply with NIST SP
+                  800-132 by ensuring that the TSS contains a description of the estimated time
+                  required to derive key material from passwords and how the email client increases
+                  the computation time for password-based key derivation (including but not limited
+                  to increasing the iteration count). </testlist></tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        <!-- Added for CSFC DAR (FCS_COP.1(5)) -->
+        <f-component id="FCS_COP.1" name="Key Wrapping">
+          <f-element id="FCS_COP.1.1(5)">
+            <!-- this would suppliment FCS_COP.1.1(1) in
+        App PP -->
+            <title>The email client shall <selectables>
+                <selectable>use platform-provided functionality to perform Key Wrapping</selectable>
+                <selectable>implement functionality to perform Key Wrapping</selectable>
+              </selectables> in accordance with a specified cryptographic algorithm <selectables>
+                <selectable>AES Key Wrap</selectable>
+                <selectable>AES Key Wrap with Padding</selectable>
+                <selectable>RSA using the KTS-OAEP-basic scheme</selectable>
+                <selectable>RSA using the KTS-OAEP-receiver-confirmation scheme</selectable>
+                <selectable>ECC CDH</selectable>
+              </selectables> and the cryptographic key size <selectables>
+                <selectable>128 bits (AES)</selectable>
+                <selectable>256 bits (AES)</selectable>
+                <selectable>2048 (RSA)</selectable>
+                <selectable>4096 (RSA)</selectable>
+                <selectable>256-bit prime</selectable>
+                <selectable>modulus (ECC CDH)</selectable>
+                <selectable>384-bit prime modulus (ECC CDH)</selectable>
+              </selectables> that meet the following: <selectables>
+                <selectable>"NIST SP 800-38F" for Key Wrap (section 6.2) and Key Wrap with Padding
+                  (section 6.3)</selectable>
+                <selectable>"NIST SP 800-56B" for RSA using the KTS-OAEP-basic (section 9.2.3) and
+                  KTS-OAEP-receiver-confirmation (section 9.2.4) scheme, "NIST SP 800-56A rev 2" for
+                  ECC CDH (sections 5.6.1.2 and 6.2.2.2) </selectable>
+              </selectables>. </title>
+          </f-element>
+        </f-component>
+        <!-- Added for CSFC DAR (FCS_SMC_EXT.1.1) -->
+        <f-component id="FCS_SMC_EXT.1" name="Key Combining">
+          <!-- This should probably be included to support key chains, this allows for strong auth and strong TPM implementations. -->
+          <f-element id="FCS_SMC_EXT.1.1">
+            <title>The email client shall combine submasks using the following method <selectables>
+                <selectable>exclusive OR (XOR)</selectable>
+                <selectable>SHA-256</selectable>
+                <selectable>SHA-512</selectable>
+              </selectables> to generate another key. </title>
+            <note role="application">This requirement specifies the way that a product may combine
+              the various submasks by using either an XOR or an approved SHA-hash. </note>
+            <aactivity>
+              <tss>If keys are XORed together to form an intermediate key, the TSS section shall
+                identify how this is performed (e.g., if there are ordering requirements, checks
+                performed, etc.). The evaluator shall also confirm that the TSS describes how the
+                length of the output produced is at least the same as that of the data encryption
+                key. </tss>
+              <!-- Guidance and Tests - None -->
+            </aactivity>
+          </f-element>
+        </f-component> </subsection>
       <subsection title="User Data Protection (FDP)" id="fdp">
         <f-component id="FDP_NOT_EXT.1" name="Notification of S/MIME Status">
           <f-element id="FDP_NOT_EXT.1.1">
@@ -501,6 +875,56 @@
             </aactivity>
           </f-element>
         </f-component>
+        <!-- Added for CSFC DAR (FDP_PRT) -->
+        <f-component id="FDP_PRT_EXT.1" name="Protection of Selected User Data">
+          <!-- would recommend requiring for csfc dar -->
+          <f-element id="FDP_PRT_EXT.1.2">
+            <title>The email client shall <selectables>
+                <selectable>invoke platform-provided functionality</selectable>
+                <selectable>implement functionality</selectable>
+              </selectables> to ensure that all sensitive data created by the email client when
+              decrypting/encrypting the user-selected email (or set of files) are destroyed in
+              volatile and non-volatile memory upon completion of the decryption/encryption
+              operation. </title>
+            <note role="application"> The intent is that the email client controls the use and
+              clearing of any emails that it manipulates. However, it is possible that the email
+              client shall only be invoking the <!-- This is not a complete sentence and exists in the original text
+            provided. -->
+              <br/> The email client is not responsible for temporary files that an editor
+              application creates. <br/>The email client has "completed the decryption/encryption
+              operation" after it has decrypted the file (or set of files) and any edited data has
+              been stored encrypted and the plaintext editor has been closed. </note>
+            <aactivity><tss>TSS Requirement met by the platform <br/>If the platform provides the
+                key encryption/decryption, then the evaluator shall examine the TSS to verify that
+                it describes how the key encryption/decryption is invoked. Requirement met by the
+                email client <br/>The evaluator shall examine the TSS to ensure there is a
+                high-level description of how the data encryption key is protected. <br/>The
+                evaluator shall examine the TSS to ensure that it describes all temporary
+                files/resources created or memory used during the decryption/encryption process. The
+                TSS shall describe how the email client platform deletes the non-volatile memory
+                (for example, files) and volatile memory locations after the TSF is done with its
+                decryption/encryption operation. </tss>
+              <!-- No guidance -->
+              <tests>These tests are only for email client provided
+                    functionality:<testlist><test>For each type of encryption mode and encryption
+                    operation, a known plaintext file, ciphertext file and the associated keying
+                    material must be supplied to the evaluator. The evaluator will use the email
+                    client in conjunction with a debugging or forensics utility to attempt to
+                    encrypt the plaintext and decrypt the ciphertext. The evaluator will ascertain
+                    from the TSS what the vendor defines as "no longer needed" for plaintext
+                    information and execute the sequence of actions via the email client to invoke
+                    this state. At this point, the evaluator should take a dump of volatile memory
+                    and search the retrieved dump for any plaintext information. The evaluator must
+                    document each command, program or action taken during this process, and must
+                    confirm that no sensitive data resides in volatile memory. The evaluator must
+                    perform this test three times to ensure repeatability. If during the course of
+                    this testing the evaluator finds that plaintext material remains in volatile
+                    memory, they should be able to identify the cause and document the reason for
+                    failure to comply with this requirement. The evaluator will repeat this same
+                    test, but looking for sensitive data in non-volatile memory.
+                </test></testlist></tests></aactivity>
+          </f-element>
+        </f-component> 
         <f-component id="FDP_PST_EXT.1" name="Storage of Persistent Information">
           <f-element id="FDP_PST_EXT.1.1" status="optional">
             <title>The email client shall be capable of operating without storing persistent
@@ -820,7 +1244,78 @@
                 </testlist></tests></aactivity>
           </f-element>
         </f-component>
-      </subsection>
+        <!-- SMF belongs in MOF -->
+        <f-component id="FMT_SMF.1" name="Specification of Management Functions">
+          <!-- Recommend requiring
+    for CSFC for DAR - but needs to be worked into MOF, not SMF -->
+          <f-element id="FMT_SMF.1.1">
+            <title>The email client shall be capable of performing the following management
+              functions: <selectables>
+                <selectable>change password/passphrase authentication credential</selectable>
+                <selectable>disable key recovery functionality</selectable>
+                <selectable>configure password/passphrase complexity setting</selectable>
+                <selectable>configure cryptographic functionality</selectable>
+              </selectables>
+            </title>
+            <note application="role">The intent of this requirement is to express the management
+              capabilities that may be included in the email client. Several common options are
+              given: <ul>
+                <li>If password or passphrase authorization factors are implemented by the email
+                  client, then the appropriate "change" selection must be included, along with
+                  FIA_FCT_EXT.1(2) from Appendix C. </li>
+                <li>If the email client provides for a password/passphrase complexity setting, then
+                  "configure password/passphrase complexity setting" will be included, and the
+                  specifics of the functionality offered can either be written from the requirement
+                  as bullets points, or included in the TSS. </li>
+                <li>If the email client provides configurability of the cryptographic functions (for
+                  example, key size)—even if the configuration is the form of parameters that may be
+                  passed to cryptographic functionality implement on the email client platform -
+                  then "configure cryptographic functionality" will be included, and the specifics
+                  of the functionality offered can either be written in this requirement as bullet
+                  points, or included in the TSS. </li>
+                <li>If the email client does include a key recovery function, the email client must
+                  provide the capability for the user to turn this functionality off so that no
+                  recovery key is generated and no keys are permitted to be exported. </li>
+                <li>If "other management functions" are assigned, a validation authority must be
+                  consulted to ensure the assurance activities and other functionality requirements
+                  that may be needed are appropriately specified so that the ST can claim
+                  conformance to this EP. </li>
+              </ul>
+            </note>
+            <aactivity> The assurance activities for this component will be driven by the selections
+              made by the ST author. This section describes assurance activities for all possible
+              selections in an ST; it should be understood that if a capability is not selected in
+              the ST, the noted assurance activity does not need to be performed. The following
+              sections are divided up into "Required Activities" and "Conditional Activities" for
+              ease of reference. <tss>TSS Conditional Activities: The evaluator shall examine the
+                TSS to ensure that it describes the sequence of activities that take place from an
+                implementation perspective when this activity is performed (for example, how it
+                determines which resources are associated with a key, the decryption and
+                re-encryption process), and ensure that the keys are not exposed during this change.
+                <br/>Cryptographic Configuration: None for this requirement. <br/>Disable Key
+                Recovery: If the email client supports key recovery, this must be stated in the TSS.
+                The TSS shall also describe how to disable this functionality. This includes a
+                description of how the recovery material is provided to the recovery holder. The
+                guidance for disabling this capability shall be described in the AGD documentation. </tss>
+              <guidance> Conditional Activities: The evaluator shall examine the Operational
+                Guidance to ensure that it describes how the password/passphrase-based authorization
+                factor is to be changed. <br/>Cryptographic Configuration: The evaluator shall
+                determine from the TSS for other requirements (FCS_*, FDP_PRT_EXT, FIA_AUT_EXT) what
+                portions of the cryptographic functionality are configurable. The evaluator shall
+                then review the AGD documentation to determine that there are instructions for
+                manipulating all of the claimed mechanisms. </guidance>
+              <tests><testlist><test> Conditional Activities: The evaluator shall set all length and
+                    complexity settings offered by the email client. The evaluator shall then
+                    attempt to enter values that violate those settings and ensure they are not
+                    accepted. </test><test>Disable Key Recovery: If the email client provides key
+                    recovery capability, then the evaluator shall devise a test that ensures that
+                    the key recovery capability has been or can be disabled following the guidance
+                    provided by the vendor. </test><test> Cryptographic Configuration: Testing for
+                    this activity is performed for other components in this
+                EP.</test></testlist></tests>
+            </aactivity>
+          </f-element>
+        </f-component> </subsection>
       <subsection title="Protection of the TSF (FPT)" id="fpt">
         <f-component id="FPT_AON_EXT.1" name="Support for Only Trusted Add-ons">
           <f-element id="FPT_AON_EXT.1.1">
@@ -904,7 +1399,53 @@
             </aactivity>
           </f-element>
         </f-component>
-      </subsection>
+        <!-- Added for CSFC DAR (FPT_KYP_EXT.1) -->
+        <f-component id="FPT_KYP_EXT.1" name="Protection of Key and Key Material">
+          <f-element id="FPT_KYP_EXT.1.1">
+            <title>The email client shall <selectables>
+                <selectable>not store keys in non-volatile memory</selectable>
+                <selectable>only store keys in non-volatile memory when wrapped as specified in
+                    <linkref linkend="FCS_COP.1(5)"/> unless the key meets any one of following
+                  criteria: <selectables>
+                    <selectable>The plaintext key is not part of the key chain as specified in
+                      FCS_KYC_EXT.1.</selectable>
+                    <selectable>The plaintext key will no longer provide access to the encrypted
+                      data after initial provisioning.</selectable>
+                    <selectable>The plaintext key is a key split that is combined as specified in
+                        <linkref linkend="FCS_SMC_EXT.1"/>, and the other half of the key split is
+                      either <selectables>
+                        <selectable>wrapped as specified in <linkref linkend="FCS_COP.1(5)"
+                          /></selectable>
+                        <selectable>derived and not stored in non-volatile memory</selectable>
+                      </selectables>
+                      <selectable>The plaintext key is stored on an external storage device for use
+                        as an authorization factor.</selectable>
+                      <selectable>The plaintext key is used to wrap a key as specified in <linkref
+                          linkend="FCS_COP.1(5)"/> that is already wrapped as specified in <linkref
+                          linkend="FCS_COP.1(5)"/>.</selectable>
+                      <selectable>The plaintext key is the public portion of of key
+                        pair.</selectable>
+                    </selectable>
+                  </selectables>
+                </selectable>
+              </selectables>
+            </title>
+            <note role="application">The plaintext key storage in non-volatile memory is allowed for
+              several reasons. If the keys exist within protected memory that is not user accessible
+              on the email client or OE, the only methods that allow it to play a security relevant
+              role for protecting the FEK is if it is a key split or providing additional layers of
+              wrapping or encryption on keys that have already been protected. </note>
+            <aactivity><tss>The evaluator shall verify the TSS for a high level description of
+                method used to protect keys stored in non-volatile memory.<br/> The evaluator shall
+                verify the TSS to ensure it describes the storage location of all keys and the
+                protection of all keys stored in non-volatile memory. The description of the key
+                chain shall be reviewed to ensure <linkref linkend="FCS_COP.1(5)"/> is followed for
+                the storage of wrapped or encrypted keys in non-volatile memory and plaintext keys
+                in non-volatile memory meet one of the criteria for storage. </tss>
+              <!-- no guidance, no tests -->
+            </aactivity>
+          </f-element>
+        </f-component> </subsection>
       <subsection title="Trusted Path/Channels (FTP)" id="ftp">
         <f-component id="FTP_ITC_EXT.1" name="Inter-TSF Trusted Channel">
           <f-element id="FTP_ITC_EXT.1.1">
