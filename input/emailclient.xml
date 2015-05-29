@@ -671,8 +671,8 @@
         </f-component>
         <!-- Added for CSFC DAR (FCS_CKM.1(A)) -->
         <f-component id="FCS_CKM.1(A)"
-          name="Cryptographic Key Generation (Password/Passphrase Conditioning)" status="objective">
-          <f-element id="FCS_CKM.1.1(A)">
+          name="Cryptographic Key Generation (Password/Passphrase Conditioning)">
+          <f-element id="FCS_CKM.1.1(A)" status="objective">
             <!-- recommend requiring
         for csfc dar -->
             <title>A password/passphrase used to generate a password authorization factor shall
@@ -1525,7 +1525,7 @@
     mandated in the body of this EP as they describe security functionality not yet widely-available
     in commercial technology. However, these requirements may be included in the ST such that the
     email client is still conformant to this EP, and it is expected that they be included as soon as
-    possible. <br/>None. <br/></appendix>
+    possible. </appendix>
   <appendix id="biblio" title="References">
     <bibliography>
       <entry id="bibCC">
