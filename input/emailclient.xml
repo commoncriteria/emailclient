@@ -470,7 +470,7 @@
                 evaluator uses the description of the RBG functionality in FCS_RBG_EXT or
                 documentation available for the operational environment to determine that the key
                 size being requested is identical to the key size and mode to be used for the
-                encryption/decryption of the user data <!-- (FCS_COP.1(f)) -->. </tss>
+                encryption/decryption of the user data (<linkref linkend="FCS_COP.1(5)" />. </tss>
             </aactivity>
           </f-element>
         </f-component>
@@ -558,7 +558,7 @@
                     positive) and document the reason for failure to comply with this requirement.
                     The evaluator will repeat this same test, but looking for keying material in
                     non-volatile memory - in some cases, the non-volatile memory testing may be
-                    satisfied by other assurance activities (see FCS_CKM_EXT.1 and FPT_FEK_EXT.1).
+                    satisfied by other assurance activities (see FCS_CKM_EXT.1<!-- and FPT_FEK_EXT.1 -->).
                   </test>
                 </testlist></tests>
             </aactivity>
@@ -602,7 +602,7 @@
               protected. This requirement also describes how keys are stored. </note>
             <aactivity>
               <tss>The evaluator shall verify the TSS* describes a high level description of the key
-                hierarchy for all authorizations methods selected in FIA_AUT_EXT that are used to
+                hierarchy for all authorizations methods <!-- (commented out bc it's not in EP/PP)selected in FIA_AUT_EXT --> that are used to
                 protect the encryption keys. The evaluator shall examine the TSS to ensure it
                 describes the key chain in detail. The description of the key chain shall be
                 reviewed to ensure it maintains a chain of keys using key wrap that meet <linkref
@@ -731,8 +731,9 @@
                 evaluator shall verify that these are supported by the selections in this component
                 as well as the selections concerning the hash function itself. The evaluator shall
                 verify that the TSS contains a description of how the output of the hash function is
-                used to form the submask that will be input into the function and is the same length
-                as the key as specified in FCS_CKM_EXT.4. For the NIST SP 800-132-based conditioning
+                used to form the submask that will be input into the function<!-- (commented out bc 
+                  it is not in PP/EP) and is the same length
+                as the key as specified in FCS_CKM_EXT.4 -->. For the NIST SP 800-132-based conditioning
                 of the password/passphrase, the required assurance activities will be performed when
                 doing the assurance activities for the appropriate requirements (FCS_COP.1.1(4)
                   <cite linkend="bibAppPP"/>). If any manipulation of the key is performed in
@@ -1259,8 +1260,9 @@
               capabilities that may be included in the email client. Several common options are
               given: <ul>
                 <li>If password or passphrase authorization factors are implemented by the email
-                  client, then the appropriate "change" selection must be included, along with
-                  FIA_FCT_EXT.1(2) from Appendix C. </li>
+                  client, then the appropriate "change" selection must be included<!-- (commented out bc
+                    not in PP/EP), along with
+                  FIA_FCT_EXT.1(2) from Appendix C -->. </li>
                 <li>If the email client provides for a password/passphrase complexity setting, then
                   "configure password/passphrase complexity setting" will be included, and the
                   specifics of the functionality offered can either be written from the requirement
@@ -1298,7 +1300,8 @@
               <guidance> Conditional Activities: The evaluator shall examine the Operational
                 Guidance to ensure that it describes how the password/passphrase-based authorization
                 factor is to be changed. <br/>Cryptographic Configuration: The evaluator shall
-                determine from the TSS for other requirements (FCS_*, FDP_PRT_EXT, FIA_AUT_EXT) what
+                determine from the TSS for other requirements (FCS_*, FDP_PRT_EXT<!-- commented out
+                  bc not in PP/EP), FIA_AUT_EXT -->) what
                 portions of the cryptographic functionality are configurable. The evaluator shall
                 then review the AGD documentation to determine that there are instructions for
                 manipulating all of the claimed mechanisms. </guidance>
@@ -1431,7 +1434,7 @@
             <note role="application">The plaintext key storage in non-volatile memory is allowed for
               several reasons. If the keys exist within protected memory that is not user accessible
               on the email client or OE, the only methods that allow it to play a security relevant
-              role for protecting the FEK is if it is a key split or providing additional layers of
+              role for protecting the FEK <!-- there is no FEK rqmt and this term is not defined -->is if it is a key split or providing additional layers of
               wrapping or encryption on keys that have already been protected. </note>
             <aactivity><tss>The evaluator shall verify the TSS for a high level description of
                 method used to protect keys stored in non-volatile memory.<br/> The evaluator shall
