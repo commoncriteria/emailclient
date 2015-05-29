@@ -535,8 +535,7 @@
                 zeroized by overwriting three times with a random pattern that is changed before
                 each write"). </tss>
               <!-- Guidance None -->
-              <tests>The evaluator shall perform the following test for key destruction provided by
-                the email client:<testlight>
+              <tests>The evaluator shall perform the following test:<testlist>
                   <test>For each type of authorization service, encryption mode and encryption
                     operation, a known authorization factor, and chain of keys must be provided to
                     the evaluator with an associated ciphertext data set (e.g. if a passphrase is
@@ -561,24 +560,24 @@
                     non-volatile memory - in some cases, the non-volatile memory testing may be
                     satisfied by other assurance activities (see FCS_CKM_EXT.1 and FPT_FEK_EXT.1).
                   </test>
-                </testlight></tests>
+                </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
         <!-- Added for CSFC DAR (FCS_KYC_EXT.1) -->
         <f-component id="FCS_KYC_EXT.1" name="Key Chaining">
           <f-element id="FCS_KYC_EXT.1.1">
-            <title> The email client shall maintain a key chain of: <selectables>
+            <title> The email client shall maintain a key chain of: <br /><selectables>
                 <selectable>one</selectable>
                 <selectable>a key stored in platform key storage</selectable>
-                <selectable>intermediate keys originating from: <selectables>
+                <selectable>intermediate keys originating from: <br /><selectables>
                     <selectable>a password as specified in <linkref linkend="FCS_CKM.1.1(A)"
                       /></selectable>
-                    <selectable>one or more other authorization factors(s)</selectable>
+                    <selectable>one or more other authorization factor(s)</selectable>
                     <selectable>credentials stored in platform key storage</selectable>
-                  </selectables>
+                  <br /></selectables>
                   <selectable>to the data encryption/decryption key(s) using the following
-                    method(s): <selectables>
+                    method(s): <br /><selectables>
                       <selectable>utilization of the platform key storage</selectable>
                       <selectable>utilization of platform key storage that performs key wrap with a
                         TSF provided key</selectable>
@@ -586,7 +585,7 @@
                           linkend="FCS_COP.1(5)"/></selectable>
                       <selectable>implement key combining as specified in <linkref
                           linkend="FCS_SMC_EXT.1"/></selectable>
-                      <selectable>while maintaining an effective strength of <selectables>
+                      <br /><selectable>while maintaining an effective strength of <selectables>
                           <selectable>128 bits</selectable>
                           <selectable>256 bits</selectable>
                         </selectables>
@@ -646,7 +645,7 @@
                   consecutively, and starting at an arbitrary non-negative integer</selectable>
                 <selectable>GCM: IV shall be non-repeating. The number of invocations of GCM shall
                   not exceed 2^32 for a given secret key.</selectable>
-              </selectables>[ </title>
+              </selectables></title>
             <note role="application">This requirement covers several important factors – the salt
               must be random, but the nonces only have to be unique. FCS_SNI_EXT.1.3 specifies how
               the IV should be handled for each encryption mode. CBC, XTS, and GCM are allowed for
