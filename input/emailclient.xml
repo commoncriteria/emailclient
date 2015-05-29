@@ -186,7 +186,7 @@
           application software products. This EP serves to extend the App PP baseline with
           additional SFRs and associated Assurance Activities specific to an email client. Assurance
           Activities are the actions that the evaluator performs in order to determine an email
-          client’s compliance to the SFRs.<br/> This EP conforms to Common Criteria <cite
+          client's compliance to the SFRs.<br/> This EP conforms to Common Criteria <cite
             linkend="bibCC"/> for Information Technology Security Evaluation, Version 3.1, Revision
           4. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to this
           EP, the ST must include all components in this EP and the associated App PP that are:
@@ -448,11 +448,11 @@
           <f-element id="FCS_CKM.1.1(c)">
             <title>The email client shall generate symmetric cryptographic keys using a Random Bit
               Generator as specified in FCS_RBG_EXT.1 <cite linkend="bibAppPP"/> and specified
-              cryptographic key sizes <selectables>
+              cryptographic key sizes <selectables linebreak="yes">
                 <selectable>128 bit</selectable>
                 <selectable>256 bit</selectable>
                 <!-- </selectables> that meet the following: <selectables>
-                <assignment>specify standard</assignment>
+                <assignable>specify standard</assignable>
                 <selectable>no standard</selectable>
             </selectables> --></selectables>. </title>
             <note role="application">Symmetric keys may be used to generate keys along the key
@@ -477,32 +477,32 @@
         <!-- Added for CSFC DAR (FCS_CKM.4) -->
         <f-component id="FCS_CKM_EXT.4" name="Cryptographic Key Destruction">
           <f-element id="FCS_CKM_EXT.4.1">
-            <title>The email client shall <selectables>
+            <title>The email client shall <selectables linebreak="yes">
                 <selectable>invoke platform-provided key destruction</selectable>
-                <selectable>implement key destruction using <selectables>
+                <selectable>implement key destruction using <selectables linebreak="yes">
                     <selectable>For volatile memory, the erasure shall be executed by a single
-                      direct overwrite <selectables>
-                        <selectable>consisting of a pseudo-random pattern using the TSF’s
+                      direct overwrite <selectables linebreak="yes">
+                        <selectable>consisting of a pseudo-random pattern using the TSF's
                           RBG</selectable>
-                        <selectable>consisting of a pseudo-random pattern using the host platform’s
+                        <selectable>consisting of a pseudo-random pattern using the host platform's
                           RBG</selectable>
                         <selectable>consisting of zeroes</selectable>. </selectables>following by a
                       read-verify. </selectable></selectables></selectable>
-                <selectable>For non-volatile storage, the erasure shall be executed by <selectables>
+                <selectable>For non-volatile storage, the erasure shall be executed by <selectables linebreak="yes">
                     <selectable>single</selectable>
                     <selectable>three or more times</selectable>
                   </selectables> overwrite of key data storage location consisting of <selectables>
-                    <selectable>a pseudo random pattern using the TSF’s RBG (as specified in
+                    <selectable linebreak="yes">a pseudo random pattern using the TSF's RBG (as specified in
                       FCS_RBG_EXT.1</selectable>
-                    <selectable>a pseudo-random pattern using the host platform’s RBG</selectable>
+                    <selectable>a pseudo-random pattern using the host platform's RBG</selectable>
                     <selectable>a static pattern</selectable>
-                  </selectables> followed by a <selectables>
+                  </selectables> followed by a <selectables linebreak="yes">
                     <selectable>read-verify</selectable>
                     <selectable>none</selectable>
                   </selectables>
                 </selectable>
               </selectables> If read-verification of the overwritten data fails, the process shall
-              be repeated again that meets the following: <selectables>
+              be repeated again that meets the following: <selectables linebreak="yes">
                 <selectable>NIST SP800-88</selectable>
                 <selectable>no standard</selectable>
               </selectables> for destroying all plaintext keying material and cryptographic security
@@ -567,17 +567,17 @@
         <!-- Added for CSFC DAR (FCS_KYC_EXT.1) -->
         <f-component id="FCS_KYC_EXT.1" name="Key Chaining">
           <f-element id="FCS_KYC_EXT.1.1">
-            <title> The email client shall maintain a key chain of: <br /><selectables>
+            <title> The email client shall maintain a key chain of: <selectables linebreak="yes">
                 <selectable>one</selectable>
                 <selectable>a key stored in platform key storage</selectable>
-                <selectable>intermediate keys originating from: <br /><selectables>
+                <selectable>intermediate keys originating from: <selectables linebreak="yes">
                     <selectable>a password as specified in <linkref linkend="FCS_CKM.1.1(A)"
                       /></selectable>
                     <selectable>one or more other authorization factor(s)</selectable>
                     <selectable>credentials stored in platform key storage</selectable>
-                  <br /></selectables>
+                 </selectables>
                   <selectable>to the data encryption/decryption key(s) using the following
-                    method(s): <br /><selectables>
+                    method(s): <selectables>
                       <selectable>utilization of the platform key storage</selectable>
                       <selectable>utilization of platform key storage that performs key wrap with a
                         TSF provided key</selectable>
@@ -585,7 +585,7 @@
                           linkend="FCS_COP.1(5)"/></selectable>
                       <selectable>implement key combining as specified in <linkref
                           linkend="FCS_SMC_EXT.1"/></selectable>
-                      <br /><selectable>while maintaining an effective strength of <selectables>
+                      <selectable>while maintaining an effective strength of <selectables linebreak="yes">
                           <selectable>128 bits</selectable>
                           <selectable>256 bits</selectable>
                         </selectables>
@@ -627,7 +627,7 @@
         <f-component id="FCS_SNI_EXT.1"
           name="Cryptographic Operation (Salt, Nonce, and Initialization Vector Generation)">
           <f-element id="FCS_SNI_EXT.1.1">
-            <title>The email client shall only use salts that are generated by a <selectables>
+            <title>The email client shall only use salts that are generated by a <selectables linebreak="yes">
                 <selectable>RNG as specified in FCS_RBG_EXT.1</selectable>
                 <selectable>RNG provided by the host platform</selectable>
               </selectables>
@@ -638,7 +638,7 @@
               bits.</title>
           </f-element>
           <f-element id="FCS_SNI_EXT.1.3">
-            <title>The email client shall create IVs in the following manner: <selectables>
+            <title>The email client shall create IVs in the following manner: <selectables linebreak="yes">
                 <selectable>CBC: IVs shall be non-repeating</selectable>
                 <selectable>CCM: Nonce shall be non-repeating</selectable>
                 <selectable>XTS: No IV. Tweak values shall be non-negative integers, assigned
@@ -676,24 +676,24 @@
             <!-- recommend requiring
         for csfc dar -->
             <title>A password/passphrase used to generate a password authorization factor shall
-              enable up to <selectables>
+              enable up to <selectables linebreak="yes">
                 <selectable>positive integer of 64 or more</selectable>
-                <selectable>characters in the set of <selectables>
+                <selectable>characters in the set of <selectables linebreak="yes">
                     <selectable>upper case characters, lower case characters, numbers, and the
                       following special characters: "!", "@", "#", "$", "%", "^", ampersand, "*",
-                      "(", and ")" <selectables>
-                        <assignment>and other supported special characters</assignment>
+                      "(", and ")" <selectables linebreak="yes">
+                        <assignable>and other supported special characters</assignable>
                       </selectables>
                     </selectable>
                   </selectables>
                 </selectable>
               </selectables> and shall perform [Password-based Key Derivation Functions] in
-              accordance with a specified cryptographic algorithm <selectables>
+              accordance with a specified cryptographic algorithm <selectables linebreak="yes">
                 <selectable>HMAC-SHA-256</selectable>
                 <selectable>HMAC-SHA-384</selectable>
                 <selectable>HMAC-SHA-512</selectable>
               </selectables> with [assignment: positive integer of 4096 or more] iterations, and
-              output cryptographic key sizes <selectables>
+              output cryptographic key sizes <selectables linebreak="yes">
                 <selectable>128 bits</selectable>
                 <selectable>256 bits</selectable>
               </selectables> that meet the following: [NIST SP 800-132]. </title>
@@ -770,16 +770,16 @@
           <f-element id="FCS_COP.1.1(5)">
             <!-- this would suppliment FCS_COP.1.1(1) in
         App PP -->
-            <title>The email client shall <selectables>
+            <title>The email client shall <selectables linebreak="yes">
                 <selectable>use platform-provided functionality to perform Key Wrapping</selectable>
                 <selectable>implement functionality to perform Key Wrapping</selectable>
-              </selectables> in accordance with a specified cryptographic algorithm <selectables>
+              </selectables> in accordance with a specified cryptographic algorithm <selectables linebreak="yes">
                 <selectable>AES Key Wrap</selectable>
                 <selectable>AES Key Wrap with Padding</selectable>
                 <selectable>RSA using the KTS-OAEP-basic scheme</selectable>
                 <selectable>RSA using the KTS-OAEP-receiver-confirmation scheme</selectable>
                 <selectable>ECC CDH</selectable>
-              </selectables> and the cryptographic key size <selectables>
+              </selectables> and the cryptographic key size <selectables linebreak="yes">
                 <selectable>128 bits (AES)</selectable>
                 <selectable>256 bits (AES)</selectable>
                 <selectable>2048 (RSA)</selectable>
@@ -787,7 +787,7 @@
                 <selectable>256-bit prime</selectable>
                 <selectable>modulus (ECC CDH)</selectable>
                 <selectable>384-bit prime modulus (ECC CDH)</selectable>
-              </selectables> that meet the following: <selectables>
+              </selectables> that meet the following: <selectables linebreak="yes">
                 <selectable>"NIST SP 800-38F" for Key Wrap (section 6.2) and Key Wrap with Padding
                   (section 6.3)</selectable>
                 <selectable>"NIST SP 800-56B" for RSA using the KTS-OAEP-basic (section 9.2.3) and
@@ -800,7 +800,7 @@
         <f-component id="FCS_SMC_EXT.1" name="Key Combining">
           <!-- This should probably be included to support key chains, this allows for strong auth and strong TPM implementations. -->
           <f-element id="FCS_SMC_EXT.1.1">
-            <title>The email client shall combine submasks using the following method <selectables>
+            <title>The email client shall combine submasks using the following method <selectables linebreak="yes">
                 <selectable>exclusive OR (XOR)</selectable>
                 <selectable>SHA-256</selectable>
                 <selectable>SHA-512</selectable>
@@ -878,7 +878,7 @@
         <f-component id="FDP_PRT_EXT.1" name="Protection of Selected User Data">
           <!-- would recommend requiring for csfc dar -->
           <f-element id="FDP_PRT_EXT.1.2">
-            <title>The email client shall <selectables>
+            <title>The email client shall <selectables linebreak="yes">
                 <selectable>invoke platform-provided functionality</selectable>
                 <selectable>implement functionality</selectable>
               </selectables> to ensure that all sensitive data created by the email client when
@@ -929,13 +929,12 @@
             <title>The email client shall be capable of operating without storing persistent
               information to the client platform with the following exceptions:
                   <selectables><selectable>credentials</selectable><selectable>configuration
-                  information</selectable><selectable>CRL</selectable><selectable>no
+                  information</selectable><selectable>certificate revocation</selectable><selectable>no
                   exceptions</selectable></selectables>.</title>
             <note role="application">Any data that persists after the email client closes, including
               temporary files, is considered to be persistent data. Satisfying this requirement
               would require the use of a protocol such as IMAP or MAPI. It is not compatible with
-              POP. Exceptions from this requirement are credentials and configuration information
-              including CRLs.</note>
+              POP. </note>
             <aactivity><tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that
                 it describes all persistent information stored on the platform, and the locations on
                 the platform where these data are stored. The evaluator shall confirm that the
@@ -1140,7 +1139,7 @@
                     certification path results in the function
                     failing<!-- or in the receipt of a user
                     notification (as required by elements 2, 3, 4, and 5)-->.
-                    The evaluator shall then load into the platform’s root store any certificates
+                    The evaluator shall then load into the platform's root store any certificates
                     needed to validate the certificate to be used in the function, and demonstrate
                     that the function succeeds<!-- or results in no user notification-->.</test>
                   <test>The evaluator shall demonstrate that using a valid certificate that requires
@@ -1249,7 +1248,7 @@
     for CSFC for DAR - but needs to be worked into MOF, not SMF -->
           <f-element id="FMT_SMF.1.1">
             <title>The email client shall be capable of performing the following management
-              functions: <selectables>
+              functions: <selectables linebreak="yes">
                 <selectable>change password/passphrase authentication credential</selectable>
                 <selectable>disable key recovery functionality</selectable>
                 <selectable>configure password/passphrase complexity setting</selectable>
