@@ -460,7 +460,7 @@
         </f-component>
         <!-- Added for CSFC DAR (FCS_CKM.1(a) Renumbered from (c) -->
         <f-component id="FCS_CKM.1(a)" name="Cryptographic Symmetric Key Generation">
-          <f-element id="FCS_CKM.1.1(a)">
+          <f-element id="FCS_CKM.1.1(a)" status="objective">
             <title>The email client shall generate symmetric cryptographic keys using a Random Bit
               Generator as specified in FCS_RBG_EXT.1 <cite linkend="bibAppPP"/> and specified
               cryptographic key sizes <selectables linebreak="yes">
