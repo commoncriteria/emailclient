@@ -509,24 +509,26 @@
             <!-- Marked as objective but recommend requiring
         for csfc dar -->
             <title>A password/passphrase used to generate a password authorization factor shall
-              enable up to <selectables linebreak="yes">
-                <assignable>positive integer of 64 or more</assignable>
-                <selectable>characters in the set of <selectables linebreak="yes">
-                    <selectable>upper case characters, lower case characters, numbers, and the
-                      following special characters: "!", "@", "#", "$", "%", "^", "&amp;", "*", "(",
-                      and ")" <selectables linebreak="yes">and <assignable>other supported special
-                          characters</assignable>
+              enable up to 
+              <selectables linebreak="yes">
+                <selectable><assignable>positive integer of
+                64 or more</assignable> characters in the set of 
+                                 <selectables linebreak="yes">
+                    <selectable>upper case characters</selectable>
+                                   <selectable>lower case characters</selectable>
+                                   <selectable>numbers</selectable>
+                                   <selectable>special characters: !, @, #, $, %, ^, &amp;, *, (, )</selectable> 
+                                   <selectable><assignable>other supported special characters</assignable></selectable>
                       </selectables>
-                    </selectable>
-                  </selectables>
                 </selectable>
-              </selectables> and shall perform [Password-based Key Derivation Functions] in
+                  </selectables>
+ and shall perform [Password-based Key Derivation Functions] in
               accordance with a specified cryptographic algorithm <selectables linebreak="yes">
                 <selectable>HMAC-SHA-256</selectable>
                 <selectable>HMAC-SHA-384</selectable>
                 <selectable>HMAC-SHA-512</selectable>
-              </selectables> with <selectables><assignable>positive integer of 4096 or
-                  more</assignable></selectables> iterations, and output cryptographic key sizes of
+              </selectables> with <selectables><selectable><assignable>positive integer of 4096 or
+                more</assignable></selectable></selectables> iterations, and output cryptographic key sizes of
                 <selectables linebreak="yes">
                 <selectable>128 bits</selectable>
                 <selectable>256 bits</selectable>
@@ -613,7 +615,7 @@
                           RBG</selectable>
                         <selectable>consisting of a pseudo-random pattern using the host platform's
                           RBG</selectable>
-                        <selectable>consisting of zeroes</selectable>. </selectables>following by a
+                        <selectable>consisting of zeroes</selectable>. </selectables>followed by a
                       read-verify. </selectable></selectables></selectable>
                 <selectable>For non-volatile storage, the erasure shall be executed by <selectables
                     linebreak="yes">
@@ -860,7 +862,8 @@
                 seeding the external DRBG. </tss>
             </aactivity>
           </f-element>
-        </f-component> </subsection>
+        </f-component>
+      </subsection>
       <subsection title="User Data Protection (FDP)" id="fdp">
         <f-component id="FDP_NOT_EXT.1" name="Notification of S/MIME Status">
           <f-element id="FDP_NOT_EXT.1.1">
@@ -1303,15 +1306,15 @@
                 <selectable>configure password/passphrase complexity setting</selectable>
                 <selectable>configure cryptographic functionality</selectable>
               </selectables>
-            </title>
+            </title><br />
             <note application="role">The intent of this requirement is to express the management
               capabilities that may be included in the email client. Several common options are
               given: <ul>
                 <li>If password or passphrase authorization factors are implemented by the email
                   client, then the appropriate "change" selection must be
-                  included<!-- (commented out bc
+                  included. </li><!-- (commented out bc
                     not in PP/EP), along with
-                  FIA_FCT_EXT.1(2) from Appendix C -->. </li>
+                  FIA_FCT_EXT.1(2) from Appendix C -->
                 <li>If the email client provides for a password/passphrase complexity setting, then
                   "configure password/passphrase complexity setting" will be included, and the
                   specifics of the functionality offered can either be written from the requirement
@@ -1470,12 +1473,12 @@
                           /></selectable>
                         <selectable>derived and not stored in non-volatile memory</selectable>
                       </selectables>
-                      <selectable>The plaintext key is stored on an external storage device for use
-                        as an authorization factor.</selectable>
-                      <selectable>The plaintext key is used to wrap a key as specified in <linkref
-                          linkend="FCS_COP.2"/> that is already wrapped as specified in <linkref
-                          linkend="FCS_COP.2"/>.</selectable>
-                      <selectable>The plaintext key is the public portion of of key
+                      <selectable linebreak="yes">The plaintext key is stored on an external storage
+                        device for use as an authorization factor.</selectable>
+                      <selectable linebreak="yes">The plaintext key is used to wrap a key as
+                        specified in <linkref linkend="FCS_COP.2"/> that is already wrapped as
+                        specified in <linkref linkend="FCS_COP.2"/>.</selectable>
+                      <selectable linebreak="yes">The plaintext key is the public portion of the key
                         pair.</selectable>
                     </selectable>
                   </selectables>
