@@ -458,54 +458,10 @@
             </aactivity>
           </f-element>
         </f-component>
-        <!-- Added for CSFC DAR (FCS_CKM.1(a) Renumbered from (c) -->
-        <f-component id="FCS_CKM.1(a)" name="Cryptographic Symmetric Key Generation">
-          <f-element id="FCS_CKM.1.1(a)" status="objective">
-            <title>The email client shall generate symmetric cryptographic keys using a Random Bit
-              Generator as specified in FCS_RBG_EXT.1 <cite linkend="bibAppPP"/> and specified
-              cryptographic key sizes <selectables linebreak="yes">
-                <selectable>128 bit</selectable>
-                <selectable>256 bit</selectable>
-                <!-- </selectables> that meet the following: <selectables>
-                <assignable>specify standard</assignable>
-                <selectable>no standard</selectable>
-            </selectables> --></selectables>. </title>
-            <note role="application">Symmetric keys may be used to generate keys along the key
-              chain.</note>
-            <aactivity>
-              <!-- Revised <tss>The evaluator shall review the TSS to determine that it describes how the
-                functionality described by FCS_RBG_EXT.1 <cite linkend="bibAppPP"/> is invoked.<br/>
-                If the email client is relying on random from the host platform, the evaluator shall
-                verify the TSS includes the name/manufacturer of the external RBG. If different
-                external RBGs are used for different platforms, the TSS identifies each one for each
-                platform. <br/>If the email client is relying on random from the host platform, the
-                evaluator shall verify the TSS describes the function call and parameters used when
-                calling the external DRBG function. Also, the TSS includes a short description of
-                the vendor's assumption for the amount of entropy seeding the external DRBG. The
-                evaluator uses the description of the RBG functionality in FCS_RBG_EXT or
-                documentation available for the operational environment to determine that the key
-                size being requested is identical to the key size and mode to be used for the
-                encryption/decryption of the user data (<linkref linkend="FCS_COP.1(f)" />. </tss> -->
-              <tss>The evaluator shall review the <linkref linkend="TSS"/> to determine that it
-                describes how the functionality described by FCS_RBG_EXT.1 <cite linkend="bibAppPP"
-                /> is invoked.<br/> If the email client is relying on random bit generation from the
-                host platform, the evaluator shall verify the <linkref linkend="TSS"/> includes the
-                name/manufacturer of the external RBG and describes the function call and parameters
-                used when calling the external DRBG function. If different external RBGs are used
-                for different platforms, the evaluator shall verify the TSS identifies each RBG for
-                each platform. Also, the evaluator shall verify the TSS includes a short description
-                of the vendor's assumption for the amount of entropy seeding the external DRBG. The
-                evaluator uses the description of the RBG functionality in FCS_RBG_EXT or
-                documentation available for the operational environment to determine that the key
-                size being requested is identical to the key size and mode to be used for the
-                encryption/decryption of the user data (<linkref linkend="FCS_COP.2"/>. </tss>
-            </aactivity>
-          </f-element>
-        </f-component>
-        <!-- Added for CSFC DAR (FCS_CKM.1(A)) - Renumbered to (b) -->
-        <f-component id="FCS_CKM.1(b)"
-          name="Cryptographic Key Generation (Password/Passphrase Conditioning)">
-          <f-element id="FCS_CKM.1.1(b)" status="objective">
+            <!-- Added for CSFC DAR (FCS_CKM.1(A)) - Renumbered to (b) -->
+        <f-component id="FCS_CKM_EXT.1"
+          name="Cryptographic Key Derivation (Password/Passphrase Conditioning)">
+          <f-element id="FCS_CKM_EXT.1.1" status="optional">
             <!-- Marked as objective but recommend requiring
         for csfc dar -->
             <title>A password/passphrase used to generate a password authorization factor shall
@@ -605,7 +561,7 @@
         </f-component>
         <!-- Added for CSFC DAR (FCS_CKM.3) Renumbered from .4-->
         <f-component id="FCS_CKM_EXT.3" name="Cryptographic Key Destruction">
-          <f-element id="FCS_CKM_EXT.3.1" status="objective">
+          <f-element id="FCS_CKM_EXT.3.1">
             <title>The email client shall <selectables linebreak="yes">
                 <selectable>invoke platform-provided key destruction</selectable>
                 <selectable>implement key destruction using <selectables linebreak="yes">
@@ -638,12 +594,8 @@
               parameters when no longer needed. </title>
             <note role="application">For the purposes of this requirement, plaintext keying material
               refers to authentication data, passwords, symmetric keys, data used to derive keys,
-              etc. <br/>For Mobile Devices, it is assumed that the email client will call the
-              platform for the memory management calls (and the Platform meets the MDF PP) to
-              destroy the plaintext keying material when it is no longer necessary, including when
-              the email client is powered down and when the wipe function is performed. In the
-              future, "no longer needed", will include keys generated for protecting sensitive data
-              received while in a locked state. <br/>The destruction indicated above applies to each
+              etc.
+			  <br/>The destruction indicated above applies to each
               intermediate storage area for plaintext key/cryptographic critical security parameters
               (i.e., any storage, such as memory buffers, that is included in the path of such data)
               upon the transfer of the key/cryptographic critical security parameter to another
@@ -695,7 +647,9 @@
         </f-component>
         <!-- Added for CSFC DAR (FCS_COP.1(5)) -->
         <f-component id="FCS_COP.EXT.2" name="Key Wrapping">
-          <f-element id="FCS_COP_EXT.2.1" status="objective">
+          <f-element id="FCS_COP_EXT.2.1" status="sel-based">
+		       <selection-depends req="fcs_kyc_ext.1.1"/>
+		       <selection-depends req="fpt_kyp_ext.1.1"/>
             <!-- Renumbered .2 from 1.1(5) -->
             <!-- this would supplement FCS_COP.1.1(1) in
         App PP -->
@@ -728,7 +682,7 @@
         </f-component>
         <!-- Added for CSFC DAR (FCS_KYC_EXT.1) -->
         <f-component id="FCS_KYC_EXT.1" name="Key Chaining">
-          <f-element id="FCS_KYC_EXT.1.1" status="objective">
+          <f-element id="FCS_KYC_EXT.1.1">
             <title> The email client shall maintain a key chain of: <selectables linebreak="yes">
                 <selectable>one</selectable>
                 <selectable>a key stored in platform key storage</selectable>
@@ -787,7 +741,9 @@
         <!-- Added for CSFC DAR (FCS_SMC_EXT.1.1) -->
         <f-component id="FCS_SMC_EXT.1" name="Key Combining">
           <!-- This should probably be included to support key chains, this allows for strong auth and strong TPM implementations. -->
-          <f-element id="FCS_SMC_EXT.1.1" status="objective">
+          <f-element id="FCS_SMC_EXT.1.1" status="sel-based">
+		       <selection-depends req="fcs_kyc_ext.1.1"/>
+		       <selection-depends req="fpt_kyp_ext.1.1"/>
             <title>The email client shall combine submasks using the following method <selectables
                 linebreak="yes">
                 <selectable>exclusive OR (XOR)</selectable>
@@ -808,9 +764,9 @@
         </f-component>
         <!-- Added for CSFC DAR (FCS_SNI_EXT.1.1, 1.2, 1.3) -->
         <!-- Salts, IVs, Nonces - Needs to be altered for modes used in this EP -->
-        <f-component id="FCS_SNI_EXT.1"
-          name="Cryptographic Operation (Salt, Nonce, and Initialization Vector Generation)">
-          <f-element id="FCS_SNI_EXT.1.1" status="objective">
+        <f-component id="FCS_SAG_EXT.1"
+          name="Cryptographic Salt Generation">
+          <f-element id="FCS_SAG_EXT.1.1" status="optional">
             <title>The email client shall only use salts that are generated by a <selectables
                 linebreak="yes">
                 <selectable>RNG as specified in FCS_RBG_EXT.1</selectable>
@@ -818,11 +774,17 @@
               </selectables>
             </title>
           </f-element>
-          <f-element id="FCS_SNI_EXT.1.2" status="objective">
+        </f-component>
+        <f-component id="FCS_NOG_EXT.1"
+          name="Cryptographic Nonce Generation">
+          <f-element id="FCS_NOG_EXT.1.2" status="optional">
             <title>The email client shall only use unique nonces with a minimum size of [64]
               bits.</title>
           </f-element>
-          <f-element id="FCS_SNI_EXT.1.3" status="objective">
+        </f-component>
+        <f-component id="FCS_IVG_EXT.1"
+          name="Initialization Vector Generation">
+          <f-element id="FCS_IVG_EXT.1.1">
             <title>The email client shall create IVs in the following manner: <selectables
                 linebreak="yes">
                 <selectable>CBC: IVs shall be non-repeating</selectable>
@@ -921,22 +883,24 @@
             </aactivity>
           </f-element>
         </f-component>
-        <!-- Added for CSFC DAR (FDP_PRT) -->
+
+		<!--
+         Added for CSFC DAR (FDP_PRT)
         <f-component id="FDP_PRT_EXT.1" name="Protection of Selected User Data">
-          <!-- would recommend requiring for csfc dar -->
           <f-element id="FDP_PRT_EXT.1.2" status="objective">
             <title>The email client shall <selectables linebreak="yes">
                 <selectable>invoke platform-provided functionality</selectable>
                 <selectable>implement functionality</selectable>
               </selectables> to ensure that all sensitive data created by the email client when
               decrypting/encrypting the user-selected email (or set of files) are destroyed in
-              volatile and non-volatile memory upon completion of the decryption/encryption
+              non-volatile memory upon completion of the decryption/encryption
               operation. </title>
             <note role="application"> The intent is that the email client controls the use and
-              clearing of any emails that it manipulates. <!-- This next sentence is incomplete and exists in the original text
-            provided. -->
-              <!--However, it is possible that the email
-              client shall only be invoking the -->
+              clearing of any emails that it manipulates. 
+			  This next sentence is incomplete and exists in the original text
+            provided. 
+              However, it is possible that the email
+              client shall only be invoking the
               <br/> The email client is not responsible for temporary files that an editor
               application creates. <br/>The email client has "completed the decryption/encryption
               operation" after it has decrypted the file (or set of files) and any edited data has
@@ -951,7 +915,6 @@
                 email client platform deletes the non-volatile memory (for example, files) and
                 volatile memory locations after the TSF is done with its decryption/encryption
                 operation. </tss>
-              <!-- No guidance -->
               <tests>The following test is only for email client provided
                     functionality:<testlist><test> For each type of encryption mode and encryption
                     operation, a known plaintext file, ciphertext file and the associated keying
@@ -971,7 +934,7 @@
                     test, but looking for sensitive data in non-volatile memory.
                 </test></testlist></tests></aactivity>
           </f-element>
-        </f-component>
+        </f-component> -->
         <f-component id="FDP_PST_EXT.1" name="Storage of Persistent Information">
           <f-element id="FDP_PST_EXT.1.1" status="optional">
             <title>The email client shall be capable of operating without storing persistent
