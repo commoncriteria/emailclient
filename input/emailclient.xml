@@ -559,6 +559,54 @@
             </aactivity>
           </f-element>
         </f-component>
+        <f-component id="FCS_CKM_EXT.2" name="Protection of Key and Key Material">
+          <f-element id="FPT_CKM_EXT.2.1">
+            <title>The email client shall <selectables linebreak="yes">
+                <selectable>not store keys in non-volatile memory</selectable>
+                <selectable>only store keys in non-volatile memory when wrapped as specified in
+                    <linkref linkend="FCS_COP.2"/> unless the key meets any one of following
+                  criteria: <selectables linebreak="yes">
+                    <selectable>The plaintext key is not part of the key chain as specified in
+                      FCS_KYC_EXT.1.</selectable>
+                    <selectable>The plaintext key will no longer provide access to the encrypted
+                      data after initial provisioning.</selectable>
+                    <selectable>The plaintext key is a key split that is combined as specified in
+                        <linkref linkend="FCS_SMC_EXT.1"/>, and the other half of the key split is
+                      either <selectables linebreak="yes">
+                        <selectable>wrapped as specified in <linkref linkend="FCS_COP.2"
+                          /></selectable>
+                        <selectable>derived and not stored in non-volatile memory</selectable>
+                      </selectables>
+                      <selectable linebreak="yes">The plaintext key is stored on an external storage
+                        device for use as an authorization factor.</selectable>
+                      <selectable linebreak="yes">The plaintext key is used to wrap a key as
+                        specified in <linkref linkend="FCS_COP.2"/> that is already wrapped as
+                        specified in <linkref linkend="FCS_COP.2"/>.</selectable>
+                      <selectable linebreak="yes">The plaintext key is the public portion of the key
+                        pair.</selectable>
+                    </selectable>
+                  </selectables>
+                </selectable>
+              </selectables>
+            </title>
+            <note role="application">The plaintext key storage in non-volatile memory is allowed for
+              several reasons. If the keys exist within protected memory that is not user accessible
+              on the email client or OE, the only methods that allow it to play a security relevant
+              role for protecting the FEK
+              <!-- there is no FEK rqmt and this term is not defined -->is if it is a key split or
+              providing additional layers of wrapping or encryption on keys that have already been
+              protected. </note>
+            <aactivity><tss>The evaluator shall verify the TSS for a high level description of
+                method used to protect keys stored in non-volatile memory.<br/> The evaluator shall
+                verify the TSS to ensure it describes the storage location of all keys and the
+                protection of all keys stored in non-volatile memory. The description of the key
+                chain shall be reviewed to ensure <linkref linkend="FCS_COP.2"/> is followed for the
+                storage of wrapped or encrypted keys in non-volatile memory and plaintext keys in
+                non-volatile memory meet one of the criteria for storage. </tss>
+              <!-- no guidance, no tests -->
+            </aactivity>
+          </f-element>
+        </f-component>
         <!-- Added for CSFC DAR (FCS_CKM.3) Renumbered from .4-->
         <f-component id="FCS_CKM_EXT.3" name="Cryptographic Key Destruction">
           <f-element id="FCS_CKM_EXT.3.1">
@@ -1417,55 +1465,7 @@
             </aactivity>
           </f-element>
         </f-component>
-        <!-- Added for CSFC DAR (FPT_KYP_EXT.1) -->
-        <f-component id="FPT_KYP_EXT.1" name="Protection of Key and Key Material">
-          <f-element id="FPT_KYP_EXT.1.1" status="objective">
-            <title>The email client shall <selectables linebreak="yes">
-                <selectable>not store keys in non-volatile memory</selectable>
-                <selectable>only store keys in non-volatile memory when wrapped as specified in
-                    <linkref linkend="FCS_COP.2"/> unless the key meets any one of following
-                  criteria: <selectables linebreak="yes">
-                    <selectable>The plaintext key is not part of the key chain as specified in
-                      FCS_KYC_EXT.1.</selectable>
-                    <selectable>The plaintext key will no longer provide access to the encrypted
-                      data after initial provisioning.</selectable>
-                    <selectable>The plaintext key is a key split that is combined as specified in
-                        <linkref linkend="FCS_SMC_EXT.1"/>, and the other half of the key split is
-                      either <selectables linebreak="yes">
-                        <selectable>wrapped as specified in <linkref linkend="FCS_COP.2"
-                          /></selectable>
-                        <selectable>derived and not stored in non-volatile memory</selectable>
-                      </selectables>
-                      <selectable linebreak="yes">The plaintext key is stored on an external storage
-                        device for use as an authorization factor.</selectable>
-                      <selectable linebreak="yes">The plaintext key is used to wrap a key as
-                        specified in <linkref linkend="FCS_COP.2"/> that is already wrapped as
-                        specified in <linkref linkend="FCS_COP.2"/>.</selectable>
-                      <selectable linebreak="yes">The plaintext key is the public portion of the key
-                        pair.</selectable>
-                    </selectable>
-                  </selectables>
-                </selectable>
-              </selectables>
-            </title>
-            <note role="application">The plaintext key storage in non-volatile memory is allowed for
-              several reasons. If the keys exist within protected memory that is not user accessible
-              on the email client or OE, the only methods that allow it to play a security relevant
-              role for protecting the FEK
-              <!-- there is no FEK rqmt and this term is not defined -->is if it is a key split or
-              providing additional layers of wrapping or encryption on keys that have already been
-              protected. </note>
-            <aactivity><tss>The evaluator shall verify the TSS for a high level description of
-                method used to protect keys stored in non-volatile memory.<br/> The evaluator shall
-                verify the TSS to ensure it describes the storage location of all keys and the
-                protection of all keys stored in non-volatile memory. The description of the key
-                chain shall be reviewed to ensure <linkref linkend="FCS_COP.2"/> is followed for the
-                storage of wrapped or encrypted keys in non-volatile memory and plaintext keys in
-                non-volatile memory meet one of the criteria for storage. </tss>
-              <!-- no guidance, no tests -->
-            </aactivity>
-          </f-element>
-        </f-component>
+
       </subsection>
       <subsection title="Trusted Path/Channels (FTP)" id="ftp">
         <f-component id="FTP_ITC_EXT.1" name="Inter-TSF Trusted Channel">
