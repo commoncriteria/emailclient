@@ -199,7 +199,12 @@
             <li>selection-based (which are required when certain selections are chosen in the
               unconditional requirements)</li>
           </ul> and may include optional and/or objective components that are desirable but not
-          required for conformance. </description>
+          required for conformance. 
+		  <br/>
+		  In accordance with CC Part 1, dependencies are not included when they are addressed by
+		  other SFRs.  The assurance activities provide adequate proof that any dependencies are
+		  also satisfied.
+		  </description>
       </cclaim>
     </cclaims>
   </chapter>
