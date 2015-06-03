@@ -427,9 +427,10 @@
                     calculated or by modifying the signature itself. The evaluator shall verify that
                     the received message fails the signature validation check. </test>
                   <test>The evaluator shall both send and receive an encrypted message using each of
-                    the algorithms specified in the ST. The evaluator shall verify that the received
-                    message decrypts. After verifying the message decrypts, the evaluator shall send
-                    an encrypted message using each of the algorithms specified in the ST and use a
+                    the algorithms specified in the ST. The evaluator shall verify <!-- Added -->
+                    that the contents are encrypted in transit and that the received message decrypts.
+                    After verifying the message decrypts, the evaluator shall send an encrypted
+                    message using each of the algorithms specified in the ST and use a
                     man-in-the-middle tool to modify at least one byte of the message such that the
                     encryption is no longer valid. The evaluator shall verify that the received
                     message fails to decrypt. </test>
@@ -1266,8 +1267,8 @@
                 <li>If password or passphrase authorization factors are implemented by the email
                   client, then the appropriate "change" selection must be included. </li>
                 <li>If the email client provides configurability of the cryptographic functions (for
-                  example, key size)- even if the configuration is the form of parameters that may be
-                  passed to cryptographic functionality implement on the email client platform - 
+                  example, key size)- even if the configuration is the form of parameters that may
+                  be passed to cryptographic functionality implement on the email client platform -
                   then "configure cryptographic functionality" will be included, and the specifics
                   of the functionality offered can either be written in this requirement as bullet
                   points, or included in the TSS. </li>
