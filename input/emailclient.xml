@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.7</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-6-1</PPPubDate>
+      <PPPubDate>2015-6-3</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -199,12 +199,9 @@
             <li>selection-based (which are required when certain selections are chosen in the
               unconditional requirements)</li>
           </ul> and may include optional and/or objective components that are desirable but not
-          required for conformance. 
-		  <br/>
-		  In accordance with CC Part 1, dependencies are not included when they are addressed by
-		  other SFRs.  The assurance activities provide adequate proof that any dependencies are
-		  also satisfied.
-		  </description>
+          required for conformance. <br/> In accordance with CC Part 1, dependencies are not
+          included when they are addressed by other SFRs. The assurance activities provide adequate
+          proof that any dependencies are also satisfied. </description>
       </cclaim>
     </cclaims>
   </chapter>
@@ -248,14 +245,14 @@
           <component-refer ref="FMT_MOF_EXT.1"/>
         </SO>
         <SO id="O.PROTECTED_STORAGE">
-          <component-refer ref="FCS_CKM.1"/>
-          <component-refer ref="FCS_CKM_EXT.2"/>
+          <component-refer ref="FCS_CKM_EXT.3"/>
+          <component-refer ref="FCS_CKM_EXT.4"/>
           <component-refer ref="FCS_COP.2"/>
+          <component-refer ref="FCS_IVG_EXT.1"/>
           <component-refer ref="FCS_KYC_EXT.1"/>
+          <component-refer ref="FCS_NOG_EXT.1"/>
+          <component-refer ref="FCS_SAG_EXT.1"/>
           <component-refer ref="FCS_SMC_EXT.1"/>
-          <component-refer ref="FCS_SNI_EXT.1"/>
-          <component-refer ref="FDP_PRT_EXT.1"/>
-          <component-refer ref="FPT_KYP_EXT.1"/>
         </SO>
         <SO id="O.PROTECTED_COMMS">
           <component-refer ref="FCS_SMIME_EXT.1"/>
@@ -463,34 +460,32 @@
             </aactivity>
           </f-element>
         </f-component>
-            <!-- Added for CSFC DAR (FCS_CKM.1(A)) - Renumbered to (b) -->
+        <!-- Added for CSFC DAR (FCS_CKM.1(A)) - Renumbered to (b) -->
         <f-component id="FCS_CKM_EXT.1"
           name="Cryptographic Key Derivation (Password/Passphrase Conditioning)">
           <f-element id="FCS_CKM_EXT.1.1" status="optional">
             <!-- Marked as objective but recommend requiring
         for csfc dar -->
             <title>A password/passphrase used to generate a password authorization factor shall
-              enable up to 
-              <selectables linebreak="yes">
-                <selectable><assignable>positive integer of
-                64 or more</assignable> characters in the set of 
-                                 <selectables linebreak="yes">
+              enable up to <selectables linebreak="yes">
+                <selectable><assignable>positive integer of 64 or more</assignable> characters in
+                  the set of <selectables linebreak="yes">
                     <selectable>upper case characters</selectable>
-                                   <selectable>lower case characters</selectable>
-                                   <selectable>numbers</selectable>
-                                   <selectable>special characters: !, @, #, $, %, ^, &amp;, *, (, )</selectable> 
-                                   <selectable><assignable>other supported special characters</assignable></selectable>
-                      </selectables>
-                </selectable>
+                    <selectable>lower case characters</selectable>
+                    <selectable>numbers</selectable>
+                    <selectable>special characters: !, @, #, $, %, ^, &amp;, *, (, )</selectable>
+                    <selectable><assignable>other supported special
+                      characters</assignable></selectable>
                   </selectables>
- and shall perform [Password-based Key Derivation Functions] in
+                </selectable>
+              </selectables> and shall perform [Password-based Key Derivation Functions] in
               accordance with a specified cryptographic algorithm <selectables linebreak="yes">
                 <selectable>HMAC-SHA-256</selectable>
                 <selectable>HMAC-SHA-384</selectable>
                 <selectable>HMAC-SHA-512</selectable>
               </selectables> with <selectables><selectable><assignable>positive integer of 4096 or
-                more</assignable></selectable></selectables> iterations, and output cryptographic key sizes of
-                <selectables linebreak="yes">
+                    more</assignable></selectable></selectables> iterations, and output
+              cryptographic key sizes of <selectables linebreak="yes">
                 <selectable>128 bits</selectable>
                 <selectable>256 bits</selectable>
               </selectables> that meet NIST SP 800-132. </title>
@@ -564,8 +559,8 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="FCS_CKM_EXT.2" name="Protection of Key and Key Material">
-          <f-element id="FPT_CKM_EXT.2.1">
+        <f-component id="FCS_CKM_EXT.3" name="Protection of Key and Key Material">
+          <f-element id="FPT_CKM_EXT.3.1">
             <title>The email client shall <selectables linebreak="yes">
                 <selectable>not store keys in non-volatile memory</selectable>
                 <selectable>only store keys in non-volatile memory when wrapped as specified in
@@ -613,8 +608,8 @@
           </f-element>
         </f-component>
         <!-- Added for CSFC DAR (FCS_CKM.3) Renumbered from .4-->
-        <f-component id="FCS_CKM_EXT.3" name="Cryptographic Key Destruction">
-          <f-element id="FCS_CKM_EXT.3.1">
+        <f-component id="FCS_CKM_EXT.4" name="Cryptographic Key Destruction">
+          <f-element id="FCS_CKM_EXT.4.1">
             <title>The email client shall <selectables linebreak="yes">
                 <selectable>invoke platform-provided key destruction</selectable>
                 <selectable>implement key destruction using <selectables linebreak="yes">
@@ -647,12 +642,10 @@
               parameters when no longer needed. </title>
             <note role="application">For the purposes of this requirement, plaintext keying material
               refers to authentication data, passwords, symmetric keys, data used to derive keys,
-              etc.
-			  <br/>The destruction indicated above applies to each
-              intermediate storage area for plaintext key/cryptographic critical security parameters
-              (i.e., any storage, such as memory buffers, that is included in the path of such data)
-              upon the transfer of the key/cryptographic critical security parameter to another
-              memory location. </note>
+              etc. <br/>The destruction indicated above applies to each intermediate storage area
+              for plaintext key/cryptographic critical security parameters (i.e., any storage, such
+              as memory buffers, that is included in the path of such data) upon the transfer of the
+              key/cryptographic critical security parameter to another memory location. </note>
             <aactivity>
               <tss>If the platform provides the key destruction, then the evaluator shall examine
                 the TSS to verify that it describes how the key destruction functionality is
@@ -699,10 +692,10 @@
           </f-element>
         </f-component>
         <!-- Added for CSFC DAR (FCS_COP.1(5)) -->
-        <f-component id="FCS_COP.EXT.2" name="Key Wrapping">
+        <f-component id="FCS_COP_EXT.2" name="Key Wrapping">
           <f-element id="FCS_COP_EXT.2.1" status="sel-based">
-		       <selection-depends req="fcs_kyc_ext.1.1"/>
-		       <selection-depends req="fpt_kyp_ext.1.1"/>
+            <selection-depends req="fcs_kyc_ext.1.1"/>
+            <selection-depends req="fcs_ckm_ext.3.1"/>
             <!-- Renumbered .2 from 1.1(5) -->
             <!-- this would supplement FCS_COP.1.1(1) in
         App PP -->
@@ -795,8 +788,8 @@
         <f-component id="FCS_SMC_EXT.1" name="Key Combining">
           <!-- This should probably be included to support key chains, this allows for strong auth and strong TPM implementations. -->
           <f-element id="FCS_SMC_EXT.1.1" status="sel-based">
-		       <selection-depends req="fcs_kyc_ext.1.1"/>
-		       <selection-depends req="fpt_kyp_ext.1.1"/>
+            <selection-depends req="fcs_kyc_ext.1.1"/>
+            <selection-depends req="fcs_ckm_ext.3.1"/>
             <title>The email client shall combine submasks using the following method <selectables
                 linebreak="yes">
                 <selectable>exclusive OR (XOR)</selectable>
@@ -817,8 +810,7 @@
         </f-component>
         <!-- Added for CSFC DAR (FCS_SNI_EXT.1.1, 1.2, 1.3) -->
         <!-- Salts, IVs, Nonces - Needs to be altered for modes used in this EP -->
-        <f-component id="FCS_SAG_EXT.1"
-          name="Cryptographic Salt Generation">
+        <f-component id="FCS_SAG_EXT.1" name="Cryptographic Salt Generation">
           <f-element id="FCS_SAG_EXT.1.1" status="optional">
             <title>The email client shall only use salts that are generated by a <selectables
                 linebreak="yes">
@@ -828,15 +820,13 @@
             </title>
           </f-element>
         </f-component>
-        <f-component id="FCS_NOG_EXT.1"
-          name="Cryptographic Nonce Generation">
-          <f-element id="FCS_NOG_EXT.1.2" status="optional">
+        <f-component id="FCS_NOG_EXT.1" name="Cryptographic Nonce Generation">
+          <f-element id="FCS_NOG_EXT.1.1" status="optional">
             <title>The email client shall only use unique nonces with a minimum size of [64]
               bits.</title>
           </f-element>
         </f-component>
-        <f-component id="FCS_IVG_EXT.1"
-          name="Initialization Vector Generation">
+        <f-component id="FCS_IVG_EXT.1" name="Initialization Vector Generation">
           <f-element id="FCS_IVG_EXT.1.1">
             <title>The email client shall create IVs in the following manner: <selectables
                 linebreak="yes">
@@ -848,7 +838,7 @@
                   not exceed 2^32 for a given secret key.</selectable>
               </selectables></title>
             <note role="application">This requirement covers several important factors: The salt
-              must be random, but the nonces only have to be unique. FCS_SNI_EXT.1.3 specifies how
+              must be random, but the nonces only have to be unique. FCS_IVG_EXT.1.1 specifies how
               the IV should be handled for each encryption mode. CBC, XTS, and GCM are allowed for
               AES encryption of the data. AES-CCM is an allowed mode for Key Wrapping.</note>
             <aactivity>
@@ -936,8 +926,7 @@
             </aactivity>
           </f-element>
         </f-component>
-
-		<!--
+        <!--
          Added for CSFC DAR (FDP_PRT)
         <f-component id="FDP_PRT_EXT.1" name="Protection of Selected User Data">
           <f-element id="FDP_PRT_EXT.1.2" status="objective">
@@ -1262,11 +1251,31 @@
                 </management-function>
                 <management-function admin="O"> Configure CRL retrieval frequency </management-function>
                 <management-function admin="O"> Enable/disable support for add-ons </management-function>
+                <management-function admin="O"> Change password/passphrase authentication
+                  credential</management-function>
+                <management-function admin="O"> Disable key recovery
+                  functionality</management-function>
+                <management-function admin="O"> Configure cryptographic
+                  functionality</management-function>
                 <management-function admin="O">
                   <assignable>Other management functions</assignable>
                 </management-function>
               </management-function-set>
-            </title>
+            </title><br/>
+            <note application="role"><ul>
+                <li>If password or passphrase authorization factors are implemented by the email
+                  client, then the appropriate "change" selection must be included. </li>
+                <li>If the email client provides configurability of the cryptographic functions (for
+                  example, key size)- even if the configuration is the form of parameters that may be
+                  passed to cryptographic functionality implement on the email client platform - 
+                  then "configure cryptographic functionality" will be included, and the specifics
+                  of the functionality offered can either be written in this requirement as bullet
+                  points, or included in the TSS. </li>
+                <li>If the email client does include a key recovery function, the email client must
+                  provide the capability for the user to turn this functionality off so that no
+                  recovery key is generated and no keys are permitted to be exported. </li>
+              </ul>
+            </note>
             <note role="application">For these management functions, the term "Administrator" refers
               to the administrator of a non-mobile device or the device owner of a mobile device.
               The Administrator is responsible for management activities, including setting the
@@ -1292,13 +1301,26 @@
               management functions" are assigned, a validation authority must be consulted to ensure
               the assurance activities and other functionality requirements that may be needed are
               appropriately specified so that the ST can claim conformance to this EP. </note>
-            <aactivity>
-              <tss>The evaluator shall verify that the <abbr linkend="TSS"/> describes those
-                management functions which may only be configured by the email client platform
-                administrator and cannot be over-ridden by the user when set according to policy. </tss>
+            <aactivity>The assurance activities for this component will be driven by the selections
+              made by the ST author. If a capability is not selected in the ST, the noted assurance
+              activity does not need to be performed. <tss>The evaluator shall verify that the <abbr
+                  linkend="TSS"/> describes those management functions which may only be configured
+                by the email client platform administrator and cannot be over-ridden by the user
+                when set according to policy. <br/> Change Password: The evaluator shall examine the
+                Operational Guidance to ensure that it describes how the password/passphrase-based
+                authorization factor is to be changed. <br/>Disable Key Recovery: If the email
+                client supports key recovery, this must be stated in the TSS. The TSS shall also
+                describe how to disable this functionality. This includes a description of how the
+                recovery material is provided to the recovery holder.<br/> Cryptographic
+                Configuration: The evaluator shall determine from the TSS for other requirements
+                (FCS_*) what portions of the cryptographic functionality are configurable. </tss>
               <guidance>The evaluator shall examine the operational guidance to verify that it
                 includes instructions for an email client platform administrator to configure the
-                functions listed in <linkref linkend="FMT_MOF_EXT.1.1"/>. </guidance>
+                functions listed in <linkref linkend="FMT_MOF_EXT.1.1"/>. <br/>Disable Key Recovery:
+                If the email client supports key recovery, the guidance for disabling this
+                capability shall be described in the AGD documentation. <br/> Cryptographic
+                Configuration: The evaluator shall review the AGD documentation to determine that
+                there are instructions for manipulating all of the claimed mechanisms. </guidance>
               <tests>The evaluator shall perform the following tests:<br/>
                 <testlist>
                   <test>The evaluator shall verify that functions perform as intended by enabling,
@@ -1307,13 +1329,14 @@
                     (enterprise) administrator and cannot be overridden by the user. The evaluator
                     shall apply these functions to the client, attempt to override each setting as
                     the user, and ensure that the email client does not permit it.</test>
+                  <test>Disable Key Recovery: If the email client provides key recovery capability,
+                    then the evaluator shall devise a test that ensures that the key recovery
+                    capability has been or can be disabled following the guidance provided by the
+                    vendor. </test>
                 </testlist></tests></aactivity>
           </f-element>
         </f-component>
-        <!-- SMF belongs in MOF -->
-        <f-component id="FMT_SMF.1" name="Specification of Management Functions">
-          <!-- Recommend requiring
-    for CSFC for DAR - but needs to be worked into MOF, not SMF -->
+        <!-- <f-component id="FMT_SMF.1" name="Specification of Management Functions">
           <f-element id="FMT_SMF.1.1" status="objective">
             <title>The email client shall be capable of performing the following management
               functions: <selectables linebreak="yes">
@@ -1328,9 +1351,7 @@
               given: <ul>
                 <li>If password or passphrase authorization factors are implemented by the email
                   client, then the appropriate "change" selection must be
-                  included. </li><!-- (commented out bc
-                    not in PP/EP), along with
-                  FIA_FCT_EXT.1(2) from Appendix C -->
+                  included. </li>
                 <li>If the email client provides for a password/passphrase complexity setting, then
                   "configure password/passphrase complexity setting" will be included, and the
                   specifics of the functionality offered can either be written from the requirement
@@ -1344,10 +1365,10 @@
                 <li>If the email client does include a key recovery function, the email client must
                   provide the capability for the user to turn this functionality off so that no
                   recovery key is generated and no keys are permitted to be exported. </li>
-                <!-- Moved to MOF <li>If "other management functions" are assigned, a validation authority must be
+                <li>If "other management functions" are assigned, a validation authority must be
                   consulted to ensure the assurance activities and other functionality requirements
                   that may be needed are appropriately specified so that the ST can claim
-                  conformance to this EP. </li> -->
+                  conformance to this EP. </li> 
               </ul>
             </note>
             <aactivity> The assurance activities for this component will be driven by the selections
@@ -1369,8 +1390,7 @@
                 Guidance to ensure that it describes how the password/passphrase-based authorization
                 factor is to be changed. <br/>Cryptographic Configuration: The evaluator shall
                 determine from the TSS for other requirements (FCS_*,
-                FDP_PRT_EXT<!-- commented out
-                  bc not in PP/EP), FIA_AUT_EXT -->)
+                FDP_PRT_EXT)
                 what portions of the cryptographic functionality are configurable. The evaluator
                 shall then review the AGD documentation to determine that there are instructions for
                 manipulating all of the claimed mechanisms. </guidance>
@@ -1385,7 +1405,7 @@
                 EP.</test></testlist></tests>
             </aactivity>
           </f-element>
-        </f-component>
+        </f-component> -->
       </subsection>
       <subsection title="Protection of the TSF (FPT)" id="fpt">
         <f-component id="FPT_AON_EXT.1" name="Support for Only Trusted Add-ons">
@@ -1470,7 +1490,6 @@
             </aactivity>
           </f-element>
         </f-component>
-
       </subsection>
       <subsection title="Trusted Path/Channels (FTP)" id="ftp">
         <f-component id="FTP_ITC_EXT.1" name="Inter-TSF Trusted Channel">
@@ -1550,7 +1569,7 @@
     mandated in the body of this EP as they describe security functionality not yet widely-available
     in commercial technology. However, these requirements may be included in the ST such that the
     email client is still conformant to this EP, and it is expected that they be included as soon as
-    possible. </appendix>
+    possible.<br/>None. </appendix>
   <appendix id="biblio" title="References">
     <bibliography>
       <entry id="bibCC">
