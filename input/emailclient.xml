@@ -594,33 +594,44 @@
         </f-component>
         <f-component id="FCS_CKM_EXT.3" name="Protection of Key and Key Material">
           <f-element id="FCS_CKM_EXT.3.1">
-            <title>The email client shall <selectables linebreak="yes">
+            <title>The email client shall 
+			   <selectables>
                 <selectable>not store keys in non-volatile memory</selectable>
                 <selectable>only store keys in non-volatile memory when wrapped as specified in
                     <linkref linkend="FCS_COP_EXT.2"/> unless the key meets any one of following
-                  criteria: <selectables linebreak="yes">
+                  criteria: 
+				  <selectables linebreak="yes">
                     <selectable>The plaintext key is not part of the key chain as specified in
-                        <linkref linkend="FCS_KYC_EXT.1"/>.</selectable>
+                        <linkref linkend="FCS_KYC_EXT.1"/>
+					</selectable>
                     <selectable>The plaintext key will no longer provide access to the encrypted
-                      data after initial provisioning.</selectable>
+                      data after initial provisioning
+					</selectable>
                     <selectable>The plaintext key is a key split that is combined as specified in
                         <linkref linkend="FCS_SMC_EXT.1"/>, and the other half of the key split is
-                      either <selectables linebreak="yes">
-                        <selectable>wrapped as specified in <linkref linkend="FCS_COP_EXT.2"
-                          /></selectable>
-                        <selectable>derived and not stored in non-volatile memory</selectable>
+                      either 
+					  <selectables>
+                        <selectable>wrapped as specified in <linkref linkend="FCS_COP_EXT.2"/>
+						</selectable>
+                        <selectable>derived and not stored in non-volatile memory
+						</selectable>
                       </selectables>
-                      <selectable linebreak="yes">The plaintext key is stored on an external storage
-                        device for use as an authorization factor.</selectable>
-                      <selectable linebreak="yes">The plaintext key is used to wrap a key as
-                        specified in <linkref linkend="FCS_COP_EXT.2"/> that is already wrapped as
-                        specified in <linkref linkend="FCS_COP_EXT.2"/>.</selectable>
-                      <selectable linebreak="yes">The plaintext key is the public portion of the key
-                        pair.</selectable>
                     </selectable>
+
+                    <selectable>The plaintext key is stored on an external storage
+                        device for use as an authorization factor
+				    </selectable>
+                    <selectable>The plaintext key is used to wrap a key as
+                        specified in <linkref linkend="FCS_COP_EXT.2"/> that is already wrapped as
+                        specified in <linkref linkend="FCS_COP_EXT.2"/>
+					</selectable>
+                    <selectable>The plaintext key is the public portion of the key
+                        pair
+				    </selectable>
                   </selectables>
-                </selectable>
-              </selectables>
+
+                </selectable> <!-- is/isn't in volatile memory-->
+              </selectables>.
             </title>
             <note role="application">The plaintext key storage in non-volatile memory is allowed for
               several reasons. If the keys exist within protected memory that is not user accessible
