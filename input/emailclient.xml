@@ -1145,46 +1145,39 @@
                   <assignable>Other management functions</assignable>
                 </management-function>
               </management-function-set>
-            </title><br/>
-            <note application="role"><ul>
-                <li>If password or passphrase authorization factors are implemented by the email
-                  client, then the appropriate "change" selection must be included. </li>
-                <li>If the email client provides configurability of the cryptographic functions (for
-                  example, key size)- even if the configuration is the form of parameters that may
-                  be passed to cryptographic functionality implement on the email client platform -
-                  then "configure cryptographic functionality" will be included, and the specifics
-                  of the functionality offered can either be written in this requirement as bullet
-                  points, or included in the TSS. </li>
-                <li>If the email client does include a key recovery function, the email client must
-                  provide the capability for the user to turn this functionality off so that no
-                  recovery key is generated and no keys are permitted to be exported. </li>
-              </ul>
-            </note>
-            <note role="application">For these management functions, the term "Administrator" refers
-              to the administrator of a non-mobile device or the device owner of a mobile device.
-              The Administrator is responsible for management activities, including setting the
-              policy that is applied by the enterprise on the email client. The Administrator could
-              be acting remotely and could be the MTA administrator acting through a centralized
-              management console or dashboard.<br/> The intent of this requirement is to allow the
-              Administrator to configure the email client with a policy that may not be over-ridden
-              by the user. If the Administrator has not set a policy for a particular function, the
-              user may still perform that function. Enforcement of the policy is done by the email
-              client itself, or the email client and the email client platform in coordination with
-              each other.<br/> Applications used to configure enterprise policy should have their
-              own identification and authorization and additional security requirements to ensure
-              that the remote administration is trusted.<br/> The function to configure whether to
-              establish a trusted channel corresponds to the functionality described in
-              FIA_X509_EXT.2.2 (<cite linkend="bibAppPP"/>). The Administrator has the option of
-              accepting or rejecting all certificates that cannot be validated, accepting a given
-              certificate that cannot be validated, or not accepting a given certificate that cannot
-              be validated. Depending on the choice that the Administrator has made in
-              FIA_X509_EXT.2.2 (<cite linkend="bibAppPP"/>), the trusted connection will either be
-              allowed for all certificates that cannot be validated, disallowed for all certificates
-              that cannot be validated, allowed for a given certificate that cannot be validated, or
-              disallowed for a given certificate that cannot be validated. <br/> If "other
-              management functions" are assigned, a validation authority must be consulted to ensure
-              the assurance activities and other functionality requirements that may be needed are
-              appropriately specified so that the ST can claim conformance to this EP. </note>
+            </title><br/> <note role="application">For these management functions, the term
+              "Administrator" refers to the administrator of a non-mobile device or the device owner
+              of a mobile device. The Administrator is responsible for management activities,
+              including setting the policy that is applied by the enterprise on the email client.
+              The Administrator could be acting remotely and could be the MTA administrator acting
+              through a centralized management console or dashboard.<br/> The intent of this
+              requirement is to allow the Administrator to configure the email client with a policy
+              that may not be over-ridden by the user. If the Administrator has not set a policy for
+              a particular function, the user may still perform that function. Enforcement of the
+              policy is done by the email client itself, or the email client and the email client
+              platform in coordination with each other.<br/> Applications used to configure
+              enterprise policy should have their own identification and authorization and
+              additional security requirements to ensure that the remote administration is
+              trusted.<br/> The function to configure whether to establish a trusted channel
+              corresponds to the functionality described in FIA_X509_EXT.2.2 (<cite
+                linkend="bibAppPP"/>). The Administrator has the option of accepting or rejecting
+              all certificates that cannot be validated, accepting a given certificate that cannot
+              be validated, or not accepting a given certificate that cannot be validated. Depending
+              on the choice that the Administrator has made in FIA_X509_EXT.2.2 (<cite
+                linkend="bibAppPP"/>), the trusted connection will either be allowed for all
+              certificates that cannot be validated, disallowed for all certificates that cannot be
+              validated, allowed for a given certificate that cannot be validated, or disallowed for
+              a given certificate that cannot be validated. <br/> If password or passphrase
+              authorization factors are implemented by the email client, then the appropriate
+              "change" selection must be included. <br/>If the email client provides configurability
+              of the cryptographic functions (for example, key size)- even if the configuration is
+              the form of parameters that may be passed to cryptographic functionality implement on
+              the email client platform - then "configure cryptographic functionality" will be
+              included, and the specifics of the functionality offered can either be written in this
+              requirement as bullet points, or included in the TSS. <br/> If the email client does
+              include a key recovery function, the email client must provide the capability for the
+              user to turn this functionality off so that no recovery key is generated and no keys
+              are permitted to be exported. </note>
             <aactivity>The assurance activities for this component will be driven by the selections
               made by the ST author. If a capability is not selected in the ST, the noted assurance
               activity does not need to be performed. <tss>The evaluator shall verify that the <abbr
