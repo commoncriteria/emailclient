@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.7</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-6-4</PPPubDate>
+      <PPPubDate>2015-6-5</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -59,6 +59,8 @@
         (<cite linkend="bibAppPP"/>). Required components include unconditional requirements,
       selection-based requirements in accordance with the selections and/or assignments expressed,
       and may also include optional and/or objective components if desired. -->
+      <figure id="mua_mta" src="images/mua_mta.png" max-width="inherit"
+        title="Figure 1 - Mail User Agent connecting to a Mail Transfer Agent"/> 
     </section>
     <section id="glossary" title="Terms">The following sections provide both Common Criteria and
       technology terms used in this Extended Package. <subsection title="Common Criteria Terms"
@@ -175,8 +177,11 @@
       of <cite linkend="bibCC"/>. As an extension of the App PP, it is expected that the content of
       this EP will be appropriately combined with the App PP to include selection-based requirements
       in accordance with the selections and/or assignments made, and any optional and/or objective
-      components.<br/>An ST must identify the applicable version of the App PP and this EP in its
-      conformance claims. <!-- Revised This document provides an
+      components to include: FCS_TLSC_EXT.1.4, FCS_RBG_EXT.2.1, FCS_RBG_EXT.2.2, FCS_CKM.2.1,
+      FCS_COP.1.1(1), FCS_COP.1.1(2), FCS_COP.1.1(3), FCS_COP.1.1(4), FCS_TLS_EXT.1.1,
+      FCS_TLSC_EXT.1.3, FCS_TLSC_EXT.1.5, FIA_X509_EXT.1.1, FIA_X509_EXT.1.2, FIA_X509_EXT.2.1, FIA_X509_EXT.2.2. 
+      <br/>An ST must identify the applicable version of the
+      App PP and this EP in its conformance claims. <!-- Revised This document provides an
       extended set of Security Functional Requirements (SFRs) for an email client, which is the
       Target of Evaluation (TOE). The terms email client and TOE are interchangeable in this
       document.<br/> The Protection Profile for Application Software (App PP) defines the baseline
@@ -192,8 +197,8 @@
       attackers. Protocols have also been defined for communicating between email clients and
       servers. Some clients support multiple protocols for doing the same task, allowing them to be
       configured according to email server specifications. -->
-      <figure id="mua_mta" src="images/mua_mta.png" max-width="inherit"
-        title="Figure 1 - Mail User Agent connecting to a Mail Transfer Agent"/>
+      <!-- move image <figure id="mua_mta" src="images/mua_mta.png" max-width="inherit"
+        title="Figure 1 - Mail User Agent connecting to a Mail Transfer Agent"/> -->
     </section>
     <section title="Use Cases" id="usecases">Email clients perform tasks associated primarily with
       the first use case. <usecases>
@@ -291,7 +296,7 @@
           <description> To address issues associated with malicious or flawed plug-ins or
             extensions, conformant email clients implement mechanisms to ensure their integrity.
             This includes verification at installation time and update. </description>
-          <component-refer ref="fia_x509_ext.3.3"/>
+          <component-refer ref="fia_x509_ext.3"/>
           <component-refer ref="fpt_aon_ext.1"/>
           <component-refer ref="fpt_aon_ext.2"/>
         </SO>
@@ -1536,7 +1541,7 @@
       </subsection>
       <subsection title="Trusted Path/Channels (FTP)" id="ftp">
         <f-component id="ftp_dit_ext.1" name="Protection of Data in Transit">
-          <f-element id="ftp_dit_ext.1.1">
+          <f-element id="ftp_dit_ext.1.1(1)">
             <title>The email client shall <selectables linebreak="yes">
                 <selectable>not transmit any data</selectable>
                 <selectable>not transmit any sensitive data</selectable>
@@ -1546,8 +1551,6 @@
                     <selectable><abbr title="Hypertext Transfer Protocol Secure"
                       >HTTPS</abbr></selectable>
                     <selectable><abbr title="Transport Layer Security">TLS</abbr></selectable>
-                    <selectable><abbr title="Datagram Transport Layer Security"
-                      >DTLS</abbr></selectable>
                   </selectables>
                 </selectable>
                 <selectable>encrypt all transmitted data with <selectables atleastone="yes">
@@ -1555,8 +1558,6 @@
                     <selectable><abbr title="Hypertext Transfer Protocol Secure"
                       >HTTPS</abbr></selectable>
                     <selectable><abbr title="Transport Layer Security">TLS</abbr></selectable>
-                    <selectable><abbr title="Datagram Transport Layer Security"
-                      >DTLS</abbr></selectable>
                   </selectables>
                 </selectable>
               </selectables> between itself and another trusted IT product. </title>
@@ -1564,16 +1565,14 @@
               requirement to provide for other protocols. Encryption is not required for
               applications transmitting data that is not sensitive. <br/> If <i>TLS</i> is selected,
               then evaluation of elements from FCS_TLSC_EXT.1 is required.<p/> If <i>HTTPS</i> is
-              selected, then evaluation of elements from FCS_HTTPS_EXT.1 is required.<p/> If
-                <i>DTLS</i> is selected, then evaluation of elements from FCS_DTLS_EXT.1" is
-              required. </note>
+              selected, then evaluation of elements from FCS_HTTPS_EXT.1 is required.<p/>
+            </note>
             <aactivity> The evaluator shall perform the following tests. <testlist>
                 <test> The evaluator shall exercise the email client (attempting to transmit data)
                   while capturing packets from the application. The evaluator shall verify from the
                   packet capture that the traffic is encrypted with <abbr title="SMIME"
-                    >S/MIME</abbr><abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr>,
-                    <abbr title="Transport Layer Security">TLS</abbr> or <abbr
-                    title="Datagram Transport Layer Security">DTLS</abbr> in accordance with the
+                    >S/MIME</abbr>,<abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr> or
+                    <abbr title="Transport Layer Security">TLS</abbr> in accordance with the
                   selection in the <abbr linkend="ST"/>. </test>
                 <test> The evaluator shall exercise the email client (attempting to transmit data)
                   while capturing packets from the application. The evaluator shall review the
@@ -1613,9 +1612,9 @@
               RFC number). </note>
             <aactivity><tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that
                 it describes the details of the email client connecting to a Mail Transfer Agent in
-                terms of the trusted connection (i.e., TLS) according to FTP_DIT_EXT.1 <cite
-                  linkend="bibAppPP"/>, along with email client-specific options or procedures that
-                might not be reflected in the specification.</tss>
+                terms of the trusted connection (i.e., TLS) according to <linkref
+                  linkend="FTP_DIT_EXT.1"/>, along with email client-specific options or procedures
+                that might not be reflected in the specification.</tss>
               <guidance>The evaluator shall confirm that the operational guidance contains
                 instructions for establishing the connection to the Mail Transfer Agent.</guidance>
               <tests>The evaluator shall also perform the following tests:<br/>
