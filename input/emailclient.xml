@@ -161,10 +161,10 @@
       of <cite linkend="bibCC"/>. As an extension of the App PP, it is expected that the content of
       this EP will be appropriately combined with the App PP to include selection-based requirements
       in accordance with the selections and/or assignments made, and any optional and/or objective
-      components to include: FCS_TLSC_EXT.1.4, FCS_RBG_EXT.2.1, FCS_RBG_EXT.2.2, FCS_CKM.2.1,
-      FCS_COP.1.1(1), FCS_COP.1.1(2), FCS_COP.1.1(3), FCS_COP.1.1(4), FCS_TLS_EXT.1.1,
-      FCS_TLSC_EXT.1.3, FCS_TLSC_EXT.1.5, FIA_X509_EXT.1.1, FIA_X509_EXT.1.2, FIA_X509_EXT.2.1,
-      FIA_X509_EXT.2.2. <br/>An ST must identify the applicable version of the App PP and this EP in
+      components to include: FCS_RBG_EXT.2.1, FCS_RBG_EXT.2.2, FCS_CKM.2.1, FCS_COP.1.1(1),
+      FCS_COP.1.1(2), FCS_COP.1.1(3), FCS_COP.1.1(4), FCS_TLS_EXT.1.1, FCS_TLSC_EXT.1.3,
+      FCS_TLSC_EXT.1.5, FIA_X509_EXT.1.1, FIA_X509_EXT.1.2, FIA_X509_EXT.2.1, FIA_X509_EXT.2.2, and
+      FCS_TLSC_EXT.1.6. <br/>An ST must identify the applicable version of the App PP and this EP in
       its conformance claims. </section>
     <section title="Use Cases" id="usecases">Email clients perform tasks associated primarily with
       the first use case. <usecases>
@@ -179,16 +179,16 @@
   <chapter title="Conformance Claims" id="conf">
     <cclaims>
       <cclaim id="Conformance Statement">
-        <description> The Protection Profile for Application Software (<cite linkend="bibAppPP"/>) defines the baseline
-          Security Functional Requirements (SFRs) and Security Assurance Requirements (SARs) for
-          application software products. This EP serves to extend the App PP baseline with
-          additional SFRs and associated Assurance Activities specific to an email client. Assurance
-          Activities are the actions that the evaluator performs in order to determine an email
-          client's compliance to the SFRs.<br/> This EP conforms to Common Criteria <cite
-            linkend="bibCC"/> for Information Technology Security Evaluation, Version 3.1, Revision
-          4. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to this
-          EP, the ST must include all components in this EP and the associated App PP that are:
-              <ul><li>unconditional (which are always required)</li>
+        <description> The Protection Profile for Application Software (<cite linkend="bibAppPP"/>)
+          defines the baseline Security Functional Requirements (SFRs) and Security Assurance
+          Requirements (SARs) for application software products. This EP serves to extend the App PP
+          baseline with additional SFRs and associated Assurance Activities specific to an email
+          client. Assurance Activities are the actions that the evaluator performs in order to
+          determine an email client's compliance to the SFRs.<br/> This EP conforms to Common
+          Criteria <cite linkend="bibCC"/> for Information Technology Security Evaluation, Version
+          3.1, Revision 4. It is CC Part 2 extended and CC Part 3 conformant. In order to be
+          conformant to this EP, the ST must include all components in this EP and the associated
+          App PP that are: <ul><li>unconditional (which are always required)</li>
             <li>selection-based (which are required when certain selections are chosen in the
               unconditional requirements)</li>
           </ul> and may include optional and/or objective components that are desirable but not
@@ -225,9 +225,8 @@
       </threats>
     </section>
   </chapter>
-  <chapter title="Security Objectives" id="sobj"> This Extended Package adds SFRs to objectives identified in
-    the App PP and describes an additional objective specific to this EP.
-    <section
+  <chapter title="Security Objectives" id="sobj"> This Extended Package adds SFRs to objectives
+    identified in the App PP and describes an additional objective specific to this EP. <section
       title="Security Objectives for the TOE" id="SecurityObjectivesTOE">
       <SOs>
         <SO id="O.QUALITY">
@@ -241,6 +240,7 @@
         <SO id="O.PROTECTED_STORAGE">
           <component-refer ref="FCS_CKM_EXT.3"/>
           <component-refer ref="FCS_CKM_EXT.4"/>
+          <component-refer ref="FCS_CKM_EXT.5"/>
           <component-refer ref="FCS_COP_EXT.2"/>
           <component-refer ref="FCS_IVG_EXT.1"/>
           <component-refer ref="FCS_KYC_EXT.1"/>
@@ -429,100 +429,6 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="FCS_CKM_EXT.1"
-          name="Cryptographic Key Derivation (Password/Passphrase Conditioning)">
-          <f-element id="FCS_CKM_EXT.1.1" status="optional">
-            <title>A password/passphrase used to generate a password authorization factor shall
-              enable up to <selectables linebreak="yes">
-                <selectable><assignable>positive integer of 64 or more</assignable> characters in
-                  the set of <selectables linebreak="yes">
-                    <selectable>upper case characters</selectable>
-                    <selectable>lower case characters</selectable>
-                    <selectable>numbers</selectable>
-                    <selectable>special characters: !, @, #, $, %, ^, &amp;, *, (, )</selectable>
-                    <selectable><assignable>other supported special
-                      characters</assignable></selectable>
-                  </selectables>
-                </selectable>
-              </selectables> and shall perform [Password-based Key Derivation Functions] in
-              accordance with a specified cryptographic algorithm <selectables linebreak="yes">
-                <selectable>HMAC-SHA-256</selectable>
-                <selectable>HMAC-SHA-384</selectable>
-                <selectable>HMAC-SHA-512</selectable>
-              </selectables> with <selectables><selectable><assignable>positive integer of 4096 or
-                    more</assignable></selectable></selectables> iterations, and output
-              cryptographic key sizes of <selectables linebreak="yes">
-                <selectable>128 bits</selectable>
-                <selectable>256 bits</selectable>
-              </selectables> that meet NIST SP 800-132. </title>
-            <note role="application">The password/passphrase is represented on the host machine as a
-              sequence of characters whose encoding depends on the email client and the underlying
-              OS. This sequence must be conditioned into a string of bits that is to be used as a
-              key of equivalent size to the rest of the key chain. The key cryptographic key sizes
-              in the fourth selection should be made to correspond to the key sizes selected in
-              FCS_CKM_EXT.1. <br/>This password/passphrase must be conditioned into a string of bits
-              that forms the submask to be used as input into a key. Conditioning can be performed
-              using one of the identified hash functions or the process described in NIST SP
-              800-132; the method used is selected by the ST Author. SP 800-132 requires the use of
-              a pseudo-random function (PRF) consisting of HMAC with an approved hash function. The
-              ST author selects the hash function used, also includes the appropriate requirements
-              for HMAC and the hash function. <br/> Appendix A of SP 800-132 recommends setting the
-              iteration count in order to increase the computation needed to derive a key from a
-              password and, therefore, increase the workload of performing a password recovery
-              attack. However, for this EP, a minimum iteration count of 4096 is required in order
-              to ensure that twelve bits of security is added to the password/passphrase value. A
-              significantly higher value is recommended to ensure optimal security. </note>
-            <aactivity>
-              <tss>FCS_CKM_1.1(b): There are two aspects of this component that require evaluation:
-                passwords/passphrases of the length specified in the requirement (at least 64
-                characters) are supported, and that the characters that are input are subject to the
-                selected conditioning function. These activities are separately addressed in the
-                text below. Support for minimum length: The evaluators shall check the <abbr
-                  linkend="TSS"/> section to determine that it specifies that a capability exists to
-                accept passwords/passphrases with the minimum number of characters specified in the
-                ST in this assignment statement. Support for PBKDF: The evaluator shall examine the
-                password hierarchy <abbr linkend="TSS"/> to ensure that the formation of all keys
-                (as decided in the FCS_CKM_EXT.1 selection) is described and that the key sizes
-                match that described by the ST author. The evaluator shall check that the <abbr
-                  linkend="TSS"/> describes the method by which the password/passphrase is first
-                encoded and then fed to the SHA algorithm. The settings for the algorithm (padding,
-                blocking, etc.) shall be described, and the evaluator shall verify that these are
-                supported by the selections in this component as well as the selections concerning
-                the hash function itself. The evaluator shall verify that the <abbr linkend="TSS"/>
-                contains a description of how the output of the hash function is used to form the
-                submask that will be input into the function. For the NIST SP 800-132-based
-                conditioning of the password/passphrase, the required assurance activities will be
-                performed when doing the assurance activities for the appropriate requirements
-                (FCS_COP.1.1(4) <cite linkend="bibAppPP"/>). If any manipulation of the key is
-                performed in forming the submask that will be used to form the key, that process
-                shall be described in the <abbr linkend="TSS"/>. No explicit testing of the
-                formation of the submask from the input password is required. </tss>
-              <guidance>Support for minimum length: The evaluators shall also check the Operational
-                Guidance to determine that there are instructions for guidance on how to generate
-                large passwords/passphrases external to the email client and instructions for how to
-                configure the password/passphrase length and optional complexity settings (note to
-                Management section). This is important because many default settings for
-                passwords/passphrases will not meet the necessary entropy needed as specified in
-                this EP. </guidance>
-              <tests>Support for minimum length: In addition to the analysis above, the evaluator
-                shall also perform the following tests on a email client configured according to the
-                AGD_PRE <cite linkend="bibAppPP"/> guidance: <testlist>
-                  <test>Ensure that the email client supports passwords/passphrases of 64
-                    characters. </test>
-                  <test>Try entering a password/passphrase less than 64 characters. </test>
-                  <test>If the email client supports a password/passphrase length up to a maximum
-                    number of characters, n (which would be greater than 64), then ensure that the
-                    email client will not accept more than n characters. </test> Conditioning: No
-                  explicit testing of the formation of the authorization factor from the input
-                  password/passphrase is required. Iteration count: The evaluator shall verify that
-                  the iteration count for PBKDFs performed by the email client comply with NIST SP
-                  800-132 by ensuring that the <abbr linkend="TSS"/> contains a description of the
-                  estimated time required to derive key material from passwords and how the email
-                  client increases the computation time for password-based key derivation (including
-                  but not limited to increasing the iteration count). </testlist></tests>
-            </aactivity>
-          </f-element>
-        </f-component>
         <f-component id="FCS_CKM_EXT.3" name="Protection of Key and Key Material">
           <f-element id="FCS_CKM_EXT.3.1">
             <title>The email client shall <selectables>
@@ -589,7 +495,8 @@
                     <selectable>three or more times</selectable>
                   </selectables> overwrite of key data storage location consisting of <selectables>
                     <selectable linebreak="yes">a pseudo random pattern using the email client's
-                        <abbr linkend="RBG"/> (as specified in FCS_RBG_EXT.1</selectable>
+                        <abbr linkend="RBG"/> (as specified in FCS_RBG_EXT.1 <cite
+                        linkend="bibAppPP"/></selectable>
                     <selectable>a pseudo-random pattern using the host platform's <abbr
                         linkend="RBG"/></selectable>
                     <selectable>a static pattern</selectable>
@@ -646,9 +553,107 @@
                     cause (i.e. execution of the grep command for "PaSSw0rd" caused a false
                     positive) and document the reason for failure to comply with this requirement.
                     The evaluator will repeat this same test, but looking for keying material in
-                    non-volatile memory - in some cases, the non-volatile memory testing may be
-                    satisfied by other assurance activities (see FCS_CKM_EXT.1). </test>
+                    non-volatile memory.
+                    <!-- in some cases, the non-volatile memory testing may be
+                    satisfied by other assurance activities (see FCS_CKM_EXT.1). -->
+                  </test>
                 </testlist></tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        <f-component id="FCS_CKM_EXT.5"
+          name="Cryptographic Key Derivation (Password/Passphrase Conditioning)">
+          <f-element id="FCS_CKM_EXT.5.1" status="optional">
+            <title>A password/passphrase used to generate a password authorization factor shall
+              enable up to <selectables linebreak="yes">
+                <selectable><assignable>positive integer of 64 or more</assignable> characters in
+                  the set of <selectables linebreak="yes">
+                    <selectable>upper case characters</selectable>
+                    <selectable>lower case characters</selectable>
+                    <selectable>numbers</selectable>
+                    <selectable>special characters: !, @, #, $, %, ^, &amp;, *, (, )</selectable>
+                    <selectable><assignable>other supported special
+                      characters</assignable></selectable>
+                  </selectables>
+                </selectable>
+              </selectables> and shall perform [Password-based Key Derivation Functions] in
+              accordance with a specified cryptographic algorithm <selectables linebreak="yes">
+                <selectable>HMAC-SHA-256</selectable>
+                <selectable>HMAC-SHA-384</selectable>
+                <selectable>HMAC-SHA-512</selectable>
+              </selectables> with <selectables><selectable><assignable>positive integer of 4096 or
+                    more</assignable></selectable></selectables> iterations, and output
+              cryptographic key sizes of <selectables linebreak="yes">
+                <selectable>128 bits</selectable>
+                <selectable>256 bits</selectable>
+              </selectables> that meet NIST SP 800-132. </title>
+            <note role="application">The password/passphrase is represented on the host machine as a
+              sequence of characters whose encoding depends on the email client and the underlying
+              OS. This sequence must be conditioned into a string of bits that is to be used as a
+              key of equivalent size to the rest of the key chain. <!-- The key cryptographic key sizes
+              in the fourth selection should be made to correspond to the key sizes selected in
+              -FCS_CKM_EXT.1. -->
+              <br/>This password/passphrase must be conditioned into a string of bits that forms the
+              submask to be used as input into a key. Conditioning can be performed using one of the
+              identified hash functions or the process described in NIST SP 800-132; the method used
+              is selected by the ST Author. SP 800-132 requires the use of a pseudo-random function
+              (PRF) consisting of HMAC with an approved hash function. The ST author selects the
+              hash function used, also includes the appropriate requirements for HMAC and the hash
+              function. <br/> Appendix A of SP 800-132 recommends setting the iteration count in
+              order to increase the computation needed to derive a key from a password and,
+              therefore, increase the workload of performing a password recovery attack. However,
+              for this EP, a minimum iteration count of 4096 is required in order to ensure that
+              twelve bits of security is added to the password/passphrase value. A significantly
+              higher value is recommended to ensure optimal security. </note>
+            <aactivity>
+              <tss><!-- FCS_CKM_1.1(b) -->FCS_CKM_EXT.5.1: There are two aspects of this component
+                that require evaluation: passwords/passphrases of the length specified in the
+                requirement (at least 64 characters) are supported, and that the characters that are
+                input are subject to the selected conditioning function. These activities are
+                separately addressed in the text below. Support for minimum length: The evaluators
+                shall check the <abbr linkend="TSS"/> section to determine that it specifies that a
+                capability exists to accept passwords/passphrases with the minimum number of
+                characters specified in the ST in this assignment statement. Support for PBKDF: The
+                evaluator shall examine the password hierarchy <abbr linkend="TSS"/> to ensure that
+                the formation of all keys <!-- (as decided in the FCS_CKM_EXT.1 selection) --> is
+                described and that the key sizes match that described by the ST author. The
+                evaluator shall check that the <abbr linkend="TSS"/> describes the method by which
+                the password/passphrase is first encoded and then fed to the SHA algorithm. The
+                settings for the algorithm (padding, blocking, etc.) shall be described, and the
+                evaluator shall verify that these are supported by the selections in this component
+                as well as the selections concerning the hash function itself. The evaluator shall
+                verify that the <abbr linkend="TSS"/> contains a description of how the output of
+                the hash function is used to form the submask that will be input into the function.
+                For the NIST SP 800-132-based conditioning of the password/passphrase, the required
+                assurance activities will be performed when doing the assurance activities for the
+                appropriate requirements (FCS_COP.1.1(4) <cite linkend="bibAppPP"/>). If any
+                manipulation of the key is performed in forming the submask that will be used to
+                form the key, that process shall be described in the <abbr linkend="TSS"/>. No
+                explicit testing of the formation of the submask from the input password is
+                required. </tss>
+              <guidance>Support for minimum length: The evaluators shall also check the Operational
+                Guidance to determine that there are instructions for guidance on how to generate
+                large passwords/passphrases external to the email client and instructions for how to
+                configure the password/passphrase length and optional complexity settings (note to
+                Management section). This is important because many default settings for
+                passwords/passphrases will not meet the necessary entropy needed as specified in
+                this EP. </guidance>
+              <tests>Support for minimum length: In addition to the analysis above, the evaluator
+                shall also perform the following tests on a email client configured according to the
+                AGD_PRE <cite linkend="bibAppPP"/> guidance: <testlist>
+                  <test>Ensure that the email client supports passwords/passphrases of 64
+                    characters. </test>
+                  <test>Try entering a password/passphrase less than 64 characters. </test>
+                  <test>If the email client supports a password/passphrase length up to a maximum
+                    number of characters, n (which would be greater than 64), then ensure that the
+                    email client will not accept more than n characters. </test> Conditioning: No
+                  explicit testing of the formation of the authorization factor from the input
+                  password/passphrase is required. Iteration count: The evaluator shall verify that
+                  the iteration count for PBKDFs performed by the email client comply with NIST SP
+                  800-132 by ensuring that the <abbr linkend="TSS"/> contains a description of the
+                  estimated time required to derive key material from passwords and how the email
+                  client increases the computation time for password-based key derivation (including
+                  but not limited to increasing the iteration count). </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -689,7 +694,7 @@
                 <selectable>one</selectable>
                 <selectable>a key stored in platform key storage</selectable>
                 <selectable>intermediate keys originating from: <selectables linebreak="yes">
-                    <selectable>a password as specified in <linkref linkend="FCS_CKM.1.1(b)"
+                    <selectable>a password as specified in <linkref linkend="FCS_CKM_EXT.5.1"
                       /></selectable>
                     <selectable>one or more other authorization factor(s)</selectable>
                     <selectable>credentials stored in platform key storage</selectable>
