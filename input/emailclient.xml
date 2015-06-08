@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>Draft 1.8</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-6-5</PPPubDate>
+      <PPPubDate>2015-6-8</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -1241,7 +1241,7 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="FPT_AON_EXT.2" name="Trusted Update for Add-ons">
+        <f-component id="FPT_AON_EXT.2" name="Trusted Installation and Update for Add-ons">
           <f-element id="FPT_AON_EXT.2.1" status="sel-based">
             <selection-depends req="FPT_AON_EXT.1.1"/>
             <title>The email client shall <selectables>
@@ -1251,7 +1251,17 @@
               signature mechanism and <selectables>
                 <selectable>published hash</selectable>
                 <selectable>no other functions</selectable>
-              </selectables>prior to installation. </title>
+              </selectables>prior to installation and update. </title>
+          </f-element>
+            <f-element id="FPT_AON_EXT.2.2" status="sel-based">
+              <selection-depends req="FPT_AON_EXT.1.1"/>
+              <title>The email client shall <selectables><selectable>provide the
+                ability</selectable><selectable>leverage the platform</selectable></selectables>
+                to query the current version of the add-on.</title>
+            </f-element>
+              <f-element id="FPT_AON_EXT.2.3" status="sel-based">
+                <selection-depends req="FPT_AON_EXT.1.1"/>
+                <title>The email client shall prevent the automatic installation of add-ons.</title>
             <aactivity>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it states
                 that the email client will reject add-ons from untrusted sources. </tss>
