@@ -167,7 +167,7 @@
       FCS_TLSC_EXT.1.6. <br/>An ST must identify the applicable version of the App PP and this EP in
       its conformance claims. </section>
     <section title="Use Cases" id="usecases">Email clients perform tasks associated primarily with
-      the first use case. <usecases>
+      the following use case. <usecases>
         <usecase title="Sending, receiving, accessing, managing and displaying email">
           <description>Email clients are used for sending, receiving, viewing, accessing, managing
             email in coordination with a mail server. Email clients can render HTML as well as
