@@ -4,9 +4,9 @@
   <PPReference title="PP Reference" id="ID003">
     <ReferenceTable>
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
-      <PPVersion>Draft 1.8</PPVersion>
+      <PPVersion>Draft 1.9</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-6-8</PPPubDate>
+      <PPPubDate>2015-6-16</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -31,26 +31,29 @@
   </RevisionHistory>
   <chapter title="Introduction" id="int">
     <section title="Overview" id="ppoverview"> Email clients are user applications that provide
-      functionality to send, receive, access and manage email. They are also referred to as a Mail
-      User Agent (MUA). The complexity of email content and email clients has grown over time.
-      Modern email clients can render HTML as well as plaintext, and may include functionality to
-      display common attachment formats, such as Adobe PDF and Microsoft Word documents. Some email
-      clients allow their functionality to be modified by users through the addition of add-ons.
-      This complex and rich feature set makes email clients a target for attackers. Protocols have
-      also been defined for communicating between email clients and servers. Some clients support
-      multiple protocols for doing the same task, allowing them to be configured according to email
-      server specifications.<br/>The complexity and rich feature set of modern email clients make
-      them a target for attackers, introducing security concerns. This document is intended to
-      facilitate the improvement of email client security by requiring use of operating system
-      security services, cryptographic standards, and environmental mitigations. Additionally, the
-      requirements in this document define acceptable behavior for email clients regardless of the
-      security features provided by the operating system.<br/> This Extended Package (EP) along with
-      the Protection Profile for Application Software (<cite linkend="bibAppPP"/>) provide a
-      baseline set of Security Functional Requirements (SFRs) for email clients running on any
-      operating system regardless of the composition of the underlying platform.<br/>The terms email
-      client and TOE are interchangeable in this document. <figure id="mua_mta"
-        src="images/mua_mta.png" max-width="inherit"
-        title="Figure 1 - Mail User Agent connecting to a Mail Transfer Agent"/>
+      functionality to send, receive, access and manage email.
+      <!-- They are also referred to as a Mail
+      User Agent (MUA). -->The complexity of email
+      content and email clients has grown over time. Modern email clients can render HTML as well as
+      plaintext, and may include functionality to display common attachment formats, such as Adobe
+      PDF and Microsoft Word documents. Some email clients allow their functionality to be modified
+      by users through the addition of add-ons.
+      <!-- Redundant - This complex and rich feature set makes email clients a target for attackers. -->
+      Protocols have also been defined for communicating between email clients and servers. Some
+      clients support multiple protocols for doing the same task, allowing them to be configured
+      according to email server specifications.<br/>The complexity and rich feature set of modern
+      email clients make them a target for attackers, introducing security concerns. This document
+      is intended to facilitate the improvement of email client security by requiring use of
+      operating system security services, cryptographic standards, and environmental mitigations.
+      Additionally, the requirements in this document define acceptable behavior for email clients
+      regardless of the security features provided by the operating system.<br/> This Extended
+      Package (EP) along with the Protection Profile for Application Software (<cite
+        linkend="bibAppPP"/>) provide a baseline set of Security Functional Requirements (SFRs) for
+      email clients running on any operating system regardless of the composition of the underlying
+      platform.<br/>The terms email client and TOE are interchangeable in this document. <br/>
+      <figure id="mua_mta" src="images/mua_mta.png" max-width="inherit"
+        title="Figure 1 - Sending and Delivering Email over TLS"/>
+      <!-- changed caption from Mail User Agent connecting to a Mail Transfer Agent -->
     </section>
     <section id="glossary" title="Terms">The following sections provide both Common Criteria and
       technology terms used in this Extended Package. <subsection title="Common Criteria Terms"
@@ -229,12 +232,9 @@
     identified in the App PP and describes an additional objective specific to this <abbr
       linkend="EP"/>. <section title="Security Objectives for the TOE" id="SecurityObjectivesTOE">
       <SOs>
-        <SO id="O.QUALITY">
+        <SO id="O.MANAGEMENT">
           <component-refer ref="FDP_NOT_EXT.1"/>
           <component-refer ref="FDP_NOT_EXT.2"/>
-          <component-refer ref="FIA_X509_EXT.3"/>
-        </SO>
-        <SO id="O.MANAGEMENT">
           <component-refer ref="FMT_MOF_EXT.1"/>
         </SO>
         <SO id="O.PROTECTED_STORAGE">
@@ -251,14 +251,14 @@
         <SO id="O.PROTECTED_COMMS">
           <component-refer ref="FCS_SMIME_EXT.1"/>
           <component-refer ref="FDP_SMIME_EXT.1"/>
-          <component-refer ref="FTP_ITC_EXT.1"/>
           <component-refer ref="FIA_SASL_EXT.1"/>
+          <component-refer ref="fia_x509_ext.3"/>
+          <component-refer ref="FTP_ITC_EXT.1"/>
         </SO>
         <SO id="O.ADDON_INTEGRITY">
           <description> To address issues associated with malicious or flawed plug-ins or
             extensions, conformant email clients implement mechanisms to ensure their integrity.
             This includes verification at installation time and update. </description>
-          <component-refer ref="fia_x509_ext.3"/>
           <component-refer ref="fpt_aon_ext.1"/>
           <component-refer ref="fpt_aon_ext.2"/>
         </SO>
@@ -287,8 +287,7 @@
           name="Secure/Multipurpose Internet Mail Extensions (S/MIME)">
           <f-element id="FCS_SMIME_EXT.1.1">
             <title>The email client shall implement both a sending and receiving S/MIME v3.2 Agent
-              as defined in RFC 5751, using <abbr linkend="CMS"/> as defined in RFCs 5652, 5754, and
-              3565. </title>
+              as defined in RFC 5751, using CMS as defined in RFCs 5652, 5754, and 3565. </title>
             <note role="application"> The RFCs allow for an agent to be either sending or receiving,
               or to include both capabilities. The intent of this requirement is to ensure that the
               email client is capable of both sending and receiving S/MIME v3.2 messages. </note>
@@ -296,8 +295,7 @@
           <f-element id="FCS_SMIME_EXT.1.2">
             <title>The email client shall transmit the ContentEncryptionAlgorithmIdentifier for
               AES-128 CBC and AES-256 CBC as part of the S/MIME protocol. </title>
-            <note role="application"> AES was added to <abbr linkend="CMS"/> as defined in RFC
-              3565.</note>
+            <note role="application"> AES was added to CMS as defined in RFC 3565.</note>
           </f-element>
           <f-element id="FCS_SMIME_EXT.1.3">
             <title>The email client shall present the digestAlgorithm field with the following
@@ -344,7 +342,7 @@
               including whether it utilizes the underlying OS, but it is required that a mechanism
               exist such that revocation status is supported and so that certificates can be
               retrieved for sending/receiving messages. Frequency is configurable in <linkref
-                linkend="FMT_MOF_EXT.1.1"/>. In this requirement frequency can be interpreted as a
+                linkend="FMT_MOF_EXT.1.1"/>. In this requirement, frequency can be interpreted as a
               one-time function with local storage, as a regularly scheduled retrieval, or as a
               mechanism that requires manual intervention. If the retrieval mechanism is periodic in
               nature, then the <abbr linkend="ST"/> author will need to include an iteration of FCS
@@ -464,9 +462,9 @@
               </selectables>. </title>
             <note role="application">The plaintext key storage in non-volatile memory is allowed for
               several reasons. If the keys exist within protected memory that is not user accessible
-              on the email client or OE, the only methods that allow it to play a security relevant
-              role is if it is a key split or providing additional layers of wrapping or encryption
-              on keys that have already been protected. </note>
+              on the email client or operational environment, the only methods that allow it to play
+              a security relevant role is if it is a key split or providing additional layers of
+              wrapping or encryption on keys that have already been protected. </note>
             <aactivity><tss>The evaluator shall verify the <abbr linkend="TSS"/> for a high level
                 description of method used to protect keys stored in non-volatile memory.<br/> The
                 evaluator shall verify the <abbr linkend="TSS"/> to ensure it describes the storage
@@ -475,6 +473,16 @@
                   linkend="FCS_COP_EXT.2"/> is followed for the storage of wrapped or encrypted keys
                 in non-volatile memory and plaintext keys in non-volatile memory meet one of the
                 criteria for storage. </tss>
+              <guidance>N/A</guidance>
+              <tests>The test for this element may be performed in conjunction with the test for
+                  <linkref linkend="FDP_PST_EXT.1"/>. <br/> The evaluator shall perform the
+                following test which may require the developer to provide access to a test platform
+                that provides the evaluator with tools that are typically not found on factory
+                  products:<testlist>The evaluator shall operate the email client so that several
+                  signed and encrypted messages are sent and received. The evaluator shall then
+                  examine the client platform and verify that no unencrypted key material has been
+                  written to non-volatile memory unless it meets the
+                exceptions.<test/></testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -486,27 +494,30 @@
                     <selectable>For volatile memory, the erasure shall be executed by a single
                       direct overwrite <selectables linebreak="yes">
                         <selectable>consisting of a pseudo-random pattern using the email client's
-                            <abbr linkend="RBG"/></selectable>
+                            RBG</selectable>
                         <selectable>consisting of a pseudo-random pattern using the host platform's
-                            <abbr linkend="RBG"/></selectable>
-                        <selectable>consisting of zeroes</selectable>. </selectables>followed by a
-                      read-verify. </selectable></selectables></selectable>
+                            RBG</selectable>
+                        <selectable>consisting of zeroes</selectable>.
+                      </selectables><!-- followed by a
+                      read-verify.-->
+                    </selectable></selectables></selectable>
                 <selectable>For non-volatile storage, the erasure shall be executed by <selectables
                     linebreak="yes">
                     <selectable>single</selectable>
                     <selectable>three or more times</selectable>
                   </selectables> overwrite of key data storage location consisting of <selectables>
                     <selectable linebreak="yes">a pseudo random pattern using the email client's
-                        <abbr linkend="RBG"/> (as specified in FCS_RBG_EXT.1 <cite
+                        RBG (as specified in FCS_RBG_EXT.1 <cite
                         linkend="bibAppPP"/></selectable>
                     <selectable>a pseudo-random pattern using the host platform's <abbr
                         linkend="RBG"/></selectable>
                     <selectable>a static pattern</selectable>
-                  </selectables> followed by a <selectables linebreak="yes">
+                  </selectables><!--
+                   followed by a <selectables linebreak="yes">
                     <selectable>read-verify</selectable>
                     <selectable>none</selectable>
                   </selectables>If read-verification of the overwritten data fails, the process
-                  shall be repeated again </selectable>
+                  shall be repeated again --></selectable>
               </selectables>that meets the following: <selectables linebreak="yes">
                 <selectable>NIST SP800-88</selectable>
                 <selectable>no standard</selectable>
@@ -533,6 +544,7 @@
                 stored (for example, "secret keys stored on a drive are zeroized by overwriting once
                 with zeros, while secret keys stored on the internal hard drive are zeroized by
                 overwriting three times with a random pattern that is changed before each write"). </tss>
+              <guidance>N/A</guidance>
               <tests>The following test is only for key destruction provided by the email client:<testlist>
                   <test>For each type of authorization service, encryption mode and encryption
                     operation, a known authorization factor, and chain of keys must be provided to
@@ -604,21 +616,20 @@
               appropriate requirements for HMAC and the hash function. <br/> Appendix A of SP
               800-132 recommends setting the iteration count in order to increase the computation
               needed to derive a key from a password and, therefore, increase the workload of
-              performing a password recovery attack. However, for this EP, a minimum iteration count
-              of 4096 is required in order to ensure that twelve bits of security is added to the
-              password/passphrase value. A significantly higher value is recommended to ensure
-              optimal security. </note>
+              performing a password recovery attack. However, for this <abbr linkend="EP"/>, a
+              minimum iteration count of 4096 is required in order to ensure that twelve bits of
+              security is added to the password/passphrase value. A significantly higher value is
+              recommended to ensure optimal security. <br/>There are two aspects of this component
+              that require evaluation: passwords/passphrases of the length specified in the
+              requirement (at least 64 characters) are supported, and that the characters that are
+              input are subject to the selected conditioning function. These activities are
+              separately addressed in the tests below. </note>
             <aactivity>
-              <tss><!-- FCS_CKM_1.1(b) -->FCS_CKM_EXT.5.1: There are two aspects of this component
-                that require evaluation: passwords/passphrases of the length specified in the
-                requirement (at least 64 characters) are supported, and that the characters that are
-                input are subject to the selected conditioning function. These activities are
-                separately addressed in the text below. Support for minimum length: The evaluators
-                shall check the <abbr linkend="TSS"/> section to determine that it specifies that a
-                capability exists to accept passwords/passphrases with the minimum number of
-                characters specified in the <abbr linkend="ST"/> in this assignment statement.
-                Support for PBKDF: The evaluator shall examine the password hierarchy <abbr
-                  linkend="TSS"/> to ensure that the formation of all keys
+              <tss><!-- FCS_CKM_1.1(b) -->The evaluators shall check the <abbr linkend="TSS"/>
+                section to determine that it specifies that a capability exists to accept
+                passwords/passphrases with the minimum number of characters specified in the <abbr
+                  linkend="ST"/> in this assignment statement.<br/> The evaluator shall examine the
+                password hierarchy <abbr linkend="TSS"/> to ensure that the formation of all keys
                 <!-- (as decided in the FCS_CKM_EXT.1 selection) --> is described and that the key
                 sizes match that described by the <abbr linkend="ST"/> author. The evaluator shall
                 check that the <abbr linkend="TSS"/> describes the method by which the
@@ -635,16 +646,14 @@
                 form the key, that process shall be described in the <abbr linkend="TSS"/>. No
                 explicit testing of the formation of the submask from the input password is
                 required. </tss>
-              <guidance>Support for minimum length: The evaluators shall also check the Operational
-                Guidance to determine that there are instructions for guidance on how to generate
-                large passwords/passphrases external to the email client and instructions for how to
-                configure the password/passphrase length and optional complexity settings (note to
-                Management section). This is important because many default settings for
-                passwords/passphrases will not meet the necessary entropy needed as specified in
-                this <abbr linkend="EP"/>. </guidance>
-              <tests>Support for minimum length: In addition to the analysis above, the evaluator
-                shall also perform the following tests on a email client configured according to the
-                AGD_PRE <cite linkend="bibAppPP"/> guidance: <testlist>
+              <guidance>The evaluators shall check the Operational Guidance to determine that there
+                are instructions for guidance on how to generate large passwords/passphrases
+                external to the email client and instructions for how to configure the
+                password/passphrase length and optional complexity settings (note to Management
+                section). This is important because many default settings for passwords/passphrases
+                will not meet the necessary entropy needed as specified in this <abbr linkend="EP"
+                />. </guidance>
+              <tests>The evaluator shall also perform the following tests: <testlist>
                   <test>Ensure that the email client supports passwords/passphrases of 64
                     characters. </test>
                   <test>Try entering a password/passphrase less than 64 characters. </test>
@@ -652,8 +661,8 @@
                     number of characters, n (which would be greater than 64), then ensure that the
                     email client will not accept more than n characters. </test> Conditioning: No
                   explicit testing of the formation of the authorization factor from the input
-                  password/passphrase is required. Iteration count: The evaluator shall verify that
-                  the iteration count for PBKDFs performed by the email client comply with NIST SP
+                  password/passphrase is required. <br/>The evaluator shall verify that the
+                  iteration count for PBKDFs performed by the email client comply with NIST SP
                   800-132 by ensuring that the <abbr linkend="TSS"/> contains a description of the
                   estimated time required to derive key material from passwords and how the email
                   client increases the computation time for password-based key derivation (including
@@ -690,6 +699,19 @@
                   KTS-OAEP-receiver-confirmation (section 9.2.4) scheme, "NIST SP 800-56A rev 2" for
                   ECC CDH (sections 5.6.1.2 and 6.2.2.2) </selectable>
               </selectables>. </title>
+            <note role="application">In the first selection, the ST author chooses the entity that
+              performs the decryption/encryption. In the second selection, the ST author chooses the
+              method used for encryption: <ul><li>Using one of the two AES-based Key Wrap methods
+                  specified in NIST SP 800-38F;</li><li>Using one of the two the KTS-OAEP schemes
+                  for RSA as described in NIST SP 800-56B (KTSOAEP-basic described in section
+                  9.2.3</li><li>Using ECC CDH as described in NIST SP 800-56A section 6.2.2.2. The
+                  third selection should be made to reflect the key size</li></ul> 2048/4096 is used
+              for the RSA-based schemes, while the size of the prime modulus is used for ECC-based
+              schemes. Support for 256-bit AES key sizes will be required for products entering
+              evaluation after Quarter 3, 2015. Based on the method(s) selected, the last selection
+              should be used to select the appropriate reference(s). </note>
+            <aactivity><tss>The evaluator shall examine the TSS to ensure there is a high-level
+                description of how the key is protected. </tss><guidance>N/A</guidance></aactivity>
           </f-element>
         </f-component>
         <f-component id="FCS_KYC_EXT.1" name="Key Chaining">
@@ -738,12 +760,13 @@
                 include a diagram illustrating the key hierarchy implemented and detail where all
                 keys and keying material is stored or what it is derived from. The evaluator shall
                 examine the key hierarchy to ensure that at no point the chain could be broken
-                without a cryptographic exhaust or knowledge of the a key within the chain and the
+                without a cryptographic exhaust or knowledge of the key within the chain and the
                 effective strength of the data encryption key is maintained throughout the Key
                 Chain.<br/> *If necessary, this information could be contained in a proprietary
                 document and not appear in the <abbr linkend="TSS"/>.<br/> If the platform provides
                 the IV generation, then the evaluator shall examine the <abbr linkend="TSS"/> to
                 verify that it describes how the IV generation is invoked. </tss>
+              <guidance>N/A</guidance>
             </aactivity>
           </f-element>
         </f-component>
@@ -784,13 +807,14 @@
                 Operational Environment. If external function is used for this purpose, the <abbr
                   linkend="TSS"/> should include the specific API that is called with inputs. <br/>
                 If the email client is relying on random bit generation from the host platform, the
-                evaluator shall verify the <linkref linkend="TSS"/> includes the name/manufacturer
-                of the external <abbr linkend="RBG"/> and describes the function call and parameters
-                used when calling the external <abbr linkend="DRBG"/> function. If different
+                evaluator shall verify the <abbr linkend="TSS"/> includes the name/manufacturer of
+                the external RBG and describes the function call and parameters
+                used when calling the external DRBG function. If different
                 external RBGs are used for different platforms, the <abbr linkend="TSS"/> identifies
-                identifies each <abbr linkend="RBG"/> for each platform. Also, the <abbr
+                each RBG for each platform. Also, the <abbr
                   linkend="TSS"/> includes a short description of the vendor's assumption for the
-                amount of entropy seeding the external <abbr linkend="DRBG"/>. </tss>
+                amount of entropy seeding the external DRBG. </tss>
+              <guidance>N/A</guidance>
             </aactivity>
           </f-element>
         </f-component>
@@ -801,8 +825,9 @@
             <note role="application">Nonces must be unique. </note>
             <aactivity>
               <tss>The evaluator shall ensure the <abbr linkend="TSS"/> describes how nonces are
-                created uniquely. The evaluator shall confirm that the nonces are unique and the IVs
-                and tweaks meet the stated requirements. </tss>
+                created uniquely. </tss>
+              <guidance>N/A</guidance>
+              <tests>The evaluator shall perform the following test: <br/>The evaluator shall confirm that the nonces are unique.</tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -823,8 +848,9 @@
             <aactivity>
               <tss>The evaluator shall ensure the <abbr linkend="TSS"/> describes how IVs and tweaks
                 are handled (based on the AES mode). The evaluator shall confirm that the IVs and
-                tweaks meet the stated requirements. <br/>
-              </tss>
+                tweaks meet the stated requirements. </tss>
+              <guidance>N/A</guidance>
+              <tests>The evaluator shall perform the following test:<br />The evaluator shall confirm that IVs meet the stated requirements. </tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -888,9 +914,9 @@
           <f-element id="FDP_PST_EXT.1.1" status="optional">
             <title>The email client shall be capable of operating without storing persistent
               information to the client platform with the following exceptions:
-                  <selectables><selectable>credentials</selectable><selectable>configuration
+                  <selectables><selectable>credential information</selectable><selectable>administrator provided configuration
                   information</selectable><selectable>certificate
-                  revocation</selectable><selectable>no
+                  revocation information</selectable><selectable>no
               exceptions</selectable></selectables>.</title>
             <note role="application">Any data that persists after the email client closes, including
               temporary files, is considered to be persistent data. Satisfying this requirement
@@ -908,6 +934,7 @@
                     then examine the client platform to determine that the only persistent
                     information stored is that identified in the <abbr linkend="TSS"
                   />.</test></testlist></tests>
+              <guidance>N/A</guidance>
             </aactivity>
           </f-element>
         </f-component>
@@ -983,11 +1010,10 @@
             <note role="application">SASL is needed if the email implements SMTP to send messages.
               Clients that do not use SMTP (e.g., ActiveSync or MAPI) would not need to implement
               support for SASL.</note>
-            <aactivity><tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that
+            <!-- duped <aactivity><tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that
                 it describes the details of the email client/Mail User Agent connecting to a Mail
                 Transfer Agent in terms of the SASL connection, along with email client-specific
-                options or procedures that might not be reflected in the specification. (Refer to
-                Figure 1)</tss>
+                options or procedures that might not be reflected in the specification. </tss>
               <guidance>The evaluator shall confirm that the operational guidance contains
                 instructions for establishing the connection to the Mail Transfer Agent. </guidance>
               <tests>The evaluator shall also perform the following test:<br/>
@@ -1001,7 +1027,7 @@
                     perform this test, the evaluator shall use a sniffer and a packet analyzer. The
                     packet analyzer must indicate that the protocol in use is SASL.</test>
                 </testlist></tests>
-            </aactivity>
+            </aactivity> -->
           </f-element>
           <f-element id="FIA_SASL_EXT.1.2" status="sel-based">
             <selection-depends req="FTP_ITC_EXT.1.2"/>
@@ -1076,12 +1102,13 @@
                 necessary instructions for configuring the operating environment so that the email
                 client can use the certificates.<br/>
               </guidance>
-              <tests>The evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1
-                  (<cite linkend="bibAppPP"/>) that requires the use of certificates:<br/>
+              <tests>The evaluator shall perform the following tests: <br/>
                 <testlist>
-                  <test>The evaluator shall demonstrate that using a certificate without a valid
-                    certification path results in the function failing. The evaluator shall then
-                    load into the platform's root store any certificates needed to validate the
+                  <test>The evaluator shall perform Test 1 for each function listed in
+                    FIA_X509_EXT.2.1 (<cite linkend="bibAppPP"/>) that requires the use of
+                    certificates. The evaluator shall demonstrate that using a certificate without a
+                    valid certification path results in the function failing. The evaluator shall
+                    then load into the platform's root store any certificates needed to validate the
                     certificate to be used in the function, and demonstrate that the function
                     succeeds.</test>
                   <test>The evaluator shall demonstrate that using a valid certificate that requires
@@ -1155,47 +1182,47 @@
               The Administrator is responsible for management activities, including setting the
               policy that is applied by the enterprise on the email client. The Administrator could
               be acting remotely and could be the MTA administrator acting through a centralized
-              management console or dashboard.<br/> The intent of this requirement is to allow the
-              Administrator to configure the email client with a policy that may not be over-ridden
-              by the user. If the Administrator has not set a policy for a particular function, the
-              user may still perform that function. Enforcement of the policy is done by the email
-              client itself, or the email client and the email client platform in coordination with
-              each other.<br/> Applications used to configure enterprise policy should have their
-              own identification and authorization and additional security requirements to ensure
-              that the remote administration is trusted.<br/> The function to configure whether to
-              establish a trusted channel corresponds to the functionality described in
-              FIA_X509_EXT.2.2 (<cite linkend="bibAppPP"/>). The Administrator has the option of
-              accepting or rejecting all certificates that cannot be validated, accepting a given
-              certificate that cannot be validated, or not accepting a given certificate that cannot
-              be validated. Depending on the choice that the Administrator has made in
+              management console or dashboard. Applications used to configure enterprise policy
+              should have their own identification and authorization and additional security
+              requirements to ensure that the remote administration is trusted.<br/> The intent of
+              this requirement is to allow the Administrator to configure the email client with a
+              policy that may not be over-ridden by the user. If the Administrator has not set a
+              policy for a particular function, the user may still perform that function.
+              Enforcement of the policy is done by the email client itself, or the email client and
+              the email client platform in coordination with each other.<br/> The function to
+              configure whether to establish a trusted channel corresponds to the functionality
+              described in FIA_X509_EXT.2.2 (<cite linkend="bibAppPP"/>). The Administrator has the
+              option of accepting or rejecting all certificates that cannot be validated, accepting
+              a given certificate that cannot be validated, or not accepting a given certificate
+              that cannot be validated. Depending on the choice that the Administrator has made in
               FIA_X509_EXT.2.2 (<cite linkend="bibAppPP"/>), the trusted connection will either be
               allowed for all certificates that cannot be validated, disallowed for all certificates
               that cannot be validated, allowed for a given certificate that cannot be validated, or
               disallowed for a given certificate that cannot be validated. <br/> If password or
               passphrase authorization factors are implemented by the email client, then the
               appropriate "change" selection must be included. <br/>If the email client provides
-              configurability of the cryptographic functions (for example, key size)- even if the
+              configurability of the cryptographic functions (for example, key size), even if the
               configuration is the form of parameters that may be passed to cryptographic
-              functionality implement on the email client platform - then "configure cryptographic
+              functionality implement on the email client platform, then "configure cryptographic
               functionality" will be included, and the specifics of the functionality offered can
-              either be written in this requirement as bullet points, or included in the TSS. <br/>
-              If the email client does include a key recovery function, the email client must
-              provide the capability for the user to turn this functionality off so that no recovery
-              key is generated and no keys are permitted to be exported. </note>
+              either be written in this requirement as bullet points, or included in the <abbr
+                linkend="TSS"/>. <br/> If the email client does include a key recovery function, the
+              email client must provide the capability for the user to turn this functionality off
+              so that no recovery key is generated and no keys are permitted to be exported. </note>
             <aactivity>The assurance activities for this component will be driven by the selections
-              made by the ST author. If a capability is not selected in the ST, the noted assurance
-              activity does not need to be performed. <tss>The evaluator shall verify that the <abbr
-                  linkend="TSS"/> describes those management functions which may only be configured
-                by the email client platform administrator and cannot be over-ridden by the user
-                when set according to policy. <br/> Change Password: The evaluator shall examine the
-                Operational Guidance to ensure that it describes how the password/passphrase-based
-                authorization factor is to be changed. <br/>Disable Key Recovery: If the email
-                client supports key recovery, this must be stated in the <abbr linkend="TSS"/>. The
-                  <abbr linkend="TSS"/> shall also describe how to disable this functionality. This
-                includes a description of how the recovery material is provided to the recovery
-                holder.<br/> Cryptographic Configuration: The evaluator shall determine from the
-                  <abbr linkend="TSS"/> for other requirements (FCS_*) what portions of the
-                cryptographic functionality are configurable. </tss>
+              made by the <abbr linkend="ST"/> author. If a capability is not selected in the <abbr
+                linkend="ST"/>, the noted assurance activity does not need to be performed. <tss>The
+                evaluator shall verify that the <abbr linkend="TSS"/> describes those management
+                functions which may only be configured by the email client platform administrator
+                and cannot be over-ridden by the user when set according to policy. <br/> Change
+                Password: The evaluator shall examine the Operational Guidance to ensure that it
+                describes how the password/passphrase-based authorization factor is to be changed.
+                <br/>Disable Key Recovery: If the email client supports key recovery, this must be
+                stated in the <abbr linkend="TSS"/>. The <abbr linkend="TSS"/> shall also describe
+                how to disable this functionality. This includes a description of how the recovery
+                material is provided to the recovery holder.<br/> Cryptographic Configuration: The
+                evaluator shall determine from the <abbr linkend="TSS"/> for other requirements
+                (FCS_*) what portions of the cryptographic functionality are configurable. </tss>
               <guidance>The evaluator shall examine the operational guidance to verify that it
                 includes instructions for an email client platform administrator to configure the
                 functions listed in <linkref linkend="FMT_MOF_EXT.1.1"/>. <br/>Disable Key Recovery:
@@ -1237,9 +1264,9 @@
                 email client is capable of loading trusted add-ons.</tss>
               <guidance>The evaluator shall examine the operational guidance to verify that it
                 includes instructions on loading trusted add-on sources.</guidance>
-              <tests>The evaluator shall perform the following tests: <testlist><test>The evaluator
+              <tests>The evaluator shall perform the following test: <testlist><test>The evaluator
                     shall create or obtain an untrusted add-on and attempt to load it. The evaluator
-                    shall verify that the unsigned add-on is rejected and cannot be
+                    shall verify that the untrusted add-on is rejected and cannot be
                   loaded.</test></testlist>
               </tests>
             </aactivity>
@@ -1311,8 +1338,8 @@
               selection(s) made here. For example, if <i>POP</i> is chosen, then <linkref
                 linkend="FIA_SASL_EXT.1.2"/> shall be included in the <abbr linkend="ST"/>.
               Selections must include at least one sending and one receiving protocol. If the
-              assignment is used, the ST author must also include a reference for protocol (e.g., an
-              RFC number). </note>
+              assignment is used, the ST author must also include a reference for the protocol
+              (e.g., an RFC number). </note>
             <aactivity><tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that
                 it describes the details of the email client connecting to a Mail Transfer Agent in
                 terms of the trusted connection (i.e., TLS) according to FTP_DIT_EXT.1 <cite
@@ -1337,7 +1364,7 @@
                     analyzer. The packet analyzer must indicate that the protocol in use is
                     TLS.</test>
                 </testlist></tests>
-            </aactivity>
+            </aactivity> 
           </f-element>
         </f-component>
       </subsection>
@@ -1350,14 +1377,14 @@
     first type (in this Appendix) are requirements that can be included in the <abbr linkend="ST"/>,
     but are not required in order for an email client to claim conformance to this <abbr
       linkend="EP"/>. The second type (in <appref linkend="sel-based"/>) are requirements based on
-    selections in the body of the EP: if certain selections are made, then additional requirements
-    in that appendix must be included. The third type (in <appref linkend="objective"/> are
-    components that are not required in order to conform to this EP, but will be included in the
-    baseline requirements in future versions of this EP, so adoption by vendors is encouraged. Note
-    that the <abbr linkend="ST"/> author is responsible for ensuring that requirements that may be
-    associated with those in <appref linkend="optional"/>, <appref linkend="sel-based"/>, and
-      <appref linkend="objective"/> but are not listed (e.g., FMT-type requirements) are also
-    included in the <abbr linkend="ST"/>. </appendix>
+    selections in the body of the <abbr linkend="EP"/>: if certain selections are made, then
+    additional requirements in that appendix must be included. The third type (in <appref
+      linkend="objective"/>) are components that are not required in order to conform to this <abbr
+      linkend="EP"/>, but will be included in the baseline requirements in future versions of this
+      <abbr linkend="EP"/>, so adoption by vendors is encouraged. Note that the <abbr linkend="ST"/>
+    author is responsible for ensuring that requirements that may be associated with those in
+      <appref linkend="optional"/>, <appref linkend="sel-based"/>, and <appref linkend="objective"/>
+    but are not listed (e.g., FMT-type requirements) are also included in the <abbr linkend="ST"/>. </appendix>
   <appendix title="Selection-Based Requirements" id="sel-based">As indicated in the introduction to
     this <abbr linkend="EP"/>, the baseline requirements (those that must be performed by the email
     client or its underlying platform) are contained in the App PP and in the body of this <abbr
@@ -1421,6 +1448,10 @@
         <description>Certificate Revocation List</description>
       </entry>
       <entry>
+        <term>CSP</term>
+        <description>Critical Security Parameter</description>
+      </entry>
+      <entry>
         <term>DRBG</term>
         <description>Deterministic Random Bit Generator</description>
       </entry>
@@ -1428,14 +1459,14 @@
         <term>ECDSA</term>
         <description>Elliptic Curve Digital Signature Algorithm</description>
       </entry>
-      <entry>
+     <!-- <entry>
         <term>EP</term>
         <description>Extended Package</description>
-      </entry>
+      </entry> 
       <entry>
         <term>FIPS</term>
         <description>Federal Information Processing Standards</description>
-      </entry>
+      </entry> -->
       <entry>
         <term>HTML</term>
         <description>HyperText Markup Language</description>
@@ -1463,6 +1494,10 @@
       <entry>
         <term>NIST</term>
         <description>National Institute of Standards and Technology</description>
+      </entry>
+      <entry>
+        <term>PBKDF</term>
+        <description>Password-Based Key Derivation Function</description>
       </entry>
       <entry>
         <term>PDF</term>
