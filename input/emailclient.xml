@@ -470,7 +470,7 @@
                 in non-volatile memory and plaintext keys in non-volatile memory meet one of the
                 criteria for storage. </tss>
               <guidance>N/A</guidance>
-             <!-- <tests>The test for this element may be performed in conjunction with the test for
+              <!-- <tests>The test for this element may be performed in conjunction with the test for
                   <linkref linkend="FDP_PST_EXT.1"/>. <br/> The evaluator shall perform the
                 following test which may require the developer to provide access to a test platform
                 that provides the evaluator with tools that are typically not found on factory
@@ -512,13 +512,13 @@
                 <selectable>NIST SP800-88</selectable>
                 <selectable>no standard</selectable>
               </selectables> for destroying all keying material and cryptographic security
-              parameters when no longer needed. </title> <note role="application">For the purposes
-              of this requirement, keying material refers to authentication data, passwords,
-              symmetric keys, data used to derive keys, etc. <br/>The destruction indicated above
-              applies to each intermediate storage area for key/cryptographic critical security
-              parameters (i.e., any storage, such as memory buffers, that is included in the path of
-              such data) upon the transfer of the key/cryptographic critical security parameter to
-              another memory location. </note>
+              parameters when no longer needed. </title>
+            <note role="application">For the purposes of this requirement, keying material refers to
+              authentication data, passwords, symmetric keys, data used to derive keys, etc.
+              <br/>The destruction indicated above applies to each intermediate storage area for
+              key/cryptographic critical security parameters (i.e., any storage, such as memory
+              buffers, that is included in the path of such data) upon the transfer of the
+              key/cryptographic critical security parameter to another memory location. </note>
             <aactivity>
               <tss>If the platform provides the key destruction, then the evaluator shall examine
                 the <abbr linkend="TSS"/> to verify that it describes how the key destruction
@@ -687,14 +687,15 @@
               method used for encryption: <ul><li>Using one of the two AES-based Key Wrap methods
                   specified in NIST SP 800-38F;</li><li>Using one of the two the KTS-OAEP schemes
                   for RSA as described in NIST SP 800-56B (KTSOAEP-basic described in section
-                  9.2.3</li><li>Using ECC CDH as described in NIST SP 800-56A section 6.2.2.2. The
-                  third selection should be made to reflect the key size</li></ul> 2048/4096 is used
-              for the RSA-based schemes, while the size of the prime modulus is used for ECC-based
-              schemes. Support for 256-bit AES key sizes will be required for products entering
-              evaluation after Quarter 3, 2015. Based on the method(s) selected, the last selection
-              should be used to select the appropriate reference(s). </note>
+                  9.2.3</li><li>Using ECC CDH as described in NIST SP 800-56A section
+                6.2.2.2.</li></ul> The third selection should be made to reflect the key size.
+              2048/4096 is used for the RSA-based schemes, while the size of the prime modulus is
+              used for ECC-based schemes. Support for 256-bit AES key sizes will be required for
+              products entering evaluation after Quarter 3, 2015. Based on the method(s) selected,
+              the last selection should be used to select the appropriate reference(s). </note>
             <aactivity><tss>The evaluator shall examine the TSS to ensure there is a high-level
-                description of how the key is protected. </tss><guidance>N/A</guidance></aactivity>
+                description of how the key is protected and meets the appropriate
+                specification.</tss><guidance>N/A</guidance></aactivity>
           </f-element>
         </f-component>
         <f-component id="FCS_KYC_EXT.1" name="Key Chaining">
@@ -907,18 +908,16 @@
             <aactivity><tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that
                 it describes all persistent information stored on the platform, and the locations on
                 the platform where these data are stored. The evaluator shall confirm that the
-                persistent data described is limited to the data identified in the
-                selection.</tss>
+                persistent data described is limited to the data identified in the selection.</tss>
               <guidance>N/A</guidance>
-              <tests>The evaluator shall perform the following
-                    tests:<testlist><test>The evaluator shall operate the email client so that
-                    several messages, signed, encrypted, and unsigned, are processed. The evaluator
-                    shall also exercise functionality such as moving messages to folders, writing
-                    unsent drafts of messages, etc., as provided by the client. The evaluator shall
-                    then examine the client platform to determine that the only persistent
-                    information stored is that identified in the <abbr linkend="TSS"
-                  />.</test></testlist></tests>
-                          </aactivity>
+              <tests>The evaluator shall perform the following tests:<testlist><test>The evaluator
+                    shall operate the email client so that several messages, signed, encrypted, and
+                    unsigned, are processed. The evaluator shall also exercise functionality such as
+                    moving messages to folders, writing unsent drafts of messages, etc., as provided
+                    by the client. The evaluator shall then examine the client platform to determine
+                    that the only persistent information stored is that identified in the <abbr
+                      linkend="TSS"/>.</test></testlist></tests>
+            </aactivity>
           </f-element>
         </f-component>
         <f-component id="FDP_REN_EXT.1" name="Rendering of Message Content">
@@ -993,7 +992,7 @@
             <note role="application">SASL is needed if the email implements SMTP to send messages.
               Clients that do not use SMTP (e.g., ActiveSync or MAPI) would not need to implement
               support for SASL.</note>
-                      </f-element>
+          </f-element>
           <f-element id="FIA_SASL_EXT.1.2" status="sel-based">
             <selection-depends req="FTP_ITC_EXT.1.2"/>
             <title>The email client shall support the POP3 CAPA and AUTH extensions for the SASL
@@ -1424,7 +1423,7 @@
         <term>ECDSA</term>
         <description>Elliptic Curve Digital Signature Algorithm</description>
       </entry>
-            <entry>
+      <entry>
         <term>HTML</term>
         <description>HyperText Markup Language</description>
       </entry>
