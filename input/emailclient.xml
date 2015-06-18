@@ -29,6 +29,18 @@
         Software</subject>
     </entry>
   </RevisionHistory>
+  <RevisionHistory role="final">
+    <entry>
+      <version>v 2.0</version>
+      <date>2015-06-18</date>
+      <subject>Application Software Extended Package for Email Clients</subject>
+    </entry>
+    <entry>
+      <version>v 1.0</version>
+      <date>2014-04-01</date>
+      <subject>Initial release - Protection Profile for Email Clients</subject>
+    </entry>
+  </RevisionHistory>
   <chapter title="Introduction" id="int">
     <section title="Overview" id="ppoverview"> Email clients are user applications that provide
       functionality to send, receive, access and manage email. The complexity of email content and
@@ -470,15 +482,6 @@
                 in non-volatile memory and plaintext keys in non-volatile memory meet one of the
                 criteria for storage. </tss>
               <guidance>N/A</guidance>
-              <!-- <tests>The test for this element may be performed in conjunction with the test for
-                  <linkref linkend="FDP_PST_EXT.1"/>. <br/> The evaluator shall perform the
-                following test which may require the developer to provide access to a test platform
-                that provides the evaluator with tools that are typically not found on factory
-                  products:<testlist><test>The evaluator shall operate the email client so that several
-                  signed and encrypted messages are sent and received. The evaluator shall then
-                  examine the client platform and verify that no unencrypted key material has been
-                  written to non-volatile memory unless it meets the
-                exceptions.</test></testlist></tests> -->
             </aactivity>
           </f-element>
         </f-component>
