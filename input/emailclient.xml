@@ -6,7 +6,7 @@
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>2.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-6-17</PPPubDate>
+      <PPPubDate>2015-6-18</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.1</CCVersion>
       <Keywords>email; email client</Keywords>
@@ -24,7 +24,7 @@
     </entry>
     <entry>
       <version>v 2.0</version>
-      <date>2015-06-17</date>
+      <date>2015-06-18</date>
       <subject>Update as Extended Package of the Protection Profile for Application
         Software</subject>
     </entry>
@@ -470,15 +470,15 @@
                 in non-volatile memory and plaintext keys in non-volatile memory meet one of the
                 criteria for storage. </tss>
               <guidance>N/A</guidance>
-              <tests>The test for this element may be performed in conjunction with the test for
+             <!-- <tests>The test for this element may be performed in conjunction with the test for
                   <linkref linkend="FDP_PST_EXT.1"/>. <br/> The evaluator shall perform the
                 following test which may require the developer to provide access to a test platform
                 that provides the evaluator with tools that are typically not found on factory
-                  products:<testlist>The evaluator shall operate the email client so that several
+                  products:<testlist><test>The evaluator shall operate the email client so that several
                   signed and encrypted messages are sent and received. The evaluator shall then
                   examine the client platform and verify that no unencrypted key material has been
                   written to non-volatile memory unless it meets the
-                exceptions.<test/></testlist></tests>
+                exceptions.</test></testlist></tests> -->
             </aactivity>
           </f-element>
         </f-component>
@@ -810,8 +810,6 @@
               <tss>The evaluator shall ensure the <abbr linkend="TSS"/> describes how nonces are
                 created uniquely. </tss>
               <guidance>N/A</guidance>
-              <tests>The evaluator shall perform the following test: <testlist><test>The evaluator shall
-                confirm that the nonces are unique.</test></testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -834,8 +832,6 @@
                 are handled (based on the AES mode). The evaluator shall confirm that the IVs and
                 tweaks meet the stated requirements. </tss>
               <guidance>N/A</guidance>
-              <tests>The evaluator shall perform the following test:<testlist><test>The evaluator shall confirm
-                that IVs meet the stated requirements. </test></testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
