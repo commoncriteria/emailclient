@@ -75,3 +75,4 @@ RPC
 PDF
 POP3
 IMAP
+HyperText
