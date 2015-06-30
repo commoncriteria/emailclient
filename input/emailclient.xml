@@ -60,7 +60,7 @@
       Requirements (SFRs) for email clients running on any operating system regardless of the
       composition of the underlying platform.<br/>The terms email client and TOE are interchangeable
       in this document. <br/>
-      <figure id="mua_mta" src="images/mua_mta.png" max-width="inherit"
+      <figure id="mua_mta" entity="images/mua_mta.png" max-width="inherit"
         title="Figure 1 - Sending and Delivering Email over TLS"/>
     </section>
     <section id="glossary" title="Terms">The following sections provide both Common Criteria and
