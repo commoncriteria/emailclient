@@ -291,8 +291,7 @@
       included in this section are derived from Part 2 of the Common Criteria for Information
       Technology Security Evaluation, Version 3.1, Revision 4, with additional extended functional
       components. <subsection title="Cryptographic Support (FCS)" id="fcs">
-        <f-component id="fcs_smime_ext.1"
-          name="Secure/Multipurpose Internet Mail Extensions (S/MIME)">
+        <f-component id="fcs_smime_ext.1" name="Secure/Multipurpose Internet Mail Extensions (S/MIME)" status="threshold">
           <f-element id="fcs_smime_ext.1.1">
             <title>The email client shall implement both a sending and receiving S/MIME v3.2 Agent
               as defined in RFC 5751, using CMS as defined in RFCs 5652, 5754, and 3565. </title>
@@ -437,7 +436,7 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fcs_ckm_ext.3" name="Protection of Key and Key Material">
+        <f-component id="fcs_ckm_ext.3" name="Protection of Key and Key Material" status="threshold">
           <f-element id="fcs_ckm_ext.3.1">
             <title>The email client shall <selectables>
                 <selectable>not store keys in non-volatile memory</selectable>
@@ -485,7 +484,7 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fcs_ckm_ext.4" name="Cryptographic Key Destruction">
+        <f-component id="fcs_ckm_ext.4" name="Cryptographic Key Destruction" status="threshold">
           <f-element id="fcs_ckm_ext.4.1">
             <title>The email client shall <selectables linebreak="yes">
                 <selectable>invoke platform-provided key destruction</selectable>
@@ -700,7 +699,7 @@
                 specification.</tss><guidance>N/A</guidance></aactivity>
           </f-element>
         </f-component>
-        <f-component id="fcs_kyc_ext.1" name="Key Chaining">
+        <f-component id="fcs_kyc_ext.1" name="Key Chaining" status="threshold">
           <f-element id="fcs_kyc_ext.1.1">
             <title> The email client shall maintain a key chain of: <selectables linebreak="yes">
                 <selectable>one</selectable>
@@ -816,7 +815,7 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fcs_ivg_ext.1" name="Initialization Vector Generation">
+        <f-component id="fcs_ivg_ext.1" name="Initialization Vector Generation" status="threshold">
           <f-element id="fcs_ivg_ext.1.1">
             <title>The email client shall create IVs in the following manner: <selectables
                 linebreak="yes">
@@ -840,7 +839,7 @@
         </f-component>
       </subsection>
       <subsection title="User Data Protection (FDP)" id="fdp">
-        <f-component id="fdp_not_ext.1" name="Notification of S/MIME Status">
+        <f-component id="fdp_not_ext.1" name="Notification of S/MIME Status" status="threshold">
           <f-element id="fdp_not_ext.1.1">
             <title>The email client shall display a notification of the S/MIME status of received
               emails upon viewing.</title>
@@ -961,7 +960,7 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fdp_smime_ext.1" name="S/MIME">
+        <f-component id="fdp_smime_ext.1" name="S/MIME" status="threshold">
           <f-element id="fdp_smime_ext.1.1">
             <title>The email client shall use S/MIME to sign, verify, encrypt, and decrypt
               mail.</title>
@@ -1034,7 +1033,7 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fia_x509_ext.3" name="X509 Authentication and Encryption">
+        <f-component id="fia_x509_ext.3" name="X509 Authentication and Encryption" status="threshold">
           <f-element id="fia_x509_ext.3.1">
             <title>The email client shall use X.509v3 certificates as defined by RFC 5280 to support
               encryption and authentication for S/MIME. </title>
@@ -1092,7 +1091,7 @@
         </f-component>
       </subsection>
       <subsection title="Security Management (FMT)" id="fmt">
-        <f-component id="fmt_mof_ext.1" name="Management of Functions Behavior">
+        <f-component id="fmt_mof_ext.1" name="Management of Functions Behavior" status="threshold">
           <f-element id="fmt_mof_ext.1.1">
             <title>The email client shall be capable of performing the following management
               functions, controlled by the user or administrator as shown: <ul>
@@ -1213,7 +1212,7 @@
         </f-component>
       </subsection>
       <subsection title="Protection of the TSF (FPT)" id="fpt">
-        <f-component id="fpt_aon_ext.1" name="Support for Only Trusted Add-ons">
+        <f-component id="fpt_aon_ext.1" name="Support for Only Trusted Add-ons" status="threshold">
           <f-element id="fpt_aon_ext.1.1">
             <title>The email client shall include the capability to load <selectables>
                 <selectable>trusted add-ons</selectable>
@@ -1283,7 +1282,7 @@
         </f-component>
       </subsection>
       <subsection title="Trusted Path/Channels (FTP)" id="ftp">
-        <f-component id="ftp_itc_ext.1" name="Inter-TSF Trusted Channel">
+        <f-component id="ftp_itc_ext.1" name="Inter-TSF Trusted Channel" status="threshold">
           <f-element id="ftp_itc_ext.1.1">
             <title>The email client shall initiate or receive communication via the trusted channel.
             </title>
