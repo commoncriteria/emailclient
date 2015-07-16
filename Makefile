@@ -11,7 +11,7 @@ OUTPUTS=$(TABLE) $(SIMPLIFIED) $(APP_HTML) $(APP_OP_HTML) $(APP_RELEASE_HTML)
 all: $(TABLE) $(SIMPLIFIED) $(APP_HTML)
 
 spellcheck: $(OUTPUTS)
-	bash -c "hunspell -l -H -p <(cat schema/dictionary/*) output/*.html | sort"
+	bash -c "hunspell -l -H -p <(cat transforms/dictionaries/CommonCriteria.txt transforms/dictionaries/Computer.txt transforms/dictionaries/Crypto.txt transforms/dictionaries/EmailClientSpecific.txt) output/*.html | sort"
 
 pp:$(APP_HTML)
 $(APP_HTML):  $(TRANS)/pp2html.xsl $(APP_XML)
@@ -27,8 +27,8 @@ simplified: $(SIMPLIFIED)
 $(SIMPLIFIED): $(TRANS)/pp2simplified.xsl $(APP_XML)
 	xsltproc --stringparam release final -o $(SIMPLIFIED) $(TRANS)/pp2simplified.xsl $(APP_XML)
 
-schema/application.rnc: schema/application.rng
-	trang -I rng -O rnc  schema/application.rng schema/application.rnc
+transforms/schemas/schema.rnc: transforms/schemas/schema.rng
+	trang -I rng -O rnc  transforms/schemas/schema.rng transforms/schemas/schema.rnc
 
 clean:
 	@for f in a $(TABLE) $(SIMPLIFIED) $(APP_HTML) $(APP_RELEASE_HTML) $(APP_OP_HTML); do \
