@@ -980,7 +980,7 @@
                 signing and encrypting email.</guidance><tests>Tests for this element are performed
                 in conjunction with tests for <linkref linkend="FCS_SMIME_EXT.1"/> and <linkref
                   linkend="FDP_NOT_EXT.1"/></tests>
-            </aactivity><br/>
+            </aactivity>
           </f-element>
         </f-component>
       </subsection>
@@ -1141,7 +1141,7 @@
                   <assignable>Other management functions</assignable>
                 </management-function>
               </management-function-set>
-            </title><br/>
+            </title>
             <note role="application">For these management functions, the term "Administrator" refers
               to the administrator of a non-mobile device or the device owner of a mobile device.
               The Administrator is responsible for management activities, including setting the
