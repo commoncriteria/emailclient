@@ -495,7 +495,8 @@
                           RBG</selectable>
                         <selectable>consisting of a pseudo-random pattern using the host platform's
                           RBG</selectable>
-                        <selectable>consisting of zeroes</selectable>. </selectables></selectable>
+                        <selectable>consisting of zeroes</selectable></selectables>.
+		    </selectable>
                     <selectable>For non-volatile storage, the erasure shall be executed by
                         <selectables linebreak="yes">
                         <selectable>single</selectable>
@@ -701,32 +702,37 @@
         </f-component>
         <f-component id="fcs_kyc_ext.1" name="Key Chaining" status="threshold">
           <f-element id="fcs_kyc_ext.1.1">
-            <title> The email client shall maintain a key chain of: <selectables linebreak="yes">
+            <title> The email client shall maintain a key chain of: 
+	    <selectables linebreak="yes">
                 <selectable>one</selectable>
                 <selectable>a key stored in platform key storage</selectable>
-                <selectable>intermediate keys originating from: <selectables linebreak="yes">
-                    <selectable>a password as specified in <linkref linkend="FCS_CKM_EXT.5.1"
-                      /></selectable>
+                <selectable>
+		  intermediate keys originating from: 
+		  <selectables linebreak="yes">
+                    <selectable>
+		      a password as specified in <linkref linkend="FCS_CKM_EXT.5.1"/>
+		    </selectable>
                     <selectable>one or more other authorization factor(s)</selectable>
                     <selectable>credentials stored in platform key storage</selectable>
                   </selectables>
-                  <selectable>to the data encryption/decryption key(s) using the following
-                    method(s): <selectables linebreak="yes">
-                      <selectable>utilization of the platform key storage</selectable>
-                      <selectable>utilization of platform key storage that performs key wrap with a
-                        TSF provided key</selectable>
-                      <selectable>implement key wrapping as specified in <linkref
-                          linkend="FCS_COP_EXT.2"/></selectable>
-                      <selectable>implement key combining as specified in <linkref
-                          linkend="FCS_SMC_EXT.1"/></selectable>
-                    </selectables>while maintaining an effective strength of <selectables
-                      linebreak="yes">
-                      <selectable>128 bits</selectable>
-                      <selectable>256 bits</selectable>
-                    </selectables>
-                  </selectable>
-                </selectable>
-              </selectables>
+		</selectable>
+	    </selectables>
+                to the data encryption/decryption key(s) using the following
+                method(s): 
+		<selectables linebreak="yes">
+                  <selectable>utilization of the platform key storage</selectable>
+                  <selectable>utilization of platform key storage that performs key wrap with a
+                  TSF provided key</selectable>
+                  <selectable>implement key wrapping as specified in <linkref
+                  linkend="FCS_COP_EXT.2"/></selectable>
+                  <selectable>implement key combining as specified in <linkref
+                  linkend="FCS_SMC_EXT.1"/></selectable>
+                </selectables>
+		while maintaining an effective strength of 
+		<selectables linebreak="yes">
+                  <selectable>128 bits</selectable>
+                  <selectable>256 bits</selectable>
+                </selectables>
             </title>
             <note role="application">Key Chaining is the method of using multiple layers of
               encryption keys to ultimately secure the data encryption key. The number of
