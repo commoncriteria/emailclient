@@ -6,6 +6,8 @@ Protection Profile for Email Clients
 ## Links
 [Application Software Extended Package for Email Clients](http://common-criteria.rhcloud.com/emailclient/output/emailclient-release.html)
 
+[Help working with Transforms Submodule](https://github.com/commoncriteria/transforms/wiki/Working-with-Transforms-as-a-Submodule)
+
 ## Quickstart
 To clone this project along with its _transforms_ submodule run:
 
