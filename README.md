@@ -7,7 +7,7 @@ Extended Package for Email Clients
 [Application Software Extended Package for Email Clients](http://common-criteria.rhcloud.com/emailclient/output/emailclient-release.html)
 
 ## Release Version
-Protection Profile for Email Clients v1.0 4/1/2014
+Protection Profile for Email Clients v1.0 4/1/2014<br/>
 [Application Software Extended Package for Email Clients v2.0](https://www.niap-ccevs.org/pp/PP_APP_EMAILCLIENT_EP_v2.0/) 6/18/2015
 
 ## Change Log
