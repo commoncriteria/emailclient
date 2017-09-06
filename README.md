@@ -1,4 +1,4 @@
-Email Client [![Build Status](https://jenkins-criteria.rhcloud.com/buildStatus/icon?job=protection-profiles/emailclient)](https://jenkins-criteria.rhcloud.com/job/protection-profiles/job/emailclient/)
+Email Client [![Build Status](https://travis-ci.org/commoncriteria/emailclient.svg?branch=master)](https://travis-ci.org/commoncriteria/emailclient)
 ============
 
 Extended Package for Email Clients
