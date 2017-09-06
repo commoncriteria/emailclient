@@ -1,10 +1,11 @@
-Email Client [![Build Status](https://travis-ci.org/commoncriteria/emailclient.svg?branch=master)](https://travis-ci.org/commoncriteria/emailclient)
+Email Client 
 ============
+[![Build Status](https://travis-ci.org/commoncriteria/emailclient.svg?branch=master)](https://travis-ci.org/commoncriteria/emailclient)
 
 Extended Package for Email Clients
 
 ## Working Draft
-[Application Software Extended Package for Email Clients](http://common-criteria.rhcloud.com/emailclient/output/emailclient-release.html)
+[Application Software Extended Package for Email Clients](https://commoncriteria.github.io/pp/emailclient/emailclient-release.html)
 
 ## Release Version
 [Application Software Extended Package for Email Clients v2.0](https://www.niap-ccevs.org/pp/PP_APP_EMAILCLIENT_EP_v2.0/) 6/18/2015<br/>
