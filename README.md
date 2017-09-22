@@ -1,18 +1,31 @@
-Email Client 
-============
-[![Build Status](https://travis-ci.org/commoncriteria/emailclient.svg?branch=master)](https://travis-ci.org/commoncriteria/emailclient)
-
 Extended Package for Email Clients
+============
+[![Build Status](https://travis-ci.org/commoncriteria/emailclient.svg?branch=master)](https://travis-ci.org/commoncriteria/emailclient) 
+[![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/emailclient.svg?maxAge=2592000)](https://github.com/commoncriteria/emailclient/issues) 
+![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
-## Working Draft
-[Application Software Extended Package for Email Clients](https://commoncriteria.github.io/pp/emailclient/emailclient-release.html)
+This repository hosts the draft version of the Extended Package for Email Clients based on the 
+[Essential Security Requirements (ESR)](https://commoncriteria.github.io/pp/clientvirtualization/emailclient-esr.html) for this technology class of 
+products. This repository is used to facilitate collaboration and development on the draft document. 
+See the [release](#Release-Version) section if you are looking for the officially released version for evaluations. 
+A list of products that have passed evaluation against this Protection Profile can be found [here](https://www.niap-ccevs.org/Profile/Info.cfm?id=377).
+
+## Draft Version
+
+* [Extended Package for Email Clients](https://commoncriteria.github.io/pp/cemailclient/emailclient-release.html) (html)
+* [Extended Package for Email Clients](https://commoncriteria.github.io/pp/emailclient/emailclient-release.pdf) (pdf)
 
 ## Release Version
-[Application Software Extended Package for Email Clients v2.0](https://www.niap-ccevs.org/pp/PP_APP_EMAILCLIENT_EP_v2.0/) 6/18/2015<br/>
-Protection Profile for Email Clients v1.0 4/1/2014
+* [Extended Package for Email Clients](https://www.niap-ccevs.org/Profile/Info.cfm?id=377)
 
-## Change Log
-6/18/2015 Converted Email Client PP to an EP of the Application PP
+## Contributing
+
+If you are interested in contributing directly to future versions the this Protection Profile, please consider joining the NIAP technical community.
+* [How to join the NIAP Technical Community (Mailing list and updates)](https://www.niap-ccevs.org/NIAP_Evolution/tech_communities.cfm)
+
+## Feedback
+
+Questions, comments, and fixes can be submitted to the [repository issue tracker](https://github.com/commoncriteria/emailclient/issues)
 
 ## Quickstart
 To clone this project along with its _transforms_ submodule run:
@@ -27,4 +40,18 @@ To pull updates from the upstream _transforms_ submodule and commit them run:
  git commit
 ````
 
+### Development Info
 [Help working with Transforms Submodule](https://github.com/commoncriteria/transforms/wiki/Working-with-Transforms-as-a-Submodule)
+
+## Repository Content
+* input - Contains the 'meat' of the project. It's the input content (in XML form) that gets transformed to readable html.
+* output - The output directory where the html is placed after transformation.
+* output/images - The directory where images are stored
+* transforms - Points to the transform subproject which is really a repository for resources shared amongst many Common Criteria projects.
+
+## Links 
+* [National Information Assurance Partnership (NIAP)](https://www.niap-ccevs.org/)
+* [Common Criteria Portal](https://www.commoncriteriaportal.org/)
+
+## License
+See [License](./LICENSE)
