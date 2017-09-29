@@ -1,82 +1,138 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../transforms/esr2html.xsl"?>
 
-<ESR xmlns="http://common-criteria.rhcloud.com/ns/esr" name="Operating System Fundamentals">
-  
+<ESR xmlns="http://common-criteria.rhcloud.com/ns/esr" name="Server Virtualization">
+
 	<intro>
-		<esrtitle>General Purpose Operating System</esrtitle>
-		<maintainer>NIAP and CESG</maintainer>
+		<esrtitle>Email Clients</esrtitle>
+		<maintainer>National Information Assurance Partnership</maintainer>
 		<identifier>42</identifier>
 		<version>0.8</version>
 		<status>draft</status>
-		<issuedate>19 March 2015</issuedate>
+		<issuedate>07 October 2015</issuedate>
 		<approver/>
 		<supercedes/>
 	</intro>
 
 	<section title="Background and Purpose" id="purpose">
-		This section sets the context for not only the ESR, but what is 
-		expected of the resulting Protection Profile (PP). The intent is 
-		that the remaining sections provide succinct statements that 
-		highlight the relevant aspects to be addressed by the Technical 
-		Community (TC) constructing the PP. Here, the authors provide a 
-		narrative that introduces the reader to the problem being solved, 
-		and presents key aspects that support or guide the TC, and may
-		elaborate on subtleties not apparent in the “bulleted” high level
-		statements.
+		<!-- This section sets the context for not only the ESR, but what is 
+			expected of the resulting Protection Profile (PP). The intent is 
+			that the remaining sections provide succinct statements that 
+			highlight the relevant aspects to be addressed by the Technical 
+			Community (TC) constructing the PP. Here, the authors provide a 
+			narrative that introduces the reader to the problem being solved, 
+			and presents key aspects that support or guide the TC, and may
+			elaborate on subtleties not apparent in the “bulleted” high level
+			statements.
+		-->
+		This document defines requirements for email client software
+		on computer systems and mobile devices. 
+		<p/>
+		Email clients are applications for accessing and managing email provided
+		by a mail server. There are various protocols that can be used for 
+		communication between email servers and clients such as POP and IMAP and 
+		each has its own strengths and weaknesses. The emails displayed in the client 
+		can be formatted as HTML or plain text and can contain attachments. The 
+		complexity of email content and email clients has grown over time. Newer 
+		clients allow users to customize the method of communicating with the
+		mail server and the addition of components such as extensions for extra 
+		functionality. These additional features, along with the prevalence of 
+		email clients, makes them a target for attackers and introduces new security 
+		concerns. 
+		<p/>
+		This document is intended to facilitate improvement of the security of email 
+		clients by requiring use of operating system security services, cryptographic 
+		standards, and environmental mitigations. Additionally, these requirements 
+		attempt to define acceptable behavior for email clients regardless of the 
+		security features provided by the operating system.
+		<p/>
+		The requirements in this document apply to all email clients that run on 
+		any operating system, regardless of the composition of the underlying 
+		platform. For purposes of this document, an application is defined as 
+		software that runs on an operating system and performs tasks on behalf 
+		of the user or owner of the platform. An email client is an application 
+		that retrieves and manages email provided by a mail server.
+		<p/>
+		Extensions or plug-ins are code packages that can be loaded by the email 
+		client to introduce new or specialized functionality.
+		
+		
 	</section>
+
 	<section title="Use Cases" id="usecases">
-	  This section is intended to provide the initial scope/bound of the 
-	  security problem by providing the reader with concise statements 
-	  regarding the scenarios in which the technology is being used. The 
-	  intended usage presented here should lay the groundwork for the 
-	  identifying the resources to be protected, and what threats must be
-	  considered in the drafting of the Essential Security Requirements 
-	  (ESR) and for the TC to consider when writing the PP.
+		<!-- 
+			This section is intended to provide the initial scope/bound of the 
+			security problem by providing the reader with concise statements 
+			regarding the scenarios in which the technology is being used. The 
+			intended usage presented here should lay the groundwork for the 
+			identifying the resources to be protected, and what threats must be
+			considered in the drafting of the Essential Security Requirements 
+			(ESR) and for the TC to consider when writing the PP.
+		-->
+		Email clients are used to retrieve email from a Mail User Agent (MUA) 
+		or to send mail via a Mail Transfer Agent (MTA). MUA and MTA functionality 
+		may be available in the same product, and the term mail server may apply to 
+		either an MUA or MTA. Access to resources via an email client can be done 
+		over the Internet, or within a closed network (Intranet). The content within 
+		the email is often formatted as HTML or plain text and can contain attachments.
+		<p/>
+		<ul>
+			<li>
+				Managing email on personal computers: Email clients are used 
+				to retrieve, manage, and send email to and from mail server;
+				
+			</li>
+			<li>
+				Managing email on mobile devices: Email clients are used to 
+				retrieve, manage, and send email to and from mail server; there 
+				is a risk that user data could be lost if the device is lost.
+			</li>
+		</ul>
 	</section>
 
 	<section title="Resources to be protected" id="resourcesprotected">
-    	  This section is intended to provide the initial scope/bound of the 
-    	  security problem by providing the reader with concise statements
-    	  regarding the scenarios in which the technology is being used. The 
-    	  intended usage presented here should lay the groundwork for the 
-    	  identifying the resources to be protected, and what threats must be
-    	  considered in the drafting of the Essential Security Requirements 
-    	  (ESR) and for the TC to consider when writing the PP.
+		<!-- 
+    		This section is intended to provide the initial scope/bound of the 
+    		security problem by providing the reader with concise statements
+    		regarding the scenarios in which the technology is being used. The 
+    		intended usage presented here should lay the groundwork for the 
+    		identifying the resources to be protected, and what threats must be
+    		considered in the drafting of the Essential Security Requirements 
+    		(ESR) and for the TC to consider when writing the PP.
+    	-->
+		Email clients must ensure the security of the user data they process. 
+		This consists of authentication credentials as well as the content of 
+		the messages exchanged directly with mail servers. Modern email clients 
+		often have support for contacts and calendars which can contain personal 
+		information that must be protected. In the mobile use case, protection of 
+		data stored on the device also must be protected, as it is at greater 
+		risk of physical compromise than traditional personal computers. 
 	</section>
 
 	<section title="Attacker access" id="attackeraccess"> 
-	  The following assumptions are made about
-	  attackers' ability to develop attacks: 
-	  <ul>
-	    <li> An attacker has an arbitrary amount of time to analyze the behavior of the product, its
-	    interaction with its platform, and the data it transmits over the network. </li>
-	    <li> An attacker is able to acquire their own copy of the target product and study its
-	    behavior on a platform that they control. </li>
-	  </ul>
-	  <p/> The attacker is expected to engage in the following general classes of attack: <!-- added in order to allow for rather direct flow to Threats section in PP -->
-	  <ul>
-	    <li> Network eavesdropping, in which an attacker may monitor and gain access to data
-	    exchanged between the product and other endpoints. </li>
-	    <li> Network attack, in which an attacker may initiate malicious communications with the
-	    product or alter communications between the product and other endpoints. </li>
-	    <li> Local attack, in which an attacker has gained the ability to execute code on the
-	    system, which may be used to escalate privilege or access data without
-	    authorization. </li>
-	    <li> Limited physical access attack, in which an attacker may attempt to access data on
-	    the system by virtue of being physically present for a limited period of time. This
-	    limited physical access does not include attacks in which the attacker could
-	    disassemble the system to gain access to its storage media or manipulate the product's
-	    underlying hardware and firmware. Systems used for working remotely, such as laptops
-	    and tablets, for which an attacker could gain longer physical access to, should
-	    apply additional protections that are provided by products evaluated against other
-	    Protection Profiles (e.g. FDE cPP). </li>
-	    <li> Persistence, in which an attacker has already exploited the system and wishes to
-	    maintain presence on the system. </li>
-	  </ul>
+		Email clients are subject to attacks from the network and also via direct physical
+		access. 
+		<p/>
+		In network-based attacks, such as phishing, the email client may only be involved 
+		in receipt of a malicious link which is then used to exploit the email client, 
+		a browser, or the operating systems after some user interaction. However, some 
+		email clients include the rendering capabilities of a web browser, in order to 
+		render messages themselves. In these cases, many of the same types of attacks 
+		can levied directly at the email client. 
+		<p/>
+		Messages and attachments in transit are subject to network-based eavesdropping. 
+		The SMTP protocol does not natively provide encryption services between 
+		mail transfer agents.
+		<p/>
+		For mobile devices,the increased risk of losing physical control of the 
+		device gives a motivated attacker to directly access the storage medium. 
+		In this case, an attacker could retrieve stored email messages and 
+		attachments
+		
 	</section>
-	
+
 	<section title="Essential Security Requirements" id="requirements">
+		<!--
         	This is where the authors present an initial set of English 
         	requirements that specify security functionality, rather than 
         	design and/or implementation characteristics. These requirements 
@@ -91,73 +147,398 @@
         	is enough information contained here, as well as the other sections
         	of this document, to provide the TC enough information to ensure 
         	they have an understanding of what is minimally required in breath.
+        -->
+		
+		An email client is an instance of an application on an Operating System. 
+		Therefore, an email client must meet all security requirements as defined 
+		in Application on an Operating System Protection Profile. 
+		In addition, the following requirements are essential.
+		<p/>
+		
+		<b>Objective: Secure Transport</b>
+		<p/>
+		The email client shall encrypt communication between email client 
+		and MUA or MTA using TLS encryption. Since an email client is an extension 
+		of Application on an Operating System, any of the requirements pertaining to 
+		the secure transport of data over a network are also valid here. 
+		Transmission of login credentials over the network to the MTA should also 
+		be considered part of communication.
+		<p/>
+		Requirement
+		<ul>
+			<li>
+				Must be able to encrypt communications using TLS over any of the 
+				major email protocols including POP (RFC 2595), IMAP (RFC 3501), 
+				SMTP (RFC 3207), HTTP (RFC 2818), and Exchange between the email 
+				client and the MUA or MTA.
+			</li>
+			<li>
+				For authentication, the email client should support passwords 
+				and tokens or client certificates when available.
+			</li>
+			
+		</ul>
+		
+		<p/>
+		Assurance Activity
+		<ul>
+			<li>
+				Tester must verify successful TLS exchanges occur between the email 
+				client and MUA or MTA using packet capture software or network monitoring
+				software for each protocol (POP, IMAP, SMTP, HTTP, and Exchange).
+			</li>
+			<li>
+				Tester must verify that password-based or token-based authentication 
+				succeeds with the MUA or MTA from the email client when using valid passwords or tokens.
+			</li>
+			<li>
+				Tester must verify password-based or token-based authentication
+				fails with the MUA or MTA from the email client when using incorrect or invalid passwords or tokens.
+			</li>
+			<li>
+				Tester should verify client certificate-based authentication 
+				succeeds with the MUA or MTA from the email client when using correct certificates.
+			</li>
+			<li>
+				Tester should verify client certificate-based authentication fails 
+				with the MUA or MTA from the email client when using incorrect or invalid certificates.
+			</li>
+			
+		</ul>
+		
+
+		<p/>
+		Requirement
+		<ul>
+			<li>
+				Must implement S/MIME as defined in RFC 5652 to protect messages 
+				and attachments passed between MTA servers via SMTP.
+			</li>
+			<li>
+				Must provide indication to the user if cryptographic validation 
+				of received messages was successful or unsuccessful.
+			</li>
+			<li>
+				Must support S/MIME encryption algorithms as specified in RFC 5751. 
+				For signatures, should support RSA-SHA384.
+			</li>
+			<li>
+				Should support signature and encryption algorithms as specified in
+				RFC 6318 (Suite B for S/MIME). For signatures, should support ECDSA. 
+				For key wrap and message encryption, should support AES256.
+			</li>
+		</ul>
+		
+		<p/>
+		Assurance Activity
+		<ul>
+			<li>
+				Tester must verify the email client developer has documented 
+				the encryption algorithms implemented in the client that are used by S/MIME.
+			</li>
+			<li>
+				Tester must verify the email client developer has documented 
+				the signature algorithms implemented in the client used by S/MIME.
+			</li>
+		</ul>
+
+
+
+		<p/>
+		Requirement
+		<ul>
+			<li>
+				Must support Public Key Infrastructure (PKI) X.509 certificates.
+			</li>
+			<li>
+				A client certificate should be supported by the email client for
+				mutual authentication of the TLS tunnel for POP, IMAP, SMTP, and HTTPS.
+			</li>
+			<li>
+				The email client must support server authentication via X.509 
+				certificates for S/MIME.
+			</li>
+			<li>
+				If using TLS, then the email client must check that the Subject 
+				Name in certificate matches the domain.
+			</li>
+			<li>
+				If using S/MIME, then the email client must check that the 
+				Subject Name or Subject Alternative Name matches the email address.
+			</li>
+		</ul>
+		
+		<p/>
+		Assurance Activity
+		<ul>
+			<li>
+				Tester must verify that a Subject Name with a valid and matching domain 
+				is accepted by the email client and that an invalid or not matching domain
+				is rejected by the client when using TLS.
+			</li>
+			<li>
+				Tester must verify the email client checks for the Server Authentication
+				OID of 1.3.6.1.5.5.7.3.1 in the certificate’s EKU when using TLS.
+			</li>
+			<li>
+				Tester must verify that a Subject Name or Subject Alternative Name with 
+				a valid and matching email address is accepted by the email client and that an 
+				invalid or not matching domain is not accept by the client when using S/MIME.
+			</li>
+			<li>
+				Tester must verify client checks for the Email Protection OID of
+				1.3.6.1.5.5.7.3.4 in the certificate’s EKU when using S/MIME
+			</li>
+			<li>
+				Tester must verify that expired and revoked server certificates are
+				rejected by the email client when using TLS and S/MIME..
+			</li>
+			<li>
+				Tester must verify that the email client checks validity of the certificate
+				using Online Certificate Status Protocol (OCSP) as specified in RFC 2560, or
+				Certificate Revocation List (CRL) as specified in RFC 5759.
+			</li>
+			<li>
+				Tester must verify the email client displays validity of the 
+				certificate to the user as a result of checking OCSP or CRL.
+			</li>
+		</ul>
+
+
+		<b>Objective: User Protection</b>
+		<p/>
+		There must be methods in place to protect the user from email-based attacks.
+		<p/>
+		Requirement
+		<ul>
+			<li>
+				The email client must display the complete URI for links in email messages.
+			</li>
+		</ul>
+		
+		<p/>
+		Assurance Activity
+		<ul>
+			<li>
+				Tester must send an email containing links and verify on the 
+				email client that it displays the same links as in the original email.
+			</li>
+		</ul>
+		
+
+		<p/>
+		Requirement
+		<ul>
+			<li>
+				The email client must be configurable so the user can prevent image downloads.
+			</li>
+		</ul>
+		
+		<p/>
+		Assurance Activity
+		<ul>
+			<li>
+				Tester must verify the email client developer has documented 
+				how to configure the method for preventing image downloads.
+			</li>
+			<li>
+				Tester must send an email containing images and verify on the 
+				email client that it did not render the images for that email 
+				when the client is configured to prevent image downloads.
+			</li>
+			<li>
+				Tester must verify using packet capture software or network 
+				monitoring software that the email client did not request the image from 
+				the system hosting the image when the client is configured to prevent image downloads.
+			</li>
+			<li>
+				Tester must verify the system that hosted the image does 
+				not show that the image has been downloaded in its access logs 
+				when the client is configured to prevent image downloads.
+			</li>
+		</ul>
+
+
+
+		<p/>
+		Requirement
+		<ul>
+			<li>
+				The email client must support viewing of messages in plain-text 
+				only format and must not automatically execute or render the 
+				results of embedded content when configured to display messages 
+				as plain-text only.
+			</li>
+		</ul>
+		
+		<p/>
+		Assurance Activity
+		<ul>
+			<li>
+				Tester must verify the email client developer has 
+				documented how to configure the method for viewing messages in plain-text only format.
+			</li>
+			<li>
+				Tester must send emails containing renderable content (e.g. 
+				HTML, Javascript, and other similar technologies) supported by 
+				the email client and verify on the email client that it did not render 
+				the content. The tester must verify the email client displays the
+				source code of the renderable content rather than executing it and rendering it.
+			</li>
+		</ul>
+
+
+		<p/>
+		Requirement
+		<ul>
+			<li>
+				Contact information stored on the email client should 
+				not be accessible from extensions.
+			</li>
+		</ul>
+		
+		<p/>
+		Assurance Activity
+		<ul>
+			<li>
+				Tester must verify the email client developer has documented 
+				their extension APIs related to contact information, if any exist,
+				and verify that no methods exist for accessing contact information 
+				from the extension APIs.
+			</li>
+		</ul>
+		
+		
+		<p/>
+		Requirement
+		<ul>
+			<li>
+				Calendar information stored on the email client 
+				should not be accessible from extensions. 
+			</li>
+		</ul>
+		
+		<p/>
+		Assurance Activity
+		<ul>
+			<li>
+				Tester must verify the email client developer has documented their 
+				extension APIs related to calendar information, if any exist,
+				and verify that no methods exist for accessing calendar information 
+				from the extension APIs.
+			</li>
+		</ul>
+
+
+		<b>Objective: Secure Storage on Client</b>
+		<p/>
+		The email client must encrypt email data and login credentials that are 
+		stored to the local disk using the platform security mechanism.
+		<p/>
+		Requirement
+		<ul>
+			<li>
+				Login credentials (certificates and passwords) used by the email client 
+				must be securely stored by the client or by the platform.
+			</li>
+			<li>
+				Platform secure storage mechanisms and cryptographic libraries 
+				must be used for login encryption and storage.
+			</li>
+			<li>
+				Encryption and storage mechanisms must meet DAR requirements.
+			</li>
+		</ul>
+		
+		<p/>
+		Assurance Activity
+		<ul>
+			<li>
+				Testers must verify that the email client developer has documented 
+				the methods used to encrypt and store login credentials.
+			</li>
+			<li>
+				Testers must verify that the login credential storage encryption 
+				satisfies DAR requirements.
+			</li>
+		</ul>
+		
+		<p/>
+		Requirement
+		<ul>
+			<li>
+				Email data should be encrypted when the screen is locked 
+				on a mobile device.
+			</li>
+		</ul>
+		
+		<p/>
+		Assurance Activity
+		<ul>
+			<li>
+				Testers must verify that the email client developer has 
+				documented the methods used to encrypt email data when the screen is locked.
+			</li>
+		</ul>
+		
+		
+
+		<b>Objective: Application Restrictions</b>
+		<p/>
+		The email client should have limited access to the operating system.
+		<p/>
+		Requirement
+		<ul>
+			<li>
+				Prevent extensions from reading and writing to file system 
+				locations to which they are not explicitly granted access.
+			</li>
+		</ul>
+		
+		<p/>
+		Assurance Activity
+		<ul>
+			<li>
+				Tester must verify vendor has documented file system 
+				locations that are accessible by their extension APIs.
+			</li>
+			<li>
+				Tester must use APIs to attempt to read and write to
+				file system locations that should not be accessible and 
+				verify the APIs fail their read or write operation.
+			</li>
+			<li>
+				Tester must verify extension file system usage activity 
+				by using file system activity monitoring tools.
+			</li>
+		</ul>
+	
+
 	</section>
 
 	<section title="Assumptions" id="assumptions">
-	  Simply put, this section presents the aspects of the product and 
-	  its	intended environment that can be assumed to hold true. This 
-	  will provide additional scope on the resulting PP.
-
-	  The following assumptions are made for the operating system product and its operational
-	  environment: <ul>
-			<li>The underlying platform is physically protected, to a large extent. The hardware
-				that the product manages is secured by defensive measures that make physical attacks
-				impractical for most attackers. At the same time, casual passersby might attempt to
-				trivially access the system. </li>
-			<li>The product implements some security-relevant functionality that does not require
-				evaluation (e.g., network time synchronization, process scheduling, and virtual
-				memory management including process separation). </li>
-			<li>Depending on configuration and capability, the product may or may not be: <ul>
-					<li>configuration-managed by the enterprise</li>
-					<li>bound to directory services to support multi-user login</li> </ul>
-			</li>
-			<li> The product runs application software developed by a third-party. The applications are
-				not intentionally developed to be malicious, but can contain inadvertent coding
-				errors. These errors introduce risk that control of an application may be seized by
-				a malicious entity. The product shall confine these applications within the originally
-				designated operating environment. </li>
-			<li>The platform is connected to a network. For purposes of sending/receiving data, to
-				include software updates, the platform is connected to other entities. Other
-				entities on the network are not inherently trustable. </li>
-			<li>Administrators are not malicious in nature.</li>
-			<li> Users are not malicious in nature, though they may inadvertently or intentionally engage in risky behavior. </li>
-		</ul>
+		<!--
+			Simply put, this section presents the aspects of the product and 
+			its	intended environment that can be assumed to hold true. This 
+			will provide additional scope on the resulting PP.
+		-->
+		
 	</section>
 
-
 	<section title="Optional Extensions" id="extensions"> 
-		Additional security functionality that may
-		be appropriate for some use cases, and can be expressed in extensions to this document,
-		includes: 
-		<ul>
-			<li></li>
-		</ul>
+		
 	</section>
 
 	<section title="Outside the TOE's Scope" id="outsidescope">
-	  <!--
+		<!--
 			This is where the authors explicitly state things they do not want 
 			to be considered for inclusion in an evaluation against a 
 			resulting PP.  Items expressed here could include threats, 
 			functions or capabilities that would require assurance activities 
 			that are too subjective, or specific expertise not available in the
 			evaluation facilities expected to assess products against the PP 
-	  -->
-		The following list contains items that are explicitly out-of-scope for any evaluation
-		against the product PP <ul>
-			<li>Malicious, Highly-Privileged Administrators - Highly-privileged administrators
-				acting maliciously can disable most, if not all, security protections on the product.
-				Additionally procedural controls that are out of scope of this document should be
-				considered to help highlight administrator accounts acting suspiciously.</li>
-			<li>Zero Days - The disclosure of recently published vulnerabilities (Zero Days) should
-				not be used as a reason to fail an product undergoing evaluation.</li>
-			<li>Unofficial Versions - Non-vendor supplied install images often contain added
-				functionality and may weaken the normal operating functionality of the product</li>
-			<li>Platform - The product PP shall not address the hardware or firmware of its underlying
-				platform to include the boot sequence before control is handed off to the product. That
-				the platform itself is virtual or physical is irrelevant to any evaluations. </li>
-			<li>Applications - The product PP shall not address applications that are not delivered as
-				part of the product installation process. </li>
-		</ul>
+			(e.g., assessing anti-tamper measures). 
+		-->
+		
 	</section>
 </ESR>
