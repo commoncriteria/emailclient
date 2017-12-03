@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
+<?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<PP xmlns="http://common-criteria.rhcloud.com/ns/cc" name="App+Email"
+    xmlns:h="http://www.w3.org/1999/xhtml">
+  
+  <PPReference title="PP Reference">
+    <ReferenceTable>
+      <PPTitle>PP-Configuration for Application Software and Email Clients</PPTitle>
+      <PPVersion>2.1</PPVersion>
+      <PPAuthor>National Information Assurance Partnership</PPAuthor>
+      <PPPubDate>2017-12-01</PPPubDate>
+      <PPCertificationID>unassigned</PPCertificationID>
+      <CCVersion>3.1R5</CCVersion>
+      <Keywords>Application, Email Client</Keywords>
+      <entry>
+        <name>Registration</name>
+        <description>National Information Assurance Partnership</description>
+      </entry>
+    </ReferenceTable>
+  </PPReference>
+  
+    <RevisionHistory role="draft">
+    <entry>
+      <version>2.1</version>
+      <date>2017-12-01</date>
+      <subject>Initial Release - version number chosen for consistency with the associated PP-Module</subject>
+    </entry>
+  </RevisionHistory>
+
+  <chapter title="Introduction" id="int">
+    <section title="Overview" id="ppoverview">
+The purpose of a PP-Configuration is to define a Target of Evaluation (TOE) that combines Protection Profiles (PPs) and PP-Modules for various technology types into a single configuration that can be evaluated as a whole. The scope of this PP-Configuration is to define a TOE that consists of a general-purpose software application that also provides email client functionality.
+<h:p/>
+The TOE will be defined by a combination of the components described in section 1.3. Specific instructions on how to ensure consistency between these components is described in section 2.3.
+</section>
+    <section title="PP-Configuration Reference" id="ppref">
+This PP-Configuration is identified as follows:
+<h:ul>
+<h:li>PP-Configuration for Application Software and Email Client, version 2.1, December 1, 2017</h:li>
+<h:li>As a shorthand reference, it can be identified as "App+Email PPC 2.1"</h:li>
+</h:ul>
+</section>
+<section title="PP-Configuration Components Statement" id="ppcomp">
+This PP-Configuration includes the following components:
+<h:ul>
+<h:li>Base-PP: Protection Profile for Application Software, Version 1.2 (App PP)</h:li>
+<h:li>PP-Module: PP-Module for Email Clients, Version 2.1 (Email Client Module)</h:li>
+</h:ul>
+</section>
+</chapter>
+
+<chapter title="Conformance Claims" id="conform">
+    <section title="CC Conformance" id="ccconform">
+<h:b>Conformance Statement</h:b>
+<h:p/>To be conformant to this PP-Configuration, an ST must demonstrate Exact Conformance, a subset of Strict Conformance as defined in [CC] Part 1 (ASE_CCL).
+<h:p/>The ST must include all components in the Base-PP that are:
+<h:ul>
+<h:li>Unconditional (which are always required)</h:li>
+<h:li>Selection-based (which are required when certain selections are chosen in the unconditional requirements)</h:li>
+</h:ul>
+<h:p/>and may include components that are
+<h:ul>
+<h:li>Optional</h:li>
+<h:li>Objective.</h:li>
+</h:ul>
+<h:p/>The same conditions apply to the PP-Module that is included as part of this PP-Configuration. Note however that this PP-Module may belong to multiple PP-Configurations and so there are some components that may not be applicable in all cases. Guidance on ensuring that the appropriate claims are made is provided in section 2.3 below. 
+<h:p/><h:b>CC Conformance Claims</h:b>
+<h:p/>This PP-Module is conformant to Parts 2 (extended) and 3 (extended) of Common Criteria Version 3.1, Revision 5 [CC].
+</section>
+<section title="SAR Statement" id="sar">
+In order to evaluate a TOE that claims conformance to this PP-Configuration, the evaluator shall evaluate the TOE against the following SARs that are defined in the Base-PP:
+
+<h:table align="center" border="1">
+<h:tr>
+<h:th style="background-color:rgb(217, 217, 217);">Assurance Class</h:th>
+<h:th style="background-color:rgb(217, 217, 217);">Assurance Components</h:th>
+</h:tr>
+<h:tr>
+<h:td rowspan="7">Security Target (ASE)</h:td>
+<h:td>ST Introduction (ASE_INT.1)</h:td>
+</h:tr>
+<h:tr>
+<h:td>Conformance Claims (ASE_CCL.1)</h:td>
+</h:tr>
+<h:tr>
+<h:td>Security Problem Definition (ASE_SPD.1)</h:td>
+</h:tr>
+<h:tr>
+<h:td>Security Objectives for the Operational Environment (ASE_OBJ.1)</h:td>
+</h:tr>
+<h:tr>
+<h:td>Extended Components Definition (ASE_ECD.1)</h:td>
+</h:tr>
+<h:tr>
+<h:td>Stated Security Requirements (ASE_REQ.1)</h:td>
+</h:tr>
+<h:tr>
+<h:td>TOE Summary Specification (ASE_TSS.1)</h:td>
+</h:tr>
+<h:tr>
+<h:td>Development (ADV)</h:td>
+<h:td>Basic Functional Specification (ADV_FSP.1)</h:td>
+</h:tr>
+<h:tr>
+<h:td rowspan="2">Guidance Documents (AGD)</h:td>
+<h:td>Operational User Guidance (AGD_OPE.1)</h:td>
+</h:tr>
+<h:tr>
+<h:td>Preparative Procedures (AGD_PRE.1)</h:td>
+</h:tr>
+<h:tr>
+<!-- Note the table auto-format wasn't making this the right color for some reason so we had to manually kludge it to be white instead of grey -->
+<h:td rowspan="3" style="background-color:rgb(255, 255, 255);">Life Cycle Support (ALC)</h:td>
+<h:td>Labeling of the TOE (ALC_CMC.1)</h:td>
+</h:tr>
+<h:tr>
+<h:td>TOE CM Coverage (ALC_CMS.1)</h:td>
+</h:tr>
+<h:tr>
+<h:td>Timely Security Updates (ALC_TSU_EXT.1)</h:td>
+</h:tr>
+<h:tr>
+<h:td style="background-color:rgb(242, 242, 242);">Tests (ATE)</h:td>
+<h:td>Independent Testing - Sample (ATE_IND.1)</h:td>
+</h:tr>
+<h:tr>
+<h:td style="background-color:rgb(255, 255, 255);">Vulnerability Assessment (AVA)</h:td>
+<h:td>Vulnerability Survey (AVA_VAN.1)</h:td>
+</h:tr>
+
+</h:table>
+
+<h:p/>Note that to fully evaluate the TOE, these SARs shall be applied to the entire TSF and not just the portions described by the Base-PP where the SARs are defined.
+<h:p/>In addition to this, both the Base-PP and the PP-Module define "Assurance Activities" for how to evaluate individual SFRs as they relate to the SARs for ASE_TSS.1, AGD_OPE.1, and ATE_IND.1. The Base-PP itself also provides Assurance Activities for the SARs. In evaluating this PP-Configuration, the evaluator shall ensure that all Assurance Activities for SFRs and SARs are evaluated as part of satisfying the required SARs. 
+</section>
+<section title="Consistency Rationale" id="consist">
+Fundamentally, the components included in this PP-Configuration are consistent because their use cases are not contradictory. The App PP defines functional capabilities that any application on a general-purpose computer can be expected to provide. The Email Client Module builds on this by defining functional capabilities that are specific to email clients. These email requirements do not prevent a conformant TOE from implementing all mandatory requirements of the App PP.
+
+The following guidance shall be adhered to for the claims made within the PP-configuration to be consistent.
+                <h:ul>
+                    <h:li>The ST shall include the mandatory SFRs from each of the PP-Configuration's components:</h:li>
+					<h:ul>
+						<h:li>Section 5.1 of the App PP</h:li>
+						<h:li>Section 5.1 of the Email EP</h:li>
+					</h:ul>
+					<h:li>The ST shall include the following optional and selection-based SFRs from the App PP:</h:li>
+					<h:ul>
+						<h:li>FCS_CKM.1(1)</h:li>
+						<h:li>FCS_CKM_EXT.1</h:li>
+						<h:li>FCS_CKM.2</h:li>
+						<h:li>FCS_COP.1(1)</h:li>
+						<h:li>FCS_COP.1(2)</h:li>
+						<h:li>FCS_COP.1(3)</h:li>
+						<h:li>FCS_COP.1(4)</h:li>
+						<h:li>FCS_TLSC_EXT.1</h:li>
+						<h:li>FIA_X509_EXT.1</h:li>
+						<h:li>FIA_X509_EXT.2</h:li>
+					</h:ul>
+					<h:li>The App PP SFRs shall include the following claims:</h:li>
+					<h:ul>
+						<h:li>FPT_DIT_EXT.1.1 in App PP shall include the selection "encrypt all transmitted sensitive data" and select TLS, at minimum</h:li>
+						<h:li>The ST author shall ensure that all claims made in FCS_CKM and/or FCS_COP are sufficient to address those required by the Email Client Module (for example, if the TOE provides its own hashing function, the claims made in FCS_COP.1(3) shall always include SHA-256 at minimum because it is required by FCS_SMIME_EXT.1.4).</h:li>
+					</h:ul>
+					<h:li>The Email Client Module does not mandate the inclusion or exclusion of any optional or selection-based SFRs to conform to this PP-Configuration.</h:li>
+                </h:ul>
+</section>
+</chapter>
+	</PP>
