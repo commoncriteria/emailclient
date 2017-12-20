@@ -35,7 +35,7 @@
     <entry>
       <version>v 2.0</version>
       <date>2015-06-18</date>
-      <subject>Application Software Extended Package for Email Clients</subject>
+      <subject>Application Software Module for Email Clients</subject>
     </entry>
     <entry>
       <version>v 1.0</version>
@@ -46,11 +46,10 @@
   <chapter title="Introduction" id="int">
     <section title="Overview" id="ppoverview">
       <h:p>
-	Email clients are user applications that providefunctionality to send, receive, access and manage email.
+      Email clients are user applications that provide functionality to send, receive, access and manage email.
       The complexity of email content and email clients has grown over time.
       Modern email clients can render HTML as well as plaintext,
-      and may include functionality to display common attachment formats, such as Adobe PDF and
-      Microsoft Word documents.
+      and may include functionality to display common attachment formats, such as Adobe PDF and  Microsoft Word documents.
       Some email clients allow their functionality to be modified by users through the addition of add-ons.
       Protocols have also been defined for communicating between email clients and servers.
       Some clients support multiple protocols for doing the same task,
@@ -88,14 +87,16 @@
         Evaluation.</description>
       </entry>
       <entry>
-        <term><abbr title="Extended Package">EP</abbr></term>
-        <description>An implementation-independent set of security requirements for a category
-        of products, which extends those in a Protection Profile.</description>
-      </entry>
-      <entry>
         <term><abbr title="Protection Profile">PP</abbr></term>
         <description>An implementation-independent set of security requirements for a category
         of products.</description>
+      </entry>
+      <entry>
+	<term><abbr title="Protection Profile Module">PP-Module</abbr></term>
+	<description>
+	  An implementation-independent set of security requirements for a specific
+	  subset of products described
+	</description>
       </entry>
       <entry>
         <term><abbr title="Security Target">ST</abbr></term>
@@ -178,27 +179,36 @@
   </section>
   <section title="Compliant Targets of Evaluation" id="TOEdescription">
     <h:p>
-      The Target of Evaluation  (TOE) in this <abbr linkend="EP"/> is an email client application running on a desktop or mobile operating system.
+      The Target of Evaluation  (TOE) in this <abbr linkend="PP-Module"/> is an email client application running on a desktop or mobile operating system.
     </h:p>
     <h:p>
-      This <abbr linkend="EP"/> describes the extended security  functionality of email clients in terms of <cite linkend="bibCC"/>.
-      As an extension of the App PP, it is expected that the content of this <abbr linkend="EP"/> will be appropriately combined with the App PP to include selection-based requirements in accordance with the
-  selections and/or assignments made, and any optional and/or objective components to include:
-  FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.2.*, FCS_TLSC_EXT.1.*, FIA_X509_EXT.1.*,
-  FIA_X509_EXT.2.*. 
+      This <abbr linkend="PP-Module"/> describes the extended security  functionality of email clients in terms of <cite linkend="bibCC"/>.
+      As an extension of the App PP, it is expected that the content of this <abbr linkend="PP-Module"/> will be appropriately combined with the App PP to include selection-based requirements in accordance with the
+      selections and/or assignments made, and any optional and/or objective components to include the following components at minimum:
+	  <h:ul>
+	    <h:li>FCS_CKM.1(1)</h:li>
+	    <h:li>FCS_CKM_EXT.1</h:li>
+	    <h:li>FCS_CKM.2</h:li>
+	    <h:li>FCS_COP.1(1)</h:li>
+	    <h:li>FCS_COP.1(2)</h:li>
+	    <h:li>FCS_COP.1(3)</h:li>
+	    <h:li>FCS_COP.1(4)</h:li>
+	    <h:li>FCS_TLSC_EXT.1</h:li>
+	    <h:li>FIA_X509_EXT.1</h:li>
+	    <h:li>FIA_X509_EXT.2</h:li>
+	  </h:ul>
     </h:p>
     <h:p>
-      An ST must identify the applicable version of the App PP and this <abbr linkend="EP"/> in its conformance claims.
+      An ST must identify the applicable version of the App PP and this <abbr linkend="PP-Module"/> in its conformance claims.
     </h:p>
   </section>
   <section title="Use Cases" id="usecases">Email clients perform tasks associated primarily with
-  the following use case. <usecases>
-  <usecase title="Sending, receiving, accessing, managing and displaying email" id="usecase1">
+  the following use case.
+  <usecases><usecase title="Sending, receiving, accessing, managing and displaying email" id="usecase1">
     <description>Email clients are used for sending, receiving, viewing, accessing, managing
     email in coordination with a mail server. Email clients can render HTML as well as
     plaintext, and can display common attachment formats. </description>
-  </usecase>
-</usecases>
+  </usecase></usecases>
   </section>
 </chapter>
 <chapter title="Conformance Claims" id="conf">
@@ -208,16 +218,16 @@
 	<h:p>
 	  The Protection Profile for Application Software (<cite linkend="bibAppPP"/>)
 	  defines the baseline Security Functional Requirements (SFRs) and Security Assurance
-	  Requirements (SARs) for application software products. This <abbr linkend="EP"/> serves to
+	  Requirements (SARs) for application software products. This <abbr linkend="PP-Module"/> serves to
 	  extend the App PP baseline with additional SFRs and associated Assurance Activities
 	  specific to an email client. Assurance Activities are the actions that the evaluator
 	  performs in order to determine an email client's compliance to the SFRs.
 	</h:p>
 	<h:p>
-      This <abbr linkend="EP"/> conforms to Common Criteria <cite linkend="bibCC"/> for Information
+      This <abbr linkend="PP-Module"/> conforms to Common Criteria <cite linkend="bibCC"/> for Information
       Technology Security Evaluation, Version 3.1, Revision 4. It is CC Part 2 extended and CC
-      Part 3 conformant. In order to be conformant to this <abbr linkend="EP"/>, the <abbr
-      linkend="ST"/> must include all components in this <abbr linkend="EP"/> and the
+      Part 3 conformant. In order to be conformant to this <abbr linkend="PP-Module"/>, the <abbr
+      linkend="ST"/> must include all components in this <abbr linkend="PP-Module"/> and the
       associated App PP that are: <h:ul><h:li>unconditional (which are always required)</h:li>
       <h:li>selection-based (which are required when certain selections are chosen in the
       unconditional requirements)</h:li>
@@ -238,9 +248,9 @@
   </h:p>
   <h:p>
     This Extended Package does not repeat the threats, assumptions, and organizational security policies identified in the App PP, though they all apply given the conformance and hence dependence of
-    this <abbr linkend="EP"/> on it.
+    this <abbr linkend="PP-Module"/> on it.
     Together the threats, assumptions and organizational security
-policies of the App PP and those defined in this <abbr linkend="EP"/> describe those addressed
+policies of the App PP and those defined in this <abbr linkend="PP-Module"/> describe those addressed
 by an email client as the Target of Evaluation.
   </h:p>
   <h:p>
@@ -703,7 +713,7 @@ functionality provided by the OS is consistent with the functionality required b
     Appendix A of SP 800-132 recommends setting the iteration
     count in order to increase the computation needed to derive a key from a password and,
     therefore, increase the workload of performing a password recovery attack. However,
-    for this <abbr linkend="EP"/>, a minimum iteration count of 4096 is required in order
+    for this <abbr linkend="PP-Module"/>, a minimum iteration count of 4096 is required in order
     to ensure that twelve bits of security is added to the password/passphrase value. A
     significantly higher value is recommended to ensure optimal security. 
   </h:p><h:p>
@@ -1499,23 +1509,23 @@ linkend="optional"/>, <appref linkend="sel-based"/>, and <appref linkend="object
 first type (in this Appendix) are requirements that can be included in the <abbr linkend="ST"/>,
 but are not required in order for an email client to claim conformance to this <abbr
 linkend="EP"/>. The second type (in <appref linkend="sel-based"/>) are requirements based on
-selections in the body of the <abbr linkend="EP"/>: if certain selections are made, then
+selections in the body of the <abbr linkend="PP-Module"/>: if certain selections are made, then
 additional requirements in that appendix must be included. The third type (in <appref
 linkend="objective"/>) are components that are not required in order to conform to this <abbr
 linkend="EP"/>, but will be included in the baseline requirements in future versions of this
-<abbr linkend="EP"/>, so adoption by vendors is encouraged. Note that the <abbr linkend="ST"/>
+<abbr linkend="PP-Module"/>, so adoption by vendors is encouraged. Note that the <abbr linkend="ST"/>
 author is responsible for ensuring that requirements that may be associated with those in
 <appref linkend="optional"/>, <appref linkend="sel-based"/>, and <appref linkend="objective"/>
 but are not listed (e.g., FMT-type requirements) are also included in the <abbr linkend="ST"/>. </appendix>
 <appendix title="Selection-Based Requirements" id="sel-based">As indicated in the introduction to
-this <abbr linkend="EP"/>, the baseline requirements (those that must be performed by the email
+this <abbr linkend="PP-Module"/>, the baseline requirements (those that must be performed by the email
 client or its underlying platform) are contained in the App PP and in the body of this <abbr
 linkend="EP"/>. There are additional requirements based on selections from the App PP and/or
-in the body of the <abbr linkend="EP"/>: if certain selections are made, then additional
+in the body of the <abbr linkend="PP-Module"/>: if certain selections are made, then additional
 requirements below will need to be included. </appendix>
 <appendix title="Objective Requirements" id="objective"> This Annex includes requirements that
 specify security functionality which also addresses threats. The requirements are not currently
-mandated in the body of this <abbr linkend="EP"/> as they describe security functionality not
+mandated in the body of this <abbr linkend="PP-Module"/> as they describe security functionality not
 yet widely-available in commercial technology. However, these requirements may be included in
 the <abbr linkend="ST"/> such that the email client is still conformant to this <abbr
 linkend="EP"/>, and it is expected that they be included as soon as possible.
