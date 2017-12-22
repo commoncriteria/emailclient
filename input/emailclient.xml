@@ -66,7 +66,7 @@
 	system.
       </h:p>
       <h:p>
-	This Extended Package (EP) along with the Protection Profile for Application
+	This Module along with the Protection Profile for Application
 	Software (<cite linkend="bibAppPP"/>) provide a baseline set of Security Functional
 	Requirements (SFRs) for email clients running on any operating system regardless of the
 	composition of the underlying platform.
@@ -312,24 +312,48 @@ linkend="EP"/>. <section title="Security Objectives for the TOE" id="SecurityObj
 </SOs>
 </section>
 </chapter>
-<chapter title="Security Requirements" id="req">This chapter describes the security requirements
-which have to be fulfilled by the email client. Those requirements comprise functional
-components from Part 2 of <cite linkend="bibCC"/>. The following notations are used: <h:ul>
-<h:li>
-  <h:b>Selection</h:b> (denoted by <h:i>italicized text</h:i>): is used to select one or more options
-provided by the [CC] in stating a requirement.</h:li>
-<h:li>
-  <h:b>Assignment</h:b> operation (denoted by <h:i>italicized text</h:i>): is used to assign a
-  specific value to an unspecified parameter, such as the length of a password. Showing the
-value in square brackets indicates assignment.</h:li>
-<h:li>
-  <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g.
-"(1)").</h:li>
-</h:ul>
-<section title="Security Functional Requirements" id="sfr">The Security Functional Requirements
-included in this section are derived from Part 2 of the Common Criteria for Information
-Technology Security Evaluation, Version 3.1, Revision 4, with additional extended functional
-components.
+<chapter title="Security Requirements" id="req">
+  <h:p>
+The Security Functional Requirements (SFRs) included in this section are derived from Part 2 of the
+Common Criteria for Information Technology Security Evaluation, Version 3.1, Revision 5, with additional extended functional components.
+  </h:p>
+  <h:p>
+The CC defines operations on Security Functional Requirements: assignments, selections, assignments
+within selections and refinements. This document uses the following font conventions to identify the
+operations defined by the CC: 
+
+    <h:ul>
+      <h:li>
+<h:b>Assignment</h:b> operation (denoted by <h:i>italicized text</h:i>): is used to assign a
+  specific value to an unspecified parameter, such as the length of a password. 
+  Showing the value in square brackets indicates assignment.
+      </h:li>
+      <h:li>
+<h:b>Refinement</h:b> is made by PP-Module author and indicated with bold text.
+      </h:li>
+      <h:li>
+<h:b>Selection</h:b> (denoted by <h:i>italicized text</h:i>): is used to select one or more options provided by the [CC] in stating a requirement.
+      </h:li>
+      <h:li>
+<h:b>Iteration</h:b> is indicated by appending the SFR name with a slash and unique 
+identifier suggesting the purpose of the iteration, e.g. ‘/VPN’ for an SFR relating 
+to VPN functionality and/or a sequential number in parentheses, e.g. (1).
+      </h:li>
+      <h:li>
+<h:b>Extended SFR</h:b> is identified by having a label “EXT” after the SFR name. 
+      </h:li>
+    </h:ul>
+  </h:p>
+  <h:p> 
+Note that selections and assignments to be completed by the ST author are preceded with “selection:” and “assignment:”.
+If text is italicized and does not include either of these, it means that the selection or assignment has already been completed in this PP-Module and the ST author must use the text as written. 
+  </h:p>
+
+<section title="APSO PP Security Functional Requirements Direction" id="sfr">
+The Email client is expected to rely on some of the security functions implemented by the application as a whole and evaluated against the Base-PP.
+The following sections describe any modifications that the ST author must make to the SFRs
+defined in the Base-PP in addition to what is mandated by section 5.4.
+
 <subsection title="Applicable Unmodified SFRs" id="unmod_sfrs">
   The SFRs listed in this section are defined in the Application Software PP and relevant to the secure operation of the email client.
 </subsection>
