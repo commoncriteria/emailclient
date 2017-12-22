@@ -68,13 +68,15 @@ Although Assurance Activities are defined mainly for the evaluators to follow, i
     </section>
 
 	<section title="Structure of the Document" id="structure">
+<h:p>
 	  Assurance Activities can be defined for both SFRs and Security Assurance Requirements (SAR). These are defined in separate sections of the SD.
-	  <h:br/>
+</h:p><h:p>
 If any Assurance Activity cannot be successfully completed in an evaluation then the overall verdict for the evaluation is a ‘fail’. In rare cases there may be acceptable reasons why an Assurance Activity may be modified or deemed not applicable for a particular TOE, but this must be agreed with the Certification Body for the evaluation. 
-<h:br/>
+</h:p><h:p>
 In general, if all Assurance Activities (for both SFRs and SARs) are successfully completed in an evaluation then it would be expected that the overall verdict for the evaluation is a ‘pass’. To reach a ‘fail’ verdict when the Assurance Activities have been successfully completed would require a specific justification from the evaluator as to why the Assurance Activities were not sufficient for that TOE. 
-<h:br/>
+</h:p><h:p>
 Similarly, at the more granular level of Assurance Components, if the Assurance Activities for an Assurance Component and all of its related SFR Assurance Activities are successfully completed in an evaluation then it would be expected that the verdict for the Assurance Component is a ‘pass’. To reach a ‘fail’ verdict for the Assurance Component when these Assurance Activities have been successfully completed would require a specific justification from the evaluator as to why the Assurance Activities were not sufficient for that TOE. 
+</h:p>
 	</section>
 
     <section title="Terminology" id="terminology">
@@ -215,6 +217,7 @@ The evaluator shall ensure that the selections indicated in the ST are consisten
 <section title="Cryptographic Support (FCS)" id="mandatory_fcs"> 
   <subsection title="Secure/Multipurpose Internet Mail Extensions (S/MIME) (FCS_SMIME_EXT)" stopindex="on" id="fcs_smime_ext">
 <subsection title="FCS_SMIME_EXT.1 Secure/Multipurpose Internet Mail Extensions (S/MIME)" id="FCS_SMIME_EXT.1">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall verify that the version of S/MIME implemented by the email client is present in the TSS. The evaluator shall also verify that the algorithms supported are specified, and that the algorithms specified are those listed for this component.
 <h:br/>The evaluator shall verify that the TSS describes the ContentEncryptionAlgorithmIdentifier and whether the required behavior is performed by default or may be configured.
@@ -239,39 +242,48 @@ The evaluator shall ensure that the selections indicated in the ST are consisten
 <h:br/>Test 7: The evaluator shall send the email client a message signed by a certificate without the digitalSignature bit set. The evaluator shall verify that the email client notifies the user that the signature is invalid.
 <h:br/>Test 8: The evaluator shall send the email client a message signed by a certificate without the Email Protection purpose in the extendedKeyUsage. The evaluator shall verify that the email client notifies the user that the signature is invalid.
 <h:br/>Test 9: The evaluator shall verify that the email client uses OCSP or downloads the CRL at the assigned frequency.
+  </aactivity>
 </subsection>
 </subsection>
 
 <subsection title="Cryptographic Key Management (FCS_CKM_EXT)" stopindex="on">
 <subsection title="FCS_CKM_EXT.3 Protection of Key and Key Material" id="FCS_CKM_EXT.3">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall verify the TSS for a high level description of method used to protect keys stored in nonvolatile memory.
 <h:br/>The evaluator shall verify the TSS to ensure it describes the storage location of all keys and the protection of all keys stored in nonvolatile memory. The description of the key chain shall be reviewed to ensure FCS_COP_EXT.2 is followed for the storage of wrapped or encrypted keys in nonvolatile memory and plaintext keys in nonvolatile memory meet one of the criteria for storage.
+  </aactivity>
 </subsection>
 
 <subsection title="FCS_CKM_EXT.4 Cryptographic Key Destruction" id="FCS_CKM_EXT.4">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>If the platform provides the key destruction, then the evaluator shall examine the TSS to verify that it describes how the key destruction functionality is invoked.
 <h:br/>If the application invokes key destruction, the evaluator shall check to ensure the TSS describes each of the secret keys (keys used for symmetric encryption and/or data authentication), private keys, and CSPs used to generate key; when they are zeroized (for example, immediately after use, on system shutdown, etc.); and the type of zeroization procedure that is performed (overwrite with zeros, overwrite three times with random pattern, etc.). If different types of memory are used to store the materials to be protected, the evaluator shall check to ensure that the TSS describes the zeroization procedure in terms of the memory in which the data are stored (for example, "secret keys stored on a drive are zeroized by overwriting once with zeros, while secret keys stored on the internal hard drive are zeroized by overwriting three times with a random pattern that is changed before each write").
 <h:br/><h:i>Test</h:i>
 <h:br/>The following test is only for key destruction provided by the email client:
 <h:br/>Test 1: For each type of authorization service, encryption mode and encryption operation, a known authorization factor, and chain of keys must be provided to the evaluator with an associated ciphertext data set (e.g. if a passphrase is used to create a intermediate key, then the ciphertext containing the encrypted key as well as the intermediate key itself must be provided to the evaluator.) The evaluator will use the email client in conjunction with a debugging or forensics utility to attempt to authorize themselves, resulting in the generation of a key or decryption of a key. The evaluator will ascertain from the TSS what the vendor defines as "no longer needed" and execute the sequence of actions via the email client to invoke this state. At this point, the evaluator should take a dump of volatile memory and search the retrieved dump for the provided authorization credentials or keys (e.g. if the password was "PaSSw0rd", perform a string search of the forensics dump for "PaSSw0rd"). The evaluator must document each command, program or action taken during this process, and must confirm that no plaintext keying material resides in volatile memory. The evaluator must perform this test three times to ensure repeatability. If during the course of this testing the evaluator finds that keying material remains in volatile memory, they should be able to identify the cause (i.e. execution of the grep command for "PaSSw0rd" caused a false positive) and document the reason for failure to comply with this requirement. The evaluator will repeat this same test, but looking for keying material in nonvolatile memory.
+  </aactivity>
 </subsection>
 </subsection>
 
 <subsection title="Cryptographic Key Chaining (FCS_KYC_EXT)" stopindex="on">
 <subsection title="FCS_KYC_EXT.1 Key Chaining" id="FCS_KYC_EXT.1">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall verify the TSS* describes a high level description of the key hierarchy for all authorizations methods that are used to protect the encryption keys. The evaluator shall examine the TSS to ensure it describes the key chain in detail. The description of the key chain shall be reviewed to ensure it maintains a chain of keys using key wrap that meets FCS_COP_EXT.2. The evaluator shall verify the TSS* to ensure that it describes how the key chain process functions, such that it does not expose any material that might compromise any key in the chain. A high-level description should include a diagram illustrating the key hierarchy implemented and detail where all keys and keying material is stored or what it is derived from. The evaluator shall examine the key hierarchy to ensure that at no point the chain could be broken without a cryptographic exhaust or knowledge of the key within the chain and the effective strength of the data encryption key is maintained throughout the key chain.
 <h:br/>*If necessary, this information could be contained in a proprietary document and not appear in the TSS.
+  </aactivity>
 </subsection>
 </subsection>
 
 <subsection title="Initialization Vector Generation (FCS_IVG_EXT)" stopindex="on">
 <subsection title="FCS_IVG_EXT.1 Initialization Vector Generation" id="FCS_IVG_EXT.1">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall ensure the TSS describes how IVs and tweaks are handled (based on the AES mode). The evaluator shall confirm that the IVs and tweaks meet the stated requirements.
 <h:br/>If the platform provides the IV generation, then the evaluator shall examine the TSS to verify that it describes how the IV generation is invoked.
+  </aactivity>
 </subsection>
 </subsection>
 
@@ -280,6 +292,7 @@ The evaluator shall ensure that the selections indicated in the ST are consisten
 <section title="User Data Protection (FDP)" id="mandatory_fdp"> 
 <subsection title="Notification (FDP_NOT_EXT)" stopindex="on">
 <subsection title="FDP_NOT_EXT.1 Notification of S/MIME Status" id="FDP_NOT_EXT.1">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall ensure that the TSS describes notifications of S/MIME status, including whether S/MIME status is also indicated upon viewing a list of emails.
 <h:br/><h:i>AGD</h:i>
@@ -292,17 +305,20 @@ The evaluator shall ensure that the selections indicated in the ST are consisten
 <h:li>Test 3: The evaluator shall send the client a valid signed email and verify that the signed notification is present upon viewing.</h:li>
 <h:li>Test 4: The evaluator shall send the client an invalid signed email (for example, using a certificate that does not contain the correct email address or a certificate that does not chain to the root store) and verify that the invalid signature notification is present upon viewing.</h:li>
 </h:ul>
+  </aactivity>
 </subsection>
 </subsection>
 
 <subsection title="S/MIME (FDP_SMIME_EXT)" stopindex="on">
 <subsection title="FDP_SMIME_EXT.1 S/MIME" id="FDP_SMIME_EXT.1">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall verify that the TSS contains a description of the S/MIME implementation and its use to protect mail from undetected modification using digital signatures and unauthorized disclosure using encryption. The evaluator shall verify that the TSS describes whether signature verification and decryption occur at receipt or viewing of the message contents, and whether messages are stored with their S/MIME envelopes.
 <h:br/><h:i>AGD</h:i>
 <h:br/>The evaluator shall ensure that the AGD guidance includes instructions for configuring a certificate for S/MIME use and instructions for signing and encrypting email.
 <h:br/><h:i>Test</h:i>
 <h:br/>Tests for this element are performed in conjunction with tests for FCS_SMIME_EXT.1 and FDP_NOT_EXT.1
+  </aactivity>
 </subsection>
 </subsection>
 </section>
@@ -311,6 +327,7 @@ The evaluator shall ensure that the selections indicated in the ST are consisten
 
 <subsection title="X.509 Certificate Handling (FIA_X509_EXT)" stopindex="on">
 <subsection title="FIA_X509_EXT.3 X.509 Authentication and Encryption" id="FIA_X509_EXT.3">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall check the TSS to ensure that it describes how the email client chooses which certificates to use so that the email client can use the certificates.
 <h:br/>The evaluator shall examine the TSS to confirm that it describes the behavior of the email client when a connection cannot be established during the validity check of a certificate used in establishing a trusted channel and protecting email.
@@ -322,6 +339,7 @@ The evaluator shall ensure that the selections indicated in the ST are consisten
 <h:li>Test 1: The evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1 in <cite linkend="bibApp"/> that requires the use of certificates. The evaluator shall demonstrate that using a certificate without a valid certification path results in the function failing. The evaluator shall then load into the platform's root store any certificates needed to validate the certificate to be used in the function, and demonstrate that the function succeeds.</h:li> 
 <h:li>Test 2: The evaluator shall demonstrate that using a valid certificate that requires certificate validation checking to be performed in at least some part by communicating with a nonTOE IT entity. The evaluator shall then manipulate the environment so that the email client is unable to verify the validity of the certificate, and observe that the action selected in FIA_X509_EXT.2.2 in <cite linkend="bibApp"/> is performed. If the selected action is administratorconfigurable, then the evaluator shall follow the operational guidance to determine that all supported administrator configurable options behave in their documented manner.</h:li>
 </h:ul>
+  </aactivity>
 </subsection>
 </subsection>
 </section>
@@ -330,6 +348,7 @@ The evaluator shall ensure that the selections indicated in the ST are consisten
 
 <subsection title="Management of Functions Behavior (FMT_MOF_EXT)" stopindex="on">
 <subsection title="FMT_MOF_EXT.1 Management of Functions Behavior" id="FMT_MOF_EXT.1">
+  <aactivity>
 The assurance activities for this component will be driven by the selections made by the ST author. If a capability is not selected in the ST, the noted assurance activity does not need to be performed. 
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall verify that the TSS describes those management functions which may only be configured by the email client platform administrator and cannot be overridden by the user when set according to policy.
@@ -347,6 +366,7 @@ The assurance activities for this component will be driven by the selections mad
 <h:li>Test 2: The evaluator shall set management functions which are controlled by the (enterprise) administrator and cannot be overridden by the user. The evaluator shall apply these functions to the client, attempt to override each setting as the user, and ensure that the email client does not permit it.</h:li>
 <h:li>Test 3: Disable Key Recovery: If the email client provides key recovery capability, then the evaluator shall devise a test that ensures that the key recovery capability has been or can be disabled following the guidance provided by the vendor</h:li>
 </h:ul>
+  </aactivity>
 </subsection>
 </subsection>
 </section>
@@ -355,6 +375,7 @@ The assurance activities for this component will be driven by the selections mad
 
 <subsection title="Add-On Support (FPT_AON_EXT)" stopindex="on">
 <subsection title="FPT_AON_EXT.1 Support for Only Trusted Add-Ons" id="FPT_AON_EXT.1">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall verify that the TSS describes whether the email client is capable of loading trusted add-ons.
 <h:br/><h:i>AGD</h:i>
@@ -364,6 +385,7 @@ The assurance activities for this component will be driven by the selections mad
 <h:ul>
 <h:li>Test 1: The evaluator shall create or obtain an untrusted add-on and attempt to load it. The evaluator shall verify that the untrusted add-on is rejected and cannot be loaded.</h:li>
 </h:ul>
+  </aactivity>
 </subsection>
 </subsection>
 </section>
@@ -372,6 +394,7 @@ The assurance activities for this component will be driven by the selections mad
 
 <subsection title="Inter-TSF Trusted Channel (FTP_ITC_EXT)" stopindex="on">
 <subsection title="FTP_ITC_EXT.1 Inter-TSF Trusted Channel" id="FTP_ITC_EXT.1">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall examine the TSS to determine that it describes the details of the email client connecting to a Mail Transfer Agent in terms of the trusted connection (i.e., TLS) according to FTP_DIT_EXT.1 in <cite linkend="bibApp"/>, along with email client-specific options or procedures that might not be reflected in the specification.
 <h:br/><h:i>AGD</h:i>
@@ -383,6 +406,7 @@ The assurance activities for this component will be driven by the selections mad
 <h:li>Test 2: The evaluators shall ensure that the email client is able to initiate communications with a Mail Transfer Agent using SMTP and any assigned protocols specified in the requirement over TLS, setting up the connections as described in the operational guidance and ensuring that communication is successful.</h:li>
 <h:li>Test 3: The evaluator shall ensure, for each communication channel with an authorized IT entity in tests 1 and 2, the channel data is not sent in plaintext. To perform this test, the evaluator shall use a sniffer and a packet analyzer. The packet analyzer must indicate that the protocol in use is TLS.</h:li>
 </h:ul>
+  </aactivity>
 </subsection>
 </subsection>
 </section>
@@ -393,6 +417,7 @@ The assurance activities for this component will be driven by the selections mad
 
 <subsection title="Cryptographic Key Management (FCS_CKM_EXT)" stopindex="on">
 <subsection title="FCS_CKM_EXT.5 Cryptographic Key Derivation (Password/Passphrase Conditioning)" id="FCS_CKM_EXT.5">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluators shall check the TSS section to determine that it specifies that a capability exists to accept passwords/passphrases with the minimum number of characters specified in the ST in this assignment statement.
 <h:br/>The evaluator shall examine the password hierarchy TSS to ensure that the formation of all keys is described and that the key sizes match that described by the ST author. The evaluator shall check that the TSS describes the method by which the password/passphrase is first encoded and then fed to the SHA algorithm. The settings for the algorithm (padding, blocking, etc.) shall be described, and the evaluator shall verify that these are supported by the selections in this component as well as the selections concerning the hash function itself. The evaluator shall verify that the TSS contains a description of how the output of the hash function is used to form the submask that will be input into the function. For the NIST SP 800132based conditioning of the password/passphrase, the required assurance activities will be performed when doing the assurance activities for the appropriate requirements (FCS_COP.1.1(4) in <cite linkend="bibApp"/>). If any manipulation of the key is performed in forming the submask that will be used to form the key, that process shall be described in the TSS. No explicit testing of the formation of the submask from the input password is required.
@@ -406,18 +431,23 @@ The assurance activities for this component will be driven by the selections mad
 <h:li>Test 3: If the email client supports a password/passphrase length up to a maximum number of characters, n (which would be greater than 64), then ensure that the email client will not accept more than n characters. Conditioning: No explicit testing of the formation of the authorization factor from the input password/passphrase is required.</h:li>
 </h:ul>
 <h:br/>The evaluator shall verify that the iteration count for PBKDFs performed by the email client comply with NIST SP 800132 by ensuring that the TSS contains a description of the estimated time required to derive key material from passwords and how the email client increases the computation time for passwordbased key derivation (including but not limited to increasing the iteration count).
+  </aactivity>
 </subsection>
 </subsection>
 
 <subsection title="Cryptographic Salt Generation (FCS_SAG_EXT)" stopindex="on">
 <subsection title="FCS_SAG_EXT.1 Cryptographic Salt Generation" id="FCS_SAG_EXT.1">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall ensure the TSS describes how salts are generated. The evaluator shall confirm that the salt is generated using an described in FCS_RBG_EXT.1 in <cite linkend="bibApp"/> or by the Operational Environment. If external function is used for this purpose, the TSS should include the specific API that is called with inputs.
 <h:br/>If the email client is relying on random bit generation from the host platform, the evaluator shall verify the TSS includes the name/manufacturer of the external RBG and describes the function call and parameters used when calling the external DRBG function. If different external RBGs are used for different platforms, the TSS identifies each RBG for each platform. Also, the TSS includes a short description of the vendor's assumption for the amount of entropy seeding the external DRBG.
+  </aactivity>
 </subsection>
 <subsection title="FCS_NOG_EXT.1 Cryptographic Nonce Generation" id="FCS_NOG_EXT.1">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall ensure the TSS describes how nonces are created uniquely.
+  </aactivity>
 </subsection>
 </subsection>
 </section>
@@ -426,6 +456,7 @@ The assurance activities for this component will be driven by the selections mad
 
 <subsection title="Notification (FDP_NOT_EXT)" stopindex="on">
 <subsection title="FDP_NOT_EXT.2 Notification of URI" id="FDP_NOT_EXT.2">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall verify that the TSS includes a description of how embedded links are rendered and the method by which the URI of the link is displayed.
 <h:br/><h:i>AGD</h:i>
@@ -435,11 +466,13 @@ The assurance activities for this component will be driven by the selections mad
 <h:ul>
 <h:li>Test 1: The evaluator shall send the client an HTML message with an embedded link whose tag is not the URI itself (for example, "click here"). The evaluator shall view the message and, following the instructions in the AGD guidance, verify that the full URI of the embedded link is displayed.</h:li>
 </h:ul>
+  </aactivity>
 </subsection>
 </subsection>
 
 <subsection title="Storage of Persistent Information (FPT_PST_EXT)" stopindex="on">
 <subsection title="FDP_PST_EXT.1 Storage of Persistent Information" id="FDP_PST_EXT.1">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall examine the TSS to determine that it describes all persistent information stored on the platform, and the locations on the platform where these data are stored. The evaluator shall confirm that the persistent data described is limited to the data identified in the selection.
 <h:br/><h:i>Test</h:i>
@@ -447,11 +480,13 @@ The assurance activities for this component will be driven by the selections mad
 <h:ul>
 <h:li>Test 1: The evaluator shall operate the email client so that several messages, signed, encrypted, and unsigned, are processed. The evaluator shall also exercise functionality such as moving messages to folders, writing unsent drafts of messages, etc., as provided by the client. The evaluator shall then examine the client platform to determine that the only persistent information stored is that identified in the TSS.</h:li>
 </h:ul>
+  </aactivity>
 </subsection>
 </subsection>
 
 <subsection title="Rendering of Message Content (FDP_REN_EXT)" stopindex="on">
 <subsection title="FDP_REN_EXT.1 Rendering of Message Content" id="FDP_REN_EXT.1">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall ensure that the TSS describes plaintext only mode for sending and receiving messages. The evaluator shall verify that the TSS describes whether the email client is capable of rendering and executing HTML or JavaScript. If the email client can render or execute HTML or JavaScript, this description must indicate how the email client handles received messages that contain HTML or JavaScript while in plaintext only mode, and the evaluator shall ensure that the description indicates that embedded objects of these types are not rendered or executed and images/external resources are not automatically downloaded.
 <h:br/><h:i>AGD</h:i>
@@ -462,6 +497,7 @@ The assurance activities for this component will be driven by the selections mad
 <h:li>Test 1: If HTML is selected in FDP_REN_EXT.1.1, the evaluator shall send a message to the client containing HTML embedded objects and shall verify that the HTML renders. The evaluator shall then enable plaintext only mode and verify that the HTML does not render.</h:li>
 <h:li>Test 2: If JavaScript is selected in FDP_REN_EXT.1.1, the evaluator shall send a message to the client containing JavaScript embedded objects and shall verify that the JavaScript renders and executes. The evaluator shall then enable plaintext only mode and verify that the JavaScript does not render or execute.</h:li>
 </h:ul>
+  </aactivity>
 </subsection>
 </subsection>
 </section>
@@ -472,12 +508,16 @@ The assurance activities for this component will be driven by the selections mad
 
 <subsection title="Cryptographic Operation (FCS_COP_EXT)" stopindex="on">
 <subsection title="FCS_COP_EXT.2 Key Wrapping" id="FCS_COP_EXT.2">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall examine the TSS to ensure there is a high-level description of how the key is protected and meets the appropriate specification.
+  </aactivity>
 </subsection>
 <subsection title="FCS_SMC_EXT.1 Key Combining" id="FCS_SMC_EXT.1">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>If keys are XORed together to form an intermediate key, the TSS section shall identify how this is performed (e.g., if there are ordering requirements, checks performed, etc.). The evaluator shall also confirm that the TSS describes how the length of the output produced is at least the same as that of the data encryption key.
+  </aactivity>
 </subsection>
 </subsection>
 </section>
@@ -486,6 +526,7 @@ The assurance activities for this component will be driven by the selections mad
 <subsection title="Simple Authentication and Security Layer (FIA_SASL_EXT)" stopindex="on">
 <subsection title="FIA_SASL_EXT.1 Simple Authentication and Security Layer (SASL)" id="FIA_SASL_EXT.1">
 <h:i>TSS</h:i>
+<aactivity>
 <h:br/>The evaluator shall examine the TSS to determine that it describes the details of the email client connecting to a Mail Transfer Agent in terms of the SASL connection, along with email clientspecific options or procedures that might not be reflected in the specification.
 <h:br/><h:i>AGD</h:i>
 <h:br/>The evaluator shall confirm that the operational guidance contains instructions for establishing the connection to the Mail Transfer Agent.
@@ -495,6 +536,7 @@ The assurance activities for this component will be driven by the selections mad
 <h:li>Test 1: The evaluators shall ensure that the email client is able to initiate communications using POP, IMAP and SMTP and requiring SASL, setting up the connections as described in the operational guidance and ensuring that communication is successful.</h:li>
 <h:li>Test 2: The evaluator shall ensure, for each communication channel with an authorized IT entity in tests 1, that a valid SASL handshake is performed. To perform this test, the evaluator shall use a sniffer and a packet analyzer. The packet analyzer must indicate that the protocol in use is SASL.</h:li>
 </h:ul>
+</aactivity>
 </subsection>
 </subsection>
 </section>
@@ -502,6 +544,7 @@ The assurance activities for this component will be driven by the selections mad
 <section title="Protection of the TSF (FPT)" id="selection_fpt"> 
 <subsection title="Add-On Support (FPT_AON_EXT)" stopindex="on">
 <subsection title="FPT_AON_EXT.2 Trusted Installation and Update for Add-ons" id="FPT_AON_EXT.2">
+  <aactivity>
 <h:i>TSS</h:i>
 <h:br/>The evaluator shall examine the TSS to verify that it states that the email client will reject add-ons from untrusted sources.
 <h:br/><h:i>AGD</h:i>
@@ -513,6 +556,7 @@ The assurance activities for this component will be driven by the selections mad
 <h:li>Test 2: The evaluator shall create or obtain an add-on signed with an invalid certificate and attempt to install it. The evaluator shall verify that the signed addon is rejected and cannot be installed.</h:li>
 <h:li>Test 3: The evaluator shall create or obtain an add-on signed by a trusted source, modify the addon without resigning it, and attempt to install it. The evaluator shall verify that the signed add-on is rejected and cannot be installed.</h:li>
 </h:ul>
+  </aactivity>
 </subsection>
 </subsection>
 </section>
