@@ -3,7 +3,7 @@
 <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCModule.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <PP xmlns="https://niap-ccevs.org/cc/v1"
     xmlns:h="http://www.w3.org/1999/xhtml"
-    name="Email Clients">
+    name="Email Client" plural-suffix="s">
   <PPReference title="PP Reference" id="ID003">
     <ReferenceTable>
       <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
@@ -19,7 +19,7 @@
       </entry>
     </ReferenceTable>
   </PPReference>
-  <RevisionHistory role="draft">
+  <RevisionHistory>
     <entry>
       <version>v 1.0</version>
       <date>2014-04-01</date>
@@ -32,7 +32,7 @@
       Software</subject>
     </entry>
   </RevisionHistory>
-  <RevisionHistory role="final">
+  <RevisionHistory>
     <entry>
       <version>v 2.0</version>
       <date>2015-06-18</date>
@@ -79,8 +79,9 @@
     <figure id="mua_mta" entity="images/mua_mta.png" max-width="inherit"
             title="Sending and Delivering Email over TLS"/>
     </section>
-    <section id="glossary" title="Terms">The following sections provide both Common Criteria and
-    technology terms used in this Extended Package.
+    <section id="glossary" title="Terms">
+
+      The following sections provide both Common Criteria and technology terms used in this Extended Package.
     <glossary>
       <entry>
         <term><abbr title="Common Criteria">CC</abbr></term>
@@ -380,7 +381,7 @@ functionality provided by the OS is consistent with the functionality required b
   This section lists additional SFRs that must be added to the TOE boundary.
 
 <subsection title="Cryptographic Support (FCS)" id="fcs">
-  <f-component id="fcs_smime_ext.1" name="Secure/Multipurpose Internet Mail Extensions (S/MIME)" status="threshold">
+  <f-component id="fcs_smime_ext.1" name="Secure/Multipurpose Internet Mail Extensions (S/MIME)">
   <f-element id="fcs_smime_ext.1.1">
     <title>The email client shall implement both a sending and receiving S/MIME v3.2 Agent
     as defined in RFC 5751, using CMS as defined in RFCs 5652, 5754, and 3565. </title>
@@ -452,7 +453,7 @@ functionality provided by the OS is consistent with the functionality required b
     but is covered in FIA_X509 and FMT_MOF. </note>
   </f-element>
 </f-component>
-<f-component id="fcs_ckm_ext.3" name="Protection of Key and Key Material" status="threshold">
+<f-component id="fcs_ckm_ext.3" name="Protection of Key and Key Material">
   <f-element id="fcs_ckm_ext.3.1">
     <title>The email client shall
     <selectables>
@@ -468,7 +469,7 @@ functionality provided by the OS is consistent with the functionality required b
 	  </selectable>
 	  <selectable>The plaintext key will no longer provide access to the encrypted
 	  data after initial provisioning </selectable>
-	  <selectable>
+	  <selectable id="ckm_keysplit">
 	    The plaintext key is a key split that is combined as specified in
 	    <linkref linkend="FCS_SMC_EXT.1"/>, and the other half of the key split is
 	    either
@@ -497,7 +498,7 @@ functionality provided by the OS is consistent with the functionality required b
     wrapping or encryption on keys that have already been protected. </note>
   </f-element>
 </f-component>
-<f-component id="fcs_ckm_ext.4" name="Cryptographic Key Destruction" status="threshold">
+<f-component id="fcs_ckm_ext.4" name="Cryptographic Key Destruction">
   <f-element id="fcs_ckm_ext.4.1">
     <title>The email client shall <selectables linebreak="yes">
     <selectable>invoke platform-provided key destruction</selectable>
@@ -601,8 +602,8 @@ functionality provided by the OS is consistent with the functionality required b
   </f-element>
 </f-component>
 <f-component id="fcs_cop_ext.2" name="Key Wrapping" status="sel-based">
-  <selection-depends req="fcs_kyc_ext.1.1"/>
-  <selection-depends req="fcs_ckm_ext.3.1"/>
+  <selection-depends req="fcs_kyc_ext.1.1" ids="implkeywrap"/>
+  <selection-depends req="fcs_ckm_ext.3.1" ids=""/>
   <f-element id="fcs_cop_ext.2.1">
     <title>The email client shall <selectables linebreak="yes">
     <selectable>use platform-provided functionality to perform Key Wrapping</selectable>
@@ -642,7 +643,7 @@ functionality provided by the OS is consistent with the functionality required b
     the last selection should be used to select the appropriate reference(s). </note>
   </f-element>
 </f-component>
-<f-component id="fcs_kyc_ext.1" name="Key Chaining" status="threshold">
+<f-component id="fcs_kyc_ext.1" name="Key Chaining">
   <f-element id="fcs_kyc_ext.1.1">
     <title> The email client shall maintain a key chain of: 
     <selectables linebreak="yes">
@@ -665,10 +666,8 @@ functionality provided by the OS is consistent with the functionality required b
       <selectable>utilization of the platform key storage</selectable>
       <selectable>utilization of platform key storage that performs key wrap with a
       TSF provided key</selectable>
-      <selectable>implement key wrapping as specified in <linkref
-      linkend="FCS_COP_EXT.2"/></selectable>
-      <selectable>implement key combining as specified in <linkref
-      linkend="FCS_SMC_EXT.1"/></selectable>
+      <selectable id="implkeywrap">implement key wrapping as specified in <linkref linkend="FCS_COP_EXT.2"/></selectable>
+      <selectable id="implkeycomb">implement key combining as specified in <linkref linkend="FCS_SMC_EXT.1"/></selectable>
     </selectables>
     while maintaining an effective strength of 
     <selectables linebreak="yes">
@@ -684,8 +683,8 @@ functionality provided by the OS is consistent with the functionality required b
   </f-element>
 </f-component>
 <f-component id="fcs_smc_ext.1" name="Key Combining" status="sel-based">
-  <selection-depends req="fcs_kyc_ext.1.1"/>
-  <selection-depends req="fcs_ckm_ext.3.1"/>
+  <selection-depends req="fcs_kyc_ext.1.1" ids="implkeycomb"/>
+  <selection-depends req="fcs_ckm_ext.3.1" ids="ckm_keysplit"/>
   <f-element id="fcs_smc_ext.1.1">
     <title>The email client shall combine submasks using the following method <selectables
     linebreak="yes">
@@ -715,7 +714,7 @@ functionality provided by the OS is consistent with the functionality required b
     <note role="application">Nonces must be unique. </note>
   </f-element>
 </f-component>
-<f-component id="fcs_ivg_ext.1" name="Initialization Vector Generation" status="threshold">
+<f-component id="fcs_ivg_ext.1" name="Initialization Vector Generation">
   <f-element id="fcs_ivg_ext.1.1">
     <title>The email client shall create IVs in the following manner: <selectables
     linebreak="yes">
@@ -733,7 +732,7 @@ functionality provided by the OS is consistent with the functionality required b
 </f-component>
 </subsection>
 <subsection title="User Data Protection (FDP)" id="fdp">
-  <f-component id="fdp_not_ext.1" name="Notification of S/MIME Status" status="threshold">
+  <f-component id="fdp_not_ext.1" name="Notification of S/MIME Status">
     <f-element id="fdp_not_ext.1.1">
       <title>The email client shall display a notification of the S/MIME status of received
       emails upon viewing.</title>
@@ -786,7 +785,7 @@ functionality provided by the OS is consistent with the functionality required b
       supports plaintext only mode, no embedded content types should be selected.</note>
     </f-element>
   </f-component>
-  <f-component id="fdp_smime_ext.1" name="S/MIME" status="threshold">
+  <f-component id="fdp_smime_ext.1" name="S/MIME">
     <f-element id="fdp_smime_ext.1.1">
       <title>The email client shall use S/MIME to sign, verify, encrypt, and decrypt
       mail.</title>
@@ -800,7 +799,7 @@ functionality provided by the OS is consistent with the functionality required b
 </subsection>
 <subsection title="Identification and Authentication (FIA)" id="fia">
   <f-component id="fia_sasl_ext.1" name="Simple Authentication and Security Layer (SASL)" status="sel-based">
-    <selection-depends req="FTP_ITC_EXT.1.2"/>
+    <selection-depends req="FTP_ITC_EXT.1.2" ids="saslimap,saslsmtp,saslpop"/>
     <f-element id="fia_sasl_ext.1.1">
       <title>The email client shall implement support for Simple Authentication and Security
       Layer (SASL) that complies with RFC 4422. </title>
@@ -826,7 +825,7 @@ functionality provided by the OS is consistent with the functionality required b
       AUTH extension for SMTP, as described in RFC 4954. </note>
     </f-element>
   </f-component>
-  <f-component id="fia_x509_ext.3" name="X509 Authentication and Encryption" status="threshold">
+  <f-component id="fia_x509_ext.3" name="X509 Authentication and Encryption">
     <f-element id="fia_x509_ext.3.1">
       <title>The email client shall use X.509v3 certificates as defined by RFC 5280 to support
       encryption and authentication for S/MIME. </title>
@@ -853,55 +852,59 @@ functionality provided by the OS is consistent with the functionality required b
   </f-component>
 </subsection>
 <subsection title="Security Management (FMT)" id="fmt">
-  <f-component id="fmt_mof_ext.1" name="Management of Functions Behavior" status="threshold">
+  <f-component id="fmt_mof_ext.1" name="Management of Functions Behavior">
     <f-element id="fmt_mof_ext.1.1">
       <title>The email client shall be capable of performing the following management
       functions, controlled by the user or administrator as shown: <h:ul>
       <h:li> X: Mandatory</h:li>
       <h:li> O: Optional</h:li>
     </h:ul>
-    <management-function-set>
-      <manager>Administrator</manager>
-      <manager>User</manager>
-      <management-function admin="O">Enable/disable downloading embedded objects globally
-      and by <selectables>
+    <management-function-set default="O">
+      <manager id='a'>Administrator</manager>
+      <manager id='u'>User</manager>
+
+      <management-function>
+	<text>Enable/disable downloading embedded objects globally
+	and by <selectables>
+	<selectable>domain</selectable>
+	<selectable>sender</selectable>
+	<selectable>no other method</selectable>
+	</selectables>
+	</text>
+      </management-function>
+      <management-function><text>Enable/disable plaintext only mode globally and by <selectables>
       <selectable>domain</selectable>
       <selectable>sender</selectable>
       <selectable>no other method</selectable>
-    </selectables>
+    </selectables></text>
       </management-function>
-      <management-function admin="O"> Enable/disable plaintext only mode globally and by <selectables>
-      <selectable>domain</selectable>
-      <selectable>sender</selectable>
-      <selectable>no other method</selectable>
-    </selectables>
-      </management-function>
-      <management-function admin="O"> Enable/disable rendering and execution of
+      <management-function><text> Enable/disable rendering and execution of
       attachments globally and by <selectables>
       <selectable>domain</selectable>
       <selectable>sender</selectable>
       <selectable>no other method</selectable>
     </selectables>
+  </text>
       </management-function>
-      <management-function admin="O"> Enable/disable email notifications </management-function>
-      <management-function admin="O"> Configure a certificate repository for encryption </management-function>
-      <management-function admin="O"> Configure whether to establish a trusted channel or
+      <management-function><text> Enable/disable email notifications </text></management-function>
+      <management-function><text> Configure a certificate repository for encryption </text></management-function>
+      <management-function><text> Configure whether to establish a trusted channel or
       disallow establishment if the email client cannot establish a connection to
-      determine the validity of a certificate </management-function>
-      <management-function admin="O"> Configure message sending/receiving to only use
+      determine the validity of a certificate </text></management-function>
+      <management-function><text> Configure message sending/receiving to only use
       cryptographic algorithms defined in <linkref linkend="FCS_SMIME_EXT.1"/>
-      </management-function>
-      <management-function admin="O"> Configure CRL retrieval frequency </management-function>
-      <management-function admin="O"> Enable/disable support for add-ons </management-function>
-      <management-function admin="O"> Change password/passphrase authentication
-      credential</management-function>
-      <management-function admin="O"> Disable key recovery
-      functionality</management-function>
-      <management-function admin="O"> Configure cryptographic
-      functionality</management-function>
-      <management-function admin="O">
+      </text></management-function>
+      <management-function><text> Configure CRL retrieval frequency </text></management-function>
+      <management-function><text> Enable/disable support for add-ons </text></management-function>
+      <management-function><text> Change password/passphrase authentication
+      credential</text></management-function>
+      <management-function><text> Disable key recovery
+      functionality</text></management-function>
+      <management-function><text> Configure cryptographic
+      functionality</text></management-function>
+      <management-function><text>
         <assignable>Other management functions</assignable>
-      </management-function>
+      </text></management-function>
     </management-function-set>
       </title>
       <note role="application">
@@ -954,7 +957,7 @@ functionality provided by the OS is consistent with the functionality required b
   </f-component>
 </subsection>
 <subsection title="Protection of the TSF (FPT)" id="fpt">
-  <f-component id="fpt_aon_ext.1" name="Support for Only Trusted Add-ons" status="threshold">
+  <f-component id="fpt_aon_ext.1" name="Support for Only Trusted Add-ons">
     <f-element id="fpt_aon_ext.1.1">
       <title>The email client shall include the capability to load <selectables>
       <selectable>trusted add-ons</selectable>
@@ -991,7 +994,7 @@ functionality provided by the OS is consistent with the functionality required b
   </f-component>
 </subsection>
 <subsection title="Trusted Path/Channels (FTP)" id="ftp">
-  <f-component id="ftp_itc_ext.1" name="Inter-TSF Trusted Channel" status="threshold">
+  <f-component id="ftp_itc_ext.1" name="Inter-TSF Trusted Channel">
     <f-element id="ftp_itc_ext.1.1">
       <title>The email client shall initiate or receive communication via the trusted channel.
       </title>
@@ -999,9 +1002,10 @@ functionality provided by the OS is consistent with the functionality required b
     <f-element id="ftp_itc_ext.1.2">
       <title>The email client shall communicate via the trusted channel for
       <selectables linebreak="yes">
-	<selectable>IMAP</selectable>
-	<selectable>SMTP</selectable>
-	<selectable>POP</selectable>
+	<!-- Check these -->
+	<selectable id="saslimap">IMAP</selectable>
+	<selectable id="saslsmtp">SMTP</selectable>
+	<selectable id="saslpop" >POP</selectable>
 	<selectable>MAPI Extensions for HTTP</selectable>
 	<selectable>MAPI/RPC</selectable>
 	<selectable>ActiveSync</selectable>

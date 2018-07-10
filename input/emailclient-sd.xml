@@ -32,29 +32,6 @@
 
   <foreword>
     <h:p>
-    This is a Supporting Document (SD), intended to complement the Common Criteria version 3 and the
-    associated Common Evaluation Methodology for Information Technology Security Evaluation.
-    SDs may be “Guidance Documents”, that highlight specific approaches and application of the standard
-    to areas where no mutual recognition of its application is required, and as such, are not of normative nature, or “Mandatory Technical Documents”, whose application is mandatory for evaluations whose
-    scope is covered by that of the SD.
-    The usage of the latter class is not only mandatory, but certificates
-    issued as a result of their application are recognized under the CCRA.
-    </h:p>
-    <h:p><h:b>Technical Editor:</h:b><h:br/>
-    National Information Assurance Partnership (NIAP)
-    </h:p>
-    <h:p><h:b>Document history:</h:b><h:br/>
-    VX.X January 2018 (Initial Release)
-    </h:p>
-    <h:p><h:b>General Purpose:</h:b><h:br/>
-The purpose of this SD is to define evaluation methods for the functional behavior of Email Clients.
-    </h:p>
-    <h:p><h:b>Acknowledgements:</h:b><h:br/>
-This SD was developed with support from NIAP Email Client Technical Community members, with
-representatives from industry, Government agencies, Common Criteria Test Laboratories, and
-members of academia.
-    </h:p>
-  </foreword>
   
   <chapter title="Introduction" id="int">
     <section title="Technology Area and Scope of Supporting Document" id="scope">
