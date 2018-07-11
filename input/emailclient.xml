@@ -2,11 +2,17 @@
 <?xml-stylesheet type="text/xsl" href="..\transforms\module2html.xsl"?>
 <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCModule.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <PP xmlns="https://niap-ccevs.org/cc/v1"
-    xmlns:h="http://www.w3.org/1999/xhtml"
-    name="Email Client" plural-suffix="s">
+	  xmlns:h="http://www.w3.org/1999/xhtml"
+	  name="Email Client" plural-suffix="s"
+	  target-products="email client"
+	  target-products-short=""
+  >
+  <module>
+    <base-pp name="Application Software Protection Profile" short="ApSo PP" url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"/>
+  </module>
+
   <PPReference title="PP Reference" id="ID003">
     <ReferenceTable>
-      <PPTitle>Application Software Extended Package for Email Clients</PPTitle>
       <PPVersion>2.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2015-06-18</PPPubDate>
@@ -72,21 +78,19 @@
 	composition of the underlying platform.
       </h:p>
       <h:p>
-	The terms email client and TOE are interchangeable
-	in this document. 
+	The terms email client and TOE are interchangeable in this document. 
       </h:p>
 
     <figure id="mua_mta" entity="images/mua_mta.png" max-width="inherit"
             title="Sending and Delivering Email over TLS"/>
     </section>
-    <section id="glossary" title="Terms">
 
-      The following sections provide both Common Criteria and technology terms used in this Extended Package.
+    <section id="glossary" title="Terms">
+      The following definitions are for Common Criteria or Email Client technology used in this document.
     <glossary>
       <entry>
         <term><abbr title="Common Criteria">CC</abbr></term>
-        <description>Common Criteria for Information Technology Security
-        Evaluation.</description>
+        <description>Common Criteria for Information Technology Security Evaluation.</description>
       </entry>
       <entry>
         <term><abbr title="Protection Profile">PP</abbr></term>
@@ -361,16 +365,17 @@ Note that selections and assignments to be completed by the ST author are preced
 If text is italicized and does not include either of these, it means that the selection or assignment has already been completed in this PP-Module and the ST author must use the text as written. 
   </h:p>
 
-<section title="APSO PP Security Functional Requirements Direction" id="sfr">
-The Email client is expected to rely on some of the security functions implemented by the application as a whole and evaluated against the Base-PP.
-The following sections describe any modifications that the ST author must make to the SFRs
-defined in the Base-PP in addition to what is mandated by section 5.4.
+<section title="APSO PP Security Functional Requirements Direction" id="apso-sfr">
+  The Email client is expected to rely on some of the security functions implemented
+  by the application as a whole and evaluated against the Base-PP.
+  The following sections describe any modifications that the ST author must make to the SFRs
+  defined in the Base-PP in addition to what is mandated by section 5.4.
 
 <subsection title="Applicable Unmodified SFRs" id="unmod_sfrs">
   The SFRs listed in this section are defined in the Application Software PP and relevant to the secure operation of the email client.
 </subsection>
 
-<subsection title="Applicable Modified SFRs" id="unmod_sfrs">
+<subsection title="Applicable Modified SFRs" id="mod_sfrs">
   The SFRs listed in this section are defined in the Application Software PP and relevant to the secure operation of the email client.
   Unlike the SFRs listed in the previous section, it is necessary for the ST author to complete 
   selections and/or assignments for these SFRs in a specific manner in order to ensure that the 
