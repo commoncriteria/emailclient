@@ -502,8 +502,8 @@ The assurance activities for this component will be driven by the selections mad
 <section title="Identification and Authentication (FIA)" id="selection_fia"> 
 <subsection title="Simple Authentication and Security Layer (FIA_SASL_EXT)" stopindex="on">
 <subsection title="FIA_SASL_EXT.1 Simple Authentication and Security Layer (SASL)" id="FIA_SASL_EXT.1">
-<h:i>TSS</h:i>
 <aactivity>
+<h:i>TSS</h:i>
 <h:br/>The evaluator shall examine the TSS to determine that it describes the details of the email client connecting to a Mail Transfer Agent in terms of the SASL connection, along with email clientspecific options or procedures that might not be reflected in the specification.
 <h:br/><h:i>AGD</h:i>
 <h:br/>The evaluator shall confirm that the operational guidance contains instructions for establishing the connection to the Mail Transfer Agent.
