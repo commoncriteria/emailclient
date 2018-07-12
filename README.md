@@ -1,10 +1,10 @@
-Extended Package for Email Clients
+Protecion Profile Module for Email Clients
 ============
 [![Build Status](https://travis-ci.org/commoncriteria/emailclient.svg?branch=master)](https://travis-ci.org/commoncriteria/emailclient) 
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/emailclient.svg?maxAge=2592000)](https://github.com/commoncriteria/emailclient/issues) 
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
-This repository hosts the draft version of the Extended Package for Email Clients based on the 
+This repository hosts the draft version of the Protection Profile Module for Email Clients based on the 
 [Essential Security Requirements (ESR)](https://commoncriteria.github.io/pp/emailclient/emailclient-esr.html) for this technology class of 
 products. This repository is used to facilitate collaboration and development on the draft document. 
 See the [release](#Release-Version) section if you are looking for the officially released version for evaluations. 
@@ -12,11 +12,11 @@ A list of products that have passed evaluation against this Protection Profile c
 
 ## Draft Version
 
-* [Extended Package for Email Clients](https://commoncriteria.github.io/pp/emailclient/emailclient-release.html) (html)
-* [Extended Package for Email Clients](https://commoncriteria.github.io/pp/emailclient/emailclient-release.pdf) (pdf)
+* [Protection Profile Module for Email Clients](https://commoncriteria.github.io/pp/emailclient/emailclient-release.html) (html)
+* [Protection Profile Module for Email Clients](https://commoncriteria.github.io/pp/emailclient/emailclient-release.pdf) (pdf)
 
 ## Release Version
-* [Extended Package for Email Clients](https://www.niap-ccevs.org/Profile/Info.cfm?id=377)
+* [Protection Profile Module for Email Clients](https://www.niap-ccevs.org/Profile/Info.cfm?id=377)
 
 ## Contributing
 

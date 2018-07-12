@@ -1,6 +1,6 @@
 TRANS?=transforms
 # Optionally include some User preferences.
-#-include User.make
+-include User.make
 
 default:
 	xsltproc -o output/emailclient.html $(TRANS)/module/module2html.xsl input/emailclient.xml
