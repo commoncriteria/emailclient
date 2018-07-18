@@ -354,7 +354,7 @@
     </h:p>
 
     <section title="ApSo PP SFRs Direction" id="apso-sfr">
-      <base-pp name="Application Software Protection Profile" short="ApSo PP" url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"/>
+      <base-pp name="Application Software Protection Profile" short="ApSo PP" url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394" xmlurl="https://github.com/commoncriteria/application/raw/76f9cb4fadb616087626e1bd589a74a3679ced06/input/application.xml"/>
 
       The Email client is expected to rely on some of the security functions implemented
       by the application as a whole and evaluated against the Base-PP.
