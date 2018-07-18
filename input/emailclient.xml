@@ -219,7 +219,7 @@
 	  </h:p>
 	  <h:p>
 	    This <abbr linkend="PP-Module"/> conforms to Common Criteria <cite linkend="bibCC"/> for Information
-	    Technology Security Evaluation, Version 3.1, Revision 4. It is CC Part 2 extended and CC
+	    Technology Security Evaluation, Version 3.1, Revision 5. It is CC Part 2 extended and CC
 	    Part 3 conformant. In order to be conformant to this <abbr linkend="PP-Module"/>, the <abbr
 	    linkend="ST"/> must include all components in this <abbr linkend="PP-Module"/> and the
 	    associated ApSo PP that are: <h:ul><h:li>unconditional (which are always required)</h:li>
@@ -354,28 +354,18 @@
     </h:p>
 
     <section title="ApSo PP SFRs Direction" id="apso-sfr">
-      <base-pp name="Application Software Protection Profile" short="ApSo PP" url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394" xmlurl="https://github.com/commoncriteria/application/raw/76f9cb4fadb616087626e1bd589a74a3679ced06/input/application.xml"/>
-
       The Email client is expected to rely on some of the security functions implemented
       by the application as a whole and evaluated against the Base-PP.
       The following sections describe any modifications that the ST author must make to the SFRs
       defined in the Base-PP in addition to what is mandated by section 5.4.
 
-      <subsection title="Unmodified SFRs" id="unmod_sfrs">
-	The SFRs listed in this section are defined in the Application Software PP and relevant to the secure operation of the email client.
-      </subsection>
-
-      <subsection title="Modified SFRs" id="mod_sfrs">
-	The SFRs listed in this section are defined in the Application Software PP and relevant to the secure operation of the email client.
-	Unlike the SFRs listed in the previous section, it is necessary for the ST author to complete 
-	selections and/or assignments for these SFRs in a specific manner in order to ensure that the 
-	functionality provided by the OS is consistent with the functionality required by the email client in order for it to conform to this PP-Module.
-      </subsection>
-
-      <subsection title="Additional SFRs" id="add_sfrs">
-	This section lists additional SFRs that must be added to the TOE boundary.
-
-	<subsection title="Cryptographic Support (FCS)" id="fcs">
+      <base-pp name="Application Software Protection Profile" short="ApSo PP"
+	       url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"
+	       xmlurl="https://github.com/commoncriteria/application/raw/76f9cb4fadb616087626e1bd589a74a3679ced06/input/application.xml">
+	
+	<modified-sfrs></modified-sfrs>
+	<additional-sfrs>
+	  <subsection title="Cryptographic Support (FCS)" id="fcs">
 	  <f-component id="fcs_smime_ext.1" name="Secure/Multipurpose Internet Mail Extensions (S/MIME)">
 	    <f-element id="fcs_smime_ext.1.1">
 	      <title>The email client shall implement both a sending and receiving S/MIME v3.2 Agent
@@ -1230,7 +1220,19 @@
 	    </f-element>
 	  </f-component>
 	</subsection>
-      </subsection>
+	</additional-sfrs>
+      </base-pp>
+
+	<!-- The SFRs listed in this section are defined in the Application Software PP and relevant to the secure operation of the email client. -->
+	<!-- Unlike the SFRs listed in the previous section, it is necessary for the ST author to complete  -->
+	<!-- selections and/or assignments for these SFRs in a specific manner in order to ensure that the  -->
+	<!-- functionality provided by the OS is consistent with the functionality required by the email client in order for it to conform to this PP-Module. -->
+
+
+      <!-- <subsection title="Additional SFRs" id="add_sfrs"> -->
+      <!-- 	This section lists additional SFRs that must be added to the TOE boundary. -->
+	<!-- <subsection title="Cryptographic Support (FCS)" id="fcs"> -->
+
     </section>
   </chapter>
   <appendix title="Optional Requirements" id="optional"> The baseline requirements (those that must
@@ -1282,6 +1284,8 @@
       </entry>
     </bibliography>
   </appendix>
+
+
   <appendix title="Acronyms" id="acronyms">
     <acronyms>
       <entry>
