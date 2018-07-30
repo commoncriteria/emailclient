@@ -5,6 +5,7 @@
 	xmlns:h="http://www.w3.org/1999/xhtml"
 	name="Email Client"
 	target-products="email client"
+	boilerplate="yes"
     >
   <PPReference title="PP Reference" id="ID003">
     <ReferenceTable>
@@ -75,10 +76,15 @@
 
     <section id="glossary" title="Terms">
       The following definitions are for Common Criteria or Email Client technology used in this document.
-      <glossary>
+      <subsection title="Common Criteria Terms">
+	<glossary>
 	<entry>
           <term><abbr title="Common Criteria">CC</abbr></term>
           <description>Common Criteria for Information Technology Security Evaluation.</description>
+	</entry>
+	<entry>
+	  <term><abbr title="Base Protection Profile">Base-PP</abbr></term>
+	  <description>Protection Profile used to build a PP-Configuration.</description>
 	</entry>
 	<entry>
           <term><abbr title="Protection Profile">PP</abbr></term>
@@ -86,10 +92,12 @@
           of products.</description>
 	</entry>
 	<entry>
+	  <term><abbr title="Protection Profile Configuration">PP-Configuration</abbr></term>
+	  <description>Protection Profile composed of Base Protection Profiles and Protection Profile Module.</description>
+	</entry>
+	<entry>
 	  <term><abbr title="Protection Profile Module">PP-Module</abbr></term>
-	  <description>
-	    An implementation-independent set of security requirements for a specific
-	    subset of products described
+          <description>An implementation-independent statement of security needs for a TOE type complementary to one or more Base Protection Profiles.
 	  </description>
 	</entry>
 	<entry>
@@ -121,6 +129,10 @@
           <description>A requirement to assure the security of the <abbr linkend="TOE"/>.
           </description>
 	</entry>
+	</glossary>
+      </subsection>
+      <subsection title="Technical Terms">
+	<glossary>
 	<entry>
           <term>ActiveSync</term>
           <description>Microsoft protocol for synchronizing messaging and calendar data between
@@ -169,7 +181,8 @@
           <description>Simple Mail Transfer Protocol - Protocol for an email client to send email
           to an email server over TCP/IP; SMTP defined in RFC 5321.</description>
 	</entry>
-      </glossary>
+	</glossary>
+      </subsection>
     </section>
     <section title="Compliant Targets of Evaluation" id="TOEdescription">
       <h:p>
