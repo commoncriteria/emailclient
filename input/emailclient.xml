@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="..\transforms\module2html.xsl"?>
 <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCModule.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<PP xmlns="https://niap-ccevs.org/cc/v1"
-    xmlns:h="http://www.w3.org/1999/xhtml"
-    name="Email Client"
-    target-products="email client"
+<Module xmlns="https://niap-ccevs.org/cc/v1"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	name="Email Client"
+	target-products="email client"
     >
   <PPReference title="PP Reference" id="ID003">
     <ReferenceTable>
@@ -213,8 +213,9 @@
 	    The Protection Profile for Application Software (<cite linkend="bibAppPP"/>)
 	    defines the baseline Security Functional Requirements (SFRs) and Security Assurance
 	    Requirements (SARs) for application software products. This <abbr linkend="PP-Module"/> serves to
-	    extend the ApSo PP baseline with additional SFRs and associated Assurance Activities
-	    specific to an email client. Assurance Activities are the actions that the evaluator
+	    extend the ApSo PP baseline with additional SFRs and associated Evaluation Activities
+	    specific to an email client.
+Evaluation Activities are the actions that the evaluator
 	    performs in order to determine an email client's compliance to the SFRs.
 	  </h:p>
 	  <h:p>
@@ -230,7 +231,7 @@
 	  </h:p>
 	  <h:p>
 	    In accordance with CC Part 1, dependencies are not included when they are addressed by other SFRs.
-	    The assurance activities provide adequate proof that any dependencies are also satisfied.
+	    The evaluation activities provide adequate proof that any dependencies are also satisfied.
 	  </h:p>
 	</description>
       </cclaim>
@@ -354,18 +355,20 @@
     </h:p>
 
     <section title="ApSo PP SFRs Direction" id="apso-sfr">
-      <base-pp name="Application Software Protection Profile" short="ApSo PP" url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"/>
+      <base-pp name="Application Software Protection Profile" short="ApSo PP" 
+	       url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"
+	       xmlurl="https://raw.githubusercontent.com/commoncriteria/application/76f9cb4fadb616087626e1bd589a74a3679ced06/input/application.xml"/>
 
       The Email client is expected to rely on some of the security functions implemented
       by the application as a whole and evaluated against the Base-PP.
       The following sections describe any modifications that the ST author must make to the SFRs
       defined in the Base-PP in addition to what is mandated by section 5.4.
-
       <subsection title="Unmodified SFRs" id="unmod_sfrs">
 	The SFRs listed in this section are defined in the Application Software PP and relevant to the secure operation of the email client.
       </subsection>
 
       <subsection title="Modified SFRs" id="mod_sfrs">
+
 	The SFRs listed in this section are defined in the Application Software PP and relevant to the secure operation of the email client.
 	Unlike the SFRs listed in the previous section, it is necessary for the ST author to complete 
 	selections and/or assignments for these SFRs in a specific manner in order to ensure that the 
@@ -643,7 +646,7 @@
 		<TSS/>
 		The evaluator verifies that the TSS section specifies the capability that exists to accept passwords/passphrases with the minimum number of characters specified in the ST in this assignment statement.
 		<h:br/>The evaluator examines the password hierarchy TSS to ensure that the formation of all keys is described and that the key sizes match that described by the ST author.
-		The evaluator checks that the TSS describes the method by which the password/passphrase is first encoded and then fed to the SHA algorithm. The settings for the algorithm (padding, blocking, etc.) shall be described, and the evaluator verifies that these are supported by the selections in this component as well as the selections concerning the hash function itself. The evaluator verifies that the TSS contains a description of how the output of the hash function is used to form the submask that will be input into the function. For the NIST SP 800132based conditioning of the password/passphrase, the required assurance activities will be performed when doing the assurance activities for the appropriate requirements (FCS_COP.1.1(4) in <cite linkend="bibApp"/>). If any manipulation of the key is performed in forming the submask that will be used to form the key, that process shall be described in the TSS. No explicit testing of the formation of the submask from the input password is required.
+		The evaluator checks that the TSS describes the method by which the password/passphrase is first encoded and then fed to the SHA algorithm. The settings for the algorithm (padding, blocking, etc.) shall be described, and the evaluator verifies that these are supported by the selections in this component as well as the selections concerning the hash function itself. The evaluator verifies that the TSS contains a description of how the output of the hash function is used to form the submask that will be input into the function. For the NIST SP 800132based conditioning of the password/passphrase, the required evaluation activities will be performed when doing the evaluation activities for the appropriate requirements (FCS_COP.1.1(4) in <cite linkend="bibApp"/>). If any manipulation of the key is performed in forming the submask that will be used to form the key, that process shall be described in the TSS. No explicit testing of the formation of the submask from the input password is required.
 		<Guidance/>
 		The evaluators shall check the Operational Guidance to determine that there are instructions for guidance on how to generate large passwords/passphrases external to the email client and instructions for how to configure the password/passphrase length and optional complexity settings (note to Management section). This is important because many default settings for passwords/passphrases will not meet the necessary entropy needed as specified in this EP.
 <Tests/>The evaluator will also perform the following tests:
@@ -1110,7 +1113,7 @@
 		</h:p>
 	      </note>
 	      <aactivity>
-		The assurance activities for this component will be driven by the selections made by the ST author. If a capability is not selected in the ST, the noted assurance activity does not need to be performed. 
+		The evaluation activities for this component will be driven by the selections made by the ST author. If a capability is not selected in the ST, the noted evaluation activity does not need to be performed. 
 		<TSS/>
 		The evaluator verifies that the TSS describes those management functions which may only be configured by the email client platform administrator and cannot be overridden by the user when set according to policy.
 		<h:br/>Change Password: The evaluator will examine the Operational Guidance to ensure that it describes how the password/passphrase-based authorization factor is to be changed.
@@ -1366,4 +1369,4 @@
       </entry>
     </acronyms>
   </appendix>
-</PP>
+</Module>
