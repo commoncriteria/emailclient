@@ -367,7 +367,7 @@ Evaluation Activities are the actions that the evaluator
       If text is italicized and does not include either of these, it means that the selection or assignment has already been completed in this PP-Module and the ST author must use the text as written. 
     </h:p>
 
-    <section title="ApSo PP SFRs Direction" id="apso-sfr">
+    <section title="ApSo PP Evaluation Activities" id="apso-sfr">
       <base-pp name="Application Software Protection Profile" short="ApSo PP" 
 	       url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"
 	       xmlurl="https://raw.githubusercontent.com/commoncriteria/application/76f9cb4fadb616087626e1bd589a74a3679ced06/input/application.xml"/>
