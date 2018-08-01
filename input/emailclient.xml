@@ -4,19 +4,15 @@
 <Module xmlns="https://niap-ccevs.org/cc/v1"
 	xmlns:h="http://www.w3.org/1999/xhtml"
 	name="Email Client"
-	target-products="email client"
 	boilerplate="yes"
+	target-products="Email Clients"
     >
-  <PPReference title="PP Reference" id="ID003">
+  <PPReference>
     <ReferenceTable>
       <PPVersion>2.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2015-06-18</PPPubDate>
       <Keywords>email; email client</Keywords>
-      <entry>
-        <name>Registration</name>
-        <description>National Information Assurance Partnership</description>
-      </entry>
     </ReferenceTable>
   </PPReference>
   <RevisionHistory>
