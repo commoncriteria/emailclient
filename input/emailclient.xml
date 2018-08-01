@@ -189,7 +189,7 @@
 	The Target of Evaluation  (TOE) in this <abbr linkend="PP-Module"/> is an email client application running on a desktop or mobile operating system.
       </h:p>
       <h:p>
-	This <abbr linkend="PP-Module"/> describes the extended security  functionality of email clients in terms of <cite linkend="bibCC"/>.
+	This <abbr linkend="PP-Module"/> describes the extended security functionality of email clients in terms of <citeCC/>.
 	As an extension of the ApSo PP, it is expected that the content of this <abbr linkend="PP-Module"/> will be appropriately combined with the ApSo PP to include selection-based requirements in accordance with the
 	selections and/or assignments made, and any optional and/or objective components to include the following components at minimum:
 	<h:ul>
@@ -250,6 +250,8 @@ Evaluation Activities are the actions that the evaluator
       </cclaim>
     </cclaims>
   </chapter>
+
+
   <chapter title="Security Problem Description" id="spd">
     <h:p>
       The security problem is described in terms of the threats that the email client is expected to address, assumptions about the operational environment, and any organizational security policies that it is expected to enforce.
@@ -1382,4 +1384,5 @@ Evaluation Activities are the actions that the evaluator
       </entry>
     </acronyms>
   </appendix>
+
 </Module>
