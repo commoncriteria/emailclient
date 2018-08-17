@@ -280,7 +280,7 @@ Evaluation Activities are the actions that the evaluator
 	enables unauthorized access to other applications or the operating system.
 	</description>
 	<consistency-rationale>
-	  The threat of a user installing a flawed add on is consistent.
+	  The threat of a user installing a flawed add on is consistent with <base-name/>.
 	</consistency-rationale>
 	<objective-refer ref="O.MANAGEMENT">
 	  <rationale>
@@ -300,6 +300,9 @@ Evaluation Activities are the actions that the evaluator
       <component-refer ref="fdp_not_ext.1"/>
       <component-refer ref="fdp_not_ext.2"/>
       <component-refer ref="fmt_mof_ext.1"/>
+      <consistency-rationale>
+	    This objective is consistent with <base-name/>.
+      </consistency-rationale>
     </SO>
     <SO id="O.PROTECTED_STORAGE">
       <description> QQQQ </description>
@@ -312,6 +315,9 @@ Evaluation Activities are the actions that the evaluator
       <component-refer ref="fcs_nog_ext.1"/>
       <component-refer ref="fcs_sag_ext.1"/>
       <component-refer ref="fcs_smc_ext.1"/>
+      <consistency-rationale>
+	    This objective is consistent with <base-name/>.
+      </consistency-rationale>
     </SO>
     <SO id="O.PROTECTED_COMMS">
       <description> QQQQ </description>
@@ -320,6 +326,10 @@ Evaluation Activities are the actions that the evaluator
       <component-refer ref="fia_sasl_ext.1"/>
       <component-refer ref="fia_x509_ext.3"/>
       <component-refer ref="ftp_itc_ext.1"/>
+      <consistency-rationale>
+	    This objective is consistent <base-name/>.
+      </consistency-rationale>
+
     </SO>
     <SO id="O.ADDON_INTEGRITY">
       <description> To address issues associated with malicious or flawed plug-ins or
@@ -327,6 +337,9 @@ Evaluation Activities are the actions that the evaluator
       This includes verification at installation time and update. </description>
       <component-refer ref="fpt_aon_ext.1"/>
       <component-refer ref="fpt_aon_ext.2"/>
+      <consistency-rationale>
+	    This objective is consistent <base-name/>.
+      </consistency-rationale>
     </SO>
   </SOs>
 </section>
@@ -337,10 +350,12 @@ Evaluation Activities are the actions that the evaluator
 	name="Application Software" short="ApSo" 
 	url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=394&amp;id=394"
 	xmlurl="https://raw.githubusercontent.com/commoncriteria/application/c51970161d3a47fe8a7c23552f372745a638ba7d/input/application.xml">
-
       <additional-sfrs>
 	<subsection title="Cryptographic Support (FCS)" id="fcs">
 	  <f-component id="fcs_smime_ext.1" name="Secure/Multipurpose Internet Mail Extensions (S/MIME)">
+
+	    <consistency-rationale>This SFR defines how email messages are formated when sent and received by the client. It does not impact the <base-name/> PP functionality. 
+	    </consistency-rationale>
 	    <f-element id="fcs_smime_ext.1.1">
 	      <title>The email client shall implement both a sending and receiving S/MIME v3.2 Agent
 	      as defined in RFC 5751, using CMS as defined in RFCs 5652, 5754, and 3565. </title>
@@ -1202,19 +1217,11 @@ Evaluation Activities are the actions that the evaluator
 	The TOE boundary is simply extended to include the Email Client functionality that is built into the Application so that additional security functionality is claimed within the scope of the TOE.
       </con-toe>
 
-      <con-sec-prob>
-The threats defined by this PP-Module (see section 3.1) supplement those defined in the GPOS PP as
-follows:
-      </con-sec-prob>
-
-      <con-obj>
-This PP-Module does not define any TOE objectives; the functionality provided by the VPN client assists
-in satisfying the O.PROTECTED_STORAGE and O.PROTECTED_COMMS in the GPOS PP. The objectives for
-the VPN client’s operational environment are consistent with the GPOS PP based on the following
-rationale:
-      </con-obj>
-
-
+      <con-sec-prob/>
+      <con-obj/>
+      <con-op-en>
+	This PP-Module does not define any objectives for the TOE's operational environment. 
+      </con-op-en>
       <con-req>
       </con-req>
     </base-pp>
