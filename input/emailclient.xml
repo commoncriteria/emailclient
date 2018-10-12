@@ -863,7 +863,7 @@
 	    <f-element id="fpt_aon_ext.1.1">
 	      <title>The email client shall include the capability to load <selectables>
 	      <selectable id="aonext1_addon">trusted add-ons</selectable>
-	      <selectable>no add-ons</selectable>
+	      <selectable exclusive="yes">no add-ons</selectable>
 	      </selectables>.</title>
 	      <note role="application"><linkref linkend="FPT_AON_EXT.2"/> depends upon the selection
 	      made here. If the email client does not include support for installing only trusted
