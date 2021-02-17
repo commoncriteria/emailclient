@@ -1,6 +1,6 @@
 Protecion Profile Module for Email Clients
 ============
-[![Build Status](https://travis-ci.com/commoncriteria/emailclient.svg?branch=master)](https://travis-ci.com/commoncriteria/emailclient) 
+![Build](https://github.com/commoncriteria/emailclient/workflows/Build/badge.svg) 
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/emailclient.svg?maxAge=2592000)](https://github.com/commoncriteria/emailclient/issues) 
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
