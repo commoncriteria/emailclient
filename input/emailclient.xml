@@ -19,27 +19,14 @@
   </PPReference>
   <RevisionHistory>
     <entry>
-      <version>v 1.0</version>
-      <date>2014-04-01</date>
-      <subject>Release - Email Client Protection Profile</subject>
-    </entry>
-    <entry>
-      <version>v 2.0</version>
-      <date>2021-05-28</date>
-      <subject>Update as PP-Module that extends the Protection Profile for Application
-      Software</subject>
-    </entry>
-  </RevisionHistory>
-  <RevisionHistory>
-    <entry>
-      <version>v 2.0</version>
-      <date>2015-06-18</date>
-      <subject>Application Software Module for Email Clients</subject>
+      <version>1.0</version>
+      <date>2021-06-18</date>
+      <subject>Initial release as PP-Module</subject>
     </entry>
   </RevisionHistory>
   <sec:Introduction>
     <sec:Overview>
-      <h:p>
+      
 	Email clients are user applications that provide functionality to send, receive, access and manage email.
 	The complexity of email content and email clients has grown over time.
 	Modern email clients can render HTML as well as plaintext,
@@ -48,8 +35,7 @@
 	Protocols have also been defined for communicating between email clients and servers.
 	Some clients support multiple protocols for doing the same task,
 	allowing them to be configured according to email server specifications.
-      </h:p>
-      <h:p>
+            <h:p/>
 	The complexity
 	and rich feature set of modern email clients make them a target for attackers, introducing
 	security concerns. This document is intended to facilitate the improvement of email client
@@ -57,16 +43,13 @@
 	environmental mitigations. Additionally, the requirements in this document define acceptable
 	behavior for email clients regardless of the security features provided by the operating
 	system.
-      </h:p>
-      <h:p>
+      <h:p/>
 	This Module along with the Protection Profile for Application
 	Software (<xref to="bibAppPP"/>) provide a baseline set of Security Functional
 	Requirements (SFRs) for email clients running on any operating system regardless of the
 	composition of the underlying platform.
-      </h:p>
-      <h:p>
+      <h:p/>
 	The terms email client and TOE are interchangeable in this document. 
-      </h:p>
 
       <figure id="mua_mta" entity="images/mua_mta.png" max-width="inherit"
               title="Sending and Delivering Email over TLS"/>
@@ -144,7 +127,7 @@
         <term full="Email Client">Application used to send, receive, access and manage email provided by an
           email server. The terms email client and TOE are interchangeable in this
           document.</term>
-        <term abbr="IMAP" full="Internet Message Access Protocol">Internet Message Access Protocol - Protocol for an email client to retrieve
+        <term abbr="IMAP" full="Internet Message Access Protocol">Protocol for an email client to retrieve
           email from an email server over TCP/IP; IMAP4 defined in RFC 3501.</term>
         <term abbr="IETF" full="Internet Engineering Task Force"></term>
         <term abbr="IV" full="Initialization Vector"></term>
@@ -282,7 +265,7 @@
     </sec:Organizational_Security_Policies>
     
   </sec:Security_Problem_Description>
-  <sec:Security_Objectives> This PP-Module adds SFRs to objectives
+  <sec:Security_Objectives>This PP-Module adds SFRs to objectives
   identified in the Base-PP and describes an additional objective specific to this PP-Module. 
     <sec:Security_Objectives_for_the_TOE>
   <SOs>
@@ -348,9 +331,8 @@
       <additional-sfrs/>
       
       <con-toe>
-        If this PP-Module is used to extend the ApSo PP, the TOE type for the overall TOE is still an
-        Software-based Application.
-        The TOE boundary is simply extended to include the Email Client functionality that is built into the Application so that additional security functionality is claimed within the scope of the TOE.
+        If this PP-Module is used to extend the App PP, the TOE type for the overall TOE is still a software application.
+        The TOE boundary is simply extended to include the email client functionality that is built into the application so that additional security functionality is claimed within the scope of the TOE.
       </con-toe>
       
       <con-sec-prob/>
@@ -362,7 +344,7 @@
     </base-pp> 
       <man-sfrs>
         
-	<sec:add_fcs title="Cryptographic Support (FCS)">
+	<sec:man_fcs title="Cryptographic Support (FCS)">
 	  <f-component cc-id="fcs_smime_ext.1" name="Secure/Multipurpose Internet Mail Extensions (S/MIME)">
 
 	    <consistency-rationale>
@@ -647,7 +629,7 @@
 
 	    </f-element>
 	  </f-component>
-	</sec:add_fcs>
+	</sec:man_fcs>
 	<sec:man_fdp title="User Data Protection (FDP)">
 	  <f-component cc-id="fdp_not_ext.1" name="Notification of S/MIME Status">
 	    <consistency-rationale>
