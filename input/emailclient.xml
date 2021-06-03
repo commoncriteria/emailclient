@@ -312,7 +312,7 @@
       <addressed-by>FDP_NOT_EXT.1, FMT_MOF_EXT.1, FDP_NOT_EXT.2 (optional), FDP_REN_EXT.1 (optional)</addressed-by>
       <rationale>
         FDP_NOT_EXT.1 supports the objective by defining a mechanism for users to determine whether a given email has been signed or encrypted.<h:p/>
-        FDP_MOF_EXT.1 supports the objective by defining the technology-specific management functions that may exist for email client applications.<h:p/>
+        FMT_MOF_EXT.1 supports the objective by defining the technology-specific management functions that may exist for email client applications.<h:p/>
         FDP_NOT_EXT.2 supports the objective by optionally requiring the TSF to enumerate the URI of embedded links in emails so that a user can determine the source of the link.<h:p/>
         FDP_REN_EXT.1 supports the objective by optionally defining a plaintext-only operational mode that does not allow a user to interact with embedded content in an email message. 
       </rationale>
@@ -337,8 +337,10 @@
     <SO name="O.PROTECTED_COMMS">
       <description>This objective is defined in the Base-PP. This PP-Module maps additional SFRs to it to address the data in transit protection functionality that is specific to email client applications.</description>
       <consistency-rationale>This objective is an enhancement to the O.PROTECTED_COMMS objective defined in the Base-PP, specifically in regards to the data in transit that is specified to email client applications.</consistency-rationale>
-      <addressed-by>FCS_TLS_EXT.1 (modified from TLS Package), FCS_TLSC_EXT.1 (from TLS package), FIA_X509_EXT.1 (from Base-PP), FIA_X509_EXT.2 (from Base-PP), FTP_DIT_EXT.1 (modified from Base-PP), FCS_SMIME_EXT.1, FDP_SMIME_EXT.1, FIA_X509_EXT.3, FTP_ITC_EXT.1, FIA_SASL_EXT.1 (selection-based)</addressed-by>
+      <addressed-by>FCS_CKM_EXT.1 (modified from Base-PP), FCS_RBG_EXT.1 (modified from Base-PP), FCS_TLS_EXT.1 (modified from TLS Package), FCS_TLSC_EXT.1 (from TLS package), FIA_X509_EXT.1 (from Base-PP), FIA_X509_EXT.2 (from Base-PP), FTP_DIT_EXT.1 (modified from Base-PP), FCS_SMIME_EXT.1, FDP_SMIME_EXT.1, FIA_X509_EXT.3, FTP_ITC_EXT.1, FIA_SASL_EXT.1 (selection-based)</addressed-by>
       <rationale>
+        FCS_CKM_EXT.1 supports the objective by requiring that the TSF provide or invoke a cryptographic function for asymmetric key generation.<h:p/>
+        FCS_RBG_EXT.1 supporst the objective by requiring that the TSF provide or invoke a DRBG for secure key generation.<h:p/>
         FCS_TLS_EXT.1 supports the objective by requiring the TSF to implement TLS as a client.<h:p/>
         FCS_TLSC_EXT.1 supports the objective by requiring the TSF to implement TLS client functionality in a specified manner.<h:p/>
         FIA_X509_EXT.1 supports the objective by requiring the TSF to implement or invoke an X.509 certificate validation service.<h:p/>
@@ -394,7 +396,121 @@
       <raw-url>https://raw.githubusercontent.com/commoncriteria/application/master/input/application.xml</raw-url>
       <url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=442&amp;id=442</url>
     
-      <modified-sfrs/>
+      
+      <modified-sfrs>
+        
+        <sec:mod_fcs title="Cryptographic Support (FCS)">
+          <f-component cc-id="fcs_ckm_ext.1" name="Cryptographic Key Generation Services">
+            <consistency-rationale>This SFR is changed from its definition in the Base-PP to remove one of the available selection options because it will never apply in the case where the TOE conforms to this PP-Module.</consistency-rationale>
+            <f-element>
+              <title>The application shall <selectables linebreak="yes">
+                
+                <selectable id="sel_invoke_genkey">invoke platform-provided functionality for asymmetric key generation</selectable>
+                <selectable id="sel_impl_genkey">implement asymmetric key generation</selectable>
+              </selectables>.
+              </title>
+              <note role="application">This SFR is modified from its Base-PP definition to remove the selection for the TOE not requiring asymmetric key generation.
+              </note>
+              <aactivity>
+                <no-tests>
+                  There is no change to the Base-PP EAs for this SFR when this PP-Module is claimed, aside from the fact that the materials for the selections that have been refined out of this SFR are not applicable.<h:p/>
+                </no-tests>
+              </aactivity>
+            </f-element>
+          </f-component>
+          
+          <f-component cc-id="fcs_rbg_ext.1" name="Random Bit Generation Services">
+            <consistency-rationale>This SFR is changed from its definition in the Base-PP to remove one of the available selection options because it will never apply in the case where the TOE conforms to this PP-Module.</consistency-rationale>
+            <f-element>
+              <title> The application shall
+                <selectables linebreak="yes">
+                  <selectable>invoke platform-provided DRBG functionality</selectable>
+                  <selectable id="drbg">implement DRBG functionality</selectable>
+                </selectables> for its cryptographic operations. </title>
+              <note role="application">This SFR is modified from its Base-PP definition to remove the selection for the TOE using no DRBG functionality.
+              </note>
+                <aactivity>
+                  <no-tests>
+                    There is no change to the Base-PP EAs for this SFR when this PP-Module is claimed, aside from the fact that the materials for the selections that have been refined out of this SFR are not applicable.<h:p/>
+                  </no-tests>
+                </aactivity>
+              </f-element>
+            </f-component>
+          
+        </sec:mod_fcs> 
+        
+        <sec:mod_fia title="Identification and Authentication (FIA)">
+          <f-component cc-id="fia_x509_ext.1" name="X.509 Certificate Validation">
+            <consistency-rationale>This SFR is unchanged from its definition in the Base-PP; the SFR is recategorized from selection-based to mandatory when the TOE conforms to this PP-Module.</consistency-rationale>
+            <f-element>
+              <title>This SFR is selection-based in the App PP. When the TOE conforms to this PP-Module, it is mandatory because of the modifications that this PP-Module makes to FTP_DIT_EXT.1.
+              </title>
+              <aactivity>
+                <no-tests>
+                  There is no change to the Base-PP EAs for this SFR when this PP-Module is claimed.<h:p/> 
+                </no-tests>
+              </aactivity>
+            </f-element>
+          </f-component>
+          <f-component cc-id="fia_x509_ext.2" name="X.509 Certificate Authentication">
+            <consistency-rationale>This SFR is unchanged from its definition in the Base-PP; the SFR is recategorized from selection-based to mandatory when the TOE conforms to this PP-Module.</consistency-rationale>
+            <f-element>
+              <title>This SFR is selection-based in the App PP. When the TOE conforms to this PP-Module, it is mandatory because of the modifications that this PP-Module makes to FTP_DIT_EXT.1.
+              </title>
+              <aactivity>
+                <no-tests>
+                  There is no change to the Base-PP EAs for this SFR when this PP-Module is claimed.<h:p/> 
+                </no-tests>
+              </aactivity>
+            </f-element>
+          </f-component>
+          
+        </sec:mod_fia> 
+        
+        <sec:mod_ftp title="Trusted Path/Channels (FTP)">
+          <f-component cc-id="ftp_dit_ext.1" name="Protection of Data in Transit">
+            <consistency-rationale>This SFR is changed from its definition in the Base-PP to modify the selection options such that some options are mandated 
+              if another selection is chosen and some are removed entirely, due to the specific cryptographic needs of email client applications.</consistency-rationale>
+            <f-element>
+              <title>The application shall 
+                <selectables linebreak="yes">
+                  <selectable>encrypt all transmitted [<h:i>sensitive data</h:i>] with <h:b>TLS as defined in the TLS Package and</h:b>
+                    <selectables>
+                      <selectable id="sel_all_https">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                      <selectable id="sel_all_dtls">DTLS as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439"><h:i>TLS Package</h:i></h:a></selectable>
+                      <selectable>SSH as conforming to the Extended Package for <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389"><h:i>Secure Shell</h:i></h:a></selectable>
+                      <selectable>IPsec as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=419&amp;id=419"><h:i>PP-Module for VPN Client</h:i></h:a></selectable>
+                      <selectable><h:b>no other protocols</h:b></selectable>
+                    </selectables>
+                  </selectable>
+                  
+                  <selectable>invoke platform-provided functionality to encrypt all transmitted sensitive data with <h:b>TLS and</h:b>
+                    <selectables>
+                      <selectable>HTTPS</selectable>
+                      <selectable>DTLS</selectable>
+                      <selectable>SSH</selectable>
+                      <selectable><h:b>no other protocols</h:b></selectable>
+                    </selectables>
+                  </selectable>	    
+                
+                  
+                </selectables>
+                between itself and another trusted IT product.
+              </title>
+              <note role="application">This SFR is modified from its definition in the Base-PP to require that the TOE supports TLS and that its use of TLS is only limited to sensitive data. A conformant TOE must support the use of TLS for email 
+              encryption but is permitted to send and receive non-sensitive email messages over an untrusted channel.</note>
+              <aactivity>
+                <no-tests>
+                  There is no change to the Base-PP EAs for this SFR when this PP-Module is claimed, aside from the fact that the materials for the selections that have been refined out of this SFR are not applicable.<h:p/> 
+                </no-tests>
+              </aactivity>
+            </f-element>
+          </f-component>
+          
+        </sec:mod_ftp> 
+        
+      </modified-sfrs>
+      
       <additional-sfrs/>
       
       <con-toe>
@@ -955,7 +1071,7 @@ for destroying all keying material and cryptographic security parameters when no
 	    </consistency-rationale>
 	    <f-element>
 	      <title>The TSF shall include the capability to load <selectables>
-	      <selectable id="aonext1_addon">trusted add-ons</selectable>
+	      <selectable id="addons_supported">trusted add-ons</selectable>
 	      <selectable exclusive="yes">no add-ons</selectable>
 	      </selectables>.</title>
 	      <note role="application">FPT_AON_EXT.2 depends upon the selection
@@ -1489,6 +1605,7 @@ for destroying all keying material and cryptographic security parameters when no
       
       <sec:sel_fpt title="Protection of the TSF (FPT)">
       <f-component cc-id="fpt_aon_ext.2" name="Trusted Installation and Update for Add-ons">
+        <depends on="addons_supported"></depends>
         <!-- 
 	<selection-depends req="FPT_AON_EXT.1.1" ids="aonext1_addon"/>
 	 -->
