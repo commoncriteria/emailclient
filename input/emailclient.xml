@@ -1213,7 +1213,7 @@ for destroying all keying material and cryptographic security parameters when no
             <aactivity>
               <TSS>
                 The evaluator shall ensure the TSS describes how salts are generated. 
-                The evaluator shall confirm that the salt is generated using a DRBG as described in FCS_RBG_EXT.1 in <xref to="bibApp"/> or by the Operational Environment. 
+                The evaluator shall confirm that the salt is generated using a DRBG as described in FCS_RBG_EXT.1 in <xref to="bibAppPP"/> or by the Operational Environment. 
                 If an external function is used for this purpose, the evaluator shall ensure tha the TSS references the specific API that is called with inputs.<h:p/>
                 If the email client is relying on random bit generation from the host platform, 
                 the evaluator shall verify that the TSS includes the name/manufacturer of the external DRBG and describes the function call and parameters used when calling the external DRBG function. 
