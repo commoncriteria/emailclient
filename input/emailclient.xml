@@ -320,16 +320,16 @@
     <SO name="O.PROTECTED_STORAGE">
       <description>This objective is defined in the Base-PP. This PP-Module maps additional SFRs to it to address the data at rest protection functionality that is specific to email client applications.</description>
       <consistency-rationale>This objective is an enhancement to the O.PROTECTED_STORAGE objective defined in the Base-PP, specifically in regards to the data at rest that is specified to email client applications.</consistency-rationale>
-      <addressed-by>FCS_CKM_EXT.3, FCS_CKM_EXT.4, FCS_KYC_EXT.1, FCS_CKM_EXT.5 (optional), FCS_IVG_EXT.1 (optional), FCS_NOG_EXT.1 (optional), FCS_SAG_EXT.1 (optional), FDP_PST_EXT.1 (optional), FCS_COP_EXT.2 (selection-based), FCS_SMC_EXT.1 (selection-based)</addressed-by>
+      <addressed-by>FCS_CKM_EXT.3, FCS_CKM_EXT.4, FCS_KYC_EXT.1, FCS_IVG_EXT.1 (optional), FCS_NOG_EXT.1 (optional), FCS_SAG_EXT.1 (optional), FDP_PST_EXT.1 (optional), FCS_CKM_EXT.5 (selection-based), FCS_COP_EXT.2 (selection-based), FCS_SMC_EXT.1 (selection-based)</addressed-by>
       <rationale>
         FCS_CKM_EXT.3 supports the objective by defining the mechanism by which the TSF protects sotred key data from unauthorized disclosure.<h:p/>
         FCS_CKM_EXT.4 supports the objective by defining the mechanism by which the TSF securely destroys stored key data.<h:p/>
         FCS_KYC_EXT.1 supports the objective by defining any key chain that the TSF implements to protect a root encryption key.<h:p/>
-        FCS_CKM_EXT.5 supports the objective by optionally defining the mechanism by which the TSF can derive key material using a user-supplied password credential.<h:p/>
         FCS_IVG_EXT.1 supports the objective by optionally specifying the initialization vectors used for various cryptographic modes if the TOE supports any of these modes.<h:p/>
         FCS_NOG_EXT.1 supports the objective by optionally defining the minimum nonce size if the TSF uses any cryptographic algorithms that require the use of nonces.<h:p/>
         FCS_SAG_EXT.1 supports the objective by optionally defining the supported methods for salt generation if the TSF uses any cryptographic algorithms that require the use of salts.<h:p/>
         FDP_PST_EXT.1 supports the objective by optionally defining the ability of the TOE to operate without persistently storing certain types of data at all.<h:p/> 
+        FCS_CKM_EXT.5 supports the objective by optionally defining the mechanism by which the TSF can derive key material using a user-supplied password credential.<h:p/>
         FCS_COP_EXT.2 supports the objective by defining the supported key wrap mechanisms if the TSF uses key wrapping as part of maintaining the a key chain.<h:p/>
         FCS_SMC_EXT.1 supports the objective by defining the supported key combination mechanisms if the TSF uses key combining as part of maintaining the a key chain.
       </rationale>
@@ -529,6 +529,10 @@
         
 	<sec:man_fcs title="Cryptographic Support (FCS)">
 	
+	  <ext-comp-def fam-id="FCS_CKM_EXT" title="Cryptographic Key Management">
+	    <fam-behavior>Components in this family define requirements for cryptographic key management beyond those which are specified in the Part 2 family FCS_CKM.
+	    </fam-behavior>
+	  </ext-comp-def>
 	  <f-component cc-id="fcs_ckm_ext.3" name="Protection of Key and Key Material">
 	    <consistency-rationale>This SFR defines how keys and key material are saved by the email client. It does not impact the App PP functionality. 
 	    </consistency-rationale>
@@ -646,6 +650,10 @@ for destroying all keying material and cryptographic security parameters when no
 	    </f-element>
 	  </f-component>
 
+	  <ext-comp-def fam-id="FCS_KYC_EXT" title="Cryptographic Key Chaining">
+	    <fam-behavior>Components in this family define requirements for protection of cryptographic key data through its storage in a hierarchical key chain.
+	    </fam-behavior>
+	  </ext-comp-def>
 	  <f-component cc-id="fcs_kyc_ext.1" name="Key Chaining">
 	    <consistency-rationale> 
 	      This SFR defines how email clients maintain key chains.
@@ -661,7 +669,7 @@ for destroying all keying material and cryptographic security parameters when no
 		  intermediate keys originating from: 
 		  <selectables linebreak="yes">
 		    <selectable>
-		      a password as specified in FCS_CKM_EXT.5.1</selectable>
+		      a password as specified in FCS_CKM_EXT.5</selectable>
 		    <selectable>one or more other authorization factor(s)</selectable>
 		    <selectable>credentials stored in platform key storage</selectable>
 		  </selectables>
@@ -682,7 +690,9 @@ for destroying all keying material and cryptographic security parameters when no
 		<selectable>256 bits</selectable>
 	      </selectables>
 	      </title>
-	      <note role="application">Key Chaining is the method of using multiple layers of
+	      <note role="application">
+	        
+	        Key Chaining is the method of using multiple layers of
 	      encryption keys to ultimately secure the data encryption key. The number of
 	      intermediate keys will vary. This applies to all keys that contribute to the ultimate
 	      wrapping or derivation of the data encryption key; including those in protected areas.
@@ -707,6 +717,10 @@ for destroying all keying material and cryptographic security parameters when no
 	  </f-component>
 	  
 	  <!-- as modified by TD0560 -->
+	  <ext-comp-def fam-id="FCS_SMIME_EXT" title="Secure/Multipurpose Internet Mail Extensions (S/MIME)">
+	    <fam-behavior>Components in this family define requirements for the secure implementation of S/MIME.
+	    </fam-behavior>
+	  </ext-comp-def>
 	  <f-component cc-id="fcs_smime_ext.1" name="Secure/Multipurpose Internet Mail Extensions (S/MIME)">
 	    
 	    <consistency-rationale>
@@ -826,6 +840,10 @@ for destroying all keying material and cryptographic security parameters when no
 	  </f-component>
 	</sec:man_fcs>
 	<sec:man_fdp title="User Data Protection (FDP)">
+	  <ext-comp-def fam-id="FDP_NOT_EXT" title="Notifications">
+	    <fam-behavior>Components in this family define requirements for the TSF's ability to notify users about potential insecure interactions with data.
+	    </fam-behavior>
+	  </ext-comp-def>
 	  <f-component cc-id="fdp_not_ext.1" name="Notification of S/MIME Status">
 	    <consistency-rationale>
 	      This SFR defines the behavior an email client exhibits when a message is received.
@@ -858,6 +876,11 @@ for destroying all keying material and cryptographic security parameters when no
 	      </aactivity>
 	    </f-element>
 	  </f-component>
+	  
+	  <ext-comp-def fam-id="FDP_SMIME_EXT" title="Use of Secure/Multipurpose Internet Mail Extensions (S/MIME)">
+	    <fam-behavior>Components in this family define requirements to implement S/MIME.
+	    </fam-behavior>
+	  </ext-comp-def>
 	  <f-component cc-id="fdp_smime_ext.1" name="S/MIME">
 	    <consistency-rationale>
 	      This SFR defines the format an email client shall use as output for cryptographic operations.
@@ -888,7 +911,11 @@ for destroying all keying material and cryptographic security parameters when no
 	  </f-component>
 	</sec:man_fdp>
 	<sec:man_fia title="Identification and Authentication (FIA)">
-	  <f-component cc-id="fia_x509_ext.3" name="X509 Authentication and Encryption">
+	  <ext-comp-def fam-id="FIA_509_EXT" title="X.509 Certificate Services">
+	    <fam-behavior>Components in this family define requirements for the use of X.509 certifications in trusted communications.
+	    </fam-behavior>
+	  </ext-comp-def>
+	  <f-component cc-id="fia_x509_ext.3" name="X.509 Authentication and Encryption">
 	    <consistency-rationale>
 	      This SFR defines the format an email client shall use for certificates to perform encryption and authentication.
 	      It does not impact the App PP functionality.
@@ -936,6 +963,10 @@ for destroying all keying material and cryptographic security parameters when no
 	  </f-component>
 	</sec:man_fia>
 	<sec:man_fmt title="Security Management (FMT)">
+	  <ext-comp-def fam-id="FMF_MOF_EXT" title="Management of Functions Behavior">
+	    <fam-behavior>Components in this family define requirements for technology-specific management functions that are not enumerated in the Part 2 family FMT_MOF.
+	    </fam-behavior>
+	  </ext-comp-def>
 	  <f-component cc-id="fmt_mof_ext.1" name="Management of Functions Behavior">
 	    <consistency-rationale>
 	      This SFR defines a specific set of management functions for an email client.
@@ -1064,6 +1095,10 @@ for destroying all keying material and cryptographic security parameters when no
 	  </f-component>
 	</sec:man_fmt>
 	<sec:man_fpt title="Protection of the TSF (FPT)">
+	  <ext-comp-def fam-id="FPT_AON_EXT" title="Add-Ons">
+	    <fam-behavior>Components in this family define requirements for the secure handling of add-ons that can be installed on top of the TOE.
+	    </fam-behavior>
+	  </ext-comp-def>
 	  <f-component cc-id="fpt_aon_ext.1" name="Support for Only Trusted Add-ons">
 	    <consistency-rationale>
 	      This SFR defines what types of plugins an email client may use.
@@ -1074,11 +1109,11 @@ for destroying all keying material and cryptographic security parameters when no
 	      <selectable id="addons_supported">trusted add-ons</selectable>
 	      <selectable exclusive="yes">no add-ons</selectable>
 	      </selectables>.</title>
-	      <note role="application">FPT_AON_EXT.2 depends upon the selection
-	      made here. If the email client does not include support for installing only trusted
+	      <note role="application">If "trusted add-ons" is selected in FPT_AON_EXT.1.1, the TOE must also claim the selection-based SFR FPT_AON_EXT.2.
+	        <h:p/>
+	        If the email client does not include support for installing only trusted
 	      add-ons, this requirement can be met by demonstrating the ability to disable all
-	      support for add-ons as specified in FMT_MOF_EXT.1. Cryptographic
-	      verification (i.e., trust) of add-ons is tested in FPT_AON_EXT.2.1.</note>
+	      support for add-ons as specified in FMT_MOF_EXT.1.</note>
 	      <aactivity>
 		<TSS>
 		The evaluator shall verify that the TSS describes whether the email client is capable of loading trusted add-ons.<h:p/>
@@ -1094,6 +1129,10 @@ for destroying all keying material and cryptographic security parameters when no
 	</sec:man_fpt>
 	<sec:man_ftp title="Trusted Path/Channels (FTP)">
 	  <!-- as modified by TD0414 -->
+	  <ext-comp-def fam-id="FTP_ITC_EXT" title="Inter-TSF Trusted Channel">
+	    <fam-behavior>Components in this family define technology-specific requirements for trusted communications that are not defined in the Part 2 family FTP_ITC.
+	    </fam-behavior>
+	  </ext-comp-def>
 	  <f-component cc-id="ftp_itc_ext.1" name="Inter-TSF Trusted Channel">
 	    <consistency-rationale>
 	      This SFR defines which channels for an email client must be considered trusted.
@@ -1149,114 +1188,11 @@ for destroying all keying material and cryptographic security parameters when no
     
     <opt-sfrs>
       <sec:opt_fcs title="Cryptographic Support (FCS)">
-        <!-- as modified by TD0266 with minor rearrangement of EAs -->
-      <f-component cc-id="fcs_ckm_ext.5" name="Cryptographic Key Derivation (Password/Passphrase Conditioning)">
-        <consistency-rationale>This SFR defines restrictions on password composition and key derivation mechanisms. It defines functionality similar to FCS_CKM.1(3) in the Base-PP but has additional details 
-          specific to the composition of the actual password authentication factor, rather than just defining a method for key derivation. 
-        </consistency-rationale>
-	<f-element>
-	  <title>
-	    The TSF shall support a password/passphrase of up to <assignable>maximum password size, positive integer of 64 or more</assignable> characters used to generate a password authorization factor.
-	  </title>
-	  <note role="application">
-	    The password/passphrase is represented on the host machine as a sequence of characters whose encoding depends on the TOE and the underlying OS. 
-	    The ST author assigns the maximum size of the password/passphrase it supports; it must support at least 64 characters.
-	  </note>
-	  </f-element>
-        <f-element>
-          <title>
-            The TSF shall allow passwords to be composed of any combination of upper case characters, lower case characters, numbers, and the following special characters: 
-            "!", "@", "#", "$", "%", "^", "&amp;", "*", "(", and ")", and 
-            <selectables>
-              <selectable><assignable>other supported special characters</assignable></selectable>
-              <selectable>no other characters</selectable>
-            </selectables>
-          </title>
-          <!-- editor's note: app note here is superfluous and was not included -->
-        </f-element>
-      <f-element>
-        <title>The TSF shall perform Password-based Key Derivation Functions in accordance with a specified cryptographic algorithm [HMAC-<selectables>
-          <selectable>SHA-256</selectable>
-          <selectable>SHA-384</selectable>
-          <selectable>SHA-512</selectable>
-        </selectables>], with <assignable>positive integer of 4096 or more</assignable> iterations, and output cryptographic key sizes <selectables>
-          <selectable>128</selectable>
-          <selectable>256</selectable>
-        </selectables> bits that meet the following: [NIST SP 800-132].
-        </title>
-          <note role="application">
-            The ST author selects the parameters based on the PBKDF used by the TSF. 
-            The password/passphrase must be conditioned into a string of bits that forms the submask to be used as input into a key. 
-            Conditioning can be performed using one of the identified hash functions or the process described in NIST SP 800-132; 
-            the method used is selected by the ST Author. SP 800-132 requires the use of a pseudo-random function (PRF) consisting of HMAC with an approved hash function. 
-            The ST author selects the hash function used, also includes the appropriate requirements for HMAC and the hash function.
-            <h:p/>
-            Appendix A of SP 800-132 recommends setting the iteration count in order to increase the computation needed to derive a key from a password and, therefore, increase the workload of performing a password recovery attack. 
-            However, for this PP-Module, a minimum iteration count of 4096 is required in order to ensure that twelve bits of security is added to the password/passphrase value. 
-            A significantly higher value is recommended to ensure optimal security.
-          </note>
-      </f-element>
-        <f-element>
-          <title>
-            The TSF shall not accept passwords less than 
-            <selectables>
-              <selectable>a value settable by the administrator</selectable>
-              <selectable><assignable>minimum password length accepted by the TOE, must be >= 1</assignable></selectable>
-            </selectables> and greater than the maximum password length defined in FCS_CKM_EXT.5.1.
-          </title>
-          <note role="application">
-            If the minimum password length is settable, then ST author chooses "a value settable by the administrator for this component," 
-            as well as the "configure password/passphrase complexity setting" item for FMT_SMF.1.1. If the minimum length is not settable, 
-            the ST author fills in the assignment with the minimum length the password must be (zero-length passwords are not allowed for compliant TOEs).
-          </note>
-        
-   
-	  <aactivity>
-	    <TSS>
-	      For FCS_CKM_EXT.5.1, there are two aspects of this component that require evaluation: passwords/passphrases of the length specified in the requirement (at least 64 characters) are supported, 
-	      and that the characters that are input are subject to the selected conditioning function. These activities are separately addressed in the text below.
-	      <h:p/>
-	      Support for Password/Passphrase length: The evaluator shall check to ensure that the TSS describes the allowable ranges for password/passphrase lengths, and that at least 64 characters may be specified by the user.
-	      <h:p/>
-	      Support for PBKDF: The evaluator shall examine the password hierarchy TSS to ensure that the formation of all keys is described and that the key sizes match that described by the ST author.
-	      <h:p/>
-	      The evaluator shall check that the TSS describes the method by which the password/passphrase is first encoded and then fed to the SHA algorithm. 
-	      The settings for the algorithm (padding, blocking, etc.) shall be described, and the evaluator shall verify that these are supported by the selections in this component as well as the selections concerning the hash function itself. 
-	      The evaluator shall verify that the TSS contains a description of how the output of the hash function is used to form the submask that will be input into the function and is the same length as the KEK as specified in FCS_CKM_EXT.4.
-	      <h:p/>
-	      For the NIST SP 800-132-based conditioning of the password/passphrase, the required assurance activities will be performed when doing the assurance activities for the appropriate requirements (FCS_COP.1.1(4) from the [AppPP]). 
-	      If any manipulation of the key is performed in forming the submask that will be used to form the FEK or KEK, that process shall be described in the TSS. 
-	      For the claimed iteration count, the evaluator shall verify that the iteration count for PBKDFs performed by the TOE comply with NIST SP 800-132 by ensuring that the TSS contains a description of the estimated time required 
-	      to derive key material from passwords and how the TOE increases the computation time for password-based key derivation (including but not limited to increasing the iteration count).
-	      <h:p/>
-	    </TSS>
-	      <Guidance>
-	        The evaluator shall check the operational guidance to determine that there are instructions on how to generate large passwords/passphrases, 
-	        and instructions on how to configure the password/passphrase length (and optional complexity settings) to provide entropy commensurate with the keys that the authorization factor is protecting. 
-	        This is important because many default settings for passwords/passphrases will not meet the necessary entropy needed as specified in this PP-Module
-	        <h:p/>
-	      </Guidance>
-	    <Tests>The evaluator shall compose passwords that either meet the requirements, or fail to meet the requirements, 
-	      and shall verify that the TOE's behavior is consistent with the requirements. 
-	      While the evaluator is not required (nor is it feasible) to test all possible compositions of passwords, 
-	      the evaluator shall ensure that all characters, and minimum and maximum lengths listed in the requirement, are supported, and justify the subset of those characters chosen for testing.
-	      <h:p/>
-	      Support for Password/Passphrase characteristics: In addition to the analysis above, the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance
-	    <testlist>
-	      <test>The evaluator shall ensure that the TOE supports passwords/passphrases of exactly 64 characters.</test>
-	      <test>The evaluator shall ensure that the TOE does not accept more than the maximum number of characters specified in FCS_CKM_EXT.5.1.</test>
-	      <test>The evaluator shall ensure that the TOE does not accept less than the minimum number of characters specified in FCS_CKM_EXT.5.4. 
-	        If the minimum length is settable by the administrator, the evaluator determines the minimum length or lengths to test.</test>
-	      <test>The evaluator shall ensure that the TOE supports passwords consisting of all characters listed in FCS_CKM_EXT.5.2 and of varying lengths within the range specified in FCS_CKM_EXT.5.4.</test>
-	    </testlist>
-	      No explicit testing of the formation of the submask from the input password is required.
-	      <h:p/>
-	      For password conditioning, no explicit testing of the formation of the authorization factor from the input password/passphrase is required. 
-	        </Tests>
-	  </aactivity>
-        
-	</f-element>
-      </f-component>
+
+        <ext-comp-def fam-id="FCS_IVG_EXT" title="Initialization Vector Generation">
+          <fam-behavior>Components in this family define requirements for the secure generation of initialization vectors used in support of other cryptographic functions.
+          </fam-behavior>
+        </ext-comp-def>
         <f-component cc-id="fcs_ivg_ext.1" name="Initialization Vector Generation">
           <consistency-rationale>
             This SFR defines how clients generate IVs for cryptographic operations.
@@ -1291,6 +1227,11 @@ for destroying all keying material and cryptographic security parameters when no
           </f-element>
           
         </f-component>
+        
+        <ext-comp-def fam-id="FCS_NOG_EXT" title="Cryptographic Nonce Generation">
+          <fam-behavior>Components in this family define requirements for the secure generation of nonces used in support of other cryptographic functions.
+          </fam-behavior>
+        </ext-comp-def>
       <f-component cc-id="fcs_nog_ext.1" name="Cryptographic Nonce Generation">
 	<consistency-rationale>
 	  This SFR defines how clients generate nonces for cryptographic operations.
@@ -1313,6 +1254,10 @@ for destroying all keying material and cryptographic security parameters when no
 	</f-element>
       </f-component>
 
+        <ext-comp-def fam-id="FCS_SAG_EXT" title="Initialization Vector Generation">
+          <fam-behavior>Components in this family define requirements for the secure generation of salts used in support of other cryptographic functions.
+          </fam-behavior>
+        </ext-comp-def>
         <f-component cc-id="fcs_sag_ext.1" name="Cryptographic Salt Generation">
           <consistency-rationale>
             This SFR defines how clients generate salts for cryptographic operations.
@@ -1321,7 +1266,7 @@ for destroying all keying material and cryptographic security parameters when no
           <f-element>
             <title>The TSF shall only use salts that are generated by a <selectables
               linebreak="yes">
-              <selectable>DRBG as specified in FCS_RBG_EXT.1</selectable>
+              <selectable>DRBG as specified in [<h:i>FCS_RBG_EXT.2 (as defined in the Base-PP)</h:i>]</selectable>
               <selectable>DRBG provided by the host platform</selectable>
             </selectables>
             </title>
@@ -1349,7 +1294,7 @@ for destroying all keying material and cryptographic security parameters when no
       <sec:opt_fdp title="User Data Protection (FDP)">
       <f-component cc-id="fdp_not_ext.2" name="Notification of URI">
 	<consistency-rationale>
-	  This SFR defines how clients display URIs in embedded links
+	  This SFR defines how clients display URIs in embedded links.
 	  It does not impact functionality described by the Base-PP.
 	</consistency-rationale>
 	<f-element>
@@ -1372,9 +1317,14 @@ for destroying all keying material and cryptographic security parameters when no
 	  </aactivity>
 	</f-element>
       </f-component>
+        
+        <ext-comp-def fam-id="FDP_PST_EXT" title="Storage of Persistent Information">
+          <fam-behavior>Components in this family define requirements for the enumeration of the minimum set of data the TSF must be able to store in order to implement its required functionality.
+          </fam-behavior>
+        </ext-comp-def>
       <f-component cc-id="fdp_pst_ext.1" name="Storage of Persistent Information">
 	<consistency-rationale>
-	  This SFR defines how clients display URIs in embedded links
+	  This SFR defines the persistent information that must be stored for email client functionality to work as intended.
 	  It does not impact functionality described by the Base-PP.
 	</consistency-rationale>
 	<f-element>
@@ -1407,6 +1357,11 @@ for destroying all keying material and cryptographic security parameters when no
 	  </aactivity>
 	</f-element>
       </f-component>
+        
+        <ext-comp-def fam-id="FDP_REN_EXT" title="Rendering of Message Conent">
+          <fam-behavior>Components in this family define requirements for the rendering of data presented to a user such that the risk of malicious data transmission is minimized.
+          </fam-behavior>
+        </ext-comp-def>
       <f-component cc-id="fdp_ren_ext.1" name="Rendering of Message Content">
 	<consistency-rationale>
 	  This SFR defines functionality to display message content.
@@ -1455,6 +1410,123 @@ for destroying all keying material and cryptographic security parameters when no
       
       
       <sec:sel_fcs title="Cryptographic Support (FCS)">
+        <!-- as modified by TD0266 with minor rearrangement of EAs -->
+        <!-- editor's note: moved to sel-based because of FCS_KYC_EXT.1.1 selections -->
+        <f-component cc-id="fcs_ckm_ext.5" name="Cryptographic Key Derivation (Password/Passphrase Conditioning)">
+          <consistency-rationale>This SFR defines restrictions on password composition and key derivation mechanisms. It defines functionality similar to FCS_CKM.1(3) in the Base-PP but has additional details 
+            specific to the composition of the actual password authentication factor, rather than just defining a method for key derivation. 
+          </consistency-rationale>
+          <f-element>
+            <title>
+              The TSF shall support a password/passphrase of up to <assignable>maximum password size, positive integer of 64 or more</assignable> characters used to generate a password authorization factor.
+            </title>
+            <note role="application">
+              The password/passphrase is represented on the host machine as a sequence of characters whose encoding depends on the TOE and the underlying OS. 
+              The ST author assigns the maximum size of the password/passphrase it supports; it must support at least 64 characters.
+            </note>
+          </f-element>
+          <f-element>
+            <title>
+              The TSF shall allow passwords to be composed of any combination of upper case characters, lower case characters, numbers, and the following special characters: 
+              "!", "@", "#", "$", "%", "^", "&amp;", "*", "(", and ")", and 
+              <selectables>
+                <selectable><assignable>other supported special characters</assignable></selectable>
+                <selectable>no other characters</selectable>
+              </selectables>
+            </title>
+            <!-- editor's note: app note here is superfluous and was not included -->
+          </f-element>
+          <f-element>
+            <title>The TSF shall perform Password-based Key Derivation Functions in accordance with a specified cryptographic algorithm [HMAC-<selectables>
+              <selectable>SHA-256</selectable>
+              <selectable>SHA-384</selectable>
+              <selectable>SHA-512</selectable>
+            </selectables>], with <assignable>positive integer of 4096 or more</assignable> iterations, and output cryptographic key sizes <selectables>
+              <selectable>128</selectable>
+              <selectable>256</selectable>
+            </selectables> bits that meet the following: [NIST SP 800-132].
+            </title>
+            <note role="application">
+              The ST author selects the parameters based on the PBKDF used by the TSF. 
+              The password/passphrase must be conditioned into a string of bits that forms the submask to be used as input into a key. 
+              Conditioning can be performed using one of the identified hash functions or the process described in NIST SP 800-132; 
+              the method used is selected by the ST Author. SP 800-132 requires the use of a pseudo-random function (PRF) consisting of HMAC with an approved hash function. 
+              The ST author selects the hash function used, also includes the appropriate requirements for HMAC and the hash function.
+              <h:p/>
+              Appendix A of SP 800-132 recommends setting the iteration count in order to increase the computation needed to derive a key from a password and, therefore, increase the workload of performing a password recovery attack. 
+              However, for this PP-Module, a minimum iteration count of 4096 is required in order to ensure that twelve bits of security is added to the password/passphrase value. 
+              A significantly higher value is recommended to ensure optimal security.
+            </note>
+          </f-element>
+          <f-element>
+            <title>
+              The TSF shall not accept passwords less than 
+              <selectables>
+                <selectable>a value settable by the administrator</selectable>
+                <selectable><assignable>minimum password length accepted by the TOE, must be >= 1</assignable></selectable>
+              </selectables> and greater than the maximum password length defined in FCS_CKM_EXT.5.1.
+            </title>
+            <note role="application">
+              This selection-based SFR is claimed when "a password as specified in FCS_CKM_EXT.5" is selected in FCS_KYC_EXT.1.1.
+              <h:p/>
+              If the minimum password length is settable, then ST author chooses "a value settable by the administrator for this component," 
+              as well as the "configure password/passphrase complexity setting" item for FMT_SMF.1.1. If the minimum length is not settable, 
+              the ST author fills in the assignment with the minimum length the password must be (zero-length passwords are not allowed for compliant TOEs).
+            </note>
+            
+            
+            <aactivity>
+              <TSS>
+                For FCS_CKM_EXT.5.1, there are two aspects of this component that require evaluation: passwords/passphrases of the length specified in the requirement (at least 64 characters) are supported, 
+                and that the characters that are input are subject to the selected conditioning function. These activities are separately addressed in the text below.
+                <h:p/>
+                Support for Password/Passphrase length: The evaluator shall check to ensure that the TSS describes the allowable ranges for password/passphrase lengths, and that at least 64 characters may be specified by the user.
+                <h:p/>
+                Support for PBKDF: The evaluator shall examine the password hierarchy TSS to ensure that the formation of all keys is described and that the key sizes match that described by the ST author.
+                <h:p/>
+                The evaluator shall check that the TSS describes the method by which the password/passphrase is first encoded and then fed to the SHA algorithm. 
+                The settings for the algorithm (padding, blocking, etc.) shall be described, and the evaluator shall verify that these are supported by the selections in this component as well as the selections concerning the hash function itself. 
+                The evaluator shall verify that the TSS contains a description of how the output of the hash function is used to form the submask that will be input into the function and is the same length as the KEK as specified in FCS_CKM_EXT.4.
+                <h:p/>
+                For the NIST SP 800-132-based conditioning of the password/passphrase, the required assurance activities will be performed when doing the assurance activities for the appropriate requirements (FCS_COP.1.1(4) from the [AppPP]). 
+                If any manipulation of the key is performed in forming the submask that will be used to form the FEK or KEK, that process shall be described in the TSS. 
+                For the claimed iteration count, the evaluator shall verify that the iteration count for PBKDFs performed by the TOE comply with NIST SP 800-132 by ensuring that the TSS contains a description of the estimated time required 
+                to derive key material from passwords and how the TOE increases the computation time for password-based key derivation (including but not limited to increasing the iteration count).
+                <h:p/>
+              </TSS>
+              <Guidance>
+                The evaluator shall check the operational guidance to determine that there are instructions on how to generate large passwords/passphrases, 
+                and instructions on how to configure the password/passphrase length (and optional complexity settings) to provide entropy commensurate with the keys that the authorization factor is protecting. 
+                This is important because many default settings for passwords/passphrases will not meet the necessary entropy needed as specified in this PP-Module
+                <h:p/>
+              </Guidance>
+              <Tests>The evaluator shall compose passwords that either meet the requirements, or fail to meet the requirements, 
+                and shall verify that the TOE's behavior is consistent with the requirements. 
+                While the evaluator is not required (nor is it feasible) to test all possible compositions of passwords, 
+                the evaluator shall ensure that all characters, and minimum and maximum lengths listed in the requirement, are supported, and justify the subset of those characters chosen for testing.
+                <h:p/>
+                Support for Password/Passphrase characteristics: In addition to the analysis above, the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance
+                <testlist>
+                  <test>The evaluator shall ensure that the TOE supports passwords/passphrases of exactly 64 characters.</test>
+                  <test>The evaluator shall ensure that the TOE does not accept more than the maximum number of characters specified in FCS_CKM_EXT.5.1.</test>
+                  <test>The evaluator shall ensure that the TOE does not accept less than the minimum number of characters specified in FCS_CKM_EXT.5.4. 
+                    If the minimum length is settable by the administrator, the evaluator determines the minimum length or lengths to test.</test>
+                  <test>The evaluator shall ensure that the TOE supports passwords consisting of all characters listed in FCS_CKM_EXT.5.2 and of varying lengths within the range specified in FCS_CKM_EXT.5.4.</test>
+                </testlist>
+                No explicit testing of the formation of the submask from the input password is required.
+                <h:p/>
+                For password conditioning, no explicit testing of the formation of the authorization factor from the input password/passphrase is required. 
+              </Tests>
+            </aactivity>
+            
+          </f-element>
+        </f-component>
+        
+        
+        <ext-comp-def fam-id="FCS_COP_EXT" title="Cryptographic Operation">
+          <fam-behavior>Components in this family define requirements for cryptographic operation beyond those which are specified in the Part 2 family FCS_COP.
+          </fam-behavior>
+        </ext-comp-def>
         <f-component cc-id="fcs_cop_ext.2" name="Key Wrapping">
           <!-- 
           <selection-depends req="fcs_kyc_ext.1.1" ids="implkeywrap"/>
@@ -1489,7 +1561,9 @@ for destroying all keying material and cryptographic security parameters when no
                 KTS-OAEP-receiver-confirmation (section 9.2.4) scheme, "NIST SP 800-56A rev 2" for
                 ECC CDH (sections 5.6.1.2 and 6.2.2.2) </selectable>
             </selectables>. </title>
-            <note role="application">In the first selection, the ST author chooses the entity that
+            <note role="application">This selection-based SFR is claimed when any of the selections that explicitly reference FCS_COP_EXT.2 are selected in FCS_CKM_EXT.3.1 or FCS_KYC_EXT.1.1.
+              <h:p/>
+              In the first selection, the ST author chooses the entity that
               performs the decryption/encryption. In the second selection, the ST author chooses the
               method used for encryption: <h:ul><h:li>Using one of the two AES-based Key Wrap methods
                 specified in NIST SP 800-38F</h:li><h:li>Using one of the two the KTS-OAEP schemes
@@ -1514,6 +1588,10 @@ for destroying all keying material and cryptographic security parameters when no
           </f-element>
         </f-component>
         
+        <ext-comp-def fam-id="FCS_CKM_EXT" title="Cryptographic Key Management">
+          <fam-behavior>Components in this family define requirements for key combination used in support of other cryptographic functions.
+          </fam-behavior>
+        </ext-comp-def>
         <f-component cc-id="fcs_smc_ext.1" name="Key Combining">
           <!-- 
           <selection-depends req="fcs_kyc_ext.1.1" ids="implkeycomb"/>
@@ -1530,7 +1608,10 @@ for destroying all keying material and cryptographic security parameters when no
               <selectable>SHA-256</selectable>
               <selectable>SHA-512</selectable>
             </selectables> to generate another key. </title>
-            <note role="application">This requirement specifies the way that a product may combine
+            <note role="application">
+              This selection-based SFR is claimed when any of the selections that explicitly reference FCS_SMC_EXT.1 are selected in FCS_CKM_EXT.3.1 or FCS_KYC_EXT.1.1.
+              <h:p/>
+              This requirement specifies the way that a product may combine
               the various submasks by using either an XOR or an approved SHA-hash. </note>
             <aactivity>
               <TSS>
@@ -1551,6 +1632,10 @@ for destroying all keying material and cryptographic security parameters when no
       
       <sec:sel_fia title="Identification and Authentication (FIA)">
         <!-- as modified by TD0405 -->
+        <ext-comp-def fam-id="FIA_SASL_EXT" title="Simple Authentication and Security Layer (SASL)">
+          <fam-behavior>Components in this family define requirements for the implementation of SASL.
+          </fam-behavior>
+        </ext-comp-def>
       <f-component cc-id="fia_sasl_ext.1" name="Simple Authentication and Security Layer (SASL)">
         <!-- 
         <selection-depends req="FTP_ITC_EXT.1.2" ids="saslimap,saslsmtp,saslpop"/>  -->
@@ -1575,7 +1660,10 @@ for destroying all keying material and cryptographic security parameters when no
         </f-element>
         <f-element>
           <title>The TSF shall support the SMTP AUTH extension for the SASL mechanism. </title>
-          <note role="application">In order for an email client to support PKI X.509 Certificates
+          <note role="application">
+            This selection-based SFR is claimed when QQQQ.
+            <h:p/>
+            In order for an email client to support PKI X.509 Certificates
             for POP3, IMAP and SMTP as required in this document, the client must support the
             Simple Authentication and Security Layer (SASL) authentication method as described in
             RFC 4422, the AUTH and CAPA extensions for POP3, as described in RFC 5034, the
@@ -1630,6 +1718,7 @@ for destroying all keying material and cryptographic security parameters when no
 	</f-element>
 	<f-element>
 	  <title>The TSF shall prevent the automatic installation of add-ons.</title>
+	  <note role="application">This selection-based SFR is claimed when "trusted add-ons" is selected in FPT_AON_EXT.1.1.</note>
 	  <aactivity>
 	    <TSS>
 	    The evaluator shall examine the TSS to verify that it states that the email client will reject add-ons from untrusted sources.<h:p/>
