@@ -541,9 +541,7 @@
 	    <management>No specific management functions are identified.</management>
 	    <audit>There are no auditable events foreseen.</audit>
 	    <dependencies>
-	      FCS_COP_EXT.2 Key Wrapping<h:p/>
-	      FCS_KYC_EXT.1 Key Chaining<h:p/>
-	      FCS_SMC_EXT.1 Submask Combining
+	      No dependencies.
 	    </dependencies>
 	    
 	    <f-element>
@@ -574,6 +572,10 @@
 		</selectable>
 		</selectables>.
 	      </title>
+	      <ext-comp-def-title>
+	        <title>The TSF shall <assignable>not store keys in non-volatile memory or only store keys in non-volatile memory if protected by an appropriate mechanism</assignable>.         
+	        </title>
+	      </ext-comp-def-title>
 	      <note role="application">The plaintext key storage in non-volatile memory is allowed for
 	      several reasons. If the keys exist within protected memory that is not user accessible
 	      on the email client or operational environment, the only methods that allow it to play
@@ -603,8 +605,7 @@
 	    <management>No specific management functions are identified.</management>
 	    <audit>There are no auditable events foreseen.</audit>
 	    <dependencies>
-	      FCS_RBG_EXT.1 Random Bit Generation Services<h:p/>
-	      FCS_RBG_EXT.2 Random Bit Generation from Application
+	      No dependencies.
 	    </dependencies>
 	    
 	    <f-element>
@@ -629,6 +630,13 @@
          <selectable>NIST SP 800-88</selectable>
 	       <selectable>no standard</selectable></selectables> 
 for destroying all keying material and cryptographic security parameters when no longer needed.</title>
+	      <ext-comp-def-title>
+	        <title>The TSF shall <assignable>key destruction method</assignable>
+	          that meets the following:<selectables linebreak="yes">
+	            <selectable>NIST SP 800-88</selectable>
+	            <selectable>no standard</selectable></selectables> 
+	          for destroying all keying material and cryptographic security parameters when no longer needed.</title>
+	      </ext-comp-def-title>
 	      <note role="application">
 		<h:p>
 		  For the purposes of this requirement, keying material refers to
@@ -683,9 +691,7 @@ for destroying all keying material and cryptographic security parameters when no
 	    <management>No specific management functions are identified.</management>
 	    <audit>There are no auditable events foreseen.</audit>
 	    <dependencies>
-	      FCS_CKM_EXT.5 Cryptographic Key Derivation (Password/Passphrase Conditioning)<h:p/>
-	      FCS_COP_EXT.2 Key Wrapping<h:p/>
-	      FCS_SMC_EXT.1 Submask Combining
+	      No dependencies.
 	    </dependencies>
 
 	    <f-element>
@@ -718,6 +724,16 @@ for destroying all keying material and cryptographic security parameters when no
 		<selectable>256 bits</selectable>
 	      </selectables>
 	      </title>
+	      <ext-comp-def-title>
+	        <title> The TSF shall maintain a key chain of: 
+	        <assignable>key hierarchy</assignable>
+	          to the data encryption/decryption key(s) using the following
+	          method(s): 
+	          <assignable>key protection method</assignable>
+	          while maintaining an effective strength of 
+	          <assignable>key strength</assignable>
+	        </title>
+	      </ext-comp-def-title>
 	      <note role="application">
 	        
 	        Key Chaining is the method of using multiple layers of
@@ -790,6 +806,11 @@ for destroying all keying material and cryptographic security parameters when no
 	          <selectable>id-sha384</selectable>
 	          <selectable>id-sha512</selectable>
 	        </selectables> and no others as part of the S/MIME protocol. </title>
+	      <ext-comp-def-title>
+	        <title>The TSF shall present the digestAlgorithm field with the following
+	          Message Digest Algorithm identifiers
+	          <assignable>message digest algorithm identifiers</assignable> and no others as part of the S/MIME protocol. </title>
+	      </ext-comp-def-title>
 	    </f-element>
 	    <f-element>
 	      <title>The TSF shall present the signatureAlgorithm field with the following: sha256withRSAEncryption and
@@ -800,6 +821,10 @@ for destroying all keying material and cryptographic security parameters when no
 	          <selectable>ecdsawithsha384</selectable>
 	          <selectable>ecdsawithsha512</selectable>
 	        </selectables> and no other algorithms as part of the S/MIME protocol. </title>
+	      <ext-comp-def-title>
+	        <title>The TSF shall present the signatureAlgorithm field with the following: sha256withRSAEncryption and
+	            <assignable>signatureAlgorithm field values</assignable> and no other algorithms as part of the S/MIME protocol. </title>
+	      </ext-comp-def-title>
 	      <note role="application">RFC 8551 mandates that receiving and sending agents support RSA with SHA256. 
 	        The algorithms to be tested in the evaluated configuration are limited to the algorithms specified in the FCS_SMIME_EXT.1.4 selection. 
 	        Any other algorithms implemented that do not comply with these requirements should not be included in an evaluated email client.</note>
@@ -818,7 +843,7 @@ for destroying all keying material and cryptographic security parameters when no
 	      <title>The TSF shall implement mechanisms to retrieve certificates and
 	        certificate revocation information
 	        <selectables>
-	          <selectable>for each signed/encrypted message sent/received </selectable>
+	          <selectable>for each signed/encrypted message sent/received</selectable>
 	          <selectable> <assignable>frequency</assignable></selectable>
 	        </selectables>
 	        as part of the S/MIME protocol.
@@ -1042,7 +1067,7 @@ for destroying all keying material and cryptographic security parameters when no
 	    <management>No specific management functions are identified.</management>
 	    <audit>There are no auditable events foreseen.</audit>
 	    <dependencies>
-	      No dependencies
+	      No dependencies.
 	    </dependencies>
 
 	    <f-element>
@@ -1099,6 +1124,11 @@ for destroying all keying material and cryptographic security parameters when no
 	      </text></management-function>
 	    </management-function-set>
 	      </title>
+	      <ext-comp-def-title>
+	        <title>
+	          The TSF shall be capable of performing the following management functions, controlled by the user or administrator as shown: <assignable>list of management functions to be performed by role</assignable>.
+	        </title>
+	      </ext-comp-def-title>
 	      <note role="application">
 		
 		  For these management functions, the term "Administrator" refers
@@ -1226,8 +1256,7 @@ for destroying all keying material and cryptographic security parameters when no
 	    <management>No specific management functions are identified.</management>
 	    <audit>There are no auditable events foreseen.</audit>
 	    <dependencies>
-	      FCS_COP.1 Cryptographic Operations
-	      FIA_SASL_EXT.1 Simple Authentication and Security Layer (SASL)
+	      No dependencies.
 	    </dependencies>
 	    
 	    <f-element>
@@ -1248,6 +1277,11 @@ for destroying all keying material and cryptographic security parameters when no
 		  <assignable>other protocol (reference RFC or specification)</assignable>
 		</selectable>
 	      </selectables>.</title>
+	      <ext-comp-def-title>
+	        <title>
+	          The TSF shall communiate via the trusted channel for <assignable>trusted channel protocol</assignable>.
+	        </title>
+	      </ext-comp-def-title>
 	      <note role="application">FIA_SASL_EXT.1 depends upon the
 	      selection(s) made here. For example, if <h:i>POP</h:i> is chosen, then FIA_SASL_EXT.1 must be included in the ST.
 	      Selections must include at least one sending and one receiving protocol. If the
@@ -1308,6 +1342,11 @@ for destroying all keying material and cryptographic security parameters when no
               <selectable>GCM: IV shall be non-repeating. The number of invocations of GCM shall
                 not exceed 2^32 for a given secret key.</selectable>
             </selectables></title>
+            <ext-comp-def-title>
+              <title>
+                The TSF shall create IVs in the following manner: <assignable>IVs and methods of creation</assignable>.
+              </title>
+            </ext-comp-def-title>
             <note role="application">FCS_IVG_EXT.1.1 specifies how the IV should be handled for each
               encryption mode. CBC, XTS, and GCM are allowed for AES encryption of the data. AES-CCM
               is an allowed mode for Key Wrapping.</note>
@@ -1387,6 +1426,11 @@ for destroying all keying material and cryptographic security parameters when no
               <selectable>DRBG provided by the host platform</selectable>
             </selectables>
             </title>
+            <ext-comp-def-title>
+              <title>
+                The TSF shall only use salts that are generated by a <assignable>trusted deterministic random bit generator</assignable>.
+              </title>
+            </ext-comp-def-title>
             
             <aactivity>
               <TSS>
@@ -1470,6 +1514,12 @@ for destroying all keying material and cryptographic security parameters when no
 	    <selectable>certificate revocation information</selectable>
 	    <selectable>no exceptions</selectable>
 	  </selectables>.</title>
+	  <ext-comp-def-title>
+	    <title>
+	      The TSF shall be capable of operating without storing persistent
+	      information to the client platform with the following exceptions: <assignable>data that the TSF must store persistently</assignable>.
+	    </title>
+	  </ext-comp-def-title>
 	  <note role="application">Any data that persists after the email client closes, including
 	  temporary files, is considered to be persistent data. Satisfying this requirement
 	  would require the use of a protocol such as IMAP or MAPI. It is not compatible with
@@ -1520,6 +1570,12 @@ for destroying all keying material and cryptographic security parameters when no
 	  <selectable><assignable>other embedded content types</assignable></selectable>
 	  <selectable>no embedded content types</selectable>
 	  </selectables>. </title>
+	  <ext-comp-def-title>
+	    <title>
+	      The TSF shall have a plaintext-only mode which disables the rendering
+	      and execution of <assignable>embedded content types</assignable>.
+	    </title>
+	  </ext-comp-def-title>
 	  <note role="application">Plaintext-only mode prevents the automatic downloading,
 	  rendering and execution of images, external resources and embedded objects such as
 	  HTML or JavaScript objects. FMT_MOF_EXT.1.1 addresses
@@ -1593,11 +1649,11 @@ for destroying all keying material and cryptographic security parameters when no
             <!-- editor's note: app note here is superfluous and was not included -->
           </f-element>
           <f-element>
-            <title>The TSF shall perform Password-based Key Derivation Functions in accordance with a specified cryptographic algorithm [HMAC-<selectables>
+            <title>The TSF shall perform Password-based Key Derivation Functions in accordance with a specified cryptographic algorithm [<h:i>HMAC-<selectables>
               <selectable>SHA-256</selectable>
               <selectable>SHA-384</selectable>
               <selectable>SHA-512</selectable>
-            </selectables>], with <assignable>positive integer of 4096 or more</assignable> iterations, and output cryptographic key sizes <selectables>
+            </selectables></h:i>], with <assignable>positive integer of 4096 or more</assignable> iterations, and output cryptographic key sizes <selectables>
               <selectable>128</selectable>
               <selectable>256</selectable>
             </selectables> bits that meet the following: [NIST SP 800-132].
@@ -1725,6 +1781,15 @@ for destroying all keying material and cryptographic security parameters when no
                 KTS-OAEP-receiver-confirmation (section 9.2.4) scheme, "NIST SP 800-56A rev 2" for
                 ECC CDH (sections 5.6.1.2 and 6.2.2.2) </selectable>
             </selectables>. </title>
+            <ext-comp-def-title>
+              <title>The TSF shall <selectables linebreak="yes">
+                <selectable>use platform-provided functionality to perform Key Wrapping</selectable>
+                <selectable>implement functionality to perform Key Wrapping</selectable>
+              </selectables> in accordance with a specified cryptographic algorithm <assignable>cryptographic algorithm</assignable>
+               and the cryptographic key size <assignable> cryptographic key size</assignable> 
+                that meet the following: <assignable>list of standards</assignable>
+              </title>
+            </ext-comp-def-title>
             <note role="application">This selection-based SFR is claimed when any of the selections that explicitly reference FCS_COP_EXT.2 are selected in FCS_CKM_EXT.3.1 or FCS_KYC_EXT.1.1.
               <h:p/>
               In the first selection, the ST author chooses the entity that
