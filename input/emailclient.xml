@@ -548,7 +548,7 @@
 	      <title>The TSF shall
 	      <selectables>
 		<selectable>not store keys in non-volatile memory</selectable>
-		<selectable>
+		<selectable id="ckm3_wrapped1">
 		  only store keys in non-volatile memory when wrapped as specified in
 		  FCS_COP_EXT.2 unless the key meets any one of following
 		  criteria:
@@ -558,15 +558,15 @@
 		      FCS_KYC_EXT.1</selectable>
 		    <selectable>The plaintext key will no longer provide access to the encrypted
 		    data after initial provisioning</selectable>
-		    <selectable id="ckm_keysplit">
+		    <selectable id="ckm3_combined">
 		      The plaintext key is a key split that is combined as specified in
 		      FCS_SMC_EXT.1, and the other half of the key split is
 		      either
 		      <selectables>
-			<selectable>wrapped as specified in FCS_COP_EXT.2</selectable>
+		        <selectable id="ckm3_wrapped2">wrapped as specified in FCS_COP_EXT.2</selectable>
 			<selectable>derived and not stored in non-volatile memory</selectable></selectables></selectable><selectable>The plaintext key is stored on an external storage device for use as
 		      an authorization factor</selectable>
-		    <selectable>The plaintext key is used to wrap a key as specified in FCS_COP_EXT.2 that is already wrapped as specified in FCS_COP_EXT.2</selectable>
+		    <selectable id="ckm3_wrapped3">The plaintext key is used to wrap a key as specified in FCS_COP_EXT.2 that is already wrapped as specified in FCS_COP_EXT.2</selectable>
 		    <selectable>The plaintext key is the public portion of the key pair</selectable>
 		  </selectables>
 		</selectable>
@@ -702,7 +702,7 @@ for destroying all keying material and cryptographic security parameters when no
 		<selectable>
 		  intermediate keys originating from: 
 		  <selectables linebreak="yes">
-		    <selectable>
+		    <selectable id="kyc1_password">
 		      a password as specified in FCS_CKM_EXT.5</selectable>
 		    <selectable>one or more other authorization factor(s)</selectable>
 		    <selectable>credentials stored in platform key storage</selectable>
@@ -715,8 +715,8 @@ for destroying all keying material and cryptographic security parameters when no
 		<selectable>use of the platform key storage</selectable>
 		<selectable>use of platform key storage that performs key wrap with a
 		TSF provided key</selectable>
-		<selectable id="implkeywrap">implement key wrapping as specified in FCS_COP_EXT.2</selectable>
-		<selectable id="implkeycomb">implement key combining as specified in FCS_SMC_EXT.1</selectable>
+		<selectable id="kyc1_wrapped">implement key wrapping as specified in FCS_COP_EXT.2</selectable>
+		<selectable id="kyc1_combined">implement key combining as specified in FCS_SMC_EXT.1</selectable>
 	      </selectables>
 	      while maintaining an effective strength of 
 	      <selectables linebreak="yes">
@@ -1613,6 +1613,8 @@ for destroying all keying material and cryptographic security parameters when no
         <!-- as modified by TD0266 with minor rearrangement of EAs -->
         <!-- editor's note: moved to sel-based because of FCS_KYC_EXT.1.1 selections -->
         <f-component cc-id="fcs_ckm_ext.5" name="Cryptographic Key Derivation (Password/Passphrase Conditioning)">
+          <depends on="kyc1_password"></depends>
+          
           <consistency-rationale>This SFR defines restrictions on password composition and key derivation mechanisms. It defines functionality similar to FCS_CKM.1(3) in the Base-PP but has additional details 
             specific to the composition of the actual password authentication factor, rather than just defining a method for key derivation. 
           </consistency-rationale>
@@ -1740,6 +1742,11 @@ for destroying all keying material and cryptographic security parameters when no
           </fam-behavior>
         </ext-comp-def>
         <f-component cc-id="fcs_cop_ext.2" name="Key Wrapping">
+          <depends on="ckm3_wrapped1"></depends>
+          <depends on="ckm3_wrapped2"></depends>
+          <depends on="ckm3_wrapped3"></depends>
+          <depends on="kyc1_wrapped"></depends>
+          
           <!-- 
           <selection-depends req="fcs_kyc_ext.1.1" ids="implkeywrap"/>
           <selection-depends req="fcs_ckm_ext.3.1" ids="ckm_wrapped"/>  -->
@@ -1822,6 +1829,8 @@ for destroying all keying material and cryptographic security parameters when no
           </fam-behavior>
         </ext-comp-def>
         <f-component cc-id="fcs_smc_ext.1" name="Key Combining">
+          <depends on="ckm3_combined"></depends>
+          <depends on="kyc1_combined"></depends>
           <!-- 
           <selection-depends req="fcs_kyc_ext.1.1" ids="implkeycomb"/>
           <selection-depends req="fcs_ckm_ext.3.1" ids="ckm_keysplit"/>
