@@ -29,7 +29,7 @@
       <!-- editor's note: Section 1.1 replaced with boilerplate text from other recent modules. Original materials integrated here and also moved down to section 1.3 -->
       The scope of the Email Client PP-Module is to describe the security functionality of email client applications in terms of [CC] 
       and to define functional and assurance requirements for the specific email-related capabilities of email client applications.
-      Email clients are user applications that provide functionality to send, receive, access and manage email. 
+      Email clients are user applications that provide functionality to send, receive, access, and manage email. 
       
       This PP-Module is intended for use with the following Base-PP: <h:ul>
         <h:li>Protection Profile for Application Software, Version 1.3</h:li>
@@ -573,7 +573,7 @@
 		</selectables>.
 	      </title>
 	      <ext-comp-def-title>
-	        <title>The TSF shall <assignable>not store keys in non-volatile memory or only store keys in non-volatile memory if protected by an appropriate mechanism</assignable>.         
+	        <title>The TSF shall <assignable>method of ensuring plaintext key data is not stored in non-volatile memory</assignable>.         
 	        </title>
 	      </ext-comp-def-title>
 	      <note role="application">The plaintext key storage in non-volatile memory is allowed for
@@ -669,7 +669,7 @@ for destroying all keying material and cryptographic security parameters when no
 		  If the TSF performs its own key destruction, the evaluator shall perform the following test:
 		<testlist>
 		<test>
-		For each type of authorization service, encryption mode and encryption operation, a known authorization factor, and chain of keys must be provided to the evaluator with an associated ciphertext data set (e.g. if a passphrase is used to create an intermediate key, then the ciphertext containing the encrypted key as well as the intermediate key itself must be provided to the evaluator.) The evaluator shall use the email client in conjunction with a debugging or forensics utility to attempt to authorize themselves, resulting in the generation of a key or decryption of a key. The evaluator shall ascertain from the TSS what the vendor defines as "no longer needed" and execute the sequence of actions via the email client to invoke this state. At this point, the evaluator should take a dump of volatile memory and search the retrieved dump for the provided authorization credentials or keys (e.g. if the password was "PaSSw0rd", perform a string search of the forensics dump for "PaSSw0rd"). The evaluator must document each command, program or action taken during this process, and must confirm that no plaintext keying material resides in volatile memory. The evaluator must perform this test three times to ensure repeatability. If during the course of this testing the evaluator finds that keying material remains in volatile memory, they should be able to identify the cause (i.e. execution of the grep command for "PaSSw0rd" caused a false positive) and document the reason for failure to comply with this requirement. The evaluator shall repeat this same test, but looking for keying material in nonvolatile memory.<h:p/>
+		For each type of authorization service, encryption mode, and encryption operation, a known authorization factor, and chain of keys must be provided to the evaluator with an associated ciphertext data set (e.g. if a passphrase is used to create an intermediate key, then the ciphertext containing the encrypted key as well as the intermediate key itself must be provided to the evaluator.) The evaluator shall use the email client in conjunction with a debugging or forensics utility to attempt to authorize themselves, resulting in the generation of a key or decryption of a key. The evaluator shall ascertain from the TSS what the vendor defines as "no longer needed" and execute the sequence of actions via the email client to invoke this state. At this point, the evaluator should take a dump of volatile memory and search the retrieved dump for the provided authorization credentials or keys (e.g. if the password was "PaSSw0rd", perform a string search of the forensics dump for "PaSSw0rd"). The evaluator must document each command, program or action taken during this process, and must confirm that no plaintext keying material resides in volatile memory. The evaluator must perform this test three times to ensure repeatability. If during the course of this testing the evaluator finds that keying material remains in volatile memory, they should be able to identify the cause (i.e. execution of the grep command for "PaSSw0rd" caused a false positive) and document the reason for failure to comply with this requirement. The evaluator shall repeat this same test, but looking for keying material in nonvolatile memory.<h:p/>
 		</test>
 		</testlist>
 		</Tests>
@@ -992,7 +992,7 @@ for destroying all keying material and cryptographic security parameters when no
 	  </f-component>
 	</sec:man_fdp>
 	<sec:man_fia title="Identification and Authentication (FIA)">
-	  <ext-comp-def fam-id="FIA_509_EXT" title="X.509 Certificate Services">
+	  <ext-comp-def fam-id="FIA_X509_EXT" title="X.509 Certificate Services">
 	    <fam-behavior>Components in this family define requirements for the use of X.509 certifications in trusted communications.
 	    </fam-behavior>
 	  </ext-comp-def>
@@ -1053,7 +1053,7 @@ for destroying all keying material and cryptographic security parameters when no
 	  </f-component>
 	</sec:man_fia>
 	<sec:man_fmt title="Security Management (FMT)">
-	  <ext-comp-def fam-id="FMF_MOF_EXT" title="Management of Functions Behavior">
+	  <ext-comp-def fam-id="FMT_MOF_EXT" title="Management of Functions Behavior">
 	    <fam-behavior>Components in this family define requirements for technology-specific management functions that are not enumerated in the Part 2 family FMT_MOF.
 	    </fam-behavior>
 	  </ext-comp-def>
@@ -1910,7 +1910,7 @@ for destroying all keying material and cryptographic security parameters when no
             This selection-based SFR is claimed when QQQQ.
             <h:p/>
             In order for an email client to support PKI X.509 Certificates
-            for POP3, IMAP and SMTP as required in this document, the client must support the
+            for POP3, IMAP, and SMTP as required in this document, the client must support the
             Simple Authentication and Security Layer (SASL) authentication method as described in
             RFC 4422, the AUTH and CAPA extensions for POP3, as described in RFC 5034, the
             AUTHENTICATION and CAPABILITY extensions for IMAP, as described in RFC 4959 and the
@@ -1925,7 +1925,7 @@ for destroying all keying material and cryptographic security parameters when no
             </Guidance>
             <Tests>The evaluator shall also perform the following tests:
             <testlist>
-              <test>The evaluator shall ensure that the email client is able to initiate communications using POP, IMAP and SMTP and requiring SASL, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
+              <test>The evaluator shall ensure that the email client is able to initiate communications using POP, IMAP, and SMTP and requiring SASL, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
               <test>The evaluator shall ensure, for each communication channel with an authorized IT entity in Test 1, that a valid SASL handshake is performed. To perform this test, The evaluator shall use a sniffer and a packet analyzer. 
                 The sniffer and packet analyzer must allow the evaluator to view the plaintext email protocol (e.g., proxy, loading the server private key). The evaluator shall identify the SASL handshake within the email protocol.
                 </test>
