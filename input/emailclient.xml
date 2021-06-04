@@ -498,7 +498,8 @@
                 between itself and another trusted IT product.
               </title>
               <note role="application">This SFR is modified from its definition in the Base-PP to require that the TOE supports TLS and that its use of TLS is only limited to sensitive data. A conformant TOE must support the use of TLS for email 
-              encryption but is permitted to send and receive non-sensitive email messages over an untrusted channel.</note>
+              encryption but is permitted to send and receive non-sensitive email messages over an untrusted channel.<h:p/>
+              Either the TOE or its platform is permitted to implement TLS. If the TOE implements TLS, FCS_TLS_EXT.1 and FCS_TLSC_EXT.1 from the TLS package must be claimed at minimum.</note>
               <aactivity>
                 <no-tests>
                   There is no change to the Base-PP EAs for this SFR when this PP-Module is claimed, aside from the fact that the materials for the selections that have been refined out of this SFR are not applicable.<h:p/> 
@@ -655,7 +656,7 @@ for destroying all keying material and cryptographic security parameters when no
 		<h:p/>
 		  If "destruction of reference..." (for volatile memory) is selected, then the evaluator shall examine the relevant interface definition to ensure that the interface supports the selection and description in the TSS.
 		<h:p/>
-		  If the application invokes key destruction, the evaluator checks to ensure the TSS describes each of the secret keys (keys used for symmetric encryption or data authentication), private keys, and CSPs used to generate keys; 
+		  If the application invokes key destruction, the evaluator checks to ensure the TSS describes each of the secret keys (keys used for symmetric encryption or data authentication), private keys, and critical security parameters (CSPs) used to generate keys; 
 		  when they are zeroized (for example, immediately after use, on system shutdown, etc.); 
 		  and the type of zeroization procedure that is performed (overwrite with zeroes, overwrite three times with random pattern, etc.). 
 		  If different types of memory are used to store the materials to be protected, the evaluator checks to ensure that the TSS describes the zeroization procedure in terms of the memory in which the data are stored 
@@ -796,7 +797,7 @@ for destroying all keying material and cryptographic security parameters when no
 	          <selectable>AES-256 GCM</selectable>
 	          <selectable>no other</selectable>
 	        </selectables> as part of the S/MIME protocol. </title>
-	      <note role="application">AES was added to CMS as defined in RFC 3565.</note>
+	      <note role="application">Advanced Encryption Standard (AES) was added to Cryptographic Message Syntax (CMS) as defined in RFC 3565.</note>
 	    </f-element>
 	    <f-element>
 	      <title>The TSF shall present the digestAlgorithm field with the following
@@ -1135,7 +1136,7 @@ for destroying all keying material and cryptographic security parameters when no
 		  to the administrator of a non-mobile device or the device owner of a mobile device.
 		  The Administrator is responsible for management activities, including setting the
 		  policy that is applied by the enterprise on the email client. The Administrator could
-		  be acting remotely and could be the MTA administrator acting through a centralized
+		  be acting remotely and could be the mail transfer agent (MTA) administrator acting through a centralized
 		  management console or dashboard. Applications used to configure enterprise policy
 		  should have their own identification and authorization and additional security
 		  requirements to ensure that the remote administration is trusted.
@@ -1348,7 +1349,7 @@ for destroying all keying material and cryptographic security parameters when no
               </title>
             </ext-comp-def-title>
             <note role="application">FCS_IVG_EXT.1.1 specifies how the IV should be handled for each
-              encryption mode. CBC, XTS, and GCM are allowed for AES encryption of the data. AES-CCM
+              encryption mode. Cipher Block Chaining (CBC), XTS, and Galois Counter Mode (GCM) are allowed for AES encryption of the data. AES-CCM
               is an allowed mode for Key Wrapping.</note>
             <aactivity>
               <TSS>
@@ -1661,7 +1662,7 @@ for destroying all keying material and cryptographic security parameters when no
             </selectables> bits that meet the following: [NIST SP 800-132].
             </title>
             <note role="application">
-              The ST author selects the parameters based on the PBKDF used by the TSF. 
+              The ST author selects the parameters based on the password-based key derivation function (PBKDF) used by the TSF. 
               The password/passphrase must be conditioned into a string of bits that forms the submask to be used as input into a key. 
               Conditioning can be performed using one of the identified hash functions or the process described in NIST SP 800-132; 
               the method used is selected by the ST Author. SP 800-132 requires the use of a pseudo-random function (PRF) consisting of HMAC with an approved hash function. 
@@ -1703,7 +1704,7 @@ for destroying all keying material and cryptographic security parameters when no
                 The evaluator shall verify that the TSS contains a description of how the output of the hash function is used to form the submask that will be input into the function and is the same length as the KEK as specified in FCS_CKM_EXT.4.
                 <h:p/>
                 For the NIST SP 800-132-based conditioning of the password/passphrase, the required assurance activities will be performed when doing the assurance activities for the appropriate requirements (FCS_COP.1.1(4) from the [AppPP]). 
-                If any manipulation of the key is performed in forming the submask that will be used to form the FEK or KEK, that process shall be described in the TSS. 
+                If any manipulation of the key is performed in forming the submask that will be used to form the file encryption key or key encryption key, that process shall be described in the TSS. 
                 For the claimed iteration count, the evaluator shall verify that the iteration count for PBKDFs performed by the TOE comply with NIST SP 800-132 by ensuring that the TSS contains a description of the estimated time required 
                 to derive key material from passwords and how the TOE increases the computation time for password-based key derivation (including but not limited to increasing the iteration count).
                 <h:p/>
