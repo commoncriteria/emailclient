@@ -240,6 +240,11 @@
 	  The threat of a user installing a flawed add-on is consistent with the T.LOCAL_ATTACK threat from the Base-PP. A flawed addon, whether crafted deliberately or unintentionally, could cause the product to operate in a manner where it
 	  or its platform can be compromised.
 	</consistency-rationale>
+        <objective-refer ref="O.ADDON_INTEGRITY">
+          <rationale>
+            The ability to prevent the installation of untrusted add-ons (or to prevent the use of add-ons entirely) reduces the likelihood that an add-on that is installed on top of the TOE is flawed or malicious.
+          </rationale>
+        </objective-refer>
 	<objective-refer ref="O.MANAGEMENT">
 	  <rationale>
 	    The ability to manage the TOE allows for only authorized users to install add-ons, to enable/disable the ability to install add-ons, or to not have any support for add-ons at all.
@@ -319,7 +324,7 @@
     </SO>
     <SO name="O.PROTECTED_STORAGE">
       <description>This objective is defined in the Base-PP. This PP-Module maps additional SFRs to it to address the data at rest protection functionality that is specific to email client applications.</description>
-      <consistency-rationale>This objective is an enhancement to the O.PROTECTED_STORAGE objective defined in the Base-PP, specifically in regards to the data at rest that is specified to email client applications.</consistency-rationale>
+      <consistency-rationale>This objective is an enhancement to the O.PROTECTED_STORAGE objective defined in the Base-PP, specifically in regards to the data at rest that applies to email client applications.</consistency-rationale>
       <addressed-by>FCS_CKM_EXT.3, FCS_CKM_EXT.4, FCS_KYC_EXT.1, FCS_IVG_EXT.1 (optional), FCS_NOG_EXT.1 (optional), FCS_SAG_EXT.1 (optional), FDP_PST_EXT.1 (optional), FCS_CKM_EXT.5 (selection-based), FCS_COP_EXT.2 (selection-based), FCS_SMC_EXT.1 (selection-based)</addressed-by>
       <rationale>
         FCS_CKM_EXT.3 supports the objective by defining the mechanism by which the TSF protects sotred key data from unauthorized disclosure.<h:p/>
@@ -336,7 +341,7 @@
     </SO>
     <SO name="O.PROTECTED_COMMS">
       <description>This objective is defined in the Base-PP. This PP-Module maps additional SFRs to it to address the data in transit protection functionality that is specific to email client applications.</description>
-      <consistency-rationale>This objective is an enhancement to the O.PROTECTED_COMMS objective defined in the Base-PP, specifically in regards to the data in transit that is specified to email client applications.</consistency-rationale>
+      <consistency-rationale>This objective is an enhancement to the O.PROTECTED_COMMS objective defined in the Base-PP, specifically in regards to the data in transit that applies to email client applications.</consistency-rationale>
       <addressed-by>FCS_CKM_EXT.1 (modified from Base-PP), FCS_RBG_EXT.1 (modified from Base-PP), FCS_TLS_EXT.1 (modified from TLS Package), FCS_TLSC_EXT.1 (from TLS package), FIA_X509_EXT.1 (from Base-PP), FIA_X509_EXT.2 (from Base-PP), FTP_DIT_EXT.1 (modified from Base-PP), FCS_SMIME_EXT.1, FDP_SMIME_EXT.1, FIA_X509_EXT.3, FTP_ITC_EXT.1, FIA_SASL_EXT.1 (selection-based)</addressed-by>
       <rationale>
         FCS_CKM_EXT.1 supports the objective by requiring that the TSF provide or invoke a cryptographic function for asymmetric key generation.<h:p/>
@@ -780,8 +785,8 @@ for destroying all keying material and cryptographic security parameters when no
 	    </management>
 	    <audit>There are no auditable events foreseen.</audit>
 	    <dependencies>
-	      FCS_COP.1 Cryptographic Operation<h:p/>
-	      FIA_X509_EXT.1 X.509 Certificate Validation
+	    <no-link>FCS_COP.1</no-link> Cryptographic Operation<h:p/>
+	      <no-link>FIA_X509_EXT.1</no-link> X.509 Certificate Validation
 	    </dependencies>
 	    
 	    <f-element>
@@ -922,7 +927,7 @@ for destroying all keying material and cryptographic security parameters when no
 	    <management>No specific management functions are identified.</management>
 	    <audit>There are no auditable events foreseen.</audit>
 	    <dependencies>
-	      FCS_SMIME_EXT.1 Secure/Multipurpose Internet Mail Extensions (S/MIME)
+	      <no-link>FCS_SMIME_EXT.1</no-link> Secure/Multipurpose Internet Mail Extensions (S/MIME)
 	    </dependencies>
 
 	    <f-element>
@@ -966,7 +971,7 @@ for destroying all keying material and cryptographic security parameters when no
 	    <management>No specific management functions are identified.</management>
 	    <audit>There are no auditable events foreseen.</audit>
 	    <dependencies>
-	      FCS_SMIME_EXT.1 Secure/Multipurpose Internet Mail Extensions (S/MIME)
+	      <no-link>FCS_SMIME_EXT.1</no-link> Secure/Multipurpose Internet Mail Extensions (S/MIME)
 	    </dependencies>
 	    
 
@@ -1008,7 +1013,7 @@ for destroying all keying material and cryptographic security parameters when no
 	    <management>No specific management functions are identified.</management>
 	    <audit>There are no auditable events foreseen.</audit>
 	    <dependencies>
-	      FIA_X509_EXT.1 X.509 Certificate Validation
+	      <no-link>FIA_X509_EXT.1</no-link> X.509 Certificate Validation
 	    </dependencies>
 	    
 	    <f-element>
@@ -1204,7 +1209,7 @@ for destroying all keying material and cryptographic security parameters when no
 	  </ext-comp-def>
 	  <f-component cc-id="fpt_aon_ext.1" name="Support for Only Trusted Add-ons">
 	    <consistency-rationale>
-	      This SFR defines what types of plugins an email client may use.
+	      This SFR defines what types of add-ons an email client may use.
 	      It does not impact the App PP functionality.
 	    </consistency-rationale>
 	    
@@ -1215,7 +1220,7 @@ for destroying all keying material and cryptographic security parameters when no
 	    </management>
 	    <audit>There are no auditable events foreseen.</audit>
 	    <dependencies>
-	      No dependencies
+	      No dependencies.
 	    </dependencies>
 	    
 	    <f-element>
@@ -1330,7 +1335,7 @@ for destroying all keying material and cryptographic security parameters when no
           <management>No specific management functions are identified.</management>
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>
-            FCS_COP.1 Cryptographic Operation
+            <no-link>FCS_COP.1</no-link> Cryptographic Operation
           </dependencies>
           
           <f-element>
@@ -1382,7 +1387,7 @@ for destroying all keying material and cryptographic security parameters when no
         <management>No specific management functions are identified.</management>
         <audit>There are no auditable events foreseen.</audit>
         <dependencies>
-          FCS_COP.1 Cryptographic Operation
+          <no-link>FCS_COP.1</no-link> Cryptographic Operation
         </dependencies>
         
 	<f-element>
@@ -1417,7 +1422,7 @@ for destroying all keying material and cryptographic security parameters when no
           <management>No specific management functions are identified.</management>
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>
-            FCS_RBG_EXT.1 Random Bit Generation Services
+            <no-link>FCS_RBG_EXT.1</no-link> Random Bit Generation Services
           </dependencies>
           
           <f-element>
@@ -1503,7 +1508,7 @@ for destroying all keying material and cryptographic security parameters when no
         <management>No specific management functions are identified.</management>
         <audit>There are no auditable events foreseen.</audit>
         <dependencies>
-          FDP_DAR_EXT.1 Encryption of Sensitive Application Data
+        <no-link>FDP_DAR_EXT.1</no-link> Encryption of Sensitive Application Data
         </dependencies>
         
 	<f-element>
@@ -1560,7 +1565,7 @@ for destroying all keying material and cryptographic security parameters when no
         </management>
         <audit>There are no auditable events foreseen.</audit>
         <dependencies>
-          No dependencies
+          No dependencies.
         </dependencies>
 
 	<f-element>
@@ -1628,7 +1633,7 @@ for destroying all keying material and cryptographic security parameters when no
           </management>
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>
-            FCS_COP.1 Cryptographic Operation
+            <no-link>FCS_COP.1</no-link> Cryptographic Operation
           </dependencies>
           
           <f-element>
@@ -1760,7 +1765,7 @@ for destroying all keying material and cryptographic security parameters when no
           <management>No specific management functions are identified.</management>
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>
-            FCS_COP.1 Cryptographic Operation
+          <no-link>FCS_COP.1</no-link> Cryptographic Operation
           </dependencies>
           
           <f-element>
@@ -1845,7 +1850,7 @@ for destroying all keying material and cryptographic security parameters when no
           <management>No specific management functions are identified.</management>
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>
-            FCS_COP.1 Cryptographic Operation
+          <no-link>FCS_COP.1</no-link> Cryptographic Operation
           </dependencies>
           
           <f-element>
@@ -1896,7 +1901,7 @@ for destroying all keying material and cryptographic security parameters when no
         <management>No specific management functions are identified.</management>
         <audit>There are no auditable events foreseen.</audit>
         <dependencies>
-          FCS_COP.1 Cryptographic Operation
+        <no-link>FCS_COP.1</no-link> Cryptographic Operation
         </dependencies>        
         
         <f-element>
@@ -1954,7 +1959,7 @@ for destroying all keying material and cryptographic security parameters when no
 	<selection-depends req="FPT_AON_EXT.1.1" ids="aonext1_addon"/>
 	 -->
 	<consistency-rationale>
-	  This SFR defines how email clients verify Add-Ons.
+	  This SFR defines how email clients verify add-ons.
 	  It does not impact functionality described by the Base-PP.
 	</consistency-rationale>
         
@@ -1962,8 +1967,8 @@ for destroying all keying material and cryptographic security parameters when no
           <management>No specific management functions are identified.</management>
         <audit>There are no auditable events foreseen.</audit>
         <dependencies>
-          FCS_COP.1 Cryptographic Operation<h:p/>
-          FPT_AON_EXT.1 Support for Only Trusted Add-Ons
+        <no-link>FCS_COP.1</no-link> Cryptographic Operation<h:p/>
+        <no-link>FPT_AON_EXT.1</no-link> Support for Only Trusted Add-Ons
         </dependencies>
         
 	<f-element>
@@ -2034,7 +2039,7 @@ for destroying all keying material and cryptographic security parameters when no
   
   
   <appendix title="Entropy Documentation and Assessment" id="EAR">
-    The TOE does not require any additional supplementary information to describe its entropy sources beyond the requirements outlined in the Base-PPs.  
+    The TOE does not require any additional supplementary information to describe its entropy sources beyond the requirements outlined in the Base-PP.  
   </appendix>
 
   <bibliography>
