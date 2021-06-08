@@ -98,7 +98,7 @@
 	</glossary>
       </subsection>  -->
       <tech-terms>
-	  
+        <suppress>Distributed TOE</suppress>
         <term full="ActiveSync">Microsoft protocol for synchronizing messaging and calendar data between
           mobile clients and email servers.</term>
         <term abbr="AES" full="Advanced Encryption Standard"></term>
