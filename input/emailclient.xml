@@ -479,26 +479,8 @@
             <f-element>
               <title>The application shall 
                 <selectables linebreak="yes">
-                  <selectable>encrypt all transmitted [<h:i>sensitive data</h:i>] with <h:b>TLS as defined in the TLS Package and</h:b>
-                    <selectables>
-                      <selectable id="sel_all_https">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
-                      <selectable id="sel_all_dtls">DTLS as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439"><h:i>TLS Package</h:i></h:a></selectable>
-                      <selectable>SSH as conforming to the Extended Package for <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389"><h:i>Secure Shell</h:i></h:a></selectable>
-                      <selectable>IPsec as defined in the <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=419&amp;id=419"><h:i>PP-Module for VPN Client</h:i></h:a></selectable>
-                      <selectable><h:b>no other protocols</h:b></selectable>
-                    </selectables>
-                  </selectable>
-                  
-                  <selectable>invoke platform-provided functionality to encrypt all transmitted sensitive data with <h:b>TLS and</h:b>
-                    <selectables>
-                      <selectable>HTTPS</selectable>
-                      <selectable>DTLS</selectable>
-                      <selectable>SSH</selectable>
-                      <selectable><h:b>no other protocols</h:b></selectable>
-                    </selectables>
-                  </selectable>	    
-                
-                  
+                  <selectable>encrypt all transmitted [<h:i>sensitive data</h:i>] with [<h:i>TLS as defined in the TLS Package</h:i>]</selectable>
+                  <selectable>invoke platform-provided functionality to encrypt all transmitted sensitive data with <h:i>TLS</h:i></selectable>	    
                 </selectables>
                 between itself and another trusted IT product.
               </title>
@@ -1288,8 +1270,8 @@ for destroying all keying material and cryptographic security parameters when no
 	          The TSF shall communiate via the trusted channel for <assignable>trusted channel protocol</assignable>.
 	        </title>
 	      </ext-comp-def-title>
-	      <note role="application">FIA_SASL_EXT.1 depends upon the
-	      selection(s) made here. For example, if <h:i>POP</h:i> is chosen, then FIA_SASL_EXT.1 must be included in the ST.
+	      <note role="application">If any of IMAP, SMTP, or POP is selected, the selection-based SFR FIA_SASL_EXT.1 must be claimed.
+	        <h:p/>
 	      Selections must include at least one sending and one receiving protocol. If the
 	      assignment is used, the ST author must also include a reference for the protocol
 	      (e.g., an RFC number). </note>
@@ -1889,8 +1871,10 @@ for destroying all keying material and cryptographic security parameters when no
           </fam-behavior>
         </ext-comp-def>
       <f-component cc-id="fia_sasl_ext.1" name="Simple Authentication and Security Layer (SASL)">
-        <!-- 
-        <selection-depends req="FTP_ITC_EXT.1.2" ids="saslimap,saslsmtp,saslpop"/>  -->
+        <depends on="saslimap"></depends>
+        <depends on="saslsmtp"></depends>
+        <depends on="saslpop"></depends>
+         
         <consistency-rationale>
           This SFR defines an alternate method of transmitting messages.
           It does not impact functionality described by the Base-PP.
