@@ -825,7 +825,10 @@ for destroying all keying material and cryptographic security parameters when no
 	      </ext-comp-def-title>
 	      <note role="application">RFC 8551 mandates that receiving and sending agents support RSA with SHA256. 
 	        The algorithms to be tested in the evaluated configuration are limited to the algorithms specified in the FCS_SMIME_EXT.1.4 selection. 
-	        Any other algorithms implemented that do not comply with these requirements should not be included in an evaluated email client.</note>
+	        Any other algorithms implemented that do not comply with these requirements should not be included in an evaluated email client.
+	        <h:p/>
+	      Additional algorithms supported by RFC 8551 will be reviewed and considered by the TC in a future version of this PP-Module.
+	      </note>
 	    </f-element>
 	    <f-element>
 	      <title>The TSF shall support use of different private keys (and associated
