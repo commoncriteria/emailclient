@@ -4,16 +4,18 @@
 <!-- test -->
 
 <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCModule.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<Module boilerplate="yes" target-products="Email Clients" name="PP-Module for Email Clients" 
+<Module boilerplate="yes"
+  target-product="Email Client" 
+  target-products="Email Clients" name="PP-Module for Email Client" 
   xmlns="https://niap-ccevs.org/cc/v1"
   xmlns:sec="https://niap-ccevs.org/cc/v1/section"
   xmlns:h="http://www.w3.org/1999/xhtml">
 
   <PPReference>
     <ReferenceTable>
-      <PPVersion>1.0</PPVersion>
+      <PPVersion>1.1</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2021-06-18</PPPubDate>
+      <PPPubDate>2023-08-18</PPPubDate>
       <Keywords>email; email client</Keywords>
     </ReferenceTable>
   </PPReference>
@@ -23,16 +25,21 @@
       <date>2021-06-18</date>
       <subject>Initial release as PP-Module</subject>
     </entry>
+    <entry>
+      <version>1.1</version>
+      <date>2023-08-18</date>
+      <subject>Updates to conform to CC:2022</subject>
+    </entry>
   </RevisionHistory>
   <sec:Introduction>
     <sec:Overview>
       <!-- editor's note: Section 1.1 replaced with boilerplate text from other recent modules. Original materials integrated here and also moved down to section 1.3 -->
-      The scope of the Email Client PP-Module is to describe the security functionality of email client applications in terms of [CC] 
+      The scope of the Email Client PP-Module, Version 1.1 is to describe the security functionality of email client applications in terms of [CC] 
       and to define functional and assurance requirements for the specific email-related capabilities of email client applications.
       Email clients are user applications that provide functionality to send, receive, access, and manage email. 
       
       This PP-Module is intended for use with the following Base-PP: <h:ul>
-        <h:li>Protection Profile for Application Software, Version 1.3</h:li>
+        <h:li>Protection Profile for Application Software, Version 2.0</h:li>
       </h:ul>
       <h:p/> This Base-PP is valid because email clients are a specific type of software application.
       
@@ -189,40 +196,42 @@
    <sec:Conformance_Claims boilerplate="no">
       <cclaims>
         <cclaim name="Conformance Statement">
-          <description> This PP-Module inherits exact conformance as required from
-            the specified Base-PP and as defined in the CC and
-            CEM addenda for Exact Conformance, Selection-Based SFRs, and Optional
-            SFRs (dated May 2017).<h:p/> 
-            No additional PPs or PP-Modules are allowed to
-            be specified in a PP-Configuration with this PP-Module aside from the Base-PP.
+          <description>An ST must claim exact conformance to this PP-Module.
+            <h:br/><h:br/>
+            The evaluation methods used for evaluating the TOE are a combination of the workunits defined in <xref to="bibCEM"/> as well as the
+            Evaluation Activities for ensuring that individual SFRs have sufficient level of supporting evidence in the Security Target and 
+            guidance documentation and have been sufficiently tested by the laboratory as part of completing ATE_IND.1. Any functional packages 
+            which this PP-Module claims similarly contain their own Evaluation Activities that are used in this manner.
           </description>
         </cclaim>
         <cclaim name="CC Conformance Claims">
-          <description>This PP-Module is conformant to Parts 2 (extended) and 3
-            (extended) of Common Criteria Version 3.1, Release 5 [CC].
+          <description>This PP is conformant to Parts 2 (extended) and 3 (extended) of Common Criteria CC:2022, Revision 1.</description>
+        </cclaim>
+        <cclaim name="PP Claim">
+          <description>This PP-Module does not claim conformance to any other Protection Profile.<h:p/>
+            No other PPs or PP-Modules are allowed to be specified in a PP-Configuration with this PP-Module beyond its Base-PP. 
           </description>
         </cclaim>
-        <cclaim name="Package Claims">
-          <description>This PP-Module is TLS Pacakge conformant.</description>
+        <cclaim name="Package Claim">
+          <description><h:ul>
+            <h:li>This PP-Module is Functional Package for TLS Version 1.1 Conformant.</h:li>
+            <h:li>This PP-Module is Functional Package for TLS Version 2.0 Conformant.</h:li>
+            <h:li>This PP-Module conforms to the EAL1 assurance package augmented with ALC_TSU_EXT.1, ASE_OBJ.2, ASE_REQ.2, and ASE_SPD.1.</h:li>
+          </h:ul>
+            The functional packages to which the PP-Module conforms include SFRs that are not mandatory to claim for the sake of conformance.
+            An ST that claims one or more of these functional packages may include whatever non-mandatory SFRs are appropriate to claim based on the 
+            capabilities of the TSF and on any triggers on their inclusion based inherently on the SFR selections made. All security requirements
+            in these packages are intended to satisfy the O.PROTECTED_COMMS TOE security objective of the Base-PP and the O.EMAIL_PROTECTED_COMMS TOE
+            security objective of this PP-Module.
+          </description>
         </cclaim>
       </cclaims>
     </sec:Conformance_Claims>
 
 
   <sec:spd title="Security Problem Description">
-      The security problem is described in terms of the threats that the email client is expected to address, assumptions about the operational environment, and any organizational security policies that it is expected to enforce.
-    <h:p/>
-      This PP-Module does not repeat the threats, assumptions, and organizational security policies identified in the App PP, though they all apply given the conformance and hence dependence of
-      this PP-Module on it.
-      Together the threats, assumptions, and organizational security
-      policies of the App PP and those defined in this PP-Module describe those addressed
-      by an email client as the Target of Evaluation.
-    <h:p/>
-      Notably, email clients are particularly at risk from the Network Attack threat identified in the App PP.
-      Attackers can send malicious email messages directly to users,
-      and the email client will render or otherwise process this untrusted
-      content.
-    
+      The security problem is described in terms of the threats that the email client is expected to address, assumptions about the operational environment, 
+      and any organizational security policies that it is expected to enforce.
     <sec:Threats> The following threat is specific to email
     clients, and represents an addition to those identified in the Base-PP.
     <threats>
@@ -246,54 +255,54 @@
             The ability to prevent the installation of untrusted add-ons (or to prevent the use of add-ons entirely) reduces the likelihood that an add-on that is installed on top of the TOE is flawed or malicious.
           </rationale>
         </objective-refer>
-	<objective-refer ref="O.MANAGEMENT">
+	<objective-refer ref="O.EMAIL_MANAGEMENT">
 	  <rationale>
-	    The ability to manage the TOE allows for only authorized users to install add-ons, to enable/disable the ability to install add-ons, or to not have any support for add-ons at all.
+	    The ability to manage the TOE allows for only authorized users to install add-ons, 
+	    to enable/disable the ability to install add-ons, or to not have any support for add-ons at all.
 	  </rationale>
 	</objective-refer>
       </threat>
       
-      
-      
       <threat name="T.NETWORK_ATTACK">
-        <description>See App PP, Section 3.1.</description>
-        <consistency-rationale>This threat comes directly from the Base-PP.</consistency-rationale>
-        <objective-refer ref="O.PROTECTED_COMMS">
-          <rationale>The threat T.NETWORK_ATTACK is countered by O.PROTECTED_COMMS as this provides for integrity of transmitted data.
+        <from base="AppPP"/>
+        <objective-refer ref="O.EMAIL_PROTECTED_COMMS">
+          <rationale>The threat T.NETWORK_ATTACK is countered by O.EMAIL_PROTECTED_COMMS as this provides for protection of transmitted data
+            related to email client network activity.
           </rationale>
         </objective-refer>
-        <objective-refer ref="O.MANAGEMENT">
-          <rationale>The threat T.NETWORK_ATTACK is countered by O.MANAGEMENT as this provides for the ability to configure the application to defend against network attack.
+        <objective-refer ref="O.EMAIL_MANAGEMENT">
+          <rationale>The threat T.NETWORK_ATTACK is countered by O.EMAIL_MANAGEMENT as this provides for the ability to configure the 
+            email client to defend against network attack.
           </rationale>
         </objective-refer>
       </threat>
       
-          
       <threat name="T.NETWORK_EAVESDROP">
-        <description>See App PP, Section 3.1.</description>
-        <consistency-rationale>This threat comes directly from the Base-PP.</consistency-rationale>
-        <objective-refer ref="O.PROTECTED_COMMS">
-          <rationale>The threat T.NETWORK_EAVESDROP is countered by O.PROTECTED_COMMS as this provides for confidentiality of transmitted data.
+        <from base="AppPP"/>
+        <objective-refer ref="O.EMAIL_PROTECTED_COMMS">
+          <rationale>The threat T.NETWORK_ATTACK is countered by O.EMAIL_PROTECTED_COMMS as this provides for protection of transmitted data
+            related to email client network activity.
           </rationale>
         </objective-refer>
-        <objective-refer ref="O.MANAGEMENT">
+        <objective-refer ref="O.EMAIL_MANAGEMENT">
           <rationale>	
-            The threat T.NETWORK_EAVESDROP is countered by O.MANAGEMENT as this provides for the ability to configure the application to protect the confidentiality of its transmitted data.
+            The threat T.NETWORK_EAVESDROP is countered by O.EMAIL_MANAGEMENT as this provides for the ability to configure the 
+            email client to protect the confidentiality of its transmitted data.
           </rationale>
         </objective-refer>
       </threat>
-              
+          
+
               
       <threat name="T.PHYSICAL_ACCESS">
-        <description>See App PP, Section 3.1.</description>
-        <consistency-rationale>This threat comes directly from the Base-PP.</consistency-rationale>
-        <objective-refer ref="O.PROTECTED_STORAGE">
-          <rationale>The objective O.PROTECTED_STORAGE protects against unauthorized attempts to access physical storage used by the TOE.
+        <from base="AppPP"/>
+        <objective-refer ref="O.EMAIL_PROTECTED_STORAGE">
+          <rationale>The objective O.EMAIL_PROTECTED_STORAGE protects against unauthorized attempts to access physical storage used by the TOE
+            as a method to bypass the TSF to access sensitive data.
           </rationale>
         </objective-refer>
       </threat>
-      
-      
+    
       
     </threats>
     </sec:Threats>
@@ -312,8 +321,10 @@
   identified in the Base-PP and describes an additional objective specific to this PP-Module. 
     <sec:Security_Objectives_for_the_TOE>
   <SOs>
-    <SO name="O.MANAGEMENT">
-      <description>This objective is defined in the Base-PP. This PP-Module maps additional SFRs to it to address the management functionality that is specific to email client applications.</description>
+    <SO name="O.EMAIL_MANAGEMENT">
+      <description>A general version of this objective is defined in the Base-PP. 
+        This PP-Module defines a version of the objective that is specific to the functionality that may be managed by an
+        email client application specifically.</description>
       <consistency-rationale>This objective is an enhancement to the O.MANAGEMENT objective defined in the Base-PP, specifically in regards to the secure administration of functions that are specific to email client applications.</consistency-rationale>
       <addressed-by>FDP_NOT_EXT.1, FMT_MOF_EXT.1, FDP_NOT_EXT.2 (optional), FDP_REN_EXT.1 (optional)</addressed-by>
       <rationale>
@@ -323,8 +334,10 @@
         FDP_REN_EXT.1 supports the objective by optionally defining a plaintext-only operational mode that does not allow a user to interact with embedded content in an email message. 
       </rationale>
     </SO>
-    <SO name="O.PROTECTED_STORAGE">
-      <description>This objective is defined in the Base-PP. This PP-Module maps additional SFRs to it to address the data at rest protection functionality that is specific to email client applications.</description>
+    <SO name="O.EMAIL_PROTECTED_STORAGE">
+      <description>A general version of this objective is defined in the Base-PP. 
+        This PP-Module defines a version of the objective that applies to the data at rest protection functionality and considerations that are
+        specific to email client applications.</description>
       <consistency-rationale>This objective is an enhancement to the O.PROTECTED_STORAGE objective defined in the Base-PP, specifically in regards to the data at rest that applies to email client applications.</consistency-rationale>
       <addressed-by>FCS_CKM_EXT.3, FCS_CKM_EXT.4, FCS_KYC_EXT.1, FCS_IVG_EXT.1 (optional), FCS_NOG_EXT.1 (optional), FCS_SAG_EXT.1 (optional), FDP_PST_EXT.1 (optional), FCS_CKM_EXT.5 (selection-based), FCS_COP_EXT.2 (selection-based), FCS_SMC_EXT.1 (selection-based)</addressed-by>
       <rationale>
@@ -340,8 +353,10 @@
         FCS_SMC_EXT.1 supports the objective by defining the supported key combination mechanisms if the TSF uses key combining as part of maintaining a key chain.
       </rationale>
     </SO>
-    <SO name="O.PROTECTED_COMMS">
-      <description>This objective is defined in the Base-PP. This PP-Module maps additional SFRs to it to address the data in transit protection functionality that is specific to email client applications.</description>
+    <SO name="O.EMAIL_PROTECTED_COMMS">
+      <description>A general version of this objective is defined in the Base-PP. 
+        This PP-Module defines a version of the objective that applies to the data in transit protection functionality and considerations that are 
+        specific to email client applications.</description>
       <consistency-rationale>This objective is an enhancement to the O.PROTECTED_COMMS objective defined in the Base-PP, specifically in regards to the data in transit that applies to email client applications.</consistency-rationale>
       <addressed-by>FCS_CKM_EXT.1 (modified from Base-PP), FCS_RBG_EXT.1 (modified from Base-PP), FIA_X509_EXT.1 (from Base-PP), FIA_X509_EXT.2 (from Base-PP), FTP_DIT_EXT.1 (modified from Base-PP), FCS_SMIME_EXT.1, FDP_SMIME_EXT.1, FIA_X509_EXT.3, FTP_ITC_EXT.1, FIA_SASL_EXT.1 (selection-based)</addressed-by>
       <rationale>
@@ -396,10 +411,12 @@
 </sec:Security_Objectives>
   
   <sec:Security_Requirements>
-    <base-pp id="app">
-      <raw-url>https://raw.githubusercontent.com/commoncriteria/application/master/input/application.xml</raw-url>
-      <url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=442&amp;id=442</url>
-    
+      <base-pp id="AppPP">
+        <git>
+          <url>https://github.com/commoncriteria/application</url>
+          <branch>release-1.4</branch>
+        </git>
+        <url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=462&amp;id=462</url>
       
       <modified-sfrs>
         
@@ -1067,8 +1084,7 @@ for destroying all keying material and cryptographic security parameters when no
 	    <comp-lev> requires the TSF to implement management functions specified in the SFR.</comp-lev>
 	    <management>No specific management functions are identified.</management>
 	    <audit>There are no auditable events foreseen.</audit>
-	    <dependencies>
-	      No dependencies.
+	    <dependencies>No dependencies.
 	    </dependencies>
 
 	    <f-element>
@@ -1502,8 +1518,7 @@ for destroying all keying material and cryptographic security parameters when no
         <comp-lev> requires the TSF to identify the minimum set of data it can store on the TOE platform while maintaining functionality.</comp-lev>
         <management>No specific management functions are identified.</management>
         <audit>There are no auditable events foreseen.</audit>
-        <dependencies>
-        <no-link>FDP_DAR_EXT.1</no-link> Encryption of Sensitive Application Data
+        <dependencies>No dependencies.
         </dependencies>
         
 	<f-element>
@@ -1897,8 +1912,7 @@ for destroying all keying material and cryptographic security parameters when no
         <comp-lev> requires the TSF to implement SASL in a manner that conforms to applicable standards.</comp-lev>
         <management>No specific management functions are identified.</management>
         <audit>There are no auditable events foreseen.</audit>
-        <dependencies>
-        <no-link>FCS_COP.1</no-link> Cryptographic Operation
+        <dependencies>No dependencies.
         </dependencies>        
         
         <f-element>
@@ -2040,10 +2054,18 @@ for destroying all keying material and cryptographic security parameters when no
     <cc-entry/>
     <entry id="bibAppPP">
       <tag>App PP</tag>
+      <!-- todo: update with proper date -->
       <description>
-        <h:a href="https://www.niap-ccevs.org/MMO/PP/PP_APP_v1.3.pdf"
-	     >Protection Profile for Application Software, Version 1.3</h:a>, March 1, 2019
+        <h:a href="https://www.niap-ccevs.org/MMO/PP/PP_APP_v2.0.pdf"
+	     >Protection Profile for Application Software, Version 2.0</h:a>, TBD
       </description>
+    </entry>
+    <entry id="bibCEM">
+      <tag>CEM</tag>
+      <description>
+        <h:a href="https://commoncriteriaportal.org/files/ccfiles/CEM2022R1.pdf">Common
+          Methodology for Information Technology Security - Evaluation Methodology</h:a>,
+        CCMB-2022-11-006, CEM:2022, Revision 1, November 2022. </description>
     </entry>
     <entry id="bibmapispec">
       <tag>MS-OXCMAPIHTTP</tag>
