@@ -221,8 +221,7 @@
             The functional packages to which the PP-Module conforms include SFRs that are not mandatory to claim for the sake of conformance.
             An ST that claims one or more of these functional packages may include whatever non-mandatory SFRs are appropriate to claim based on the 
             capabilities of the TSF and on any triggers on their inclusion based inherently on the SFR selections made. All security requirements
-            in these packages are intended to satisfy the O.PROTECTED_COMMS TOE security objective of the Base-PP and the O.EMAIL_PROTECTED_COMMS TOE
-            security objective of this PP-Module.
+            in these packages are intended to satisfy the O.PROTECTED_COMMS TOE security objective of the Base-PP.
           </description>
         </cclaim>
       </cclaims>
@@ -520,14 +519,30 @@
       <con-toe>
         If this PP-Module is used to extend the App PP, the TOE type for the overall TOE is still a software application.
         The TOE boundary is simply extended to include the email client functionality that is built into the application so that additional security functionality is claimed within the scope of the TOE.
+        <h:br/><h:br/>
+        The only asset for the TOE is the software executable and sensitive data that comprises the TOE. The entire TOE as defined by the combination of the
+        Base-PP and this PP-Module is a single asset. The only difference to the threat model is that the PP-Module introduces the concept of add-ons, which
+        introduces the threat of an add-on being flawed in some way.
       </con-toe>
       
-      <con-sec-prob/>
-      <con-obj/>
+      <con-sec-prob>
+        Listed below are the threats, objectives, and OSPs defined in this PP-Module with rationale for their consistency with the App PP.
+        Note that the PP-Module is implicitly consistent with any claimed functional packages because the applicable functional packages do not have
+        security problem definitions of their own; per section 2, any claimed functional package is intended to support the O.PROTECTED_COMMS objective in the
+        App PP, which helps mitigate the T.NETWORK_ATTACK and T.NETWORK_EAVESDROP threats in that PP. 
+      </con-sec-prob>
+      <con-obj>
+        Listed below are the security objectives defined in this PP-Module with rationale for their consistency with the App PP.
+        Note that the PP-Module is implicitly consistent with any claimed functional packages because the applicable functional packages do not have
+        TOE objecitves of their own; per section 2, any claimed functional package is intended to support the O.PROTECTED_COMMS objective in the
+        App PP. 
+      </con-obj>
       <con-op-en>
         This PP-Module does not define any objectives for the TOE's operational environment. 
       </con-op-en>
-      <con-mod ref="QQQQ"></con-mod>
+      <con-mod ref="QQQQ">
+        qqqqq
+      </con-mod>
     </base-pp> 
       <man-sfrs>
         
