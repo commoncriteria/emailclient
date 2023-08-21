@@ -326,7 +326,7 @@
         email client application specifically.</description>
       <consistency-rationale>This objective is an enhancement to the O.MANAGEMENT objective defined in the Base-PP, specifically in regards to the secure administration of functions that are particular to email client applications.</consistency-rationale>
       <addressed-by>FDP_NOT_EXT.1</addressed-by><rationale>FDP_NOT_EXT.1 supports the objective by defining a mechanism for users to determine whether a given email has been signed or encrypted.</rationale>
-      <addressed-by>FDP_MOF_EXT.1</addressed-by><rationale>FMT_MOF_EXT.1 supports the objective by defining the technology-specific management functions that may exist for email client applications.</rationale>
+      <addressed-by>FMT_MOF_EXT.1</addressed-by><rationale>FMT_MOF_EXT.1 supports the objective by defining the technology-specific management functions that may exist for email client applications.</rationale>
       <addressed-by>FDP_NOT_EXT.2 (optional)</addressed-by><rationale>FDP_NOT_EXT.2 supports the objective by optionally requiring the TSF to enumerate the URI of embedded links in emails so that a user can determine the source of the link.</rationale>
       <addressed-by>FDP_REN_EXT.1 (optional)</addressed-by><rationale>FDP_REN_EXT.1 supports the objective by optionally defining a plaintext-only operational mode that does not allow a user to interact with embedded content in an email message.</rationale> 
       
@@ -337,38 +337,35 @@
         specific to email client applications.</description>
       <consistency-rationale>This objective is an enhancement to the O.PROTECTED_STORAGE objective defined in the Base-PP, specifically in regards to the data at rest 
         protection that applies to email client applications.</consistency-rationale>
-      <addressed-by>FCS_CKM_EXT.3, FCS_CKM_EXT.4, FCS_KYC_EXT.1, FCS_IVG_EXT.1 (optional), FCS_NOG_EXT.1 (optional), FCS_SAG_EXT.1 (optional), FDP_PST_EXT.1 (optional), FCS_CKM_EXT.5 (selection-based), FCS_COP_EXT.2 (selection-based), FCS_SMC_EXT.1 (selection-based)</addressed-by>
-      <rationale>
-        FCS_CKM_EXT.3 supports the objective by defining the mechanism by which the TSF protects stored key data from unauthorized disclosure.<h:p/>
-        FCS_CKM_EXT.4 supports the objective by defining the mechanism by which the TSF securely destroys stored key data.<h:p/>
-        FCS_KYC_EXT.1 supports the objective by defining any key chain that the TSF implements to protect a root encryption key.<h:p/>
-        FCS_IVG_EXT.1 supports the objective by optionally specifying the initialization vectors used for various cryptographic modes if the TOE supports any of these modes.<h:p/>
-        FCS_NOG_EXT.1 supports the objective by optionally defining the minimum nonce size if the TSF uses any cryptographic algorithms that require the use of nonces.<h:p/>
-        FCS_SAG_EXT.1 supports the objective by optionally defining the supported methods for salt generation if the TSF uses any cryptographic algorithms that require the use of salts.<h:p/>
-        FDP_PST_EXT.1 supports the objective by optionally defining the ability of the TOE to operate without persistently storing certain types of data at all.<h:p/> 
-        FCS_CKM_EXT.5 supports the objective by optionally defining the mechanism by which the TSF can derive key material using a user-supplied password credential.<h:p/>
-        FCS_COP_EXT.2 supports the objective by defining the supported key wrap mechanisms if the TSF uses key wrapping as part of maintaining a key chain.<h:p/>
-        FCS_SMC_EXT.1 supports the objective by defining the supported key combination mechanisms if the TSF uses key combining as part of maintaining a key chain.
-      </rationale>
+      <addressed-by>FCS_CKM_EXT.3</addressed-by><rationale>FCS_CKM_EXT.3 supports the objective by defining the mechanism by which the TSF protects stored key data from unauthorized disclosure.</rationale>
+      <addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>FCS_CKM_EXT.4 supports the objective by defining the mechanism by which the TSF securely destroys stored key data.</rationale>
+      <addressed-by>FCS_KYC_EXT.1</addressed-by><rationale>FCS_KYC_EXT.1 supports the objective by defining any key chain that the TSF implements to protect a root encryption key.</rationale>
+      <addressed-by>FCS_IVG_EXT.1 (optional)</addressed-by><rationale>FCS_IVG_EXT.1 supports the objective by optionally specifying the initialization vectors used for various cryptographic modes if the TOE supports any of these modes.</rationale>
+      <addressed-by>FCS_NOG_EXT.1 (optional)</addressed-by><rationale>FCS_NOG_EXT.1 supports the objective by optionally defining the minimum nonce size if the TSF uses any cryptographic algorithms that require the use of nonces.</rationale>
+      <addressed-by>FCS_SAG_EXT.1 (optional)</addressed-by><rationale>FCS_SAG_EXT.1 supports the objective by optionally defining the supported methods for salt generation if the TSF uses any cryptographic algorithms that require the use of salts.</rationale>
+      <addressed-by>FDP_PST_EXT.1 (optional)</addressed-by><rationale>FDP_PST_EXT.1 supports the objective by optionally defining the ability of the TOE to operate without persistently storing certain types of data at all.</rationale>
+      <addressed-by>FCS_CKM_EXT.5 (selection-based)</addressed-by><rationale>FCS_CKM_EXT.5 supports the objective by optionally defining the mechanism by which the TSF can derive key material using a user-supplied password credential.</rationale>
+      <addressed-by>FCS_COP_EXT.2 (selection-based)</addressed-by><rationale>FCS_COP_EXT.2 supports the objective by defining the supported key wrap mechanisms if the TSF uses key wrapping as part of maintaining a key chain.</rationale>
+      <addressed-by>FCS_SMC_EXT.1 (selection-based)</addressed-by><rationale>FCS_SMC_EXT.1 supports the objective by defining the supported key combination mechanisms if the TSF uses key combining as part of maintaining a key chain.</rationale>
+      
     </SO>
     <SO name="O.EMAIL_PROTECTED_COMMS">
       <description>A general version of this objective is defined in the Base-PP. 
         This PP-Module defines a version of the objective that applies to the data in transit protection functionality and considerations that are 
         specific to email client applications.</description>
       <consistency-rationale>This objective is an enhancement to the O.PROTECTED_COMMS objective defined in the Base-PP, specifically in regards to the data in transit protection that applies to email client applications.</consistency-rationale>
-      <addressed-by>FCS_CKM_EXT.1 (modified from Base-PP), FCS_RBG_EXT.1 (modified from Base-PP), FIA_X509_EXT.1 (from Base-PP), FIA_X509_EXT.2 (from Base-PP), FTP_DIT_EXT.1 (modified from Base-PP), FCS_SMIME_EXT.1, FDP_SMIME_EXT.1, FIA_X509_EXT.3, FTP_ITC_EXT.1, FIA_SASL_EXT.1 (selection-based)</addressed-by>
-      <rationale>
-        FCS_CKM_EXT.1 supports the objective by requiring that the TSF provide or invoke a cryptographic function for asymmetric key generation.<h:p/>
-        FCS_RBG_EXT.1 supports the objective by requiring that the TSF provide or invoke a DRBG for secure key generation.<h:p/>
-        FIA_X509_EXT.1 supports the objective by requiring the TSF to implement or invoke an X.509 certificate validation service.<h:p/>
-        FIA_X509_EXT.2 supports the objective by defining the TOE's use of X.509 certificates and what behavior the TOE takes when the revocation status of a certificate cannot be determined.<h:p/>
-        FTP_DIT_EXT.1 supports the objective by specifying the trusted communications channels used by the TOE to protect data in transit.<h:p/>
-        FCS_SMIME_EXT.1 supports the objective by defining the TOE's cryptographic implementation of S/MIME to both assert and validate the confidentiality and integrity of secure email messages.<h:p/>
-        FDP_SMIME_EXT.1 supports the objective by requiring the TSF to use S/MIME to protect email message data in transit.<h:p/>
-        FIA_X509_EXT.3 supports the objective by requiring the TSF to support the use of X.509 certificates for S/MIME.<h:p/>
-        FTP_ITC_EXT.1 supports the objective by specifying the trusted communications the TSF must implement that are specific to email communications.<h:p/>
-        FIA_SASL_EXT.1 supports the objective by specifying how SASL is implemented in the case where the TOE claims to support it.
-      </rationale>
+      
+      <addressed-by>FCS_CKM_EXT.1 (modified from Base-PP)</addressed-by><rationale>FCS_CKM_EXT.1 supports the objective by requiring that the TSF provide or invoke a cryptographic function for asymmetric key generation.</rationale>
+      <addressed-by>FCS_RBG_EXT.1 (modified from Base-PP)</addressed-by><rationale>FCS_RBG_EXT.1 supports the objective by requiring that the TSF provide or invoke a DRBG for secure key generation.</rationale>
+      <addressed-by>FIA_X509_EXT.1 (from Base-PP)</addressed-by><rationale>FIA_X509_EXT.1 supports the objective by requiring the TSF to implement or invoke an X.509 certificate validation service.</rationale>
+      <addressed-by>FIA_X509_EXT.2 (from Base-PP)</addressed-by><rationale>FIA_X509_EXT.2 supports the objective by defining the TOE's use of X.509 certificates and what behavior the TOE takes when the revocation status of a certificate cannot be determined.</rationale>
+      <addressed-by>FTP_DIT_EXT.1 (modified from Base-PP)</addressed-by><rationale>FTP_DIT_EXT.1 supports the objective by specifying the trusted communications channels used by the TOE to protect data in transit.</rationale>
+      <addressed-by>FCS_SMIME_EXT.1</addressed-by><rationale>FCS_SMIME_EXT.1 supports the objective by defining the TOE's cryptographic implementation of S/MIME to both assert and validate the confidentiality and integrity of secure email messages.</rationale>
+      <addressed-by>FDP_SMIME_EXT.1</addressed-by><rationale>FDP_SMIME_EXT.1 supports the objective by requiring the TSF to use S/MIME to protect email message data in transit.</rationale>
+      <addressed-by>FIA_X509_EXT.3</addressed-by><rationale>FIA_X509_EXT.3 supports the objective by requiring the TSF to support the use of X.509 certificates for S/MIME.</rationale>
+      <addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>FTP_ITC_EXT.1 supports the objective by specifying the trusted communications the TSF must implement that are specific to email communications.</rationale>
+      <addressed-by>FIA_SASL_EXT.1 (selection-based)</addressed-by><rationale>FIA_SASL_EXT.1 supports the objective by specifying how SASL is implemented in the case where the TOE claims to support it.</rationale>
+      
     </SO>
     <SO name="O.ADDON_INTEGRITY">
       <description>To address issues associated with malicious or flawed plug-ins or
@@ -376,11 +373,10 @@
         This includes verification at installation time and update.</description>
       <consistency-rationale>This objective is an enhancement to the O.INTEGRITY objective defined in the Base-PP. Where O.INTEGRITY is concerned with the integrity of the TOE application, O.ADDON_INTEGRITY is concerned with the integrity of third-party add-ons that can 
         be loaded into the TOE.</consistency-rationale>
-      <addressed-by>FPT_AON_EXT.1, FPT_AON_EXT.2 (selection-based)</addressed-by>
-      <rationale>
-        FPT_AON_EXT.1 supports the objective by specifying whether or not the TSF has the ability to load add-ons.<h:p/>
-        FPT_AON_EXT.2 supports the objective by defining a cryptographic method for the TSF to validate the integrity of add-ons if the TOE supports their use.<h:p/>
-      </rationale>
+      
+        <addressed-by>FPT_AON_EXT.1</addressed-by><rationale>FPT_AON_EXT.1 supports the objective by specifying whether or not the TSF has the ability to load add-ons.</rationale>
+        <addressed-by>FPT_AON_EXT.2 (selection-based)</addressed-by><rationale>FPT_AON_EXT.2 supports the objective by defining a cryptographic method for the TSF to validate the integrity of add-ons if the TOE supports their use.</rationale>
+      
     </SO>
   </SOs>
 </sec:Security_Objectives_for_the_TOE>
