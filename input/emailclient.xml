@@ -489,7 +489,7 @@
             <f-element>
               <title>The application shall 
                 <selectables linebreak="yes">
-                  <selectable>encrypt all transmitted [<h:i>sensitive data</h:i>] with [<h:i>TLS as a client as defined in the 
+                  <selectable>encrypt all transmitted [<h:i>sensitive data</h:i>] with [TLS as a client as defined in the 
                     Functional Package for TLS for [transmission of emails]</selectable>
                   <selectable>invoke platform-provided functionality to encrypt all transmitted sensitive data with [TLS] for [transmission of emails]</selectable>	    
                 </selectables>
