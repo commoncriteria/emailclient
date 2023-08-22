@@ -523,6 +523,10 @@
       
       <con-sec-prob>
         Listed below are the threats, objectives, and OSPs defined in this PP-Module with rationale for their consistency with the App PP.
+        The PP-Module shares the
+        executable application asset with the App PP but defines an additional threat because the PP-Module defines a specific type of software application
+        with potential exploits that are common to the application type.
+        <h:br/><h:br/>
         Note that the PP-Module is implicitly consistent with any claimed functional packages because the applicable functional packages do not have
         security problem definitions of their own; per section 2, any claimed functional package is intended to support the O.PROTECTED_COMMS objective in the
         App PP, which helps mitigate the T.NETWORK_ATTACK and T.NETWORK_EAVESDROP threats in that PP. 
