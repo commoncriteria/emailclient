@@ -115,26 +115,25 @@
         <term abbr="CMS" full="Cryptographic Message Syntax"></term>
         <term abbr="CRL" full="Certificate Revocation List"></term>
         <term abbr="CSP" full="Critical Security Parameter"></term>
-        <term abbr="DRBG" full="Deterministic Random Bit Generator"></term>
-        <term abbr="ECDSA" full="Elliptic Curve Digital Signature Algorithm"></term>
+        
         <term full="Email Client">Application used to send, receive, access and manage email provided by an
           email server. The terms email client and TOE are interchangeable in this
           document.</term>
         <term abbr="GCM" full="Galois-Counter Mode"></term>
         <term abbr="IMAP" full="Internet Message Access Protocol">Protocol for an email client to retrieve
           email from an email server over TCP/IP; IMAP4 defined in RFC 3501.</term>
-        <term abbr="IETF" full="Internet Engineering Task Force"></term>
-        <term abbr="IV" full="Initialization Vector"></term>
+        
+        
         <term abbr="MAPI" full="Messaging Application Programming Interface">Open specification used by
           email clients such as Microsoft Outlook and Thunderbird; defined in <xref to="bibmapispec"/>.</term>
         <term abbr="MTA" full="Mail Transfer Agent"></term>
-        <term abbr="NIST" full="National Institute of Standards and Technology"></term>
+        
         <term abbr="PBKDF" full="Password-Based Key Derivation Function"></term>
         <term abbr="PDF" full="Portable Document Format"></term>
         <term abbr="POP" full="Post Office Protocol">Protocol for an email client to retrieve email from
           an email server over TCP/IP; POP3 defined in RFC 1939.</term>
-        <term abbr="PRF" full="Pseudo-Random Function"></term>
-        <term abbr="RBG" full="Random Bit Generator"></term>
+        <term abbr="PRF" full="Pseudorandom Function"></term>
+        
         <term abbr="RPC" full="Remote Procedure Call">Protocol used by Microsoft Exchange to send/receive
           MAPI commands; defined in <xref to="MS-OXCRPC"/>.</term>
         <term abbr="SASL" full="Simple Authentication and Security Layer"></term>
@@ -144,6 +143,7 @@
             
         <term abbr="SMTP" full="Simple Mail Transfer Protocol">Protocol for an email client to send email
           to an email server over TCP/IP; SMTP defined in RFC 5321.</term>
+        <term abbr="URI" full="Uniform Resource Identifier"></term>
       </tech-terms>
     
     <section title="Compliant Targets of Evaluation" id="TOEdescription">
@@ -174,8 +174,8 @@
       
       <section title="TOE Boundary" id="TOEboundary">
         The physical boundary of the email client is a software application running on a general-purpose operating system. The TOE boundary may include third-party add-ons, but these are non-interfering with respect to security;
-        add-ons provide features that are outside the TOE's logical boundary but must be implemented in such a manner that their inclusion does not compromise the security of the TSF. The figure below shows the TOE's interaction with
-        remote external interfaces that are used to transfer mail between clients. Two separate email clients are shown to show how the TOE can function as both a sender and a receiver using different protocols.
+        add-ons provide features that are outside the TOE's logical boundary but must be implemented in such a manner that their inclusion does not compromise the security of the TSF. <xref to="mua_mta"/> shows the TOE's interaction with
+        remote external interfaces that are used to transfer mail between clients. Two separate email clients are shown to illustrate how the TOE can function as both a sender and a receiver using different protocols.
         
         
         <figure id="mua_mta" entity="images/mua_mta.png" max-width="inherit"
@@ -199,9 +199,9 @@
           <description>An ST must claim exact conformance to this PP-Module.
             <h:br/><h:br/>
             The evaluation methods used for evaluating the TOE are a combination of the workunits defined in <xref to="bibCEM"/> as well as the
-            Evaluation Activities for ensuring that individual SFRs have sufficient level of supporting evidence in the Security Target and 
+            Evaluation Activities for ensuring that individual SFRs have a sufficient level of supporting evidence in the Security Target and 
             guidance documentation and have been sufficiently tested by the laboratory as part of completing ATE_IND.1. Any functional packages 
-            which this PP-Module claims similarly contain their own Evaluation Activities that are used in this manner.
+            this PP-Module claims similarly contain their own Evaluation Activities that are used in this same manner.
           </description>
         </cclaim>
         <cclaim name="CC Conformance Claims">
@@ -219,8 +219,8 @@
             <h:li>This PP-Module conforms to the EAL1 assurance package augmented with ALC_TSU_EXT.1, ASE_OBJ.2, ASE_REQ.2, and ASE_SPD.1.</h:li>
           </h:ul>
             The functional packages to which the PP-Module conforms include SFRs that are not mandatory to claim for the sake of conformance.
-            An ST that claims one or more of these functional packages may include whatever non-mandatory SFRs are appropriate to claim based on the 
-            capabilities of the TSF and on any triggers on their inclusion based inherently on the SFR selections made. All security requirements
+            An ST that claims one or more of these functional packages may include any non-mandatory SFRs that are appropriate to claim based on the 
+            capabilities of the TSF and on any triggers for their inclusion based inherently on the SFR selections made. All security requirements
             in these packages are intended to satisfy the O.PROTECTED_COMMS TOE security objective of the Base-PP.
           </description>
         </cclaim>
@@ -242,7 +242,7 @@
 	serious flaws into the email client application, either maliciously by an attacker, or
 	accidentally by a developer. These flaws enable undesirable behaviors including, but not
 	limited to, allowing unauthorized access to sensitive information in the email client,
-	unauthorized access to the device's file system, or even privilege escalation that
+	unauthorized access to the device's file system, or privilege escalation that
 	enables unauthorized access to other applications or the operating system.
 	</description>
 	<consistency-rationale>
@@ -257,7 +257,7 @@
 	<objective-refer ref="O.EMAIL_MANAGEMENT">
 	  <rationale>
 	    The ability to manage the TOE allows for only authorized users to install add-ons, 
-	    to enable/disable the ability to install add-ons, or to not have any support for add-ons at all.
+	    to enable or disable the ability to install add-ons, or to not have any support for add-ons at all.
 	  </rationale>
 	</objective-refer>
       </threat>
@@ -279,7 +279,7 @@
       <threat name="T.NETWORK_EAVESDROP">
         <from base="AppPP"/>
         <objective-refer ref="O.EMAIL_PROTECTED_COMMS">
-          <rationale>The threat T.NETWORK_ATTACK is countered by O.EMAIL_PROTECTED_COMMS as this provides for protection of transmitted data
+          <rationale>The threat T.NETWORK_EAVESDROP is countered by O.EMAIL_PROTECTED_COMMS as this provides for protection of transmitted data
             related to email client network activity.
           </rationale>
         </objective-refer>
@@ -327,15 +327,15 @@
       <consistency-rationale>This objective is an enhancement to the O.MANAGEMENT objective defined in the Base-PP, specifically in regards to the secure administration of functions that are particular to email client applications.</consistency-rationale>
       <addressed-by>FDP_NOT_EXT.1</addressed-by><rationale>FDP_NOT_EXT.1 supports the objective by defining a mechanism for users to determine whether a given email has been signed or encrypted.</rationale>
       <addressed-by>FMT_MOF_EXT.1</addressed-by><rationale>FMT_MOF_EXT.1 supports the objective by defining the technology-specific management functions that may exist for email client applications.</rationale>
-      <addressed-by>FDP_NOT_EXT.2 (optional)</addressed-by><rationale>FDP_NOT_EXT.2 supports the objective by optionally requiring the TSF to enumerate the URI of embedded links in emails so that a user can determine the source of the link.</rationale>
+      <addressed-by>FDP_NOT_EXT.2 (optional)</addressed-by><rationale>FDP_NOT_EXT.2 supports the objective by optionally requiring the TSF to enumerate the uniform resource identifier (URI) of embedded links in emails so that a user can determine the source of the link.</rationale>
       <addressed-by>FDP_REN_EXT.1 (optional)</addressed-by><rationale>FDP_REN_EXT.1 supports the objective by optionally defining a plaintext-only operational mode that does not allow a user to interact with embedded content in an email message.</rationale> 
       
     </SO>
     <SO name="O.EMAIL_PROTECTED_STORAGE">
       <description>A general version of this objective is defined in the Base-PP. 
-        This PP-Module defines a version of the objective that applies to the data at rest protection functionality and considerations that are
+        This PP-Module defines a version of the objective that applies to the data-at-rest protection functionality and considerations that are
         specific to email client applications.</description>
-      <consistency-rationale>This objective is an enhancement to the O.PROTECTED_STORAGE objective defined in the Base-PP, specifically in regards to the data at rest 
+      <consistency-rationale>This objective is an enhancement to the O.PROTECTED_STORAGE objective defined in the Base-PP, specifically in regards to the data-at-rest 
         protection that applies to email client applications.</consistency-rationale>
       <addressed-by>FCS_CKM_EXT.3</addressed-by><rationale>FCS_CKM_EXT.3 supports the objective by defining the mechanism by which the TSF protects stored key data from unauthorized disclosure.</rationale>
       <addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>FCS_CKM_EXT.4 supports the objective by defining the mechanism by which the TSF securely destroys stored key data.</rationale>
@@ -351,9 +351,9 @@
     </SO>
     <SO name="O.EMAIL_PROTECTED_COMMS">
       <description>A general version of this objective is defined in the Base-PP. 
-        This PP-Module defines a version of the objective that applies to the data in transit protection functionality and considerations that are 
+        This PP-Module defines a version of the objective that applies to the data-in-transit protection functionality and considerations that are 
         specific to email client applications.</description>
-      <consistency-rationale>This objective is an enhancement to the O.PROTECTED_COMMS objective defined in the Base-PP, specifically in regards to the data in transit protection that applies to email client applications.</consistency-rationale>
+      <consistency-rationale>This objective is an enhancement to the O.PROTECTED_COMMS objective defined in the Base-PP, specifically in regards to the data-in-transit protection that applies to email client applications.</consistency-rationale>
       
       <addressed-by>FCS_CKM_EXT.1 (modified from Base-PP)</addressed-by><rationale>FCS_CKM_EXT.1 supports the objective by requiring that the TSF provide or invoke a cryptographic function for asymmetric key generation.</rationale>
       <addressed-by>FCS_RBG_EXT.1 (modified from Base-PP)</addressed-by><rationale>FCS_RBG_EXT.1 supports the objective by requiring that the TSF provide or invoke a DRBG for secure key generation.</rationale>
@@ -370,7 +370,7 @@
     <SO name="O.ADDON_INTEGRITY">
       <description>To address issues associated with malicious or flawed plug-ins or
         extensions, conformant email clients implement mechanisms to ensure their integrity.
-        This includes verification at installation time and update.</description>
+        This includes verification at installation time and for any updates.</description>
       <consistency-rationale>This objective is an enhancement to the O.INTEGRITY objective defined in the Base-PP. Where O.INTEGRITY is concerned with the integrity of the TOE application, O.ADDON_INTEGRITY is concerned with the integrity of third-party add-ons that can 
         be loaded into the TOE.</consistency-rationale>
       
@@ -416,7 +416,7 @@
         
         <sec:mod_fcs title="Cryptographic Support (FCS)">
           <f-component cc-id="fcs_ckm_ext.1" name="Cryptographic Key Generation Services">
-            <consistency-rationale>This SFR is changed from its definition in the App PP to remove one of the available selection options because it will never apply in the case where the TOE conforms to this PP-Module.</consistency-rationale>
+            <consistency-rationale>This SFR is changed from its definition in the Base-PP to remove one of the available selection options because it will never apply in the case where the TOE conforms to this PP-Module.</consistency-rationale>
             <f-element>
               <title>The application shall <selectables linebreak="yes">
                 
@@ -435,7 +435,7 @@
           </f-component>
           
           <f-component cc-id="fcs_rbg_ext.1" name="Random Bit Generation Services">
-            <consistency-rationale>This SFR is changed from its definition in the App PP to remove one of the available selection options because it will never apply in the case where the TOE conforms to this PP-Module.</consistency-rationale>
+            <consistency-rationale>This SFR is changed from its definition in the Base-PP to remove one of the available selection options because it will never apply in the case where the TOE conforms to this PP-Module.</consistency-rationale>
             <f-element>
               <title> The application shall
                 <selectables linebreak="yes">
@@ -456,7 +456,7 @@
         
         <sec:mod_fia title="Identification and Authentication (FIA)">
           <f-component cc-id="fia_x509_ext.1" name="X.509 Certificate Validation">
-            <consistency-rationale>This SFR is unchanged from its definition in the App PP; the SFR is recategorized from selection-based to mandatory when the TOE conforms to this PP-Module.</consistency-rationale>
+            <consistency-rationale>This SFR is unchanged from its definition in the Base-PP; the SFR is recategorized from selection-based to mandatory when the TOE conforms to this PP-Module.</consistency-rationale>
             <f-element>
               <title>This SFR is selection-based in the App PP. When the TOE conforms to this PP-Module, it is mandatory because of the modifications that this PP-Module makes to FTP_DIT_EXT.1.
               </title>
@@ -468,7 +468,7 @@
             </f-element>
           </f-component>
           <f-component cc-id="fia_x509_ext.2" name="X.509 Certificate Authentication">
-            <consistency-rationale>This SFR is unchanged from its definition in the App PP; the SFR is recategorized from selection-based to mandatory when the TOE conforms to this PP-Module.</consistency-rationale>
+            <consistency-rationale>This SFR is unchanged from its definition in the Base-PP; the SFR is recategorized from selection-based to mandatory when the TOE conforms to this PP-Module.</consistency-rationale>
             <f-element>
               <title>This SFR is selection-based in the App PP. When the TOE conforms to this PP-Module, it is mandatory because of the modifications that this PP-Module makes to FTP_DIT_EXT.1.
               </title>
@@ -484,7 +484,7 @@
         
         <sec:mod_ftp title="Trusted Path/Channels (FTP)">
           <f-component cc-id="ftp_dit_ext.1" name="Protection of Data in Transit">
-            <consistency-rationale>This SFR is changed from its definition in the App PP to modify the selection options such that some options are mandated 
+            <consistency-rationale>This SFR is changed from its definition in the Base-PP to modify the selection options such that some options are mandated 
               if another selection is chosen and some are removed entirely, due to the specific cryptographic needs of email client applications.</consistency-rationale>
             <f-element>
               <title>The application shall 
@@ -495,7 +495,7 @@
                 </selectables>
                 between itself and another trusted IT product.
               </title>
-              <note role="application">This SFR is modified from its definition in the App PP to require that the TOE supports TLS and that its use of TLS is only limited to sensitive data. A conformant TOE must support the use of TLS for email 
+              <note role="application">This SFR is modified from its definition in the Base-PP to require that the TOE supports TLS and that its use of TLS is only limited to sensitive data. A conformant TOE must support the use of TLS for email 
               encryption but is permitted to send and receive non-sensitive email messages over an untrusted channel.<h:p/>
               Either the TOE or its platform is permitted to implement TLS. If the TOE implements TLS, FCS_TLS_EXT.1 and FCS_TLSC_EXT.1 from the TLS package must be claimed at minimum.</note>
               <aactivity>
@@ -555,7 +555,7 @@
 	    </fam-behavior>
 	  </ext-comp-def>
 	  <f-component cc-id="fcs_ckm_ext.3" name="Protection of Key and Key Material">
-	    <consistency-rationale>This SFR defines how keys and key material are saved by the email client. It does not impact the App PP functionality. 
+	    <consistency-rationale>This SFR defines how keys and key material are saved by the email client. It does not impact the Base-PP functionality. 
 	    </consistency-rationale>
 	    
 	    <comp-lev> requires the TSF to identify the method that it uses to prevent the plaintext storage of secret key data.</comp-lev>
@@ -597,7 +597,8 @@
 	        <title>The TSF shall <assignable>method of ensuring plaintext key data is not stored in non-volatile memory</assignable>.         
 	        </title>
 	      </ext-comp-def-title>
-	      <note role="application">This SFR references the selection-based SFRs FCS_COP_EXT.2 and FCS_SMC_EXT.1. If any selections that references these SFRs are chosen, the ST must also claim all corresponding selection-based SFRs. 
+	      <note role="application">This SFR references the selection-based SFRs FCS_COP_EXT.2 and FCS_SMC_EXT.1. If any selection that references these SFRs is chosen,
+	        the ST must also claim that selection-based SFR. 
 	        <h:p/>
 	        The plaintext key storage in non-volatile memory is allowed for
 	      several reasons. If the keys exist within protected memory that is not user accessible
@@ -606,8 +607,8 @@
 	      wrapping or encryption on keys that have already been protected. </note>
 	      <aactivity>
 		<TSS>
-		The evaluator shall verify the TSS for a high-level description of method used to protect keys stored in non-volatile memory.<h:p/>
-		The evaluator shall verify the TSS to ensure it describes the storage location of all keys and the protection of all keys stored in non-volatile memory. The description of the key chain shall be reviewed to ensure FCS_COP_EXT.2 is followed for the storage of wrapped or encrypted keys in non-volatile memory and plaintext keys in non-volatile memory meet one of the criteria for storage.<h:p/>
+		The evaluator shall verify the TSS for a high-level description of the method used to protect keys stored in non-volatile memory.<h:p/>
+		The evaluator shall ensure that the TSS describes the storage location of all keys and the protection of all keys stored in non-volatile memory. The description of the key chain shall be reviewed to ensure FCS_COP_EXT.2 is followed for the storage of wrapped or encrypted keys in non-volatile memory and plaintext keys in non-volatile memory meet one of the criteria for storage.<h:p/>
 		</TSS>
 	        <Guidance>
 	          There are no guidance EAs for this component.<h:p/>
@@ -621,7 +622,7 @@
 	  </f-component>
 	  <!-- as modified by TD0352 -->
 	  <f-component cc-id="fcs_ckm_ext.4" name="Cryptographic Key Destruction">
-	    <consistency-rationale>This SFR defines how email messages are formatted when sent and received by the client. It does not impact the App PP functionality. 
+	    <consistency-rationale>This SFR defines how email messages are formatted when sent and received by the client. It does not impact the Base-PP functionality. 
 	    </consistency-rationale>
 	    
 	    <comp-lev> requires the TSF to identify the method that it uses to destroy key data.</comp-lev>
@@ -637,8 +638,8 @@
    <selectable>implement key destruction using <selectables linebreak="yes">
       <selectable>For volatile memory, the erasure shall be executed by a <selectables linebreak="yes">
          <selectable>single direct overwrite <selectables linebreak="yes">
-            <selectable>consisting of a pseudo-random pattern using the email client's RBG</selectable>
-	          <selectable>consisting of a pseudo-random pattern using the host platform's RBG</selectable>
+            <selectable>consisting of a pseudorandom pattern using the email client's RBG</selectable>
+	          <selectable>consisting of a pseudorandom pattern using the host platform's RBG</selectable>
 	          <selectable>consisting of zeroes</selectable>
          </selectables></selectable>
          <selectable>destruction of reference to the key directly followed by a request for garbage collection</selectable></selectables></selectable>
@@ -646,8 +647,8 @@
          <selectable>single</selectable>
          <selectable>three or more times</selectable></selectables> 
       overwrite of key data storage location consisting of <selectables linebreak="yes">
-         <selectable> a pseudo-random pattern using the email client's RBG (as specified in FCS_RBG_EXT.2 of <xref to="bibAppPP"/></selectable>
-		     <selectable>a pseudo-random pattern using the host platform's RBG</selectable>
+         <selectable> a pseudorandom pattern using the email client's RBG (as specified in FCS_RBG_EXT.2 of <xref to="bibAppPP"/></selectable>
+		     <selectable>a pseudorandom pattern using the host platform's RBG</selectable>
          <selectable>a static pattern</selectable></selectables></selectable></selectables></selectable></selectables> 
    that meets the following:<selectables linebreak="yes">
          <selectable>NIST SP 800-88</selectable>
@@ -662,26 +663,26 @@ for destroying all keying material and cryptographic security parameters when no
 	      </ext-comp-def-title>
 	      <note role="application">
 		
-		  For the purposes of this requirement, keying material refers to
+		  For the purpose of this requirement, keying material refers to
 		  authentication data, passwords, symmetric keys, data used to derive keys, etc.
 		<h:p/>
 		
 		  The destruction indicated above applies to each intermediate storage area for
-		  key/cryptographic critical security parameters (i.e., any storage, such as memory
+		  keys and cryptographic critical security parameters (i.e., any storage, such as memory
 		  buffers, that is included in the path of such data) upon the transfer of the
-		  key/cryptographic critical security parameter to another memory location.
+		  keys and cryptographic critical security parameter to another memory location.
 	      </note>
 	      <aactivity>
 		<TSS>
-		If the platform provides the key destruction, then the evaluator shall examine the TSS to verify that it describes how the key destruction functionality is invoked.
+		If the platform provides the key destruction, then the evaluator shall verify that the TSS describes how the key destruction functionality is invoked.
 		<h:p/>
 		  If "destruction of reference..." (for volatile memory) is selected, then the evaluator shall examine the relevant interface definition to ensure that the interface supports the selection and description in the TSS.
 		<h:p/>
-		  If the application invokes key destruction, the evaluator shall check to ensure the TSS describes each of the secret keys (keys used for symmetric encryption or data authentication), private keys, and critical security parameters (CSPs) used to generate keys; 
+		  If the application invokes key destruction, the evaluator shall ensure the TSS describes each of the secret keys (keys used for symmetric encryption or data authentication), private keys, and critical security parameters (CSPs) used to generate keys; 
 		  when they are zeroized (for example, immediately after use, on system shutdown, etc.); 
 		  and the type of zeroization procedure that is performed (overwrite with zeroes, overwrite three times with random pattern, etc.). 
-		  If different types of memory are used to store the materials to be protected, the evaluator shall check to ensure that the TSS describes the zeroization procedure in terms of the memory in which the data are stored 
-		  (for example, "secret keys stored on a drive are zeroized by overwriting once with zeros, while secret akeys stored on the internal hard drive are zeroized by overwriting three times with a random pattern that is changed before each write").
+		  If different types of memory are used to store the materials to be protected, the evaluator shall ensure that the TSS describes the zeroization procedure in terms of the memory in which the data are stored 
+		  (for example, "secret keys stored on a drive are zeroized by overwriting once with zeros, while secret keys stored on the internal hard drive are zeroized by overwriting three times with a random pattern that is changed before each write").
 		<h:p/>  
 		</TSS>
 	        <Guidance>
@@ -691,16 +692,16 @@ for destroying all keying material and cryptographic security parameters when no
 		  If the TSF performs its own key destruction, the evaluator shall perform the following test:
 		<testlist>
 		<test>
-		For each type of authorization service, encryption mode, and encryption operation, a known authorization factor, and chain of keys must be provided to the evaluator with an associated ciphertext data set 
-		(e.g. if a passphrase is used to create an intermediate key, then the ciphertext containing the encrypted key as well as the intermediate key itself must be provided to the evaluator). 
+		For each type of authorization service, encryption mode, and encryption operation, a known authorization factor and chain of keys must be provided to the evaluator with an associated ciphertext data set 
+		(e.g., if a passphrase is used to create an intermediate key, then the ciphertext containing the encrypted key as well as the intermediate key itself must be provided to the evaluator). 
 		The evaluator shall use the email client in conjunction with a debugging or forensics utility to attempt to authorize themselves, resulting in the generation of a key or decryption of a key. 
 		The evaluator shall ascertain from the TSS what the vendor defines as "no longer needed" and execute the sequence of actions via the email client to invoke this state. 
-		At this point, the evaluator should take a dump of volatile memory and search the retrieved dump for the provided authorization credentials or keys 
-		(e.g. if the password was "PaSSw0rd", perform a string search of the forensics dump for "PaSSw0rd"). 
-		The evaluator must document each command, program, or action taken during this process, and must confirm that no plaintext keying material resides in volatile memory. 
-		The evaluator must perform this test three times to ensure repeatability. 
+		At this point, the evaluator shall dump the volatile memory and search the retrieved dump for the provided authorization credentials or keys 
+		(e.g., if the password was "PaSSw0rd," perform a string search of the forensics dump for "PaSSw0rd"). 
+		The evaluator shall document each command, program, or action taken during this process, and must confirm that no plaintext keying material resides in volatile memory. 
+		The evaluator shall perform this test three times to ensure repeatability. 
 		If during the course of this testing the evaluator finds that keying material remains in volatile memory, they should be able to identify the cause 
-		(i.e. execution of the grep command for "PaSSw0rd" caused a false positive) and document the reason for failure to comply with this requirement. 
+		(i.e., execution of the grep command for "PaSSw0rd" caused a false positive) and document the reason for failure to comply with this requirement. 
 		The evaluator shall repeat this same test, but looking for keying material in non-volatile memory.<h:p/>
 		</test>
 		</testlist>
@@ -716,7 +717,7 @@ for destroying all keying material and cryptographic security parameters when no
 	  <f-component cc-id="fcs_kyc_ext.1" name="Key Chaining">
 	    <consistency-rationale> 
 	      This SFR defines how email clients maintain key chains.
-	      It does not impact the App PP functionality. 
+	      It does not impact the Base-PP functionality. 
 	    </consistency-rationale>
 
 	    <comp-lev> requires the TSF to identify the method that it uses to prevent the plaintext storage of secret key data.</comp-lev>
@@ -736,13 +737,13 @@ for destroying all keying material and cryptographic security parameters when no
 		  <selectables linebreak="yes">
 		    <selectable id="kyc1_password">
 		      a password as specified in FCS_CKM_EXT.5</selectable>
-		    <selectable>one or more other authorization factor(s)</selectable>
+		    <selectable>one or more other authorization factors</selectable>
 		    <selectable>credentials stored in platform key storage</selectable>
 		  </selectables>
 		</selectable>
 	      </selectables>
-	      to the data encryption/decryption key(s) using the following
-	      method(s): 
+	      to the data encryption and decryption keys using the following
+	      methods: 
 	      <selectables linebreak="yes">
 		<selectable>use of the platform key storage</selectable>
 		<selectable>use of platform key storage that performs key wrap with a
@@ -759,14 +760,15 @@ for destroying all keying material and cryptographic security parameters when no
 	      <ext-comp-def-title>
 	        <title> The TSF shall maintain a key chain of: 
 	        <assignable>key hierarchy</assignable>
-	          to the data encryption/decryption key(s) using the following
-	          method(s): 
+	          to the data encryption and decryption keys using the following
+	          methods: 
 	          <assignable>key protection method</assignable>
 	          while maintaining an effective strength of 
 	          <assignable>key strength</assignable>
 	        </title>
 	      </ext-comp-def-title>
-	      <note role="application">This SFR references the selection-based SFRs FCS_CKM_EXT.5, FCS_COP_EXT.2, and FCS_SMC_EXT.1. If any selections that references these SFRs are chosen, the ST must also claim all corresponding selection-based SFRs. 
+	      <note role="application">This SFR references the selection-based SFRs FCS_CKM_EXT.5, FCS_COP_EXT.2, and FCS_SMC_EXT.1. 
+	        If any selection that references one of these SFRs is chosen, the ST must also claim that selection-based SFR. 
 	        <h:p/>
 	        Key Chaining is the method of using multiple layers of
 	      encryption keys to ultimately secure the data encryption key. The number of
@@ -775,10 +777,10 @@ for destroying all keying material and cryptographic security parameters when no
 	      This requirement also describes how keys are stored. </note>
 	      <aactivity>
 		<TSS>
-		  The evaluator shall verify that the TSS* includes a high-level description of the key hierarchy for all authorizations methods that are used to protect the encryption keys. 
-		  The evaluator shall examine the TSS to ensure it describes the key chain in detail. The description of the key chain shall be reviewed to ensure it maintains a chain of keys using key wrap that meets FCS_COP_EXT.2. 
+		  The evaluator shall verify that the TSS* includes a high-level description of the key hierarchy for all authorization methods that are used to protect the encryption keys. 
+		  The evaluator shall examine the TSS to ensure it describes the key chain in detail. The evaluator shall review the description of the key chain to ensure it maintains a chain of keys using key wrap that meets FCS_COP_EXT.2. 
 		<h:p/>  
-		  The evaluator shall then verify that the TSS* describes how the key chain process functions, such that it does not expose any material that might compromise any key in the chain. A high-level description should include a diagram illustrating the key hierarchy implemented and detail where all keys and keying material is stored or what it is derived from. The evaluator shall examine the key hierarchy to ensure that at no point the chain could be broken without a cryptographic exhaust or knowledge of the key within the chain and the effective strength of the data encryption key is maintained throughout the key chain.
+		  The evaluator shall verify that the TSS* describes how the process of the key chain functions, such that it does not expose any material that might compromise any key in the chain. A high-level description should include a diagram illustrating the key hierarchy implemented and detail where all keys and keying material is stored or what it is derived from. The evaluator shall examine the key hierarchy to ensure that at no point the chain could be broken without a cryptographic exhaust or knowledge of the key within the chain, and the effective strength of the data encryption key is maintained throughout the key chain.
 		<h:p/>*If necessary, this information may be presented in a proprietary document rather than the TSS.<h:p/>
 		</TSS>
 	        <Guidance>
@@ -801,12 +803,12 @@ for destroying all keying material and cryptographic security parameters when no
 	    
 	    <consistency-rationale>
 	      This SFR defines how email messages are formatted when sent and received by the client.
-	      It does not impact the App PP functionality. 
+	      It does not impact the Base-PP functionality. 
 	    </consistency-rationale>
 	    
 	    <comp-lev> requires the TSF to implement S/MIME in accordance with appropriate RFCs and using appropriate cryptographic functionality.</comp-lev>
 	    <management>The following actions could be considered for the management functions in FMT: <h:ul>
-	      <h:li>Configure message sending/receiving to only use specified cryptographic algorithms.</h:li>
+	      <h:li>Configure message sending and receiving to only use specified cryptographic algorithms.</h:li>
 	    </h:ul>
 	    </management>
 	    <audit>There are no auditable events foreseen.</audit>
@@ -852,7 +854,8 @@ for destroying all keying material and cryptographic security parameters when no
 	          <selectable>ecdsawithsha256</selectable>
 	          <selectable>ecdsawithsha384</selectable>
 	          <selectable>ecdsawithsha512</selectable>
-	        </selectables> and no other algorithms as part of the S/MIME protocol. </title>
+	          <selectable>no other algorithms</selectable>
+	        </selectables> as part of the S/MIME protocol. </title>
 	      <ext-comp-def-title>
 	        <title>The TSF shall present the signatureAlgorithm field with the following: sha256withRSAEncryption and
 	            <assignable>signatureAlgorithm field values</assignable> and no other algorithms as part of the S/MIME protocol. </title>
@@ -878,7 +881,7 @@ for destroying all keying material and cryptographic security parameters when no
 	      <title>The TSF shall implement mechanisms to retrieve certificates and
 	        certificate revocation information
 	        <selectables>
-	          <selectable>for each signed/encrypted message sent/received</selectable>
+	          <selectable>for each signed and encrypted message sent and received</selectable>
 	          <selectable> <assignable>frequency</assignable></selectable>
 	        </selectables>
 	        as part of the S/MIME protocol.
@@ -888,21 +891,21 @@ for destroying all keying material and cryptographic security parameters when no
 	        Status Protocol (OCSP). The email client can define how this mechanism behaves,
 	        including whether it uses the underlying OS, but it is required that a mechanism
 	        exists such that revocation status is supported and so that certificates can be
-	        retrieved for sending/receiving messages. Frequency is configurable in FMT_MOF_EXT.1.1. In this requirement, frequency can be interpreted as a
+	        retrieved for sending and receiving messages. Frequency is configurable in FMT_MOF_EXT.1.1. In this requirement, frequency can be interpreted as a
 	        one-time function with local storage, as a regularly scheduled retrieval, or as a
 	        mechanism that requires manual intervention. If the retrieval mechanism is periodic in
 	        nature, then the ST author will need to include an iteration of FCS
-	        for storage of revocation information; storage of certificates is covered in FCS_CKM.
+	        for storage of revocation information; storage of certificates is covered in FCS_CKM_EXT.3.
 	        The import of certificates and certificate chains is not included in this requirement,
-	        but is covered in FIA_X509 and FMT_MOF. </note>
+	        but is covered in FMT_MOF_EXT.1. </note>
 	      
 	      <aactivity>
 	        <TSS>
 	          The evaluator shall verify that the version of S/MIME implemented by the email client is present in the TSS. The evaluator shall also verify that the algorithms supported are specified, and that the algorithms specified are those listed for this component.
-	          <h:p/>The evaluator shall verify that the TSS describes the ContentEncryptionAlgorithmIdentifier and if the required behavior is performed by default or may be configured.
-	          <h:p/>The evaluator shall verify that the TSS describes the digestAlgorithm and if the required behavior is performed by default or may be configured.
-	          <h:p/>The evaluator shall verify that the TSS describes the AlgorithmIdentifier and if the required behavior is performed by default or may be configured.
-	          <h:p/>The evaluator shall verify that the TSS describes the retrieval mechanisms for both certificates and certificate revocation as well as the frequency at which these mechanisms are implemented.<h:p/>
+	          <h:p/>The evaluator shall verify that the TSS describes the ContentEncryptionAlgorithmIdentifier and whether the required behavior is performed by default or may be configured.
+	          <h:p/>The evaluator shall verify that the TSS describes the digestAlgorithm and whether the required behavior is performed by default or may be configured.
+	          <h:p/>The evaluator shall verify that the TSS describes the AlgorithmIdentifier and whether the required behavior is performed by default or may be configured.
+	          <h:p/>The evaluator shall verify that the TSS describes the retrieval mechanisms for both certificates and certificate revocation, as well as the frequency at which these mechanisms are implemented.<h:p/>
 	        </TSS>
 	        <Guidance>
 	          The evaluator shall review the operational guidance to ensure that it contains instructions on configuring the email client such that it complies with the description in the TSS.
@@ -912,10 +915,10 @@ for destroying all keying material and cryptographic security parameters when no
 	          <h:p/>If the TSS indicates that the mechanisms in FCS_SMIME_EXT.1.7 are configurable, the evaluator shall verify that the operational guidance includes the configuration of these mechanisms.<h:p/>
 	        </Guidance>
 	        <Tests>
-	          The evaluator shall perform the tests listed below. These tests can be performed in conjunction with the tests specified in FIA_X509_EXT.1 (defined in the Base-PP) for certificate/certificate chain verification and in FDP_NOT_EXT.1.<h:p/>
+	          The evaluator shall perform the tests listed below. These tests can be performed in conjunction with the tests specified in FIA_X509_EXT.1 (defined in the Base-PP) for certificate and certificate chain verification and in FDP_NOT_EXT.1.<h:p/>
 	          <testlist>
 	            <test>The evaluator shall both send and receive a message with no protection (no signature or encryption) and verify that the message is transmitted properly and can be viewed at the receiving agent. This transmission can be performed as part of a number of mechanisms; it is sufficient to observe that the message arrives at the intended recipient with the same content as when sent.</test>
-	            <test>The evaluator shall both send and receive a signed message using each of the algorithms specified in the ST corresponding to the requirement and verify that the signature is valid for both received and sent messages. After verifying the signatures are valid, the evaluator shall send a signed message using each of the algorithms specified in the ST and use a man-in-the-middle tool to modify at least one byte of the message such that the signature is no longer valid. This can be done by modifying the content of the message over which the signature is calculated or by modifying the signature itself. The evaluator shall then verify that the received message fails the signature validation check.</test>
+	            <test>The evaluator shall both send and receive a signed message using each of the algorithms specified in the ST corresponding to the requirement and verify that the signature is valid for both sent and received messages. After verifying the signatures are valid, the evaluator shall send a signed message using each of the algorithms specified in the ST and use a man-in-the-middle tool to modify at least one byte of the message such that the signature is no longer valid. This can be done by modifying the content of the message over which the signature is calculated or by modifying the signature itself. The evaluator shall then verify that the received message fails the signature validation check.</test>
 	            
 	            <test>The evaluator shall send an encrypted message from the TOE to an OE receiver using each of the algorithms specified in the ST. 
 	              The evaluator shall verify that each message is encrypted and the OE receiver can successfully decrypt each message. 
@@ -926,10 +929,10 @@ for destroying all keying material and cryptographic security parameters when no
 	            <test>After verifying the message decrypts, the evaluator shall send an encrypted message using each of the algorithms specified in the ST and use a man-in-the-middle tool to modify at least one byte of the message such that the encryption is no longer valid. The evaluator shall then verify that the received message fails to decrypt.</test>
 	            
 	            <test>The evaluator shall send an encrypted message to the email client using an encryption algorithm not supported according to the signatureAlgorithm field. 
-	              The evaluator shall verify that the email client does not display/decrypt the contents of the message.</test>
+	              The evaluator shall verify that the email client does not display or decrypt the contents of the message.</test>
 	            
 	            <test>The evaluator shall send a signed message to the email client using a signature algorithm not supported according to the digestAlgorithm ID (e.g., SHA1). The evaluator shall then verify that the email client provides a notification that the contents cannot be verified because the signature algorithm is not supported.</test>
-	            <test>The evaluator shall send an encrypted message to the email client using an encryption algorithm not supported according to the AlgorithmIdentifier field. The evaluator shall then verify that the email client does not display/decrypt the contents of the message.</test>
+	            <test>The evaluator shall send an encrypted message to the email client using an encryption algorithm not supported according to the AlgorithmIdentifier field. The evaluator shall then verify that the email client does not display or decrypt the contents of the message.</test>
 	            <test>The evaluator shall send the email client a message signed by a certificate without the digitalSignature bit set. The evaluator shall then verify that the email client notifies the user that the signature is invalid.</test>
 	            <test>The evaluator shall send the email client a message signed by a certificate without the Email Protection purpose in the extendedKeyUsage. The evaluator shall then verify that the email client notifies the user that the signature is invalid.</test>
 	            <test>The evaluator shall verify that the email client uses OCSP or downloads the CRL at the assigned frequency.</test>
@@ -947,10 +950,10 @@ for destroying all keying material and cryptographic security parameters when no
 	  <f-component cc-id="fdp_not_ext.1" name="Notification of S/MIME Status">
 	    <consistency-rationale>
 	      This SFR defines the behavior an email client exhibits when a message is received.
-	      It does not impact the App PP functionality.
+	      It does not impact the Base-PP functionality.
 	    </consistency-rationale>
 	    
-	    <!-- management function 4 is not mapped here because our understanding was that those notifications were potentially not security relevant (e.g. pop-ups when a new message is received; 
+	    <!-- management function 4 is not mapped here because our understanding was that those notifications were potentially not security relevant (e.g., pop-ups when a new message is received; 
 	      the notifications specified here for S/MIME cannot be disabled and so FMT doesn't apply here -->
 	    <comp-lev> requires the TSF to present the S/MIME status of received email messages.</comp-lev>
 	    <management>No specific management functions are identified.</management>
@@ -972,7 +975,7 @@ for destroying all keying material and cryptographic security parameters when no
 		The evaluator shall ensure that the TSS describes notifications of S/MIME status, including whether S/MIME status is also indicated upon viewing a list of emails.<h:p/>
 		</TSS>
 		<Guidance>
-		The evaluator shall verify that the operational guidance provides a description (with appropriate visual figures) of the S/MIME status notification(s), including how each of the following are indicated: encryption, verified and validated signature, and unverified and unvalidated signature.<h:p/>
+		The evaluator shall verify that the operational guidance provides a description (with appropriate visual figures) of the S/MIME status notifications, including how each of the following are indicated: encryption, verified and validated signature, and unverified and unvalidated signature.<h:p/>
 		</Guidance>
 		<Tests>The evaluator shall perform the following tests and may perform them in conjunction with the tests for FCS_SMIME_EXT.1:<h:p/>
 		<testlist>
@@ -993,7 +996,7 @@ for destroying all keying material and cryptographic security parameters when no
 	  <f-component cc-id="fdp_smime_ext.1" name="S/MIME">
 	    <consistency-rationale>
 	      This SFR defines the format an email client shall use as output for cryptographic operations.
-	      It does not impact the App PP functionality.
+	      It does not impact the Base-PP functionality.
 	    </consistency-rationale>
 	    
 	    <comp-lev> requires the TSF to support S/MIME.</comp-lev>
@@ -1008,8 +1011,8 @@ for destroying all keying material and cryptographic security parameters when no
 	      <title>The TSF shall use S/MIME to sign, verify, encrypt, and decrypt
 	      mail.</title>
 	      <note role="application">Note that this requirement does not mandate that S/MIME be
-	      used for all incoming/outgoing messages, or that the email client automatically
-	      encrypt or sign/verify all sent or received messages. This requirement only
+	      used for all incoming and outgoing messages, or that the email client automatically
+	      encrypt or sign and verify all sent or received messages. This requirement only
 	      specifies that the mechanism for digital signature and encryption must be
 	      S/MIME.</note>
 
@@ -1034,7 +1037,7 @@ for destroying all keying material and cryptographic security parameters when no
 	  <f-component cc-id="fia_x509_ext.3" name="X.509 Authentication and Encryption">
 	    <consistency-rationale>
 	      This SFR defines the format an email client shall use for certificates to perform encryption and authentication.
-	      It does not impact the App PP functionality.
+	      It does not impact the Base-PP functionality.
 	    </consistency-rationale>
 	    
 	    <!-- editor's note: management functions 5, 6, 8, and 12 are not mapped here because those could also conceivably map to FIA_X509_EXT.1 (5, 6, 12) and .2 (6) from the Base-PP so there's no need to put them here specifically -->
@@ -1043,6 +1046,7 @@ for destroying all keying material and cryptographic security parameters when no
 	    <audit>There are no auditable events foreseen.</audit>
 	    <dependencies>
 	      <no-link>FIA_X509_EXT.1</no-link> X.509 Certificate Validation
+	      <no-link>FPT_STM.1</no-link> Reliable Time Stamps
 	    </dependencies>
 	    
 	    <f-element>
@@ -1069,18 +1073,18 @@ for destroying all keying material and cryptographic security parameters when no
 	      certificate is deemed invalid. </title>
 	      <aactivity>
 		<TSS>
-		The evaluator shall check the TSS to ensure that it describes how the email client chooses which certificates to use so that the email client can use the certificates.<h:p/>
-		The evaluator shall examine the TSS to confirm that it describes the behavior of the email client when a connection cannot be established during the validity check of a certificate used in establishing a trusted channel and protecting email.<h:p/>
+		The evaluator shall ensure that the TSS describes how the email client chooses which certificates to use so that the email client can use the certificates.<h:p/>
+		The evaluator shall confirm that the TSS describes the behavior of the email client when a connection cannot be established during the validity check of a certificate used in establishing a trusted channel and protecting email.<h:p/>
 		</TSS>
 		  <Guidance>
 		    The evaluator shall verify that the administrative guidance contains any necessary instructions for configuring the operating environment so that the email client can use the certificates.<h:p/>
 		  </Guidance>
 		<Tests>The evaluator shall perform the following tests:
 		<testlist>
-		  <test>The evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1 (from the Base-PP) that requires the use of certificates. The evaluator shall demonstrate that using a certificate without a valid certification path results in the function failing. The evaluator shall then load into the platform's root store any certificates needed to validate the certificate to be used in the function, and demonstrate that the function succeeds.<h:p/></test> 
+		  <test>The evaluator shall perform this test for each function listed in FIA_X509_EXT.2.1 (from the Base-PP) that requires the use of certificates. The evaluator shall demonstrate that using a certificate without a valid certification path results in the function failing. The evaluator shall then load into the platform's root store any certificates needed to validate the certificate to be used in the function, and demonstrate that the function succeeds.<h:p/></test> 
 		  <test>The evaluator shall use the TOE to communicate with a non-TOE IT entity that presents a certificate that can be validated.
-		    The evaluator shall then manipulate the environment so that the TOE is unable to verify the validity of the presented certificate (e.g. by deliberately making the method of revocation checking unavailable), and observe that the action selected in FIA_X509_EXT.2.2 (from the Base-PP) is performed. 
-		    If the selected action is administrator-configurable, then The evaluator shall follow the operational guidance to determine that all supported administrator-configurable options behave in their documented manner.</test>
+		    The evaluator shall then manipulate the environment so that the TOE is unable to verify the validity of the presented certificate (e.g., by deliberately making the method of revocation checking unavailable), and observe that the action selected in FIA_X509_EXT.2.2 (from the Base-PP) is performed. 
+		    If the selected action is administrator-configurable, then the evaluator shall follow the operational guidance to determine that all supported administrator-configurable options behave in their documented manner.</test>
 		</testlist>
 		</Tests>
 	      </aactivity>
@@ -1095,7 +1099,7 @@ for destroying all keying material and cryptographic security parameters when no
 	  <f-component cc-id="fmt_mof_ext.1" name="Management of Functions Behavior">
 	    <consistency-rationale>
 	      This SFR defines a specific set of management functions for an email client.
-	      It does not impact the App PP functionality.
+	      It does not impact the Base-PP functionality.
 	    </consistency-rationale>
 	    
 	    <comp-lev> requires the TSF to implement management functions specified in the SFR.</comp-lev>
@@ -1115,7 +1119,7 @@ for destroying all keying material and cryptographic security parameters when no
 	      <manager cid='u'>User</manager>
 
 	      <management-function>
-		<text>Enable/disable downloading embedded objects globally
+		<text>Enable or disable downloading embedded objects globally
 		and by <selectables>
 		<selectable>domain</selectable>
 		<selectable>sender</selectable>
@@ -1123,13 +1127,13 @@ for destroying all keying material and cryptographic security parameters when no
 	      </selectables>
 		</text>
 	      </management-function>
-	      <management-function><text>Enable/disable plaintext-only mode globally and by <selectables>
+	      <management-function><text>Enable or disable plaintext-only mode globally and by <selectables>
 	      <selectable>domain</selectable>
 	      <selectable>sender</selectable>
 	      <selectable>no other method</selectable>
 	    </selectables></text>
 	      </management-function>
-	      <management-function><text> Enable/disable rendering and execution of
+	      <management-function><text> Enable or disable rendering and execution of
 	      attachments globally and by <selectables>
 	      <selectable>domain</selectable>
 	      <selectable>sender</selectable>
@@ -1137,17 +1141,17 @@ for destroying all keying material and cryptographic security parameters when no
 	    </selectables>
 	  </text>
 	      </management-function>
-	      <management-function><text> Enable/disable email notifications </text></management-function>
+	      <management-function><text> Enable or disable email notifications </text></management-function>
 	      <management-function><text> Configure a certificate repository for encryption </text></management-function>
 	      <management-function><text> Configure whether to establish a trusted channel or
 	      disallow establishment if the email client cannot establish a connection to
 	      determine the validity of a certificate </text></management-function>
-	      <management-function><text> Configure message sending/receiving to only use
+	      <management-function><text> Configure message sending and receiving to only use
 	      cryptographic algorithms defined in FCS_SMIME_EXT.1
 	      </text></management-function>
 	      <management-function><text> Configure CRL retrieval frequency </text></management-function>
-	      <management-function><text> Enable/disable support for add-ons </text></management-function>
-	      <management-function><text> Change password/passphrase authentication
+	      <management-function><text> Enable or disable support for add-ons </text></management-function>
+	      <management-function><text> Change password or passphrase authentication
 	      credential</text></management-function>
 	      <management-function><text> Disable key recovery
 	      functionality</text></management-function>
@@ -1176,7 +1180,7 @@ for destroying all keying material and cryptographic security parameters when no
 		  <h:p/>
 		  The intent of
 		  this requirement is to allow the Administrator to configure the email client with a
-		  policy that may not be over-ridden by the user. If the Administrator has not set a
+		  policy that may not be overridden by the user. If the Administrator has not set a
 		  policy for a particular function, the user may still perform that function.
 		  Enforcement of the policy is done by the email client itself, or the email client and
 		  the email client platform in coordination with each other.
@@ -1210,12 +1214,12 @@ for destroying all keying material and cryptographic security parameters when no
 		The evaluation activities for this component will be driven by the selections made by the ST author. If a capability is not selected in the ST, the noted evaluation activity does not need to be performed. 
 		<TSS>
 		  The evaluator shall verify that the TSS describes those management functions which may only be configured by the email client platform administrator and cannot be overridden by the user when set according to policy.<h:p/>
-		  Change Password: The evaluator shall examine the Operational Guidance to ensure that it describes how the password/passphrase-based authorization factor is to be changed.<h:p/>
+		  Change Password: The evaluator shall examine the Operational Guidance to ensure that it describes how the password or passphrase-based authorization factor is to be changed.<h:p/>
 		  Disable Key Recovery: If the email client supports key recovery, this must be stated in the TSS. The TSS shall also describe how to disable this functionality. This includes a description of how the recovery material is provided to the recovery holder.<h:p/>
 		  Cryptographic Configuration: The evaluator shall determine from the TSS for other requirements (FCS_*) what portions of the cryptographic functionality are configurable.<h:p/>
 		</TSS>
 		<Guidance>
-		The evaluator shall examine the operational guidance to verify that it includes instructions for an email client platform administrator to configure the functions listed in FMT_MOF_EXT.1.1.<h:p/>
+		The evaluator shall verify that the operational guidance includes instructions for an email client platform administrator to configure the functions listed in FMT_MOF_EXT.1.1.<h:p/>
 		Disable Key Recovery: If the email client supports key recovery, the guidance for disabling this capability shall be described in the operational guidance.<h:p/>
 		  Cryptographic Configuration: The evaluator shall review the operational guidance to determine that there are instructions for manipulating all of the claimed mechanisms.<h:p/>
 		</Guidance>
@@ -1238,12 +1242,12 @@ for destroying all keying material and cryptographic security parameters when no
 	  <f-component cc-id="fpt_aon_ext.1" name="Support for Only Trusted Add-ons">
 	    <consistency-rationale>
 	      This SFR defines what types of add-ons an email client may use.
-	      It does not impact the App PP functionality.
+	      It does not impact the Base-PP functionality.
 	    </consistency-rationale>
 	    
 	    <comp-lev> requires the TSF to either support no add-ons or to only support trusted add-ons.</comp-lev>
 	    <management>The following actions could be considered for the management functions in FMT: <h:ul>
-	      <h:li>Enable/disable support for add-ons.</h:li>
+	      <h:li>Enable or disable support for add-ons.</h:li>
 	    </h:ul>
 	    </management>
 	    <audit>There are no auditable events foreseen.</audit>
@@ -1283,7 +1287,7 @@ for destroying all keying material and cryptographic security parameters when no
 	  <f-component cc-id="ftp_itc_ext.1" name="Inter-TSF Trusted Channel">
 	    <consistency-rationale>
 	      This SFR defines which channels for an email client must be considered trusted.
-	      It does not impact the App PP functionality. 
+	      It does not impact the Base-PP functionality. 
 	    </consistency-rationale>
 	    
 	    <comp-lev> requires the TSF to identify the trusted channels it uses for communications with external entities.</comp-lev>
@@ -1334,7 +1338,7 @@ for destroying all keying material and cryptographic security parameters when no
 		<testlist>
 		  <test>The evaluator shall ensure that the email client is able to initiate or receive communications using any selected or assigned protocols specified in the requirement over TLS, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
 		  <test>The evaluator shall ensure that the email client is able to initiate or receive communications with a Mail Transfer Agent using any assigned protocols specified in the requirement over TLS, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
-		  <test>The evaluator shall ensure, for each communication channel with an authorized IT entity in tests 1 and 2, the channel data is not sent in plaintext. To perform this test, The evaluator shall use a sniffer and a packet analyzer. The packet analyzer must indicate that the protocol in use is TLS.</test>
+		  <test>The evaluator shall ensure, for each communication channel with an authorized IT entity in tests 1 and 2, the channel data is not sent in plaintext. To perform this test, the evaluator shall use a sniffer and a packet analyzer. The packet analyzer must indicate that the protocol in use is TLS.</test>
 		</testlist>
 		</Tests>
 	      </aactivity>
@@ -1388,7 +1392,7 @@ for destroying all keying material and cryptographic security parameters when no
               <TSS>
                 The evaluator shall ensure the TSS describes how IVs and tweaks are handled (based on the AES mode). 
                 The evaluator shall confirm that the IVs and tweaks meet the stated requirements.<h:p/>
-                If the platform provides the IV generation, then the evaluator shall examine the TSS to verify that it describes how the IV generation is invoked.
+                If the platform provides the IV generation, then the evaluator shall verify that the TSS describes how the IV generation is invoked.
               </TSS>
               <Guidance>
                 There are no guidance EAs for this component.<h:p/>
@@ -1472,7 +1476,7 @@ for destroying all keying material and cryptographic security parameters when no
                 The evaluator shall confirm that the salt is generated using a DRBG as described in FCS_RBG_EXT.1 in <xref to="bibAppPP"/> or by the Operational Environment. 
                 If an external function is used for this purpose, the evaluator shall ensure that the TSS references the specific API that is called with inputs.<h:p/>
                 If the email client is relying on random bit generation from the host platform, 
-                the evaluator shall verify that the TSS includes the name/manufacturer of the external DRBG and describes the function call and parameters used when calling the external DRBG function. 
+                the evaluator shall verify that the TSS includes the name and manufacturer of the external DRBG and describes the function call and parameters used when calling the external DRBG function. 
                 If different external DRBGs are used for different platforms, the evaluator shall ensure that the TSS identifies each RBG for each platform.<h:p/> 
                 For all cases where the TSF relies on an external DRBG, the evaluator shall ensure that the TSS includes a short description of the TOE developer's assumption for the amount of entropy that is used to seed the external DRBG.<h:p/>
               </TSS>
@@ -1543,7 +1547,7 @@ for destroying all keying material and cryptographic security parameters when no
 	  information to the client platform with the following exceptions:
 	  <selectables>
 	    <selectable>credential information</selectable>
-	    <selectable>administrator provided configuration information</selectable>
+	    <selectable>administrator-provided configuration information</selectable>
 	    <selectable>certificate revocation information</selectable>
 	    <selectable>no exceptions</selectable>
 	  </selectables>.</title>
@@ -1559,7 +1563,7 @@ for destroying all keying material and cryptographic security parameters when no
 	  POP.</note>
 	  <aactivity>
 	    <TSS>
-	    The evaluator shall examine the TSS to determine that it describes all persistent information stored on the platform, and the locations on the platform where these data are stored. 
+	    The evaluator shall examine the TSS to determine that it describes all persistent information stored on the platform and the locations on the platform where these data are stored. 
 	    The evaluator shall confirm that the persistent data described is limited to the data identified in the selection.<h:p/>
 	    </TSS>
 	      <Guidance>
@@ -1567,7 +1571,7 @@ for destroying all keying material and cryptographic security parameters when no
 	      </Guidance>
 	   
 	    <Tests>
-	      The evaluator shall operate the email client so that several messages, signed, encrypted, and unsigned, are processed. 
+	      The evaluator shall operate the email client so that several signed and encrypted messages and several unsigned messages are processed. 
 	    The evaluator shall also exercise functionality such as moving messages to folders, writing unsent drafts of messages, etc., 
 	    as provided by the client. The evaluator shall then examine the client platform to determine that the only persistent information stored is that which is identified in the TSS.
 	    </Tests>
@@ -1587,7 +1591,7 @@ for destroying all keying material and cryptographic security parameters when no
         
         <comp-lev> requires the TSF to implement a plaintext-only mode that prevents non-text content from being rendered.</comp-lev>
         <management>The following actions could be considered for the management functions in FMT: <h:ul>
-          <h:li>Enable/disable plaintext-only mode.</h:li>
+          <h:li>Enable or disable plaintext-only mode.</h:li>
         </h:ul>
         </management>
         <audit>There are no auditable events foreseen.</audit>
@@ -1610,16 +1614,19 @@ for destroying all keying material and cryptographic security parameters when no
 	    </title>
 	  </ext-comp-def-title>
 	  <note role="application">Plaintext-only mode prevents the automatic downloading,
-	  rendering and execution of images, external resources and embedded objects such as
+	  rendering, and execution of images, external resources, and embedded objects such as
 	  HTML or JavaScript objects. FMT_MOF_EXT.1.1 addresses
 	  configuration of this mode. The ST author must identify all content types supported by
 	  the email client through selections and assignments. If the email client only
 	  supports plaintext-only mode, no embedded content types should be selected.</note>
 	  <aactivity>
 	    <TSS>
-	    The evaluator shall ensure that the TSS describes plaintext-only mode for sending and receiving messages. The evaluator shall verify that the TSS describes whether the email client is capable of rendering and executing HTML or JavaScript. 
-	    If the email client can render or execute HTML or JavaScript, this description shall indicate how the email client handles received messages that contain HTML or JavaScript while in plaintext-only mode, 
-	    and the evaluator shall ensure that the description indicates that embedded objects of these types are not rendered or executed and images/external resources are not automatically downloaded.<h:p/>
+	    The evaluator shall ensure that the TSS describes plaintext-only mode for sending and receiving messages. 
+	    The evaluator shall verify that the TSS describes whether the email client is capable of rendering and executing HTML or JavaScript. 
+	    If the email client can render or execute HTML or JavaScript, 
+	    this description shall indicate how the email client handles received messages that contain HTML or JavaScript while in plaintext-only mode. 
+	    The evaluator shall then ensure that the description indicates that embedded objects of these types 
+	    are not rendered or executed and images and external resources are not automatically downloaded.<h:p/>
 	    </TSS>
 	    <Guidance>
 	    The evaluator shall examine the operational guidance and verify that it contains instructions for enabling plaintext-only mode.<h:p/>
@@ -1645,17 +1652,17 @@ for destroying all keying material and cryptographic security parameters when no
       <sec:sel_fcs title="Cryptographic Support (FCS)">
         <!-- as modified by TD0266 with minor rearrangement of EAs -->
         <!-- editor's note: moved to sel-based because of FCS_KYC_EXT.1.1 selections -->
-        <f-component cc-id="fcs_ckm_ext.5" name="Cryptographic Key Derivation (Password/Passphrase Conditioning)">
+        <f-component cc-id="fcs_ckm_ext.5" name="Cryptographic Key Derivation (password or passphrase Conditioning)">
           <depends on="kyc1_password"></depends>
           
-          <consistency-rationale>This SFR defines restrictions on password composition and key derivation mechanisms. It defines functionality similar to FCS_CKM.1(3) in the Base-PP but has additional details 
+          <consistency-rationale>This SFR defines restrictions on password composition and key derivation mechanisms. It defines functionality similar to FCS_PBKDF_EXT.1 in the Base-PP but has additional details 
             specific to the composition of the actual password authentication factor, rather than just defining a method for key derivation. 
           </consistency-rationale>
           
-          <comp-lev> requires the TSF to support password/passphrase credentials with certain strength of secret characteristics and to support the use of such credentials as an input to a password-based key derivation function.</comp-lev>
+          <comp-lev> requires the TSF to support password or passphrase credentials with certain strength of secret characteristics and to support the use of such credentials as an input to a password-based key derivation function.</comp-lev>
           <management>The following actions could be considered for the management functions in FMT: <h:ul>
-            <h:li>Change password/passphrase authentication credential.</h:li>
-            <h:li>Change password/passphrase minimum length.</h:li>
+            <h:li>Change password or passphrase authentication credential.</h:li>
+            <h:li>Change password or passphrase minimum length.</h:li>
           </h:ul>
           </management>
           <audit>There are no auditable events foreseen.</audit>
@@ -1665,11 +1672,11 @@ for destroying all keying material and cryptographic security parameters when no
           
           <f-element>
             <title>
-              The TSF shall support a password/passphrase of up to <assignable>maximum password size, positive integer of 64 or more</assignable> characters used to generate a password authorization factor.
+              The TSF shall support a password or passphrase of up to <assignable>maximum password size, positive integer of 64 or more</assignable> characters used to generate a password authorization factor.
             </title>
             <note role="application">
-              The password/passphrase is represented on the host machine as a sequence of characters whose encoding depends on the TOE and the underlying OS. 
-              The ST author assigns the maximum size of the password/passphrase it supports; it must support at least 64 characters.
+              The password or passphrase is represented on the host machine as a sequence of characters whose encoding depends on the TOE and the underlying OS. 
+              The ST author assigns the maximum size of the password or passphrase it supports; it must support at least 64 characters.
             </note>
           </f-element>
           <f-element>
@@ -1695,13 +1702,13 @@ for destroying all keying material and cryptographic security parameters when no
             </title>
             <note role="application">
               The ST author selects the parameters based on the password-based key derivation function (PBKDF) used by the TSF. 
-              The password/passphrase must be conditioned into a string of bits that forms the submask to be used as input into a key. 
+              The password or passphrase must be conditioned into a string of bits that forms the submask to be used as input into a key. 
               Conditioning can be performed using one of the identified hash functions or the process described in NIST SP 800-132; 
-              the method used is selected by the ST Author. SP 800-132 requires the use of a pseudo-random function (PRF) consisting of HMAC with an approved hash function. 
-              The ST author selects the hash function used, also includes the appropriate requirements for HMAC and the hash function.
+              the method used is selected by the ST author. SP 800-132 requires the use of a pseudorandom function (PRF) consisting of HMAC with an approved hash function. 
+              The ST author must select the hash function and ensure that appropriate claims are made for FCS_COP.1/Hash and FCS_COP.1/KeyedHash in the Base-PP.
               <h:p/>
-              Appendix A of SP 800-132 recommends setting the iteration count in order to increase the computation needed to derive a key from a password and, therefore, increase the workload of performing a password recovery attack. 
-              However, for this PP-Module, a minimum iteration count of 4096 is required in order to ensure that twelve bits of security is added to the password/passphrase value. 
+              Appendix A of SP 800-132 recommends setting the iteration count in order to increase the computation needed to derive a key from a password, therefore increasing the workload of performing a password recovery attack. 
+              However, for this PP-Module, a minimum iteration count of 4096 is required in order to ensure that 12 bits of security is added to the password or passphrase value. 
               A significantly higher value is recommended to ensure optimal security.
             </note>
           </f-element>
@@ -1710,32 +1717,32 @@ for destroying all keying material and cryptographic security parameters when no
               The TSF shall not accept passwords less than 
               <selectables>
                 <selectable>a value settable by the administrator</selectable>
-                <selectable><assignable>minimum password length accepted by the TOE, must be >= 1</assignable></selectable>
+                <selectable><assignable>minimum password length accepted by the TOE, must be ≥ 1</assignable></selectable>
               </selectables> and greater than the maximum password length defined in FCS_CKM_EXT.5.1.
             </title>
             <note role="application">
               This selection-based SFR is claimed when "a password as specified in FCS_CKM_EXT.5" is selected in FCS_KYC_EXT.1.1.
               <h:p/>
               If the minimum password length is settable, then the ST author chooses "a value settable by the administrator for this component," 
-              as well as the "configure password/passphrase complexity setting" item for FMT_SMF.1.1. If the minimum length is not settable, 
+              as well as the "configure password or passphrase complexity setting" item for FMT_SMF.1.1. If the minimum length is not settable, 
               the ST author fills in the assignment with the minimum length the password must be (zero-length passwords are not allowed for compliant TOEs).
             </note>
             
             
             <aactivity>
               <TSS>
-                For FCS_CKM_EXT.5.1, there are two aspects of this component that require evaluation: passwords/passphrases of the length specified in the requirement (at least 64 characters) are supported, 
+                For FCS_CKM_EXT.5.1, there are two aspects of this component that require evaluation: that passwords or passphrases of the length specified in the requirement (at least 64 characters) are supported, 
                 and that the characters that are input are subject to the selected conditioning function. These activities are separately addressed in the text below.
                 <h:p/>
-                Support for Password/Passphrase length: The evaluator shall check to ensure that the TSS describes the allowable ranges for password/passphrase lengths, and that at least 64 characters may be specified by the user.
+                Support for password or passphrase length: The evaluator shall ensure that the TSS describes the allowable ranges for password or passphrase lengths, and that at least 64 characters may be specified by the user.
                 <h:p/>
-                Support for PBKDF: The evaluator shall examine the password hierarchy TSS to ensure that the formation of all keys is described and that the key sizes match that described by the ST author.
+                Support for PBKDF: The evaluator shall examine the password hierarchy described in the TSS to ensure that the formation of all keys is described and that the key sizes match that described by the ST author.
                 <h:p/>
-                The evaluator shall check that the TSS describes the method by which the password/passphrase is first encoded and then fed to the SHA algorithm. 
+                The evaluator shall check that the TSS describes the method by which the password or passphrase is first encoded and then fed to the SHA algorithm. 
                 The settings for the algorithm (padding, blocking, etc.) shall be described, and the evaluator shall verify that these are supported by the selections in this component as well as the selections concerning the hash function itself. 
                 The evaluator shall verify that the TSS contains a description of how the output of the hash function is used to form the submask that will be input into the function and is the same length as the KEK as specified in FCS_CKM_EXT.4.
                 <h:p/>
-                For the NIST SP 800-132-based conditioning of the password/passphrase, the required assurance activities will be performed when doing the assurance activities for the appropriate requirements (FCS_COP.1.1(4) from the [AppPP]). 
+                For the NIST SP 800-132-based conditioning of the password or passphrase, the required assurance activities will be performed when doing the assurance activities for the appropriate requirements (FCS_COP.1.1/KeyedHash) from the [AppPP]). 
                 If any manipulation of the key is performed in forming the submask that will be used to form the file encryption key or key encryption key, that process shall be described in the TSS. 
                 For the claimed iteration count, the evaluator shall verify that the iteration count for PBKDFs performed by the TOE comply with NIST SP 800-132 by ensuring that the TSS contains a description of the estimated time required 
                 to derive key material from passwords and how the TOE increases the computation time for password-based key derivation (including but not limited to increasing the iteration count).
@@ -1743,16 +1750,16 @@ for destroying all keying material and cryptographic security parameters when no
               </TSS>
               <Guidance>
                 The evaluator shall check the operational guidance to determine that there are instructions on how to generate large passwords/passphrases, 
-                and instructions on how to configure the password/passphrase length (and optional complexity settings) to provide entropy commensurate with the keys that the authorization factor is protecting. 
+                and instructions on how to configure the password or passphrase length (and optional complexity settings) to provide entropy commensurate with the keys that the authorization factor is protecting. 
                 This is important because many default settings for passwords/passphrases will not meet the necessary entropy needed as specified in this PP-Module
                 <h:p/>
               </Guidance>
-              <Tests>The evaluator shall compose passwords that either meet the requirements, or fail to meet the requirements, 
-                and shall verify that the TOE's behavior is consistent with the requirements. 
+              <Tests>The evaluator shall compose different passwords that meet the requirements and that fail to meet the requirements 
+                and shall verify in each case that the TOE's behavior is consistent with the requirements. 
                 While the evaluator is not required (nor is it feasible) to test all possible compositions of passwords, 
-                the evaluator shall ensure that all characters, and minimum and maximum lengths listed in the requirement, are supported, and justify the subset of those characters chosen for testing.
+                the evaluator shall ensure that all characters and minimum and maximum lengths listed in the requirement are supported, and justify the subset of those characters chosen for testing.
                 <h:p/>
-                Support for Password/Passphrase characteristics: In addition to the analysis above, the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance
+                Support for password or passphrase characteristics: In addition to the analysis above, the evaluator shall also perform the following tests on a TOE configured according to the Operational Guidance
                 <testlist>
                   <test>The evaluator shall ensure that the TOE supports passwords/passphrases of exactly 64 characters.</test>
                   <test>The evaluator shall ensure that the TOE does not accept more than the maximum number of characters specified in FCS_CKM_EXT.5.1.</test>
@@ -1762,7 +1769,7 @@ for destroying all keying material and cryptographic security parameters when no
                 </testlist>
                 No explicit testing of the formation of the submask from the input password is required.
                 <h:p/>
-                For password conditioning, no explicit testing of the formation of the authorization factor from the input password/passphrase is required. 
+                For password conditioning, no explicit testing of the formation of the authorization factor from the input password or passphrase is required. 
               </Tests>
             </aactivity>
             
@@ -1811,8 +1818,7 @@ for destroying all keying material and cryptographic security parameters when no
               <selectable>256 bits (AES)</selectable>
               <selectable>2048 (RSA)</selectable>
               <selectable>4096 (RSA)</selectable>
-              <selectable>256-bit prime</selectable>
-              <selectable>modulus (ECC CDH)</selectable>
+              <selectable>256-bit prime modulus (ECC CDH)</selectable>
               <selectable>384-bit prime modulus (ECC CDH)</selectable>
             </selectables> that meet the following: <selectables linebreak="yes">
               <selectable>"NIST SP 800-38F" for Key Wrap (section 6.2) and Key Wrap with Padding
@@ -1833,19 +1839,18 @@ for destroying all keying material and cryptographic security parameters when no
             <note role="application">This selection-based SFR is claimed when any of the selections that explicitly reference FCS_COP_EXT.2 are selected in FCS_CKM_EXT.3.1 or FCS_KYC_EXT.1.1.
               <h:p/>
               In the first selection, the ST author chooses the entity that
-              performs the decryption/encryption. In the second selection, the ST author chooses the
-              method used for encryption: <h:ul><h:li>Using one of the two AES-based Key Wrap methods
-                specified in NIST SP 800-38F</h:li><h:li>Using one of the two the KTS-OAEP schemes
-                  for RSA as described in NIST SP 800-56B (KTSOAEP-basic described in section
+              performs the encryption or decryption. In the second selection, the ST author chooses the
+              method used for encryption and decryption: <h:ul><h:li>Using one of the two AES-based Key Wrap methods
+                specified in NIST SP 800-38F</h:li><h:li>Using one of the two KTS-OAEP schemes
+                  for RSA as described in NIST SP 800-56B (KTS-OAEP-basic described in section
                   9.2.3)</h:li><h:li>Using ECC CDH as described in NIST SP 800-56A section
                     6.2.2.2.</h:li></h:ul> The third selection should be made to reflect the key size.
-              2048/4096 is used for the RSA-based schemes, while the size of the prime modulus is
-              used for ECC-based schemes. Support for 256-bit AES key sizes will be required for
-              products entering evaluation after Quarter 3, 2015. Based on the method(s) selected,
-              the last selection should be used to select the appropriate reference(s). </note>
+Support for 256-bit AES key sizes will be required for
+              products entering evaluation after Quarter 3, 2015. Based on the methods selected,
+              the last selection should be used to select the appropriate references. </note>
             <aactivity>
               <TSS>
-              The evaluator shall examine the TSS to ensure that it has a high-level description of how the key is protected and meets the appropriate specification.<h:p/>
+              The evaluator shall ensure that the TSS has a high-level description of how the key is protected and meets the appropriate specification.<h:p/>
               </TSS>
               <Guidance>
                 There are no guidance EAs for this component.<h:p/>
@@ -1858,7 +1863,7 @@ for destroying all keying material and cryptographic security parameters when no
         </f-component>
         
         <ext-comp-def fam-id="FCS_SMC_EXT" title="Submask Combining">
-          <fam-behavior>Components in this family define requirements for key combination used in support of other cryptographic functions.
+          <fam-behavior>Components in this family define requirements for the process of key combination used in support of other cryptographic functions.
           </fam-behavior>
         </ext-comp-def>
         <f-component cc-id="fcs_smc_ext.1" name="Key Combining">
@@ -1950,17 +1955,17 @@ for destroying all keying material and cryptographic security parameters when no
         <f-element>
           <title>The TSF shall support the SMTP AUTH extension for the SASL mechanism. </title>
           <note role="application">
-            This selection-based SFR is claimed when is claimed when IMAP, SMTP, or POP is selected in FTP_ITC_EXT.1.2.
+            This selection-based SFR is claimed when IMAP, SMTP, or POP is selected in FTP_ITC_EXT.1.2.
             <h:p/>
-            In order for an email client to support PKI X.509 Certificates
+            For an email client to support PKI X.509 certificates
             for POP3, IMAP, and SMTP as required in this document, the client must support the
             Simple Authentication and Security Layer (SASL) authentication method as described in
             RFC 4422, the AUTH and CAPA extensions for POP3, as described in RFC 5034, the
-            AUTHENTICATION and CAPABILITY extensions for IMAP, as described in RFC 4959 and the
+            AUTHENTICATION and CAPABILITY extensions for IMAP, as described in RFC 4959, and the
             AUTH extension for SMTP, as described in RFC 4954. </note>
           <aactivity>
             <TSS>
-            The evaluator shall examine the TSS to verify that it describes the details of the email client connecting to a Mail Transfer Agent in terms of the SASL connection, 
+            The evaluator shall verify that the TSS describes the details of the email client connecting to a Mail Transfer Agent in terms of the SASL connection, 
             along with email client-specific options or procedures that might not be reflected in the specification.<h:p/>
             </TSS>
             <Guidance>
@@ -1968,9 +1973,12 @@ for destroying all keying material and cryptographic security parameters when no
             </Guidance>
             <Tests>The evaluator shall also perform the following tests:
             <testlist>
-              <test>The evaluator shall ensure that the email client is able to initiate communications using POP, IMAP, and SMTP and requiring SASL, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
-              <test>The evaluator shall ensure, for each communication channel with an authorized IT entity in Test 1, that a valid SASL handshake is performed. To perform this test, The evaluator shall use a sniffer and a packet analyzer. 
-                The sniffer and packet analyzer must allow the evaluator to view the plaintext email protocol (e.g., proxy, loading the server private key). The evaluator shall identify the SASL handshake within the email protocol.
+              <test id="SASL">The evaluator shall ensure that the email client is able to initiate communications that require SASL (i.e., POP, IMAP, and SMTP), 
+                setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
+              <test>The evaluator shall ensure, for each communication channel with an authorized IT entity in <xref to="SASL"/>, 
+                that a valid SASL handshake is performed. To perform this test, the evaluator shall use a sniffer and a packet analyzer. 
+                The sniffer and packet analyzer must allow the evaluator to view the plaintext email protocol (e.g., proxy, 
+                loading the server private key). The evaluator shall identify the SASL handshake within the email protocol.
                 </test>
             </testlist>
             </Tests>
@@ -2019,10 +2027,10 @@ for destroying all keying material and cryptographic security parameters when no
 	  <note role="application">This selection-based SFR is claimed when "trusted add-ons" is selected in FPT_AON_EXT.1.1.</note>
 	  <aactivity>
 	    <TSS>
-	    The evaluator shall examine the TSS to verify that it states that the email client will reject add-ons from untrusted sources.<h:p/>
+	    The evaluator shall verify that the TSS states that the email client will reject add-ons from untrusted sources.<h:p/>
 	    </TSS>
 	    <Guidance>
-	    The evaluator shall examine the operational guidance to verify that it includes instructions on how to configure the email client with trusted add-on sources.<h:p/>
+	    The evaluator shall verify that the operational guidance includes instructions on how to configure the email client with trusted add-on sources.<h:p/>
 	    </Guidance>
 	    <Tests>The evaluator shall perform the following tests:
 	    <testlist>
@@ -2051,7 +2059,7 @@ for destroying all keying material and cryptographic security parameters when no
       </h:tr>
       <h:tr>
         <h:td>FCS_COP.1 - Cryptographic Operation</h:td>
-        <h:td>Several SFRs in this PP-Module (e.g. FPT_AON_EXT.2) have a dependency on FCS_COP.1 because they require the existence of other cryptographic functionality to be satisfied. The Base-PP permits either the TOE or its platform to implement
+        <h:td>Several SFRs in this PP-Module (e.g., FPT_AON_EXT.2) have a dependency on FCS_COP.1 because they require the existence of other cryptographic functionality to be satisfied. The Base-PP permits either the TOE or its platform to implement
           cryptographic functions. If the TOE platform implements these functions, FCS_COP.1 is not claimed but all SFRs that depend on it are implicitly satisfied through the TOE platform's ability to provide the required functionality.</h:td>
       </h:tr>
       <h:tr>
