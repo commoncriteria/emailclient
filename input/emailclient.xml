@@ -607,8 +607,8 @@
 	      wrapping or encryption on keys that have already been protected. </note>
 	      <aactivity>
 		<TSS>
-		The evaluator shall verify the TSS for a high-level description of the method used to protect keys stored in non-volatile memory.<h:p/>
-		The evaluator shall ensure that the TSS describes the storage location of all keys and the protection of all keys stored in non-volatile memory. The description of the key chain shall be reviewed to ensure FCS_COP_EXT.2 is followed for the storage of wrapped or encrypted keys in non-volatile memory and plaintext keys in non-volatile memory meet one of the criteria for storage.<h:p/>
+		The evaluator shall verify the TSS includes a high-level description of the method used to protect keys stored in non-volatile memory.<h:p/>
+		The evaluator shall ensure that the TSS describes the storage location of all keys and the protection of all keys stored in non-volatile memory. The evaluator shall ensure that the description of the key chain follows FCS_COP_EXT.2 for the storage of wrapped or encrypted keys in non-volatile memory and plaintext keys in non-volatile memory meet one of the criteria for storage.<h:p/>
 		</TSS>
 	        <Guidance>
 	          There are no guidance EAs for this component.<h:p/>
@@ -676,7 +676,7 @@ for destroying all keying material and cryptographic security parameters when no
 		<TSS>
 		If the platform provides the key destruction, then the evaluator shall verify that the TSS describes how the key destruction functionality is invoked.
 		<h:p/>
-		  If "destruction of reference..." (for volatile memory) is selected, then the evaluator shall examine the relevant interface definition to ensure that the interface supports the selection and description in the TSS.
+		  If "destruction of reference..." (for volatile memory) is selected, then the evaluator shall ensure that the relevant interface definition supports the selection and description in the TSS.
 		<h:p/>
 		  If the application invokes key destruction, the evaluator shall ensure the TSS describes each of the secret keys (keys used for symmetric encryption or data authentication), private keys, and critical security parameters (CSPs) used to generate keys; 
 		  when they are zeroized (for example, immediately after use, on system shutdown, etc.); 
@@ -778,9 +778,9 @@ for destroying all keying material and cryptographic security parameters when no
 	      <aactivity>
 		<TSS>
 		  The evaluator shall verify that the TSS* includes a high-level description of the key hierarchy for all authorization methods that are used to protect the encryption keys. 
-		  The evaluator shall examine the TSS to ensure it describes the key chain in detail. The evaluator shall review the description of the key chain to ensure it maintains a chain of keys using key wrap that meets FCS_COP_EXT.2. 
+		  The evaluator shall ensure that the TSS describes the key chain in detail. The evaluator shall ensure that the description of the key chain maintains a chain of keys using key wrap that meets FCS_COP_EXT.2. 
 		<h:p/>  
-		  The evaluator shall verify that the TSS* describes how the process of the key chain functions, such that it does not expose any material that might compromise any key in the chain. A high-level description should include a diagram illustrating the key hierarchy implemented and detail where all keys and keying material is stored or what it is derived from. The evaluator shall examine the key hierarchy to ensure that at no point the chain could be broken without a cryptographic exhaust or knowledge of the key within the chain, and the effective strength of the data encryption key is maintained throughout the key chain.
+		  The evaluator shall verify that the TSS* describes how the process of the key chain functions, such that it does not expose any material that might compromise any key in the chain. A high-level description should include a diagram illustrating the key hierarchy implemented and detail where all keys and keying material is stored or what it is derived from. The evaluator shall ensure that at no point does the key hierarchy allow for the chain could be broken without a cryptographic exhaust or knowledge of the key within the chain, and the effective strength of the data encryption key is maintained throughout the key chain.
 		<h:p/>*If necessary, this information may be presented in a proprietary document rather than the TSS.<h:p/>
 		</TSS>
 	        <Guidance>
@@ -891,7 +891,9 @@ for destroying all keying material and cryptographic security parameters when no
 	        Status Protocol (OCSP). The email client can define how this mechanism behaves,
 	        including whether it uses the underlying OS, but it is required that a mechanism
 	        exists such that revocation status is supported and so that certificates can be
-	        retrieved for sending and receiving messages. Frequency is configurable in FMT_MOF_EXT.1.1. In this requirement, frequency can be interpreted as a
+	        retrieved for sending and receiving messages. Frequency is configurable in FMT_MOF_EXT.1.1. 
+	        
+	        In this requirement, frequency can be interpreted as a
 	        one-time function with local storage, as a regularly scheduled retrieval, or as a
 	        mechanism that requires manual intervention. If the retrieval mechanism is periodic in
 	        nature, then the ST author will need to include an iteration of FCS
@@ -908,7 +910,7 @@ for destroying all keying material and cryptographic security parameters when no
 	          <h:p/>The evaluator shall verify that the TSS describes the retrieval mechanisms for both certificates and certificate revocation, as well as the frequency at which these mechanisms are implemented.<h:p/>
 	        </TSS>
 	        <Guidance>
-	          The evaluator shall review the operational guidance to ensure that it contains instructions on configuring the email client such that it complies with the description in the TSS.
+	          The evaluator shall ensure that the operational guidance contains instructions on configuring the email client such that it complies with the description in the TSS.
 	          <h:p/>If the TSS indicates that the algorithms in FCS_SMIME_EXT.1.2 must be configured to meet the requirement, the evaluator shall verify that the operational guidance includes the configuration of this ID.
 	          <h:p/>If the TSS indicates that the algorithms in FCS_SMIME_EXT.1.3 must be configured to meet the requirement, the evaluator shall verify that the operational guidance includes the configuration.
 	          <h:p/>If the TSS indicates that the algorithms in FCS_SMIME_EXT.1.4 must be configured to meet the requirement, the evaluator shall verify that the operational guidance includes the configuration of this ID.
@@ -1045,7 +1047,7 @@ for destroying all keying material and cryptographic security parameters when no
 	    <management>No specific management functions are identified.</management>
 	    <audit>There are no auditable events foreseen.</audit>
 	    <dependencies>
-	      <no-link>FIA_X509_EXT.1</no-link> X.509 Certificate Validation
+	      <no-link>FIA_X509_EXT.1</no-link> X.509 Certificate Validation<h:br/>
 	      <no-link>FPT_STM.1</no-link> Reliable Time Stamps
 	    </dependencies>
 	    
@@ -1084,7 +1086,7 @@ for destroying all keying material and cryptographic security parameters when no
 		  <test>The evaluator shall perform this test for each function listed in FIA_X509_EXT.2.1 (from the Base-PP) that requires the use of certificates. The evaluator shall demonstrate that using a certificate without a valid certification path results in the function failing. The evaluator shall then load into the platform's root store any certificates needed to validate the certificate to be used in the function, and demonstrate that the function succeeds.<h:p/></test> 
 		  <test>The evaluator shall use the TOE to communicate with a non-TOE IT entity that presents a certificate that can be validated.
 		    The evaluator shall then manipulate the environment so that the TOE is unable to verify the validity of the presented certificate (e.g., by deliberately making the method of revocation checking unavailable), and observe that the action selected in FIA_X509_EXT.2.2 (from the Base-PP) is performed. 
-		    If the selected action is administrator-configurable, then the evaluator shall follow the operational guidance to determine that all supported administrator-configurable options behave in their documented manner.</test>
+		    If the selected action is administrator-configurable, then the evaluator shall verify that all supported administrator-configurable options behave in their documented manner by following the operational guidance.</test>
 		</testlist>
 		</Tests>
 	      </aactivity>
@@ -1214,14 +1216,14 @@ for destroying all keying material and cryptographic security parameters when no
 		The evaluation activities for this component will be driven by the selections made by the ST author. If a capability is not selected in the ST, the noted evaluation activity does not need to be performed. 
 		<TSS>
 		  The evaluator shall verify that the TSS describes those management functions which may only be configured by the email client platform administrator and cannot be overridden by the user when set according to policy.<h:p/>
-		  Change Password: The evaluator shall examine the Operational Guidance to ensure that it describes how the password or passphrase-based authorization factor is to be changed.<h:p/>
+		  Change Password: The evaluator ensure that the operational guidance describes how the password or passphrase-based authorization factor is to be changed.<h:p/>
 		  Disable Key Recovery: If the email client supports key recovery, this must be stated in the TSS. The TSS shall also describe how to disable this functionality. This includes a description of how the recovery material is provided to the recovery holder.<h:p/>
 		  Cryptographic Configuration: The evaluator shall determine from the TSS for other requirements (FCS_*) what portions of the cryptographic functionality are configurable.<h:p/>
 		</TSS>
 		<Guidance>
 		The evaluator shall verify that the operational guidance includes instructions for an email client platform administrator to configure the functions listed in FMT_MOF_EXT.1.1.<h:p/>
 		Disable Key Recovery: If the email client supports key recovery, the guidance for disabling this capability shall be described in the operational guidance.<h:p/>
-		  Cryptographic Configuration: The evaluator shall review the operational guidance to determine that there are instructions for manipulating all of the claimed mechanisms.<h:p/>
+		  Cryptographic Configuration: The evaluator shall verify that the operational guidance has instructions for manipulating all of the claimed mechanisms.<h:p/>
 		</Guidance>
 		<Tests>The evaluator shall perform the following tests:
 		<testlist>
@@ -1270,7 +1272,7 @@ for destroying all keying material and cryptographic security parameters when no
 		The evaluator shall verify that the TSS describes whether the email client is capable of loading trusted add-ons.<h:p/>
 		</TSS>
 		<Guidance>
-		  The evaluator shall examine the operational guidance to verify that it includes instructions on loading trusted add-on sources.<h:p/>
+		  The evaluator shall verify that the operational guidance includes instructions on loading trusted add-on sources.<h:p/>
 		</Guidance>
 	        <Tests>The evaluator shall create or obtain an untrusted add-on and attempt to load it. The evaluator shall then verify that the untrusted add-on is rejected and cannot be loaded.
 		</Tests>
@@ -1327,7 +1329,7 @@ for destroying all keying material and cryptographic security parameters when no
 	      (e.g., an RFC number). </note>
 	      <aactivity>
 		<TSS>
-		The evaluator shall examine the TSS to determine that it describes the details of the email client connecting to a Mail Transfer Agent in terms of the trusted connection (i.e., TLS) according to FTP_DIT_EXT.1 in the Base-PP, 
+		The evaluator shall verify that the TSS describes the details of the email client connecting to a Mail Transfer Agent in terms of the trusted connection (i.e., TLS) according to FTP_DIT_EXT.1 in the Base-PP, 
 		along with email client-specific options or procedures that might not be reflected in the specification.<h:p/>
 		</TSS>
 		<Guidance>
@@ -1563,7 +1565,7 @@ for destroying all keying material and cryptographic security parameters when no
 	  POP.</note>
 	  <aactivity>
 	    <TSS>
-	    The evaluator shall examine the TSS to determine that it describes all persistent information stored on the platform and the locations on the platform where these data are stored. 
+	    The evaluator shall verify that the TSS describes all persistent information stored on the platform and the locations on the platform where these data are stored. 
 	    The evaluator shall confirm that the persistent data described is limited to the data identified in the selection.<h:p/>
 	    </TSS>
 	      <Guidance>
@@ -1573,7 +1575,7 @@ for destroying all keying material and cryptographic security parameters when no
 	    <Tests>
 	      The evaluator shall operate the email client so that several signed and encrypted messages and several unsigned messages are processed. 
 	    The evaluator shall also exercise functionality such as moving messages to folders, writing unsent drafts of messages, etc., 
-	    as provided by the client. The evaluator shall then examine the client platform to determine that the only persistent information stored is that which is identified in the TSS.
+	    as provided by the client. The evaluator shall verify that the only persistent information stored on the client platform is that which is identified in the TSS.
 	    </Tests>
 	  </aactivity>
 	</f-element>
@@ -1736,7 +1738,7 @@ for destroying all keying material and cryptographic security parameters when no
                 <h:p/>
                 Support for password or passphrase length: The evaluator shall ensure that the TSS describes the allowable ranges for password or passphrase lengths, and that at least 64 characters may be specified by the user.
                 <h:p/>
-                Support for PBKDF: The evaluator shall examine the password hierarchy described in the TSS to ensure that the formation of all keys is described and that the key sizes match that described by the ST author.
+                Support for PBKDF: The evaluator shall ensure that the password hierarchy described in the TSS describes the formation of all keys and that the key sizes match that described by the ST author.
                 <h:p/>
                 The evaluator shall check that the TSS describes the method by which the password or passphrase is first encoded and then fed to the SHA algorithm. 
                 The settings for the algorithm (padding, blocking, etc.) shall be described, and the evaluator shall verify that these are supported by the selections in this component as well as the selections concerning the hash function itself. 
@@ -1749,9 +1751,9 @@ for destroying all keying material and cryptographic security parameters when no
                 <h:p/>
               </TSS>
               <Guidance>
-                The evaluator shall check the operational guidance to determine that there are instructions on how to generate large passwords/passphrases, 
+                The evaluator shall verify that the operational guidance has instructions on how to generate large passwords/passphrases, 
                 and instructions on how to configure the password or passphrase length (and optional complexity settings) to provide entropy commensurate with the keys that the authorization factor is protecting. 
-                This is important because many default settings for passwords/passphrases will not meet the necessary entropy needed as specified in this PP-Module
+                This is important because many default settings for passwords or passphrases will not meet the necessary entropy needed as specified in this PP-Module
                 <h:p/>
               </Guidance>
               <Tests>The evaluator shall compose different passwords that meet the requirements and that fail to meet the requirements 
