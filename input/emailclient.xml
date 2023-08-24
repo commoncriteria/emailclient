@@ -199,7 +199,7 @@
           <description>An ST must claim exact conformance to this PP-Module.
             <h:br/><h:br/>
             The evaluation methods used for evaluating the TOE are a combination of the workunits defined in <xref to="bibCEM"/> as well as the
-            Evaluation Activities for ensuring that individual SFRs have a sufficient level of supporting evidence in the Security Target and 
+            Evaluation Activities for ensuring that individual SFRs have sufficient supporting evidence in the Security Target and 
             guidance documentation and have been sufficiently tested by the laboratory as part of completing ATE_IND.1. Any functional packages 
             this PP-Module claims similarly contain their own Evaluation Activities that are used in this same manner.
           </description>
@@ -1631,7 +1631,7 @@ for destroying all keying material and cryptographic security parameters when no
 	    are not rendered or executed and images and external resources are not automatically downloaded.<h:p/>
 	    </TSS>
 	    <Guidance>
-	    The evaluator shall examine the operational guidance and verify that it contains instructions for enabling plaintext-only mode.<h:p/>
+	      The evaluator shall ensure that the operational guidance contains instructions for enabling plaintext-only mode.<h:p/>
 	    </Guidance>
 	    <Tests>The evaluator shall perform the following tests:
 	    <testlist>
