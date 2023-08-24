@@ -1215,7 +1215,7 @@ for destroying all keying material and cryptographic security parameters when no
 	      <aactivity>
 		The evaluation activities for this component will be driven by the selections made by the ST author. If a capability is not selected in the ST, the noted evaluation activity does not need to be performed. 
 		<TSS>
-		  The evaluator shall verify that the TSS describes those management functions which may only be configured by the email client platform administrator and cannot be overridden by the user when set according to policy.<h:p/>
+		  The evaluator shall verify that the TSS describes those management functions that can only be configured by the email client platform administrator and cannot be overridden by the user when set according to policy.<h:p/>
 		  Change Password: The evaluator ensure that the operational guidance describes how the password or passphrase-based authorization factor is to be changed.<h:p/>
 		  Disable Key Recovery: If the email client supports key recovery, this must be stated in the TSS. The TSS shall also describe how to disable this functionality. This includes a description of how the recovery material is provided to the recovery holder.<h:p/>
 		  Cryptographic Configuration: The evaluator shall determine from the TSS for other requirements (FCS_*) what portions of the cryptographic functionality are configurable.<h:p/>
