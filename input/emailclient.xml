@@ -874,7 +874,7 @@ for destroying all keying material and cryptographic security parameters when no
 	    </f-element>
 	    <f-element>
 	      <title>The TSF shall implement mechanisms to retrieve certificates and
-	        certificate revocation information
+	        certificate revocation information in accordance with FIA_X509_EXT.1.1
 	        <selectables>
 	          <selectable>for each signed and encrypted message sent and received</selectable>
 	          <selectable> <assignable>frequency</assignable></selectable>
