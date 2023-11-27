@@ -1,8 +1,3 @@
-output/emailclient-esr.html: EKU
-output/emailclient-esr.html: Javascript
-output/emailclient-esr.html: MUA
-output/emailclient-esr.html: natively
-output/emailclient-esr.html: renderable
 output/emailclient-release-linkable.html: 38F
 output/emailclient-release-linkable.html: CDH
 output/emailclient-release-linkable.html: CSPs
