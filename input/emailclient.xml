@@ -26,6 +26,11 @@
       <subject>Initial release as CC:2022 PP-Module</subject>
     </entry>
   </RevisionHistory>
+  
+  <pp-preferences>
+    <using-cc2022/>
+  </pp-preferences>
+  
   <sec:Introduction>
     <sec:Overview>
       <!-- editor's note: Section 1.1 replaced with boilerplate text from other recent modules. Original materials integrated here and also moved down to section 1.3 -->
