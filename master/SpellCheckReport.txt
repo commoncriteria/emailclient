@@ -2,6 +2,7 @@ output/emailclient-release-linkable.html: 38F
 output/emailclient-release-linkable.html: CDH
 output/emailclient-release-linkable.html: CSPs
 output/emailclient-release-linkable.html: DRBGs
+output/emailclient-release-linkable.html: Novemeber
 output/emailclient-release-linkable.html: PBKDFs
 output/emailclient-release-linkable.html: PaSSw0rd
 output/emailclient-release-linkable.html: STM
@@ -18,6 +19,7 @@ output/emailclient-release-linkable.html: signatureAlgorithm
 output/emailclient-release-linkable.html: v4
 output/emailclient-release.html: 38F
 output/emailclient-release.html: CDH
+output/emailclient-release.html: Novemeber
 output/emailclient-release.html: STM
 output/emailclient-release.html: TBD
 output/emailclient-release.html: URIs
@@ -43,6 +45,7 @@ output/emailclient.html: 38F
 output/emailclient.html: CDH
 output/emailclient.html: CSPs
 output/emailclient.html: DRBGs
+output/emailclient.html: Novemeber
 output/emailclient.html: PBKDFs
 output/emailclient.html: PaSSw0rd
 output/emailclient.html: STM
