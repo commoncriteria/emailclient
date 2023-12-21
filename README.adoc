@@ -1,5 +1,7 @@
 == Protecion Profile Module for Email Clients
 
+== This version of the Module is deprecated. From now on use the email-client repo.
+
 [cols="1,1,1,1,1,1,1,1"]
 |===
 8+|emailclient 
